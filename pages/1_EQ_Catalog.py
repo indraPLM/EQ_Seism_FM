@@ -7,7 +7,7 @@ Created on Wed Mar  8 05:05:03 2023
 import streamlit as st
 from PIL import Image
 import numpy as np
-import pydeck as pdk
+#import pydeck as pdk
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -15,7 +15,7 @@ import os,sys
 import geopandas as gpd
 #from shapely.geometry import Point
 import matplotlib.pyplot as plt
-import pygmt
+#import pygmt
 from matplotlib.pyplot import figure
 
 
@@ -136,26 +136,26 @@ df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
 df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
-region=[West,East,South-1,North+1]
+#region=[West,East,South-1,North+1]
                                        
-fig = pygmt.Figure()
-fig.basemap(region=region, projection="M40", frame=True)
-fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
-pygmt.makecpt(cmap="viridis", series=[df.fixedDepth.min(), df.fixedDepth.max()])
-fig.plot(
-    x=df.fixedLon,
-    y=df.fixedLat,
-    size=0.02* 2**df.mag,
-    fill=df.fixedDepth,
-    cmap=True,
-    style="cc",
-    pen="black",
-)
-fig.colorbar(frame="xaf+lDepth (km)")
-fig.savefig('seismisitas.png')
+#fig = pygmt.Figure()
+#fig.basemap(region=region, projection="M40", frame=True)
+#fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
+#pygmt.makecpt(cmap="viridis", series=[df.fixedDepth.min(), df.fixedDepth.max()])
+#fig.plot(
+#    x=df.fixedLon,
+#    y=df.fixedLat,
+#    size=0.02* 2**df.mag,
+#   fill=df.fixedDepth,
+#    cmap=True,
+#    style="cc",
+#    pen="black",
+#)
+#fig.colorbar(frame="xaf+lDepth (km)")
+#fig.savefig('seismisitas.png')
 
-image = Image.open('seismisitas.png')
-st.image(image, caption='Peta Seismisitas')
+#image = Image.open('seismisitas.png')
+#st.image(image, caption='Peta Seismisitas')
 
 unique_values = df['remarks'].unique()
 count_region=[]
