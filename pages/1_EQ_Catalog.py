@@ -13,8 +13,7 @@ import requests
 import pandas as pd
 import os,sys
 import geopandas as gpd
-from geodatasets import get_path
-from shapely.geometry import Point
+#from shapely.geometry import Point
 import matplotlib.pyplot as plt
 import pygmt
 from matplotlib.pyplot import figure
