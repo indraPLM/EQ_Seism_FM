@@ -18,3 +18,8 @@ pydeck==0.7.1
 shapely==1.8.2
 xarray==2022.6.0
 packaging==21.3
+cartopy==0.20.3
+pytest==7.1.2
+pytest-json==0.4.0
+geographiclib==1.52
+
