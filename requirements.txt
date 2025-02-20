@@ -1,14 +1,11 @@
 pandas
 geopandas
-geopandas-base
 streamlit
 requests
-matplotlib-base
+matplotlib
 pygmt
 gmt
-ghostscript
 geodatasets
-gdal
 obspy
 numpy
 scipy
@@ -16,10 +13,5 @@ pillow
 pydeck
 shapely
 xarray
-packaging
-cartopy
-pytest
-pytest-json
-geographiclib
 beautifulsoup4
 pip
