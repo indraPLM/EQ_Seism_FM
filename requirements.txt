@@ -16,3 +16,5 @@ scipy==1.8.1
 pillow==9.1.1
 pydeck==0.7.1
 shapely==1.8.2
+xarray==2022.6.0
+packaging==21.3
