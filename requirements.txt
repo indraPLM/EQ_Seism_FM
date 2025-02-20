@@ -5,14 +5,10 @@ streamlit
 requests
 matplotlib
 pygmt
-gmt
 geodatasets
 obspy
 numpy
-scipy
 pillow
 pydeck
 shapely
-xarray
 beautifulsoup4
-pip
