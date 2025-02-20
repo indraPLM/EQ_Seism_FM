@@ -21,5 +21,4 @@ cartopy==0.20.3
 pytest==7.1.2
 pytest-json==0.4.0
 geographiclib==1.52
-pip install beautifulsoup4
-
+bs4
