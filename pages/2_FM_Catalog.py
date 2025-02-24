@@ -16,7 +16,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 import requests
-import pygmt
+#import pygmt
 from matplotlib.pyplot import figure
 import geopandas
 from obspy.imaging.beachball import beachball
