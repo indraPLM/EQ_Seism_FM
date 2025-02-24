@@ -131,7 +131,7 @@ df['fixedDepth'] = pd.to_numeric(df['fixedDepth'],errors = 'coerce')
 
 df['date_time'] = pd.to_datetime(df['date_time'])
 df['mag'] = fix_float(df['mag'])
-df['sizemag']=10000*df['mag']
+df['sizemag']=1000*df['mag']
 
 df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
