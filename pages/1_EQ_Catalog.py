@@ -6,6 +6,7 @@ Created on Wed Mar  8 05:05:03 2023
 """
 import streamlit as st
 import folium
+from streamlit_folium import st_folium
 from PIL import Image
 import numpy as np
 #import pydeck as pdk
