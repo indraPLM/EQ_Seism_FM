@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+import streamlit as st
+
 
 url='https://rtsp.bmkg.go.id/publicbull.php'
 page=requests.get(url)
