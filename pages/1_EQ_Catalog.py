@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
 
 
-st.set_page_config(page_title='Earthquake Catalog, Statistik & Plotting',  layout='centered', page_icon="🌍")
+st.set_page_config(page_title='Earthquake Catalog, Statistik & Plotting',  layout='wide', page_icon="🌍")
 #st.title('Seismisitas dan Statistik Kegempaan')
 
 st.sidebar.header("Input Parameter :")
