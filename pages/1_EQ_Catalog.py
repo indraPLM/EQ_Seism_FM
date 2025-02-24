@@ -172,7 +172,7 @@ for i in range(len(df)):
     ).add_to(m)
 
 # Same as before, we save it to file
-st_data = st_folium(m)
+st_data = st_folium(m,height=500,width=1000)
 
 unique_values = df['remarks'].unique()
 count_region=[]
