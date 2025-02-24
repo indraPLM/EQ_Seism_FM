@@ -5,6 +5,7 @@ Created on Wed Mar  8 05:05:03 2023
 @author: Indra Gunawan
 """
 import streamlit as st
+import folium
 from PIL import Image
 import numpy as np
 #import pydeck as pdk
@@ -159,6 +160,18 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 #st.image(image, caption='Peta Seismisitas')
 
 st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag" )
+
+m = folium.Map(location=(0, 0), zoom_start=2)
+
+# go through each quake in set, make circle, and add to map.
+for i in range(len(df)):
+    folium.Circle(
+        location=[df.iloc[i]['fixedLat'], df.iloc[i]['fixedLon']],
+        radius=10,
+    ).add_to(m)
+
+# Same as before, we save it to file
+st_data = st_folium(m, width=725)
 
 unique_values = df['remarks'].unique()
 count_region=[]
