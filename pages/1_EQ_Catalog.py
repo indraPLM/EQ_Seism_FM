@@ -157,7 +157,7 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 #image = Image.open('seismisitas.png')
 #st.image(image, caption='Peta Seismisitas')
 
-st.map(df, latitude=df['fixedLat'], longitude=df['fixedLon'] size=0.02*2**df['mag'])
+st.map(df, latitude=df['fixedLat'], longitude=df['fixedLon'], size=0.02*2**df['mag'])
 
 unique_values = df['remarks'].unique()
 count_region=[]
