@@ -66,8 +66,8 @@ df['fixedLat'] = df.lat.apply(fix_latitude)
 df['fixedLon'] = df.lon.apply(fix_longitude)
 df['sizemag']=1000*df['mag']
 
-st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
-st.map(df, latitude="fixedLat", longitude="fixedLon")
+#st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
+#st.map(df, latitude="fixedLat", longitude="fixedLon")
 
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df)
