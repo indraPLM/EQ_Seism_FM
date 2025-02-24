@@ -162,7 +162,7 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 #st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag" )
 
-m = folium.Map(location=(120, 0), zoom_start=100)
+m = folium.Map(location=(0, 120), zoom_start=10)
 
 # go through each quake in set, make circle, and add to map.
 for i in range(len(df)):
