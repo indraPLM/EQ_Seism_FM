@@ -90,8 +90,8 @@ df['fixedLon'] = pd.to_numeric(df['fixedLon'],errors = 'coerce')
 
 df['sizemag']=1000*df['mag']
 
-#st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
-#st.map(df, latitude="fixedLat", longitude="fixedLon")
+st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
+st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df)
