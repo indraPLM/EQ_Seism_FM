@@ -131,6 +131,7 @@ df['fixedDepth'] = pd.to_numeric(df['fixedDepth'],errors = 'coerce')
 
 df['date_time'] = pd.to_datetime(df['date_time'])
 df['mag'] = fix_float(df['mag'])
+df['sizemag']=0.02*2**df['mag']
 
 df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
@@ -157,7 +158,7 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 #image = Image.open('seismisitas.png')
 #st.image(image, caption='Peta Seismisitas')
 
-st.map(df, latitude="fixedLat", longitude="fixedLon", size="mag" )
+st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag" )
 
 unique_values = df['remarks'].unique()
 count_region=[]
