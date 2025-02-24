@@ -83,7 +83,11 @@ for lst in chunks:
 df=pd.DataFrame({'date_time':date_time,'mag':mag,'depth':depth,'lat':lat,'lon':lon,'typ':typ,'num_bull':num_bull,'evt_group':evt_group})
 df['date_time']=pd.to_datetime(df['date_time'])
 df['fixedLat'] = df.lat.apply(fix_latitude)
+df['fixedLat'] = pd.to_numeric(df['fixedLat'],errors = 'coerce')
+
 df['fixedLon'] = df.lon.apply(fix_longitude)
+df['fixedLon'] = pd.to_numeric(df['fixedLon'],errors = 'coerce')
+
 df['sizemag']=1000*df['mag']
 
 #st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
