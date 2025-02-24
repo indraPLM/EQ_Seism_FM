@@ -20,7 +20,7 @@ import requests
 from matplotlib.pyplot import figure
 import geopandas
 from obspy.imaging.beachball import beachball
-from IPython.core.display import display,HTML
+#from IPython.core.display import display,HTML
 
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='centered', page_icon="🌍")
 #st.title('Peta Focal Mechanism')
