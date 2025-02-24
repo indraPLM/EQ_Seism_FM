@@ -95,3 +95,13 @@ st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df)
+
+
+usgs_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv'
+df_usgs = pd.read_csv(usgs_url)
+
+st.markdown(""" ### Peta Lokasi Gempabumi Signifikan USGS 30 hari terakhir """)
+st.map(df_usgs, latitude="latitude", longitude="longitude")
+
+st.markdown(""" ### Tabel USGS EQ Catalog M > 2.5 """)
+st.dataframe(df_usgs)
