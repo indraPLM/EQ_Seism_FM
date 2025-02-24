@@ -11,8 +11,8 @@ from urllib.error import URLError
 import pandas as pd
 import os,sys
 import geopandas as gpd
-from geodatasets import get_path
-from shapely.geometry import Point
+#from geodatasets import get_path
+#from shapely.geometry import Point
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 import requests
