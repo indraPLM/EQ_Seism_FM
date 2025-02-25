@@ -77,18 +77,56 @@ folium.Marker(
 
 st_data = st_folium(m, width=800)
 
-st.markdown(
-    """
-    ### Seismisitas dan Mekanisme Sumber (Focal Mechanism)
-       
-"""
-)
+url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
+page_m5=requests.get(url_m5)
+url_pages_m5=BeautifulSoup(page_m5.text, 'html')
 
-image = Image.open('EQ_Catalog.png')
-st.image(image, caption='Peta Seismisitas Indonesia')
+data=url_pages_m5.find_all('tanggal')
+print(data[0])
+print(len(data))
+def par_xml_m5(params):
+    data=url_pages_m5.find_all(params)
+    content=[]
+    for x in data:
+        par=x.get_text()
+        content.append(par)
+    return content
 
-image = Image.open('FM_Catalog.png')
-st.image(image, caption='Katalog Mekanisme Sumber')
+def fix_latitude_m5(a):
+    for x in a:
+        x = x.strip()
+        if x.endswith('LS'):
+            x = -float(x.strip('LS'))
+        else:
+            x = x.strip('LU')
+    return x
+
+def fix_longitude_m5(b):
+    for y in b:
+        y = y.strip()
+        if y.endswith('BB'):
+            y = -float(y.strip('BB'))
+        else:
+            y = y.strip('BT')
+    return y
+
+a=par_xml_m5('tanggal')
+b=par_xml_m5('jam')
+c=par_xml_m5('datetime')
+
+d=par_xml_m5('lintang')
+d1=fix_latitude_m5(d)
+e=par_xml('bujur')
+e1=fix_longitude_m5(e)
+
+f=par_xml_m5('magnitude')
+g=par_xml_m5('kedalaman')
+h=par_xml_m5('wilayah')
+i=par_xml_m5('potensi')
+
+df=pd.DataFrame({'tanggal':a,'waktu':b,'date_time':c,'lat':d1,'lon':e1,'mag':f,'depth':g,
+                 'region':h,'status':i})
+st.dataframe(df)
 
 st.markdown(
     """ 
