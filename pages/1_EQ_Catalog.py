@@ -178,7 +178,7 @@ for i in unique_values:
 
 df_region = pd.DataFrame({'region':unique_values,'count':count_region})
 
-ax = df_region.plot.bar(x='region', y='count', rot=90,
+ax = df_region.plot.bar(x='region', y='count', rot=45,
                        figsize=(25, 15), legend=True, fontsize=14)
 ax.set_xlabel("Region", fontsize=20)
 ax.set_ylabel("Jumlah Gempa", fontsize=20)
