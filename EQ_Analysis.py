@@ -126,6 +126,7 @@ i=par_xml_m5('potensi')
 
 df=pd.DataFrame({'tanggal':a,'waktu':b,'date_time':c,'lat':d1,'lon':e1,'mag':f,'depth':g,
                  'region':h,'status':i})
+st.markdown(""" 15 Data Gempabumi Terkini""")
 st.dataframe(df)
 
 st.markdown(
