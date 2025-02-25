@@ -59,7 +59,7 @@ tanggal=par_xml('tanggal')
 waktu=par_xml('jam')
 datetime=par_xml('datetime')
 
-m= folium.Map((lat, lon), tiles="Esri.WorldTopoMap",zoom_start=4)
+m= folium.Map((lat, lon),zoom_start=4)
 
 html = """
     <h2> Gempa Terkini</h2>
