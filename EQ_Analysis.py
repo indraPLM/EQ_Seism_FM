@@ -59,7 +59,7 @@ tanggal=par_xml('tanggal')
 waktu=par_xml('jam')
 datetime=par_xml('datetime')
 
-m= folium.Map((lat, lon), tiles='OpenTopoMap',zoom_start=4)
+m= folium.Map((lat, lon),zoom_start=4)
 
 html = """
     <h2> Gempa Terkini</h2>
@@ -75,7 +75,7 @@ folium.Marker(
     icon=folium.Icon(icon_shape='circle-dot'),
 ).add_to(m)
 
-st_data = st_folium(m)
+st_data = st_folium(m, width=800)
 
 st.markdown(
     """
