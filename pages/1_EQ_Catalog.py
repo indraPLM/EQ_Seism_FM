@@ -195,15 +195,15 @@ gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixe
 
 # Loading Data SHP dan Clipped data gempa per-Pulau
 
-sumatra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.shp')
-jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.shp')
-bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.shp')
-nustra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Nustra_Area.shp')
-kalimantan = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Kalimantan_Area.shp')
-sulawesi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sulawesi_Area.shp')
-maluku = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Maluku_Area.shp')
-papua = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Papua_Area.shp')
-provinsi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Batas Provinsi.shp')
+sumatra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip')
+jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.zip')
+bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.zip')
+nustra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Nustra_Area.zip')
+kalimantan = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Kalimantan_Area.zip')
+sulawesi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sulawesi_Area.zip')
+maluku = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Maluku_Area.zip')
+papua = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Papua_Area.zip')
+provinsi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Batas_Provinsi.zip')
 
 sumatra_clipped = gpd_seis.clip(sumatra)
 jawa_clipped = gpd_seis.clip(jawa)
