@@ -100,7 +100,7 @@ st.dataframe(df)
 usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-01-02&minmagnitude=6.0'
 df_usgs = pd.read_csv(usgs_url)
 
-st.markdown(""" ### Peta Lokasi Gempabumi Signifikan USGS 30 hari terakhir """)
+st.markdown(""" ### Peta Lokasi Gempabumi M > 6 Katalog USGS """)
 st.map(df_usgs, latitude="latitude", longitude="longitude")
 
 st.markdown(""" ### Tabel USGS EQ Significant """)
