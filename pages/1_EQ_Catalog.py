@@ -194,6 +194,7 @@ st.table(df_region)
 gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
 
 # Loading Data SHP dan Clipped data gempa per-Pulau
+
 sumatra = gpd.read_file('Sumatra_Area.shp')
 jawa = gpd.read_file('Jawa_Area.shp')
 bali = gpd.read_file('Bali-A_Area.shp')
