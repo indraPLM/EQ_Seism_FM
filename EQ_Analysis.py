@@ -13,7 +13,7 @@ import requests
 import pandas as pd
 from streamlit_folium import st_folium
 
-st.set_page_config(page_title="EQ Analyis", page_icon="🌏")
+st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 
 st.write("# Earthquake Data Analysis 👨🏽‍💼")
 
