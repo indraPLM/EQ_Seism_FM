@@ -75,7 +75,7 @@ folium.Marker(
     icon=folium.Icon(icon_shape='circle-dot'),
 ).add_to(m)
 
-st_data = st_folium(m, width=800)
+st_data = st_folium(m)
 
 url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
 page_m5=requests.get(url_m5)
