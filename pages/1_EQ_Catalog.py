@@ -194,8 +194,9 @@ st.table(df_region)
 gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
 
 # Loading Data SHP dan Clipped data gempa per-Pulau
+test='https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip'
 
-sumatra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip')
+sumatra = gpd.read_file(test)
 jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.zip')
 bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.zip')
 nustra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Nustra_Area.zip')
