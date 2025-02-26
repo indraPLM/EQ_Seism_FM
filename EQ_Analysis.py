@@ -119,10 +119,10 @@ d1=[]
 for i in range(len(d)):
     temp=fix_latitude(d[i])
     d1.append(temp)
-e=par_xml('bujur')
+e=par_xml_m5('bujur')
 e1=[]
 for i in range(len(e)):
-    temp=fix_latitude(e[i])
+    temp=fix_longitude(e[i])
     e1.append(temp)
 
 f=par_xml_m5('magnitude')
