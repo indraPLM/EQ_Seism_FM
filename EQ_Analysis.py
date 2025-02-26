@@ -130,8 +130,8 @@ g=par_xml_m5('kedalaman')
 h=par_xml_m5('wilayah')
 i=par_xml_m5('potensi')
 
-df=pd.DataFrame({'tanggal':a,'waktu':b,'date_time':c,'lat':d1,'lon':e1,'mag':f,'depth':g,
-                 'region':h,'status':i})
+df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1,
+                 'Magnitude':f,'Kedalaman':g,'Wilayah':h,'Status Tsunami':i})
 st.markdown(""" 15 Data Gempabumi Terkini""")
 st.table(df)
 
