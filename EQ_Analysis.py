@@ -115,16 +115,22 @@ b=par_xml_m5('jam')
 c=par_xml_m5('datetime')
 
 d=par_xml_m5('lintang')
-d1=fix_latitude_m5(d)
+d1=[]
+for i in range(len(d)):
+    temp=fix_latitude(d[i])
+    d1.append(temp)
 e=par_xml('bujur')
-e1=fix_longitude_m5(e)
+e1=[]
+for i in range(len(e)):
+    temp=fix_latitude(e[i])
+    e1.append(temp)
 
 f=par_xml_m5('magnitude')
 g=par_xml_m5('kedalaman')
 h=par_xml_m5('wilayah')
 i=par_xml_m5('potensi')
 
-df=pd.DataFrame({'tanggal':a,'waktu':b,'date_time':c,'lat':e,'lon':f,'mag':f,'depth':g,
+df=pd.DataFrame({'tanggal':a,'waktu':b,'date_time':c,'lat':d1,'lon':e1,'mag':f,'depth':g,
                  'region':h,'status':i})
 st.markdown(""" 15 Data Gempabumi Terkini""")
 st.table(df)
