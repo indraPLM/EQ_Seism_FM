@@ -97,7 +97,7 @@ st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df)
 
 
-usgs_url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv'
+usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-01-02&minmagnitude=6.0'
 df_usgs = pd.read_csv(usgs_url)
 
 st.markdown(""" ### Peta Lokasi Gempabumi Signifikan USGS 30 hari terakhir """)
