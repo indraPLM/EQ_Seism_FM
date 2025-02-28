@@ -107,10 +107,10 @@ df_rtsp=pd.concat([df_awal,df[0],df[1],df[2],df[3],df[4],df[5],df[6],df[7],
 print(df_rtsp)
 
 st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
-st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag")
+st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 
 st.markdown(""" ### Tabel RTSP BMKG """)
-st.dataframe(df)
+st.dataframe(df_rtsp)
 
 
 usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-01-02&minmagnitude=6.0'
