@@ -160,7 +160,7 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 #image = Image.open('seismisitas.png')
 #st.image(image, caption='Peta Seismisitas')
 
-st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag", zoom=4 )
+st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag", zoom=3 )
 
 #m = folium.Map(location=(0, 120), zoom_start=4)
 #for i in range(len(df)):
