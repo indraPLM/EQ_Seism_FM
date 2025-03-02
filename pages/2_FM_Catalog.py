@@ -188,13 +188,13 @@ from obspy.imaging.beachball import beach
 #region=[West,East,South-1,North+1]
 projection = ccrs.PlateCarree(central_longitude=120.0)
 
-fig = plt.figure(dpi=300)
+fig = plt.figure(dpi=150)
 ax = fig.add_subplot(111, projection=projection)
 ax.set_extent((85, 145, -15, 10))
 ax.coastlines()
 ax.gridlines()
 
-x, y = projection.transform_point(x=115, y=-14,
+x, y = projection.transform_point(x=115, y=-13,
                                   src_crs=ccrs.Geodetic())
 #focmecs = [0.136, -0.591, 0.455, -0.396, 0.046, -0.615]
 focmecs = [280, 10, 90]
