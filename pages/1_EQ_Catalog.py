@@ -281,7 +281,7 @@ df_clip.loc[len(df)] = total
 nama_pulau = ['SUMATRA', 'JAWA', 'BALI', 'NUSA TENGGARA','KALIMANTAN','SULAWESI','MALUKU','PAPUA','INDONESIA']
 df_clip['Wilayah'] = nama_pulau
 file_name = 'Statistik_PerPulau.xlsx'
-df_clip.to_excel(file_name)
+#df_clip.to_excel(file_name)
 
 df_new = df_clip.drop('Total', axis=1)
 idx = [8]
