@@ -180,17 +180,14 @@ cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
 
 st.dataframe(cmt)
 
-import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 
-from obspy.imaging.beachball import beach
+#region=[West,East,South-1,North+1]
+projection = ccrs.PlateCarree(central_longitude=120.0)
 
-
-projection = ccrs.PlateCarree(central_longitude=142.0)
-
-fig = plt.figure(dpi=150)
+fig = plt.figure(dpi=600)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((-180, 180, -90, 90))
+ax.set_extent((West-2, East+2, South-2, North+2))
 ax.coastlines()
 ax.gridlines()
 
