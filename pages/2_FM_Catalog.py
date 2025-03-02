@@ -201,10 +201,12 @@ focmecs1 = [280, 10, 90]
 focmecs2 = [330, 10, 80]
 
 ax = plt.gca()
-b = beach(focmecs1, xy=(x1, y1), width=2, linewidth=1, alpha=0.85)
-b = beach(focmecs2, xy=(x2, y2), width=2, linewidth=1, alpha=0.85)
-b.set_zorder(2)
-ax.add_collection(b)
+b1 = beach(focmecs1, xy=(x1, y1), width=2, linewidth=1, alpha=0.85)
+b2 = beach(focmecs2, xy=(x2, y2), width=2, linewidth=1, alpha=0.85)
+b1.set_zorder(2)
+ax.add_collection(b1)
+b2.set_zorder(2)
+ax.add_collection(b2)
 
 st.pyplot(fig)
 #plt.show()
