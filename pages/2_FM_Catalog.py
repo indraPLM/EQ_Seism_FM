@@ -194,13 +194,15 @@ ax.set_extent((85, 145, -15, 10))
 ax.coastlines()
 ax.gridlines()
 
-x, y = projection.transform_point(x=115, y=-13,
-                                  src_crs=ccrs.Geodetic())
+x1, y1 = projection.transform_point(x=115, y=-13,src_crs=ccrs.Geodetic())
+x2, y2 = projection.transform_point(x=95, y=-1,src_crs=ccrs.Geodetic())
 #focmecs = [0.136, -0.591, 0.455, -0.396, 0.046, -0.615]
-focmecs = [280, 10, 90]
+focmecs1 = [280, 10, 90]
+focmecs2 = [330, 10, 80]
 
 ax = plt.gca()
-b = beach(focmecs, xy=(x, y), width=2, linewidth=1, alpha=0.85)
+b = beach(focmecs1, xy=(x1, y1), width=2, linewidth=1, alpha=0.85)
+b = beach(focmecs2, xy=(x2, y2), width=2, linewidth=1, alpha=0.85)
 b.set_zorder(2)
 ax.add_collection(b)
 
