@@ -200,8 +200,8 @@ x, y = projection.transform_point(x=115, y=-13,
 focmecs = [280, 10, 90]
 
 ax = plt.gca()
-b = beach(focmecs, xy=(x, y), width=10, linewidth=1, alpha=0.85)
-b.set_zorder(10)
+b = beach(focmecs, xy=(x, y), width=2, linewidth=1, alpha=0.85)
+b.set_zorder(2)
 ax.add_collection(b)
 
 st.pyplot(fig)
