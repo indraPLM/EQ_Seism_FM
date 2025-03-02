@@ -194,9 +194,10 @@ ax.set_extent((-180, 180, -90, 90))
 ax.coastlines()
 ax.gridlines()
 
-x, y = projection.transform_point(x=142.36929, y=38.3215,
+x, y = projection.transform_point(x=115, y=-14,
                                   src_crs=ccrs.Geodetic())
-focmecs = [0.136, -0.591, 0.455, -0.396, 0.046, -0.615]
+#focmecs = [0.136, -0.591, 0.455, -0.396, 0.046, -0.615]
+focmecs = [280, 10, 90]
 
 ax = plt.gca()
 b = beach(focmecs, xy=(x, y), width=10, linewidth=1, alpha=0.85)
