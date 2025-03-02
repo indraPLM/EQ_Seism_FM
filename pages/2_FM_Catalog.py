@@ -141,40 +141,40 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 region=[West,East,South-1,North+1]
                                        
-fig = pygmt.Figure()
-fig.basemap(region=region, projection="M40", frame=True)
-fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
-pygmt.makecpt(cmap="viridis", series=[df.depth.min(), df.depth.max()])
-fig.plot(
-    x=df.fixedLon,
-    y=df.fixedLat,
-    size=0.02 * 2**df.mag,
-    fill=df.depth,
-    cmap=True,
-    style="cc",
-    pen="black",
-)
-fig.colorbar(frame="xaf+lDepth (km)")
-fig.savefig('fc_eq_map.png')
+#fig = pygmt.Figure()
+#fig.basemap(region=region, projection="M40", frame=True)
+#fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
+#pygmt.makecpt(cmap="viridis", series=[df.depth.min(), df.depth.max()])
+#fig.plot(
+#    x=df.fixedLon,
+#    y=df.fixedLat,
+#    size=0.02 * 2**df.mag,
+#    fill=df.depth,
+#    cmap=True,
+#    style="cc",
+#    pen="black",
+#)
+#fig.colorbar(frame="xaf+lDepth (km)")
+#fig.savefig('fc_eq_map.png')
 
-image = Image.open('fc_eq_map.png')
-st.image(image, caption='Peta Seismisitas Focal Mechanism')
+#image = Image.open('fc_eq_map.png')
+#st.image(image, caption='Peta Seismisitas Focal Mechanism')
 
-focal_mechanism=dict(strike=df['S1'].tolist(),dip=df['D1'].tolist(),
-                     rake=df['R1'].tolist(),magnitude=df['mag'].tolist(),)
+#focal_mechanism=dict(strike=df['S1'].tolist(),dip=df['D1'].tolist(),
+#                     rake=df['R1'].tolist(),magnitude=df['mag'].tolist(),)
 
-fig = pygmt.Figure()
-fig.coast(region=region,projection="M40", land="grey",water="lightblue",
-          borders="1/1p,black",shorelines=True,frame="a",)
-fig.meca(spec=focal_mechanism, scale="1c", longitude=df['fixedLon'].tolist(),
-         latitude=df['fixedLat'].tolist(), depth=df['depth'].tolist(),)
-fig.show()
-fig.savefig('fc_map.png')
+#fig = pygmt.Figure()
+#fig.coast(region=region,projection="M40", land="grey",water="lightblue",
+#          borders="1/1p,black",shorelines=True,frame="a",)
+#fig.meca(spec=focal_mechanism, scale="1c", longitude=df['fixedLon'].tolist(),
+#         latitude=df['fixedLat'].tolist(), depth=df['depth'].tolist(),)
+#fig.show()
+#fig.savefig('fc_map.png')
 
-image = Image.open('fc_map.png')
-st.image(image, caption='Peta Focal Mechanism')
+#image = Image.open('fc_map.png')
+#st.image(image, caption='Peta Focal Mechanism')
 
-st.markdown( """ ### Tabel Data Focal Mechanism """)
+#st.markdown( """ ### Tabel Data Focal Mechanism """)
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
                   'depth','S1','D1','R1','S2','D2','R2']]
 
