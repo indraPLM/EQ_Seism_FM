@@ -187,7 +187,7 @@ projection = ccrs.PlateCarree(central_longitude=120.0)
 
 fig = plt.figure(dpi=600)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((West-2, East+2, South-2, North+2))
+ax.set_extent((85, 145, -15, 10))
 ax.coastlines()
 ax.gridlines()
 
