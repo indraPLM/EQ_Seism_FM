@@ -204,7 +204,7 @@ kalimantan = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_
 sulawesi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sulawesi_Area.zip')
 maluku = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Maluku_Area.zip')
 papua = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Papua_Area.zip')
-provinsi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Batas_Provinsi.zip')
+#provinsi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Batas_Provinsi.zip')
 
 sumatra_clipped = gpd_seis.clip(sumatra)
 jawa_clipped = gpd_seis.clip(jawa)
@@ -217,7 +217,7 @@ papua_clipped = gpd_seis.clip(papua)
 
 # Plot the clipped data
 fig, ax = plt.subplots(figsize=(30, 20))
-provinsi.boundary.plot(ax=ax, color='black')
+#provinsi.boundary.plot(ax=ax, color='black')
 sumatra_clipped.plot(ax=ax, color="purple")
 sumatra.boundary.plot(ax=ax, color="green")
 jawa_clipped.plot(ax=ax, color="purple")
