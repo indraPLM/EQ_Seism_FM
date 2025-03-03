@@ -118,8 +118,14 @@ st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df_rtsp)
 
-usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-01-02&minmagnitude=6.0'
+usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-03-02&minmagnitude=6.0'
 df_usgs = pd.read_csv(usgs_url)
+
+df_usgs['DATEUSGS']=pd.to_datetime(df_usgs['time'])
+df_usgs['date_usgs_local'] = df_usgs['DATEUSGS']
+df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%d-%m-%Y %H:%M:%S')
+df_usgs['fix_dateusgs']=pd.to_datetime(df_usgs['noniso_dateusgs'])
+#print(df_usgs['fix_dateusgs'])
 
 st.markdown(""" ### Peta Lokasi Gempabumi M > 6 Katalog USGS """)
 st.map(df_usgs, latitude="latitude", longitude="longitude")
@@ -131,7 +137,7 @@ tsp_data=[]
 for i in range(len(df_rtsp['date_time'])):
     for j in range(len(df_usgs['time'])):
         dt1=df_rtsp['date_time'][i]
-        dt2=df_usgs['time'][j].tz_localize(None)
+        dt2=df_usgs['fix_dateusgs'][j]
         laps=date_diff_in_Seconds(dt1,dt2)
         #lapse.append(laps)
         if laps <= 20 :
