@@ -172,6 +172,5 @@ df_tsp['mag_diff'] = df_tsp.apply(lambda x: abs(x['mag_bmkg'] - x['mag_usgs']), 
 df_tsp['depth_diff'] = df_tsp.apply(lambda x: abs(x['depth_bmkg'] - x['depth_usgs']), axis=1)
 df_tsp['distance_diff_km']=(np.sqrt(df_tsp[['lon_diff_km', 'lat_diff_km']].sum(axis=1)))**2
 
-st.pyplot(df_tsp.plot( 'date_bmkg' , 'mag_diff',figsize=(20, 15)))
-st.pyplot(df_tsp.plot( 'date_bmkg' , 'depth_diff',figsize=(20, 15))) 
-st.pyplot(df_tsp.plot( 'date_bmkg' , 'distance_diff_km',figsize=(20, 15))) 
+st.line_chart(df_tsp, x="date_bmkg", y="mag_diff")
+
