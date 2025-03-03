@@ -131,7 +131,7 @@ tsp_data=[]
 for i in range(len(df_rtsp['date_time'])):
     for j in range(len(df_usgs['time'])):
         dt1=df_rtsp['date_time'][i]
-        dt2=df_usgs['time'][j].tz_convert(None)
+        dt2=df_usgs['time'][j].tz_localize(None)
         laps=date_diff_in_Seconds(dt1,dt2)
         #lapse.append(laps)
         if laps <= 20 :
