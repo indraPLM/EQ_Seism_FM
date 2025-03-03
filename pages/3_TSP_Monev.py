@@ -46,10 +46,10 @@ def fix_longitude(y):
     return y
 
 def date_diff_in_Seconds(dt1, dt2):
- # Calculate the time difference between dt2 and dt1
- timedelta = float(abs(dt1 - dt2))
- # Return the total time difference in seconds
- return timedelta.days * 24 * 3600 + timedelta.seconds
+    # Calculate the time difference between dt2 and dt1
+    timedelta = abs(dt1 - dt2)
+    # Return the total time difference in seconds
+    return timedelta.days * 24 * 3600 + timedelta.seconds
 
 def get_rtsp(url):
     page=requests.get(url)
@@ -129,27 +129,28 @@ st.dataframe(df_usgs)
 
 tsp_data=[]
 for i in range(len(df_rtsp['date_time'])):
- for j in range(len(df_usgs['time'])):
-  laps=date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None))
-  #lapse.append(laps)
-  if laps <= 20 :
-   #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
-   date_bmkg = df_rtsp['date_time'][i]
-   date_usgs = df_usgs['time'][j]
-   loc_bmkg = df_usgs['place'][j]
-   lon_bmkg = float(df_rtsp['fixedLon'][i])
-   lat_bmkg = float(df_rtsp['fixedLat'][i])
-   lon_usgs = df_usgs['longitude'][j]
-   lat_usgs = df_usgs['latitude'][j]
-   mag_bmkg =df_rtsp['mag'][i]
-   mag_usgs =df_usgs['mag'][j]
-   depth_bmkg =df_rtsp['depth'][i]
-   depth_usgs =df_usgs['depth'][j]
-   tsp_data.append([date_bmkg,date_usgs,laps,loc_bmkg,lon_bmkg,lon_usgs,
-                    lat_bmkg,lat_usgs,mag_bmkg,mag_usgs,depth_bmkg,depth_usgs])
+    for j in range(len(df_usgs['time'])):
+        laps=date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None))
+        #lapse.append(laps)
+        if laps <= 20 :
+            #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
+            date_bmkg = df_rtsp['date_time'][i]
+            date_usgs = df_usgs['time'][j]
+            loc_bmkg =df_usgs['place'][j]
+            lon_bmkg = float(df_rtsp['fixedLon'][i])
+            lat_bmkg = float(df_rtsp['fixedLat'][i])
+            lon_usgs = df_usgs['longitude'][j]
+            lat_usgs = df_usgs['latitude'][j]
+            mag_bmkg =df_rtsp['mag'][i]
+            mag_usgs =df_usgs['mag'][j]
+            depth_bmkg =df_rtsp['depth'][i]
+            depth_usgs =df_usgs['depth'][j]
+            tsp_data.append([date_bmkg,date_usgs,laps,loc_bmkg,lon_bmkg,lon_usgs,
+                             lat_bmkg,lat_usgs,mag_bmkg,mag_usgs,depth_bmkg,depth_usgs])
             
+
 df_tsp = pd.DataFrame(tsp_data, columns=['date_bmkg','date_usgs','lapse_time(s)','loc_bmkg','lon_bmkg','lon_usgs',
-                                         'lat_bmkg','lat_usgs','mag_bmkg','mag_usgs','depth_bmkg','depth_usgs'])
+                 'lat_bmkg','lat_usgs','mag_bmkg','mag_usgs','depth_bmkg','depth_usgs'])
 
 from obspy.geodetics import degrees2kilometers
 import numpy as np
