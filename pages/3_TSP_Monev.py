@@ -112,7 +112,6 @@ st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df_rtsp)
 
-
 usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-01-02&minmagnitude=6.0'
 df_usgs = pd.read_csv(usgs_url)
 
@@ -121,3 +120,44 @@ st.map(df_usgs, latitude="latitude", longitude="longitude")
 
 st.markdown(""" ### Tabel USGS EQ Significant """)
 st.dataframe(df_usgs)
+
+tsp_data=[]
+for i in range(len(df_rtsp['date_time'])):
+    for j in range(len(df_usgs['time'])):
+        laps=date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None))
+        #lapse.append(laps)
+        if laps <= 20 :
+            #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
+            date_bmkg = df_rtsp['date_time'][i]
+            date_usgs = df_usgs['time'][j]
+            loc_bmkg =df_usgs['place'][j]
+            lon_bmkg = float(df_rtsp['fixedLon'][i])
+            lat_bmkg = float(df_rtsp['fixedLat'][i])
+            lon_usgs = df_usgs['longitude'][j]
+            lat_usgs = df_usgs['latitude'][j]
+            mag_bmkg =df_rtsp['mag'][i]
+            mag_usgs =df_usgs['mag'][j]
+            depth_bmkg =df_rtsp['depth'][i]
+            depth_usgs =df_usgs['depth'][j]
+            tsp_data.append([date_bmkg,date_usgs,laps,loc_bmkg,lon_bmkg,lon_usgs,
+                             lat_bmkg,lat_usgs,mag_bmkg,mag_usgs,depth_bmkg,depth_usgs])
+            
+
+df_tsp = pd.DataFrame(tsp_data, columns=['date_bmkg','date_usgs','lapse_time(s)','loc_bmkg','lon_bmkg','lon_usgs',
+                 'lat_bmkg','lat_usgs','mag_bmkg','mag_usgs','depth_bmkg','depth_usgs'])
+
+from obspy.geodetics import degrees2kilometers
+import numpy as np
+
+df_tsp['lon_diff'] = df_tsp.apply(lambda x: abs(x['lon_bmkg'] - x['lon_usgs']), axis=1)
+df_tsp['lon_diff_km']=degrees2kilometers(df_tsp.lon_diff)
+df_tsp['lat_diff'] = df_tsp.apply(lambda x: abs(x['lat_bmkg'] - x['lat_usgs']), axis=1)
+df_tsp['lat_diff_km']=degrees2kilometers(df_tsp.lat_diff)
+
+df_tsp['mag_diff'] = df_tsp.apply(lambda x: abs(x['mag_bmkg'] - x['mag_usgs']), axis=1)
+df_tsp['depth_diff'] = df_tsp.apply(lambda x: abs(x['depth_bmkg'] - x['depth_usgs']), axis=1)
+df_tsp['distance_diff_km']=(np.sqrt(df_tsp[['lon_diff_km', 'lat_diff_km']].sum(axis=1)))**2
+
+st.pyplot(df_tsp.plot( 'date_bmkg' , 'mag_diff',figsize=(20, 15)))
+st.pyplot(df_tsp.plot( 'date_bmkg' , 'depth_diff',figsize=(20, 15))) 
+st.pyplot(df_tsp.plot( 'date_bmkg' , 'distance_diff_km',figsize=(20, 15))) 
