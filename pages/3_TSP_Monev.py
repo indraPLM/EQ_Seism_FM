@@ -47,7 +47,7 @@ def fix_longitude(y):
 
 def date_diff_in_Seconds(dt1, dt2):
     # Calculate the time difference between dt2 and dt1
-    timedelta = abs(dt1 - dt2)
+    timedelta = float(abs(dt1 - dt2))
     # Return the total time difference in seconds
     return timedelta.days * 24 * 3600 + timedelta.seconds
 
