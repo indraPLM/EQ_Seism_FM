@@ -45,6 +45,12 @@ def fix_longitude(y):
         y = y.strip('E')
     return y
 
+def date_diff_in_Seconds(dt1, dt2):
+    # Calculate the time difference between dt2 and dt1
+    timedelta = abs(dt1 - dt2)
+    # Return the total time difference in seconds
+    return timedelta.days * 24 * 3600 + timedelta.seconds
+
 def get_rtsp(url):
     page=requests.get(url)
     url_pages=BeautifulSoup(page.text, 'html')
