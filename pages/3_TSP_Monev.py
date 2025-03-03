@@ -136,7 +136,7 @@ for i in range(len(df_rtsp['date_time'])):
             #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
             date_bmkg = df_rtsp['date_time'][i]
             date_usgs = df_usgs['time'][j]
-            loc_bmkg =df_usgs['place'][j]
+            #loc_bmkg =df_usgs['place'][j]
             lon_bmkg = float(df_rtsp['fixedLon'][i])
             lat_bmkg = float(df_rtsp['fixedLat'][i])
             lon_usgs = df_usgs['longitude'][j]
