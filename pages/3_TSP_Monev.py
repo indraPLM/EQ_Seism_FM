@@ -172,5 +172,12 @@ df_tsp['mag_diff'] = df_tsp.apply(lambda x: abs(x['mag_bmkg'] - x['mag_usgs']), 
 df_tsp['depth_diff'] = df_tsp.apply(lambda x: abs(x['depth_bmkg'] - x['depth_usgs']), axis=1)
 df_tsp['distance_diff_km']=(np.sqrt(df_tsp[['lon_diff_km', 'lat_diff_km']].sum(axis=1)))**2
 
+st.markdown(""" ### Grafik Selisih Magnitudo USGS - BMKG (RTSP) """)
 st.line_chart(df_tsp, x="date_bmkg", y="mag_diff")
+
+st.markdown(""" ### Grafik Selisih Kedalaman USGS - BMKG (RTSP) """)
+st.line_chart(df_tsp, x="date_bmkg", y="depth_diff")
+
+st.markdown(""" ### Grafik Selisih Jarak USGS - BMKG (RTSP) """)
+st.line_chart(df_tsp, x="date_bmkg", y="distance_diff_km")
 
