@@ -130,7 +130,9 @@ st.dataframe(df_usgs)
 tsp_data=[]
 for i in range(len(df_rtsp['date_time'])):
     for j in range(len(df_usgs['time'])):
-        laps=date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None))
+        dt1=df_rtsp['date_time'][i]
+        dt2=df_usgs['time'][j].tz_convert(None)
+        laps=date_diff_in_Seconds(dt1,dt2)
         #lapse.append(laps)
         if laps <= 20 :
             #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
