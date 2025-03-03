@@ -130,13 +130,13 @@ st.dataframe(df_usgs)
 tsp_data=[]
 for i in range(len(df_rtsp['date_time'])):
     for j in range(len(df_usgs['time'])):
-        laps=float(date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None)))
+        laps=date_diff_in_Seconds(df_rtsp['date_time'][i],df_usgs['time'][j].tz_convert(None))
         #lapse.append(laps)
         if laps <= 20 :
             #print(laps,df_rtsp['date_time'][i],df_usgs['time'][j])
             date_bmkg = df_rtsp['date_time'][i]
             date_usgs = df_usgs['time'][j]
-            #loc_bmkg =df_usgs['place'][j]
+            loc_bmkg = df_usgs['place'][j]
             lon_bmkg = float(df_rtsp['fixedLon'][i])
             lat_bmkg = float(df_rtsp['fixedLat'][i])
             lon_usgs = df_usgs['longitude'][j]
