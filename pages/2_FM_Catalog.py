@@ -182,18 +182,17 @@ cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
 
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
+import cartopy
 
 from obspy.imaging.beachball import beach
 
-#region=[West,East,South-1,North+1]
 projection = ccrs.PlateCarree(central_longitude=120.0)
-#region=[West,East,South-1,North+1]
 
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
 ax.set_extent((West, East, South-2, North+2))
-ax.coastlines()
-#ax.gridlines()
+ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
                   'depth','S1','D1','R1','S2','D2','R2']]
@@ -213,13 +212,13 @@ for i in range(len(a)):
 
 for i in range(len(fm_list)):
     if z0[i] < 60:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.25, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
         ax.add_collection(b)
     if 60 < z0[i] < 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.25, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
         ax.add_collection(b)
     if z0[i] >= 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.25, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
         ax.add_collection(b)
 
 st.pyplot(fig)
