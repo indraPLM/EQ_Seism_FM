@@ -9,8 +9,9 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', pag
 
 st.sidebar.header("Input Parameter :")
  
-date_start=st.sidebar.date_input('Tanggal Awal:', value=datetime.datetime)
-date_end=st.sidebar.date_input('Tanggal Akhir:', value=datetime.datetime)
+date_start=st.sidebar.date_input('Tanggal Awal:')
+date_end=st.sidebar.date_input('Tanggal Akhir:')
+
 
 def split_list(lst, chunk_size):
     chunks = []
