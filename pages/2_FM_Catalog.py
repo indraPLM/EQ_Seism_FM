@@ -39,9 +39,11 @@ with layout2[-1]:
  
 layout3 = st.sidebar.columns(2)
 with layout3[0]: 
-    West = st.number_input('West:', '90.0',min_value=80, max_value=140)
+    West = st.text_input('West:', '90.0')
+    West = float(West)
 with layout3[-1]: 
-    East = st.number_input('East:', '142.0',min_value=90, max_value=150)
+    East = st.text_input('East:', '142.0')
+    East = float(East)
 
 ### ----------------------- Obtaining Waveform & Plotting  ----------------------
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
