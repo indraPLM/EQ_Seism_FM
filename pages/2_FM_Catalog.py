@@ -220,9 +220,9 @@ if dist_lon >40:
 if 30 < dist_lon < 39:
     w=1.0
 if 15 < dist_lon < 29:
-    w=0.75
-if 10 < dist_lon < 15 :
     w=0.5
+if 10 < dist_lon < 15 :
+    w=0.25
 if 5 < dist_lon < 9 :
     w=0.1
 if dist_lon < 4:
