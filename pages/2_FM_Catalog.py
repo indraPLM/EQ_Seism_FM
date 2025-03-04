@@ -178,7 +178,7 @@ region=[West,East,South-1,North+1]
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
                   'depth','S1','D1','R1','S2','D2','R2']]
 
-st.dataframe(cmt)
+#st.dataframe(cmt)
 
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
@@ -209,4 +209,6 @@ b2.set_zorder(2)
 ax.add_collection(b2)
 
 st.pyplot(fig)
+
+st.dataframe(cmt)
 #plt.show()
