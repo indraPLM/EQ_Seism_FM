@@ -219,11 +219,11 @@ dist_lon=East-West
 if dist_lon >30:
     w=1.5
 if 15 < dist_lon < 29:
-    w=1.25
-if 5 < dist_lon < 14 :
     w=1.0
+if 5 < dist_lon < 14 :
+    w=0.5
 if dist_lon < 5:
-    w=0.75
+    w=0.25
 
 
 for i in range(len(fm_list)):
