@@ -210,5 +210,5 @@ ax.add_collection(b2)
 
 st.pyplot(fig)
 
-st.dataframe(cmt)
+st.table(cmt)
 #plt.show()
