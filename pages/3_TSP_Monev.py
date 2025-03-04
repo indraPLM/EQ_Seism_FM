@@ -7,18 +7,6 @@ import numpy as np
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', page_icon="🌍")
 #st.title('Seismisitas dan Statistik Kegempaan')
 
-st.sidebar.header("Durasi Data :")
- 
-start_date = st.date_input('Enter start date', value=datetime.datetime(2025,1,1))
-start_time = st.time_input('Enter start time', datetime.time(00,00,00))
-
-start_datetime = datetime.datetime.combine(start_date, start_time)
-
-end_date = st.date_input('Enter start date', value=datetime.datetime(2025,1,31))
-end_time = st.time_input('Enter start time', datetime.time(23,59,59))
-
-end_datetime = datetime.datetime.combine(end_date, end_time)
-
 st.sidebar.header("Input Parameter :")
  
 time_start=st.sidebar.text_input('Start Time:', '2025-01-01 00:00:00')
@@ -122,7 +110,7 @@ for i in a:
     df.append(temp)
 df_rtsp=pd.concat([df_awal,df[0],df[1],df[2],df[3],df[4],df[5],df[6],df[7],
                   df[8],df[9],df[10],df[11],df[12]], ignore_index=True)
-print(df_rtsp)
+df_rtsp.query('%s <= date_time <= %s' %(time_start,time_end))
 
 st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
 st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
@@ -138,6 +126,8 @@ df_usgs['date_usgs_local'] = df_usgs['DATEUSGS']
 df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%d-%m-%Y %H:%M:%S')
 df_usgs['fix_dateusgs']=pd.to_datetime(df_usgs['noniso_dateusgs'])
 #print(df_usgs['fix_dateusgs'])
+
+df_usgs.query('%s <= fix_dateusgs <= %s' %(time_start,time_end))
 
 st.markdown(""" ### Peta Lokasi Gempabumi M > 6 Katalog USGS """)
 st.map(df_usgs, latitude="latitude", longitude="longitude")
