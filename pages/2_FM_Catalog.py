@@ -215,16 +215,18 @@ for i in range(len(a)):
     xy_list.append((x,y))
 
 dist_lon=East-West
-if dist_lon >30:
+if dist_lon >40:
     w=1.5
+if 30 < dist_lon < 39:
+    w=1.
 if 15 < dist_lon < 29:
-    w=1.0
-if 10 < dist_lon < 15 :
     w=0.5
-if 5 < dist_lon < 9 :
+if 10 < dist_lon < 15 :
     w=0.25
-if dist_lon < 4:
+if 5 < dist_lon < 9 :
     w=0.1
+if dist_lon < 4:
+    w=0.05
 
 
 for i in range(len(fm_list)):
