@@ -143,12 +143,13 @@ for i in range(len(df_rtsp['date_time'])):
             mag_usgs =df_usgs['mag'][j]
             depth_bmkg =df_rtsp['depth'][i]
             depth_usgs =df_usgs['depth'][j]
+            event_group=df_rtsp['evt_group'][i]
             tsp_data.append([date_bmkg,date_usgs,laps,loc_bmkg,lon_bmkg,lon_usgs,
-                             lat_bmkg,lat_usgs,mag_bmkg,mag_usgs,depth_bmkg,depth_usgs])
+                             lat_bmkg,lat_usgs,mag_bmkg,mag_usgs,depth_bmkg,depth_usgs,event_group])
             
 
 df_tsp = pd.DataFrame(tsp_data, columns=['date_bmkg','date_usgs','lapse_time(s)','loc_bmkg','lon_bmkg','lon_usgs',
-                 'lat_bmkg','lat_usgs','mag_bmkg','mag_usgs','depth_bmkg','depth_usgs'])
+                 'lat_bmkg','lat_usgs','mag_bmkg','mag_usgs','depth_bmkg','depth_usgs','event_group'])
 
 from obspy.geodetics import degrees2kilometers
 import numpy as np
