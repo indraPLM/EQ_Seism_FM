@@ -31,15 +31,15 @@ time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
-    North = st.number_input('North:', 6.0) 
+    North = st.number_input('North:', 6.0,min_value=-15, max_value=20,) 
 with layout2[-1]: 
-    South = st.number_input('South:', -13.0)
+    South = st.number_input('South:', -13.0, min_value=-20, max_value=10,)
  
 layout3 = st.sidebar.columns(2)
 with layout3[0]: 
-    West = st.number_input('West:', 90.0)
+    West = st.number_input('West:', 90.0,min_value=80, max_value=140,)
 with layout3[-1]: 
-    East = st.number_input('East:', 142.0)
+    East = st.number_input('East:', 142.0,min_value=90, max_value=150,)
 
 ### ----------------------- Obtaining Waveform & Plotting  ----------------------
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
