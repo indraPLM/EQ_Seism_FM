@@ -9,25 +9,8 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', pag
 
 st.sidebar.header("Input Parameter :")
  
-time_start=st.sidebar.text_input('Start Time:', '2025-01-01 00:00:00')
-time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
-
-t0=pd.to_datetime(time_start)
-t1=pd.to_datetime(time_end)
-print(t0)
-print(t1)
-
-layout2 = st.sidebar.columns(2)
-with layout2[0]: 
-    North = st.number_input('North:', 6.0) 
-with layout2[-1]: 
-    South = st.number_input('South:', -13.0)
- 
-layout3 = st.sidebar.columns(2)
-with layout3[0]: 
-    West = st.number_input('West:', 90.0)
-with layout3[-1]: 
-    East = st.number_input('East:', 142.0)
+time_start=st.sidebar.text_input('Start DateTime:', '2025-01-01 00:00:00')
+time_end=st.sidebar.text_input('End DateTime:', '2025-01-31 23:59:59')
 
 def split_list(lst, chunk_size):
     chunks = []
@@ -179,12 +162,19 @@ df_tsp['mag_diff'] = df_tsp.apply(lambda x: abs(x['mag_bmkg'] - x['mag_usgs']), 
 df_tsp['depth_diff'] = df_tsp.apply(lambda x: abs(x['depth_bmkg'] - x['depth_usgs']), axis=1)
 df_tsp['distance_diff_km']=(np.sqrt(df_tsp[['lon_diff_km', 'lat_diff_km']].sum(axis=1)))**2
 
+df_tsp_new= df_tsp[(df_tsp['date_bmkg'] > time_start) & (df_tsp['date_bmkg'] < time_end)]
+
 st.markdown(""" ### Grafik Selisih Magnitudo USGS - BMKG (RTSP) """)
-st.line_chart(df_tsp, x="date_bmkg", y="mag_diff")
+st.line_chart(df_tsp_new, x="date_bmkg", y="mag_diff")
 
 st.markdown(""" ### Grafik Selisih Kedalaman USGS - BMKG (RTSP) """)
-st.line_chart(df_tsp, x="date_bmkg", y="depth_diff")
+st.line_chart(df_tsp_new, x="date_bmkg", y="depth_diff")
 
 st.markdown(""" ### Grafik Selisih Jarak USGS - BMKG (RTSP) """)
-st.line_chart(df_tsp, x="date_bmkg", y="distance_diff_km")
+st.line_chart(df_tsp_new, x="date_bmkg", y="distance_diff_km")
+
+st.markdown(""" ### Tabel Perbandingan Parameter Gempa USGS - BMKG(RTSP) """)
+st.dataframe(df_tsp_new)
+
+
 
