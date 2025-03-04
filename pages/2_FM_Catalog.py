@@ -42,7 +42,7 @@ with layout3[-1]:
     East = st.number_input('East:', 142.0)
 
 ### ----------------------- Obtaining Waveform & Plotting  ----------------------
-st.markdown( """ ### Peta Focal Mechanism """)
+st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
 
 url='http://202.90.198.41/qc_focal.txt'
 page=requests.get(url)
