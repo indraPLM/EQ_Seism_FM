@@ -176,5 +176,45 @@ st.line_chart(df_tsp_new, x="date_bmkg", y="distance_diff_km")
 st.markdown(""" ### Tabel Perbandingan Parameter Gempa USGS - BMKG(RTSP) """)
 st.dataframe(df_tsp_new)
 
+def get_rtsp_time_Diss(url):
+    page=requests.get(url)
+    url_pages=BeautifulSoup(page.text, 'html')
+
+    table=url_pages.find('table')
+    rows=table.find_all("td",{"class":"txt12pxarialb"})
+    diss_table=[]
+    for row in rows:
+        cells = row.find_all('div')
+        for cell in cells:
+            #data=cell.text
+            diss_table.append(cell.text)
+    return diss_table
+a=list(df_tsp_new['event_group'])
+OT_Diss=[]
+
+for i in a:
+    temp=get_rtsp_time_Diss('https://rtsp.bmkg.go.id/timelinepub.php?id=&session_id=&grup=%s' % (i))
+    
+    OT_temp=temp[0].split()
+    Diss_temp=temp[1].split()
+    OT_date=OT_temp[1]
+    OT_time=OT_temp[2]
+    OT_datetime='%s %s' %(OT_date,OT_time)
+    
+    Diss_date=Diss_temp[0]
+    Diss_time=Diss_temp[1]
+    Diss_datetime='%s %s' %(Diss_date,Diss_time)
+    OT_Diss.append([OT_datetime,Diss_datetime])
+    
+df_ot_diss=pd.DataFrame(OT_Diss, columns=['OT_datetime','Diss_datetime'])
+
+dt1=pd.to_datetime(df_ot_diss['OT_datetime'])
+dt2=pd.to_datetime(df_ot_diss['Diss_datetime'])
+laps=dt2-dt1
+
+df_ot_diss['Lapse_Time']=laps
+#print(df_ot_diss)
+st.markdown(""" ### Tabel Perbandingan Waktu Kirim OT dan Diseminasi BMKG(RTSP) """)
+st.dataframe(df_ot_diss)
 
 
