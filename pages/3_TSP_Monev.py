@@ -9,20 +9,8 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', pag
 
 st.sidebar.header("Input Parameter :")
  
-time_start=st.sidebar.text_input('Start Time:', '2025-01-01 00:00:00')
-time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
-
-layout2 = st.sidebar.columns(2)
-with layout2[0]: 
-    North = st.number_input('North:', 6.0) 
-with layout2[-1]: 
-    South = st.number_input('South:', -13.0)
- 
-layout3 = st.sidebar.columns(2)
-with layout3[0]: 
-    West = st.number_input('West:', 90.0)
-with layout3[-1]: 
-    East = st.number_input('East:', 142.0)
+date_start=st.sidebar.date_input('Start Time:', value="datetime.datetime")
+date_end=st.sidebar.date_input('End Time:', value="datetime.datetime"))
 
 def split_list(lst, chunk_size):
     chunks = []
