@@ -192,15 +192,34 @@ fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
 ax.set_extent((85, 145, -15, 10))
 ax.coastlines()
-ax.gridlines()
+#ax.gridlines()
 
-for i in range(len(cmt)):
-    x, y = projection.transform_point(x=cmt['fixedLon'][i], y=cmt['fixedLat'][i],src_crs=ccrs.Geodetic())
-    focmecs=[cmt['S1'][i],cmt['D1'][i],cmt['R1'][i]]
-    ax = plt.gca()
-    b = beach(focmecs, xy=(x, y), width=1, linewidth=0.5, alpha=0.5)
-    b.set_zorder(2)
-    ax.add_collection(b)
+cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
+                  'depth','S1','D1','R1','S2','D2','R2']]
+x0=list(cmt.fixedLon)
+y0=list(cmt.fixedLat)
+z0=list(cmt.depth)
+a=list(cmt.S1)
+b=list(cmt.D1)
+c=list(cmt.R1)
+fm_list=[]
+xy_list=[]
+for i in range(len(a)):
+    x, y = projection.transform_point(x=x0[i], y=y0[i],src_crs=ccrs.Geodetic())
+    focmecs=[a[i],b[i],c[i]]
+    fm_list.append(focmecs)
+    xy_list.append((x,y))
+
+for i in range(len(fm_list)):
+    if z0[i] < 60:
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
+        ax.add_collection(b)
+    if 60 < z0[i] < 300:
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
+        ax.add_collection(b)
+    if z0[i] >= 300:
+        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
+        ax.add_collection(b)
 
 st.pyplot(fig)
 
