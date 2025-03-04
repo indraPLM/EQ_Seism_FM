@@ -12,6 +12,9 @@ st.sidebar.header("Input Parameter :")
 time_start=st.sidebar.text_input('Start Time:', '2025-01-01 00:00:00')
 time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
 
+t0=pd.to_datetime(time_start)
+t1=pd.to_datetime(time_end)
+
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
     North = st.number_input('North:', 6.0) 
@@ -110,7 +113,7 @@ for i in a:
     df.append(temp)
 df_rtsp=pd.concat([df_awal,df[0],df[1],df[2],df[3],df[4],df[5],df[6],df[7],
                   df[8],df[9],df[10],df[11],df[12]], ignore_index=True)
-df_rtsp.query('%s <= date_time <= %s' %(time_start,time_end))
+df_rtsp.query('%s <= date_time <= %s' %(t0,t1))
 
 st.markdown(""" ### Peta Lokasi Gempabumi berdasarkan Diseminasi RTSP """)
 st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
@@ -127,7 +130,7 @@ df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%d-%m-%Y %H
 df_usgs['fix_dateusgs']=pd.to_datetime(df_usgs['noniso_dateusgs'])
 #print(df_usgs['fix_dateusgs'])
 
-df_usgs.query('%s <= fix_dateusgs <= %s' %(time_start,time_end))
+df_usgs.query('%s <= fix_dateusgs <= %s' %(t0,t1))
 
 st.markdown(""" ### Peta Lokasi Gempabumi M > 6 Katalog USGS """)
 st.map(df_usgs, latitude="latitude", longitude="longitude")
