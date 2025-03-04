@@ -187,10 +187,11 @@ from obspy.imaging.beachball import beach
 
 #region=[West,East,South-1,North+1]
 projection = ccrs.PlateCarree(central_longitude=120.0)
+region=[West,East,South-1,North+1]
 
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((85, 145, -15, 10))
+ax.set_extent((West, East, South, North))
 ax.coastlines()
 #ax.gridlines()
 
