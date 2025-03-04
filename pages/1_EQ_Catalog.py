@@ -31,15 +31,19 @@ time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
-    North = st.number_input('North:', 6.0) 
+    North = st.text_input('North:', '6.0') 
+    North = float(North)
 with layout2[-1]: 
-    South = st.number_input('South:', -13.0)
+    South = st.text_input('South:', '-13.0')
+    South = float(South)
  
 layout3 = st.sidebar.columns(2)
 with layout3[0]: 
-    West = st.number_input('West:', 90.0)
+    West = st.text_input('West:', '90.0')
+    West = float(West)
 with layout3[-1]: 
-    East = st.number_input('East:', 142.0)
+    East = st.text_input('East:', '142.0')
+    East = float(East)
 
    
 ### -----------------------Earthquake Catalog ----------------------
