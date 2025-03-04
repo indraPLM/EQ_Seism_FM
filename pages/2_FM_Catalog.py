@@ -214,15 +214,27 @@ for i in range(len(a)):
     fm_list.append(focmecs)
     xy_list.append((x,y))
 
+
+dist_lon=East-West
+if dist_lon >30:
+    w=1.5
+if 15 < dist_lon < 29:
+    w=1.25
+if 5 < dist_lon < 14 :
+    w=1.0
+if dist_lon < 5:
+    w=0.75
+
+
 for i in range(len(fm_list)):
     if z0[i] < 60:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
         ax.add_collection(b)
     if 60 < z0[i] < 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
         ax.add_collection(b)
     if z0[i] >= 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
         ax.add_collection(b)
 
 st.pyplot(fig)
