@@ -212,13 +212,13 @@ for i in range(len(a)):
 
 for i in range(len(fm_list)):
     if z0[i] < 60:
-        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
+        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
         ax.add_collection(b)
     if 60 < z0[i] < 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
+        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
         ax.add_collection(b)
     if z0[i] >= 300:
-        b = beach(fm_list[i], xy=xy_list[i],width=2, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
+        b = beach(fm_list[i], xy=xy_list[i],width=1.5, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
         ax.add_collection(b)
 
 st.pyplot(fig)
