@@ -246,6 +246,55 @@ plt.savefig('seismisitas_per_pulau.png')
 image = Image.open('seismisitas_per_pulau.png')
 st.image(image, caption='Peta Seismisitas Berdasarkan Pulau-Pulau')
 
+gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
+
+# Loading Data SHP dan Clipped data gempa per-Pulau
+sumatra = gpd.read_file('Sumatra_Area.shp')
+jawa = gpd.read_file('Jawa_Area.shp')
+bali = gpd.read_file('Bali-A_Area.shp')
+nustra = gpd.read_file('Nustra_Area.shp')
+kalimantan = gpd.read_file('Kalimantan_Area.shp')
+sulawesi = gpd.read_file('Sulawesi_Area.shp')
+maluku = gpd.read_file('Maluku_Area.shp')
+papua = gpd.read_file('Papua_Area.shp')
+provinsi = gpd.read_file('Batas Provinsi.shp')
+
+sumatra_clipped = gpd_seis.clip(sumatra)
+jawa_clipped = gpd_seis.clip(jawa)
+bali_clipped = gpd_seis.clip(bali)
+nustra_clipped = gpd_seis.clip(nustra)
+kalimantan_clipped = gpd_seis.clip(kalimantan)
+sulawesi_clipped = gpd_seis.clip(sulawesi)
+maluku_clipped = gpd_seis.clip(maluku)
+papua_clipped = gpd_seis.clip(papua)
+
+# Plot the clipped data
+fig, ax = plt.subplots(figsize=(30, 20))
+provinsi.boundary.plot(ax=ax, color='black')
+sumatra_clipped.plot(ax=ax, color="purple")
+sumatra.boundary.plot(ax=ax, color="green")
+jawa_clipped.plot(ax=ax, color="purple")
+jawa.boundary.plot(ax=ax, color="green")
+bali_clipped.plot(ax=ax, color="purple")
+bali.boundary.plot(ax=ax, color="green")
+nustra_clipped.plot(ax=ax, color="purple")
+nustra.boundary.plot(ax=ax, color="green")
+kalimantan_clipped.plot(ax=ax, color="purple")
+kalimantan.boundary.plot(ax=ax, color="green")
+sulawesi_clipped.plot(ax=ax, color="purple")
+sulawesi.boundary.plot(ax=ax, color="green")
+maluku_clipped.plot(ax=ax, color="purple")
+maluku.boundary.plot(ax=ax, color="green")
+papua_clipped.plot(ax=ax, color="purple")
+papua.boundary.plot(ax=ax, color="green")
+
+ax.set_title("Plot Clipped Data Gempa Per-Pulau", fontsize=20)
+ax.set_axis_off()
+plt.savefig('seismisitas_per_pulau.png')
+
+image = Image.open('seismisitas_per_pulau.png')
+st.image(image, caption='Peta Seismisitas Berdasarkan Pulau-Pulau')
+
 def stat_eq(df):
     num = df['event_id'].count()
     dangkal = df[(df['fixedDepth'] < 60 )]
