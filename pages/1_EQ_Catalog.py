@@ -45,7 +45,7 @@ with layout3[-1]:
 ### -----------------------Earthquake Catalog ----------------------
 st.markdown(
     """
-    ### Peta Seismisitas dan Statistik Kegempaaan
+    ### Peta Seismisitas dan Statistik Kegempaaan (sumber : http://202.90.198.41/qc.txt)
     """)
 
 url='http://202.90.198.41/qc.txt'
