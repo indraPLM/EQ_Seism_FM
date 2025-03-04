@@ -7,11 +7,17 @@ import numpy as np
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', page_icon="🌍")
 #st.title('Seismisitas dan Statistik Kegempaan')
 
-st.sidebar.header("Input Parameter :")
+st.sidebar.header("Durasi Data :")
  
-date_start=st.sidebar.date_input('Tanggal Awal:')
-date_end=st.sidebar.date_input('Tanggal Akhir:')
+start_date = st.date_input('Enter start date', value=datetime.datetime(2025,1,1))
+start_time = st.time_input('Enter start time', datetime.time(00,00,00))
 
+start_datetime = datetime.datetime.combine(start_date, start_time)
+
+end_date = st.date_input('Enter start date', value=datetime.datetime(2025,1,31))
+end_time = st.time_input('Enter start time', datetime.time(23,59,59))
+
+end_datetime = datetime.datetime.combine(end_date, end_time)
 
 def split_list(lst, chunk_size):
     chunks = []
