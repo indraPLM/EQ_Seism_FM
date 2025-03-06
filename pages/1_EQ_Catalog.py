@@ -210,9 +210,9 @@ def stat_eq(df):
     num = df['event_id'].count()
     kecil = df[(df['mag'] < 4 )]
     num_kecil=kecil['event_id'].count()
-    sedang = df[(df['mag'] >= 4) & (df['mag'] <= 5 )]
+    sedang = df[(df['mag'] >= 4) & (df['mag'] < 5 )]
     num_sedang=sedang['event_id'].count()
-    besar = df[(df['mag'] > 5 )]
+    besar = df[(df['mag'] >= 5 )]
     num_besar=besar['event_id'].count()
     
     return (num,[num_dangkal,num_menengah,num_dalam,num_kecil,num_sedang,num_besar])
