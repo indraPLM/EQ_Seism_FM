@@ -214,8 +214,10 @@ def stat_eq(df):
     num_sedang=sedang['event_id'].count()
     besar = df[(df['mag'] >= 5 )]
     num_besar=besar['event_id'].count()
+    dibawah5 = df[(df['mag'] < 5 )]
+    num_dibawah5=dibawah5['event_id'].count()
     
-    return (num,[num_dangkal,num_menengah,num_dalam,num_kecil,num_sedang,num_besar])
+    return (num,[num_dangkal,num_menengah,num_dalam,num_kecil,num_sedang,num_besar,num_dibawah5])
 sumatra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip')
 jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.zip')
 bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.zip')
@@ -242,7 +244,7 @@ for x in pulau:
     data=a[1]
     data.insert(len(pulau),a[0])
     stat_gempa.append(data)
-header=['Dangkal < 60','Menengah (60-300)','Dalam > 300','Kecil <4','Menengah 4-5','Besar > 5','Total']
+header=['Dangkal < 60','Menengah (60-300)','Dalam > 300','Kecil <4','Menengah 4-5','Besar >= 5','M < 5','Total']
 df_clip = pd.DataFrame(stat_gempa,columns=header)
 
 total=[]
