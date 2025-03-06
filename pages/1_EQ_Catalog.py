@@ -216,6 +216,14 @@ def stat_eq(df):
     num_besar=besar['event_id'].count()
     
     return (num,[num_dangkal,num_menengah,num_dalam,num_kecil,num_sedang,num_besar])
+sumatra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip')
+jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.zip')
+bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.zip')
+nustra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Nustra_Area.zip')
+kalimantan = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Kalimantan_Area.zip')
+sulawesi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sulawesi_Area.zip')
+maluku = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Maluku_Area.zip')
+papua = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Papua_Area.zip')
 
 sumatra_clipped = gpd_seis.clip(sumatra)
 jawa_clipped = gpd_seis.clip(jawa)
