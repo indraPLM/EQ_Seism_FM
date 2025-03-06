@@ -217,6 +217,15 @@ def stat_eq(df):
     
     return (num,[num_dangkal,num_menengah,num_dalam,num_kecil,num_sedang,num_besar])
 
+sumatra_clipped = gpd_seis.clip(sumatra)
+jawa_clipped = gpd_seis.clip(jawa)
+bali_clipped = gpd_seis.clip(bali)
+nustra_clipped = gpd_seis.clip(nustra)
+kalimantan_clipped = gpd_seis.clip(kalimantan)
+sulawesi_clipped = gpd_seis.clip(sulawesi)
+maluku_clipped = gpd_seis.clip(maluku)
+papua_clipped = gpd_seis.clip(papua)
+
 pulau=[sumatra_clipped,jawa_clipped,bali_clipped,nustra_clipped,
        kalimantan_clipped,sulawesi_clipped,maluku_clipped,papua_clipped]
 stat_gempa=[]
