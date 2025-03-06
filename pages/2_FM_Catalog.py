@@ -197,5 +197,5 @@ for i in range(len(fm_list)):
 
 st.pyplot(fig)
 
-st.table(cmt)
+st.dataframe(cmt)
 #plt.show()
