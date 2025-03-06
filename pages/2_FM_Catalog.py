@@ -11,19 +11,16 @@ from urllib.error import URLError
 import pandas as pd
 import os,sys
 import geopandas as gpd
-#from geodatasets import get_path
-#from shapely.geometry import Point
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 import requests
-#import pygmt
 from matplotlib.pyplot import figure
 import geopandas
 from obspy.imaging.beachball import beachball
-#from IPython.core.display import display,HTML
+import cartopy.crs as ccrs
+import cartopy
 
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
-#st.title('Peta Focal Mechanism')
 
 st.sidebar.header("Input Parameter :")
 time_start=st.sidebar.text_input('Start Time:', '2024-09-01 00:00:00')
@@ -45,7 +42,6 @@ with layout3[-1]:
     East = st.text_input('East:', '142.0')
     East = float(East)
 
-### ----------------------- Obtaining Waveform & Plotting  ----------------------
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
 
 url='http://202.90.198.41/qc_focal.txt'
@@ -99,11 +95,8 @@ def fix_longitude(x):
     x = x.strip()
     if x.endswith('W'):
         x = -float(x.strip('W'))
-        #print(x)
-    else:
-        #print(x)
-        x = x.strip('E')
-        #print(x)
+    else:        
+        x = x.strip('E')        
     return x
 
 def fix_latitude(y):
@@ -145,50 +138,9 @@ df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 region=[West,East,South-1,North+1]
                                        
-#fig = pygmt.Figure()
-#fig.basemap(region=region, projection="M40", frame=True)
-#fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
-#pygmt.makecpt(cmap="viridis", series=[df.depth.min(), df.depth.max()])
-#fig.plot(
-#    x=df.fixedLon,
-#    y=df.fixedLat,
-#    size=0.02 * 2**df.mag,
-#    fill=df.depth,
-#    cmap=True,
-#    style="cc",
-#    pen="black",
-#)
-#fig.colorbar(frame="xaf+lDepth (km)")
-#fig.savefig('fc_eq_map.png')
 
-#image = Image.open('fc_eq_map.png')
-#st.image(image, caption='Peta Seismisitas Focal Mechanism')
-
-#focal_mechanism=dict(strike=df['S1'].tolist(),dip=df['D1'].tolist(),
-#                     rake=df['R1'].tolist(),magnitude=df['mag'].tolist(),)
-
-#fig = pygmt.Figure()
-#fig.coast(region=region,projection="M40", land="grey",water="lightblue",
-#          borders="1/1p,black",shorelines=True,frame="a",)
-#fig.meca(spec=focal_mechanism, scale="1c", longitude=df['fixedLon'].tolist(),
-#         latitude=df['fixedLat'].tolist(), depth=df['depth'].tolist(),)
-#fig.show()
-#fig.savefig('fc_map.png')
-
-#image = Image.open('fc_map.png')
-#st.image(image, caption='Peta Focal Mechanism')
-
-#st.markdown( """ ### Tabel Data Focal Mechanism """)
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
                   'depth','S1','D1','R1','S2','D2','R2']]
-
-#st.dataframe(cmt)
-
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-import cartopy
-
-from obspy.imaging.beachball import beach
 
 projection = ccrs.PlateCarree(central_longitude=120.0)
 
