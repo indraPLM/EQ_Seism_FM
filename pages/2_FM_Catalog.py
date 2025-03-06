@@ -17,6 +17,7 @@ import requests
 from matplotlib.pyplot import figure
 import geopandas
 from obspy.imaging.beachball import beachball
+from obspy.imaging.beachball import beach
 import cartopy.crs as ccrs
 import cartopy
 
