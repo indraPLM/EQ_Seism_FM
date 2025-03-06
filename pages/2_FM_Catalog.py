@@ -203,8 +203,9 @@ os.system('rm *.png')
 S1_list=cmt['S1'].tolist()
 D1_list=cmt['D1'].tolist()
 R1_list=cmt['R1'].tolist()
-cmt_plot=[]
+dep_list=cmt['depth'].tolist()
 
+cmt_plot=[]
 for i in range(len(S1_list)):
     cmt_data=[S1_list[i],D1_list[i],R1_list[i]]
     cmt_plot.append(cmt_data)
