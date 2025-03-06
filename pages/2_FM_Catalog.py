@@ -198,4 +198,29 @@ for i in range(len(fm_list)):
 st.pyplot(fig)
 
 st.dataframe(cmt)
+
+os.system('rm *.png')
+S1_list=cmt['S1'].tolist()
+D1_list=cmt['D1'].tolist()
+R1_list=cmt['R1'].tolist()
+cmt_plot=[]
+
+for i in range(len(S1_list)):
+    cmt_data=[S1_list[i],D1_list[i],R1_list[i]]
+    cmt_plot.append(cmt_data)
+
+for i in range(len(cmt_plot)):
+    no=str(i)
+    if dep_list[i] <= 60 :
+        c1='r'
+        fig = beachball(cmt_plot[i],facecolor=c1)
+    elif 60 < dep_list[i] <= 300 :
+        c2='yellow'
+        fig = beachball(cmt_plot[i],facecolor=c2)
+    elif dep_list[i] >= 300 :
+        c3='g'
+        fig = beachball(cmt_plot[i],facecolor=c3)
+    
+    fig.savefig('cmt_%s.png' %(no))
+
 #plt.show()
