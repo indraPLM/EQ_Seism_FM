@@ -9,17 +9,16 @@ import folium
 from streamlit_folium import st_folium
 from PIL import Image
 import numpy as np
-#import pydeck as pdk
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import os,sys
 import geopandas as gpd
-#from shapely.geometry import Point
 import matplotlib.pyplot as plt
-#import pygmt
 from matplotlib.pyplot import figure
-
+import cartopy.crs as ccrs
+import cartopy
+from cartopy.io.shapereader import Reader
 
 st.set_page_config(page_title='Earthquake Catalog, Statistik & Plotting',  layout='wide', page_icon="🌍")
 #st.title('Seismisitas dan Statistik Kegempaan')
@@ -143,36 +142,9 @@ df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
 df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
-#region=[West,East,South-1,North+1]
-                                       
-#fig = pygmt.Figure()
-#fig.basemap(region=region, projection="M40", frame=True)
-#fig.coast(land="grey", water="lightblue",borders="1/1p,black",shorelines=True)
-#pygmt.makecpt(cmap="viridis", series=[df.fixedDepth.min(), df.fixedDepth.max()])
-#fig.plot(
-#    x=df.fixedLon,
-#    y=df.fixedLat,
-#    size=0.02* 2**df.mag,
-#   fill=df.fixedDepth,
-#    cmap=True,
-#    style="cc",
-#    pen="black",
-#)
-#fig.colorbar(frame="xaf+lDepth (km)")
-#fig.savefig('seismisitas.png')
-
-#image = Image.open('seismisitas.png')
-#st.image(image, caption='Peta Seismisitas')
 
 st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag", zoom=4 )
 
-#m = folium.Map(location=(0, 120), zoom_start=4)
-#for i in range(len(df)):
-#    folium.Circle(
-#        location=[df.iloc[i]['fixedLat'], df.iloc[i]['fixedLon']],
-#        radius=10,
-#    ).add_to(m)
-#st_data = st_folium(m,height=500,width=1000)
 
 unique_values = df['remarks'].unique()
 count_region=[]
@@ -197,55 +169,34 @@ st.table(df_region)
 
 gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
 
-# Loading Data SHP dan Clipped data gempa per-Pulau
-test='https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sumatra_Area.zip'
+def get_eq(name):
+    eq_pulau=gpd.read_file('%s_Area.shp' %(name))
+    temp_clip=gpd_seis.clip(eq_pulau)
+    a=np.array(list(temp_clip.fixedLon))
+    b=np.array(list(temp_clip.fixedLat))
+    x, y ,_= projection.transform_points(ccrs.Geodetic(), a, b).T
+    return x,y
 
-sumatra = gpd.read_file(test)
-jawa = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Jawa_Area.zip')
-bali = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Bali-A_Area.zip')
-nustra = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Nustra_Area.zip')
-kalimantan = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Kalimantan_Area.zip')
-sulawesi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Sulawesi_Area.zip')
-maluku = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Maluku_Area.zip')
-papua = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Papua_Area.zip')
-#provinsi = gpd.read_file('https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/Batas_Provinsi.zip')
+list_pulau=['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
+list_color=['r','g','b','y','c','m','purple','orange']
+#region=[West,East,South-1,North+1]
+projection = ccrs.PlateCarree(central_longitude=120.0)
 
-sumatra_clipped = gpd_seis.clip(sumatra)
-jawa_clipped = gpd_seis.clip(jawa)
-bali_clipped = gpd_seis.clip(bali)
-nustra_clipped = gpd_seis.clip(nustra)
-kalimantan_clipped = gpd_seis.clip(kalimantan)
-sulawesi_clipped = gpd_seis.clip(sulawesi)
-maluku_clipped = gpd_seis.clip(maluku)
-papua_clipped = gpd_seis.clip(papua)
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=projection)
+ax.set_extent((85, 145, -15, 10))
 
-# Plot the clipped data
-fig, ax = plt.subplots(figsize=(30, 20))
-#provinsi.boundary.plot(ax=ax, color='black')
-sumatra_clipped.plot(ax=ax, color="purple")
-sumatra.boundary.plot(ax=ax, color="green")
-jawa_clipped.plot(ax=ax, color="purple")
-jawa.boundary.plot(ax=ax, color="green")
-bali_clipped.plot(ax=ax, color="purple")
-bali.boundary.plot(ax=ax, color="green")
-nustra_clipped.plot(ax=ax, color="purple")
-nustra.boundary.plot(ax=ax, color="green")
-kalimantan_clipped.plot(ax=ax, color="purple")
-kalimantan.boundary.plot(ax=ax, color="green")
-sulawesi_clipped.plot(ax=ax, color="purple")
-sulawesi.boundary.plot(ax=ax, color="green")
-maluku_clipped.plot(ax=ax, color="purple")
-maluku.boundary.plot(ax=ax, color="green")
-papua_clipped.plot(ax=ax, color="purple")
-papua.boundary.plot(ax=ax, color="green")
+for i in range(len(list_pulau)):
+    eq_x,eq_y=get_eq(list_pulau[i])
+    ax.scatter(eq_x,eq_y, 1, color=list_color[i], marker="o", zorder=3)
+    shp_name='%s_Area.shp' %(list_pulau[i])
+    ax.add_geometries(Reader(shp_name).geometries(),ccrs.PlateCarree(),
+                      facecolor="white", edgecolor=list_color[i],linewidth=0.25)
+    ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
+    ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
-ax.set_title("Plot Clipped Data Gempa Per-Pulau", fontsize=20)
-ax.set_axis_off()
-plt.savefig('seismisitas_per_pulau.png')
-
-image = Image.open('seismisitas_per_pulau.png')
-st.image(image, caption='Peta Seismisitas Berdasarkan Pulau-Pulau')
-
+st.markdown(""" ### Seismisitas Berdasakan Pulau """)
+st.pyplot(fig)
 
 def stat_eq(df):
     num = df['event_id'].count()
@@ -285,8 +236,6 @@ df_clip.loc[len(df)] = total
 
 nama_pulau = ['SUMATRA', 'JAWA', 'BALI', 'NUSA TENGGARA','KALIMANTAN','SULAWESI','MALUKU','PAPUA','INDONESIA']
 df_clip['Wilayah'] = nama_pulau
-file_name = 'Statistik_PerPulau.xlsx'
-#df_clip.to_excel(file_name)
 
 df_new = df_clip.drop('Total', axis=1)
 idx = [8]
