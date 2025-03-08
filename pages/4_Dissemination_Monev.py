@@ -93,7 +93,13 @@ df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime (minutes)']=df['timesent']-df['datetime']
 df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
 
-df_display=df.drop(['date', 'time'], axis=1)
+for i in range(len(list_mag)):
+    title='Tanggal: %s %s, Mag: %s, Depth:%s'%(list_date[i],list_time[i],
+                                                   list_mag[i],list_dep[i])
+    list_title.append(title)
+df['title']=list_title
+
+df_display=df.drop(['date', 'time','title'], axis=1)
 df_display['lon']=list_lon_rem
 df_display['lat']=list_lat_rem
 df_display['mag']=list_mag
@@ -103,12 +109,12 @@ df_display['status']=list_status
 import folium
 x=df_display['lon'].values.tolist()
 y=df_display['lat'].values.tolist()
-ma=df_display['mag'].values.tolist()
+text=df['title'].values.tolist()
 
 m = folium.Map([-4, 120], zoom_start=4)
 
 for i in range(len(x)):
-    folium.Marker(location=[y[i], x[i]],popup=ma[i],
+    folium.Marker(location=[y[i], x[i]],popup=text[i],
                   icon=folium.Icon(color="red"),).add_to(m)
 
 st.markdown("""### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)""")
