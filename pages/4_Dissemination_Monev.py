@@ -110,7 +110,8 @@ for i in range(len(x)):
     folium.Marker(location=[y[i], x[i]],popup=ma[i],
                   icon=folium.Icon(color="red"),).add_to(m)
 
+st.markdown("""### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)""")
 st_data = st_folium(m, width=1000)
 
-st.markdown("""### Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir""")
+st.markdown("""### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi""")
 st.dataframe(df_display)
