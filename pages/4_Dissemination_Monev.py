@@ -10,8 +10,8 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', pag
 
 st.sidebar.header("Input Parameter :")
  
-time_start=st.sidebar.text_input('Start DateTime:', '2024-11-01 00:00:00')
-time_end=st.sidebar.text_input('End DateTime:', '2025-01-31 23:59:59')
+#time_start=st.sidebar.text_input('Start DateTime:', '2024-11-01 00:00:00')
+#time_end=st.sidebar.text_input('End DateTime:', '2025-01-31 23:59:59')
 
 url='https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
 page=requests.get(url)
