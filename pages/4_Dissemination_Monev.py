@@ -47,8 +47,23 @@ list_timesent_rem=[]
 for x in list_timesent:
     temp=remove_wib(x)
     list_timesent_rem.append(temp)
-    
-df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem})
+
+l_lat= soup.find_all('latitude')
+list_lat=get_text(l_lat)
+
+l_lon= soup.find_all('longitude')
+list_lon=get_text(l_lon)
+
+l_mag= soup.find_all('magnitude')
+list_mag=get_text(l_mag)
+
+l_dep= soup.find_all('depth')
+list_dep=get_text(l_dep)
+
+l_area= soup.find_all('area')
+list_area=get_text(l_area)
+df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem,'lon':list_lon,'lat':list_lat
+                ,'mag':list_mag,'depth':list_dep,'lokasi':list_area})
 df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime']=df['timesent']-df['datetime']
