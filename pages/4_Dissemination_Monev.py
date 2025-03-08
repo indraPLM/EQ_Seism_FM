@@ -33,18 +33,18 @@ def remove_wib(temp):
 
 def fix_longitude(x):
     x = x.strip()
-    if x.endswith('BB'):
-        x = -float(x.strip('BB'))        
+    if x.endswith(' BB'):
+        x = -float(x.strip(' BB'))        
     else:        
-        x = float(x.strip('BT'))        
+        x = float(x.strip(' BT'))        
     return x
 
 def fix_latitude(y):
     y = y.strip()
-    if y.endswith('LS'):
-        y = -float(y.strip('LS'))
+    if y.endswith(' LS'):
+        y = -float(y.strip(' LS'))
     else:
-        y = float(y.strip('LU'))
+        y = float(y.strip(' LU'))
     return y
  
 l_date = soup.find_all('date')
