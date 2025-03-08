@@ -53,5 +53,6 @@ df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime']=df['timesent']-df['datetime']
 
-st.mark("Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir")
+
+st.markdown("""### Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir)""")
 st.table(df)
