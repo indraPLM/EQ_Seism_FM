@@ -62,12 +62,16 @@ list_dep=get_text(l_dep)
 
 l_area= soup.find_all('area')
 list_area=get_text(l_area)
-df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem,'lon':list_lon,'lat':list_lat
-                ,'mag':list_mag,'depth':list_dep,'lokasi':list_area})
+df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem })
 df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime']=df['timesent']-df['datetime']
 
 df_display=df.drop(['date', 'time'], axis=1)
+df_display['lon']=list_lon
+df_display['lat']=list_lat
+df_display['mag']=list_mag
+df_display['depth']=list_dep
+df_display['location']=list_area
 st.markdown("""### Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir""")
 st.table(df_display)
