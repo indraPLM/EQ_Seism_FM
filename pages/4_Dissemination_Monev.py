@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import streamlit as st
 import numpy as np
+from streamlit_folium import st_folium
 
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', page_icon="🌍")
 #st.title('Seismisitas dan Statistik Kegempaan')
