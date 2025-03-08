@@ -36,7 +36,7 @@ def fix_longitude(x):
     if x.endswith(' BB'):
         x = -float(x.strip(' BB'))        
     else:        
-        x = x.strip(' BT')        
+        x = float(x.strip(' BT'))        
     return x
 
 def fix_latitude(y):
@@ -44,7 +44,7 @@ def fix_latitude(y):
     if y.endswith(' LS'):
         y = -float(y.strip(' LS'))
     else:
-        y = y.strip(' LU')
+        y = float(y.strip(' LU'))
     return y
  
 l_date = soup.find_all('date')
@@ -67,14 +67,14 @@ for x in list_timesent:
 l_lat= soup.find_all('latitude')
 list_lat=get_text(l_lat)
 list_lat_rem=[]
-for x in list_timesent:
+for x in list_lat:
     temp=fix_latitude(x)
     list_lat_rem.append(temp)
 
 l_lon= soup.find_all('longitude')
 list_lon=get_text(l_lon)
 list_lon_rem=[]
-for x in list_timesent:
+for x in list_lon:
     temp=fix_longitude(x)
     list_lon_rem.append(temp)
 
