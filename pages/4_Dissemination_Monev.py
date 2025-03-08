@@ -84,8 +84,8 @@ list_mag=get_text(l_mag)
 l_dep= soup.find_all('depth')
 list_dep=get_text(l_dep)
 
-l_area= soup.find_all('potential')
-list_area=get_text(l_area)
+l_status= soup.find_all('potential')
+list_status=get_text(l_status)
 df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem })
 df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
@@ -96,6 +96,8 @@ df_display['lon']=list_lon_rem
 df_display['lat']=list_lat_rem
 df_display['mag']=list_mag
 df_display['depth']=list_dep
-df_display['location']=list_area
+df_display['status']=list_status
+
+
 st.markdown("""### Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir""")
-st.table(df_display)
+st.dataframe(df_display)
