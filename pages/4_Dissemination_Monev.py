@@ -90,8 +90,8 @@ list_status=get_text(l_status)
 df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem })
 df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
-df['lapsetime']=df['timesent']-df['datetime']
-df['lapsetime'] = (df['lapsetime'].dt.total_seconds()/60).round(2)
+df['lapsetime (minutes)']=df['timesent']-df['datetime']
+df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
 
 df_display=df.drop(['date', 'time'], axis=1)
 df_display['lon']=list_lon_rem
