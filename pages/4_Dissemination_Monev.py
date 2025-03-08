@@ -98,6 +98,18 @@ df_display['mag']=list_mag
 df_display['depth']=list_dep
 df_display['status']=list_status
 
+import folium
+x=df_display['lon'].values.tolist()
+y=df_display['lat'].values.tolist()
+ma=df_display['mag'].values.tolist()
+
+m = folium.Map([-4, 120], zoom_start=4)
+
+for i in range(len(x)):
+    folium.Marker(location=[y[i], x[i]],popup=ma[i],
+                  icon=folium.Icon(color="red"),).add_to(m)
+
+st_data = st_folium(m, width=1000)
 
 st.markdown("""### Perbandingan Waktu Pengiriman dan Waktu Kejadian 30 Gempabumi terakhir""")
 st.dataframe(df_display)
