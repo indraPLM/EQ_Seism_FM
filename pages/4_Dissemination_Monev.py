@@ -31,6 +31,22 @@ def remove_wib(temp):
         x = x.strip('UTC')
     return x
 
+def fix_longitude(x):
+    x = x.strip()
+    if x.endswith('BB'):
+        x = -float(x.strip('BB'))        
+    else:        
+        x = float(x.strip('BT'))        
+    return x
+
+def fix_latitude(y):
+    y = y.strip()
+    if y.endswith('LS'):
+        y = -float(y.strip('LS'))
+    else:
+        y = float(y.strip('LU'))
+    return y
+ 
 l_date = soup.find_all('date')
 list_date=get_text(l_date)
 
@@ -50,9 +66,17 @@ for x in list_timesent:
 
 l_lat= soup.find_all('latitude')
 list_lat=get_text(l_lat)
+list_lat_rem=[]
+for x in list_timesent:
+    temp=fix_latitude(x)
+    list_lat_rem.append(temp)
 
 l_lon= soup.find_all('longitude')
 list_lon=get_text(l_lon)
+list_lon_rem=[]
+for x in list_timesent:
+    temp=fix_longitude(x)
+    list_lon_rem.append(temp)
 
 l_mag= soup.find_all('magnitude')
 list_mag=get_text(l_mag)
@@ -60,7 +84,7 @@ list_mag=get_text(l_mag)
 l_dep= soup.find_all('depth')
 list_dep=get_text(l_dep)
 
-l_area= soup.find_all('area')
+l_area= soup.find_all('potential')
 list_area=get_text(l_area)
 df=pd.DataFrame({'date':list_date,'time':list_time_rem,'timesent':list_timesent_rem })
 df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
@@ -68,8 +92,8 @@ df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime']=df['timesent']-df['datetime']
 
 df_display=df.drop(['date', 'time'], axis=1)
-df_display['lon']=list_lon
-df_display['lat']=list_lat
+df_display['lon']=list_lon_rem
+df_display['lat']=list_lat_rem
 df_display['mag']=list_mag
 df_display['depth']=list_dep
 df_display['location']=list_area
