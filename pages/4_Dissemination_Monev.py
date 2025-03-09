@@ -116,8 +116,8 @@ import folium
 x=df_display['lon'].values.tolist()
 y=df_display['lat'].values.tolist()
 text=df['title'].values.tolist()
-
-m = folium.Map([-4, 120], zoom_start=4)
+tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
+m = folium.Map([-4, 120], tiles=tiles, attr='ESRI', zoom_start=4)
 
 for i in range(len(x)):
     folium.Marker(location=[y[i], x[i]],popup=text[i],
