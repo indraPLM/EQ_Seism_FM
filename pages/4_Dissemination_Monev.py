@@ -92,7 +92,7 @@ df['datetime']=pd.to_datetime(df['date'] + ' ' + df['time'])
 df['timesent']=pd.to_datetime(df['timesent'])
 df['lapsetime (minutes)']=df['timesent']-df['datetime']
 df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
-
+list_title=[]
 for i in range(len(list_mag)):
     title='Tanggal: %s %s, Mag: %s, Depth:%s'%(list_date[i],list_time[i],
                                                    list_mag[i],list_dep[i])
