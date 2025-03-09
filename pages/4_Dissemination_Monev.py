@@ -121,6 +121,8 @@ st.markdown("""### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)""")
 st_data = st_folium(m, width=1000)
 
 df_plot= df_display[(df_display['datetime'] > time_start) & (df_display['datetime'] < time_end)]
+st.markdown(""" ### Grafik Kecepatan Diseminasi Gempabumi M >=5 """)
+st.line_chart(df_plot, x="datetime", y="lapsetime (minutes)")
 
 st.markdown("""### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi""")
 st.dataframe(df_display)
