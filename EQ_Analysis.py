@@ -59,7 +59,8 @@ tanggal=par_xml('tanggal')
 waktu=par_xml('jam')
 datetime=par_xml('datetime')
 
-m= folium.Map((lat, lon),zoom_start=5)
+tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
+m= folium.Map((lat, lon),tiles=tiles, attr='ESRI', zoom_start=5)
 
 html = """
     <h2> Gempa Terkini</h2>
