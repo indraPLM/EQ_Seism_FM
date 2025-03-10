@@ -15,13 +15,8 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title='Kecepatan Processing Gempabumi',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
-last1 = datetime.datetime.now() - datetime.timedelta(1)
-last1 = last1.strftime('%Y-%m-%d')
-last30 = datetime.datetime.now() - datetime.timedelta(30)
-last30 = last30.strftime('%Y-%m-%d')
-
-time_start=st.sidebar.text_input('Start DateTime:', '%s 00:00:00' %(last30))
-time_end=st.sidebar.text_input('End DateTime:', '%s 23:59:59'%(last1))
+time_start=st.sidebar.text_input('Start DateTime:', '2025-02-01 00:00:00' )
+time_end=st.sidebar.text_input('End DateTime:', '2025-02-28 23:59:59')
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
