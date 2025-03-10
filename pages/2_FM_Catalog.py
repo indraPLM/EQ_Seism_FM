@@ -152,7 +152,7 @@ ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
-                  'depth','S1','D1','R1','S2','D2','R2']]
+                  'depth','S1','D1','R1','S2','D2','R2','remarks']]
 x0=list(cmt.fixedLon)
 y0=list(cmt.fixedLat)
 z0=list(cmt.depth)
