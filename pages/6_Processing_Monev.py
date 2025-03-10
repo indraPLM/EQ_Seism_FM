@@ -168,7 +168,7 @@ for i in range(len(list_id)):
     t_stamp.append(a)
     t_proc.append(b)
 df['tstamp_proc']=t_stamp
-df['time_proc']=t_proc
+df['time_proc (minutes)']=t_proc
 
 df_v=df
 
