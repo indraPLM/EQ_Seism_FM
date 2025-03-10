@@ -17,8 +17,13 @@ import cartopy
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
-time_start=st.sidebar.text_input('Start Time:', '2024-09-01 00:00:00')
-time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
+last1 = datetime.datetime.now() - datetime.timedelta(1)
+last1 = last1.strftime('%Y-%m-%d')
+last30 = datetime.datetime.now() - datetime.timedelta(30)
+last30 = last30.strftime('%Y-%m-%d')
+
+time_start=st.sidebar.text_input('Start DateTime:', '%s 00:00:00' %(last30))
+time_end=st.sidebar.text_input('End DateTime:', '%s 23:59:59'%(last1))
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
@@ -124,7 +129,15 @@ for i in range(len(df['eventid'])):
     t_proc.append(t)
 #print(t_proc)
 df['time_proc']=t_proc
+
+def fix_float(z):
+    temp=[]
+    for i in range(len(z)):
+        b=float(z[i])
+        temp.append(b)
+    return temp
 df['mag']=fix_float(df['mag'])
+
 df['lon'] = pd.to_numeric(df['lon'],errors = 'coerce')
 df['lat'] = pd.to_numeric(df['lat'],errors = 'coerce')
 
