@@ -9,10 +9,7 @@ from bs4 import BeautifulSoup
 import requests
 from matplotlib.pyplot import figure
 import geopandas
-from obspy.imaging.beachball import beachball
-from obspy.imaging.beachball import beach
-import cartopy.crs as ccrs
-import cartopy
+import datetime
 
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
 
