@@ -183,7 +183,7 @@ df_display=df[['event_id','date_time','tstamp_proc','time_proc (minutes)',
                   'longitude','latitude','mag','depth','remarks']]
 
 import folium
-x=df_dislpay['longitude'].values.tolist()
+x=df_display['longitude'].values.tolist()
 y=df_display['latitude'].values.tolist()
 text=df['title'].values.tolist()
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
