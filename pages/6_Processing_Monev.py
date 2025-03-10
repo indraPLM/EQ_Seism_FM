@@ -1,4 +1,42 @@
+import streamlit as st
+from PIL import Image
+from urllib.error import URLError
+import pandas as pd
+import os,sys
+import geopandas as gpd
+import matplotlib.pyplot as plt
+from bs4 import BeautifulSoup
+import requests
+from matplotlib.pyplot import figure
+import geopandas
+import datetime
 
+st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
+
+st.sidebar.header("Input Parameter :")
+last1 = datetime.datetime.now() - datetime.timedelta(1)
+last1 = last1.strftime('%Y-%m-%d')
+last30 = datetime.datetime.now() - datetime.timedelta(30)
+last30 = last30.strftime('%Y-%m-%d')
+
+time_start=st.sidebar.text_input('Start DateTime:', '%s 00:00:00' %(last30))
+time_end=st.sidebar.text_input('End DateTime:', '%s 23:59:59'%(last1))
+
+layout2 = st.sidebar.columns(2)
+with layout2[0]: 
+    North = st.text_input('North:', '6.0') 
+    North = float(North)
+with layout2[-1]: 
+    South = st.text_input('South:', '-13.0')
+    South = float(South)
+ 
+layout3 = st.sidebar.columns(2)
+with layout3[0]: 
+    West = st.text_input('West:', '90.0')
+    West = float(West)
+with layout3[-1]: 
+    East = st.text_input('East:', '142.0')
+    East = float(East)
 
 url='http://202.90.198.41/qc_focal.txt'
 page=requests.get(url)
