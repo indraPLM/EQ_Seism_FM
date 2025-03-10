@@ -10,6 +10,7 @@ import requests
 from matplotlib.pyplot import figure
 import geopandas
 import datetime
+from streamlit_folium import st_folium
 
 st.set_page_config(page_title='Kecepatan Processing Gempabumi',  layout='wide', page_icon="🌍")
 
