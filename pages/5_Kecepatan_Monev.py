@@ -38,7 +38,7 @@ with layout3[-1]:
     East = st.text_input('East:', '142.0')
     East = float(East)
 
-st.markdown( """ ### Kecepatan Processing Gempabumi ) """)
+st.markdown( """ ### Kecepatan Processing Gempabumi """)
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
 page=requests.get(url)
 soup=BeautifulSoup(page.text, 'html')
