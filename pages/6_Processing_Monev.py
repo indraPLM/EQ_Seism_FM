@@ -102,6 +102,11 @@ df['date_time'] = pd.to_datetime(df['date_time'])
 df['mag'] = fix_float(df['mag'])
 df['depth'] = fix_float(df['depth'])
 
+df= df[df['mag'] >= 5]
+df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
+df= df[(df['longitude'] > West) & (df['longitude'] < East)]
+df= df[(df['latitude'] > South) & (df['latitude'] < North)]
+
 def get_processtime(eventid):
     def get_qc(file,par):
         par=par
@@ -156,9 +161,6 @@ df['tstamp_proc']=t_stamp
 df['time_proc (minutes)']=t_proc
 
 df_v=df
-df_v= df_v[(df_v['date_time'] > time_start) & (df_v['date_time'] < time_end)]
-df_v= df_v[(df['longitude'] > West) & (df_v['longitude'] < East)]
-df_v= df_v[(df['latitude'] > South) & (df_v['latitude'] < North)]
 
 st.markdown(""" ### Grafik Kecepatan Prosesing Gempabumi M >=5 """)
 st.scatter_chart(df_v, x="date_time", y="time_proc (minutes)")
