@@ -153,4 +153,15 @@ for i in range(len(df['event_id'])):
     t_stamp.append(a)
     t_proc.append(b)
 df['tstamp_proc']=t_stamp
-df['time_proc']=t_proc
+df['time_proc (minutes)']=t_proc
+
+df_v=df
+df_v= df_v[(df_v['date_time'] > time_start) & (df_v['date_time'] < time_end)]
+df_v= df_v[(df['longitude'] > West) & (df_v['longitude'] < East)]
+df_v= df_v[(df['latitude'] > South) & (df_v['latitude'] < North)]
+
+st.markdown(""" ### Grafik Kecepatan Prosesing Gempabumi M >=5 """)
+st.scatter_chart(df_v, x="date_time", y="time_proc (minutes)")
+
+st.markdown("""### Data Parameter Gempa dan Kecepatan Prosesing Gempabumi""")
+st.dataframe(df_v)
