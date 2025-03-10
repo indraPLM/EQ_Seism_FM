@@ -38,7 +38,6 @@ with layout3[-1]:
     East = st.text_input('East:', '142.0')
     East = float(East)
 
-st.markdown( """ ### Kecepatan Processing Gempabumi """)
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
 page=requests.get(url)
 soup=BeautifulSoup(page.text, 'html')
@@ -143,4 +142,8 @@ df_v= df_v[(df_v['date_time'] > time_start) & (df_v['date_time'] < time_end)]
 df_v= df_v[(df['lon'] > West) & (df_v['lon'] < East)]
 df_v= df_v[(df['lat'] > South) & (df_v['lat'] < North)]
 
+st.markdown(""" ### Grafik Kecepatan Prosesing Gempabumi M >=5 """)
+st.scatter_chart(df_v, x="datetime", y="lapsetime (minutes)")
+
+st.markdown("""### Data Parameter Gempa dan Kecepatan Prosesing Gempabumi""")
 st.dataframe(df_v)
