@@ -11,7 +11,7 @@ from matplotlib.pyplot import figure
 import geopandas
 import datetime
 
-st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
+st.set_page_config(page_title='Kecepatan Processing Gempabumi',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
 last1 = datetime.datetime.now() - datetime.timedelta(1)
