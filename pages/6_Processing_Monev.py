@@ -116,6 +116,15 @@ df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['longitude'] > West) & (df['longitude'] < East)]
 df= df[(df['latitude'] > South) & (df['latitude'] < North)]
 
+list_date=df['date_time'].to_list()
+list_mag=df['mag'].to_list()
+list_dep=df['depth'].to_list()
+list_title=[]
+for i in range(len(list_mag)):
+    title='Tanggal: %s , Mag: %s, Depth:%s'%(list_date[i],list_mag[i],list_dep[i])
+    list_title.append(title)
+df['title']=list_title
+
 def get_processtime(eventid):
     def get_qc(file,par):
         par=par
