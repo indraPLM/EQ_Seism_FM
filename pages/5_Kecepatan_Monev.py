@@ -80,7 +80,7 @@ for i in range(len(area)):
     l_area.append(remark)
 
 df=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
-                 'depth':dep,'area':l_area})
+                 'depth':dep})
 df['waktu']=pd.to_datetime(df['waktu'])
 
 def get_processtime(eventid):
