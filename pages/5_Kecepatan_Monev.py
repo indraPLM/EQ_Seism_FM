@@ -72,12 +72,12 @@ l_area=[]
 for i in range(len(area)):
     a=area[i].split()
     if len(area[i].split()) == 12:
-        text=a[9]+' '+a[10]+' '+a[11]
+        remark=a[9]+' '+a[10]+' '+a[11]
     if len(area[i].split()) == 11:
-        text=a[9]+' '+a[10]
+        remark=a[9]+' '+a[10]
     if len(area[i].split()) == 10:
-        text=a[9]
-    l_area.append(text)
+        remark=a[9]
+    l_area.append(remark)
 
 df=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
                  'depth':dep,'area':l_area})
