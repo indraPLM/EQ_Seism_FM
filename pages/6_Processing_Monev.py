@@ -92,6 +92,12 @@ def fix_float(z):
         temp.append(b)
     return temp
 
+def fix_strip(a):
+    a= a.strip()
+    return a
+
+df['event_id'] = df.event_id.apply(fix_strip)
+
 df['latitude'] = df.lat.apply(fix_latitude)
 df['latitude'] = pd.to_numeric(df['latitude'],errors = 'coerce')
 
@@ -103,6 +109,9 @@ df['mag'] = fix_float(df['mag'])
 df['depth'] = fix_float(df['depth'])
 
 df= df[df['mag'] >= 5]
+time_start= '2025-02-08 00:00:00'
+time_end= '2025-03-09 23:59:59'
+West,East,North,South=90.0,145.0,10, -15
 df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['longitude'] > West) & (df['longitude'] < East)]
 df= df[(df['latitude'] > South) & (df['latitude'] < North)]
@@ -152,13 +161,14 @@ def get_processtime(eventid):
         return timestamp,lapsetime
 
 t_stamp,t_proc=[],[]
-for i in range(len(df['event_id'])):
-    a,b=get_processtime(df['event_id'][i])
+list_id=df['event_id'].to_list()
+for i in range(len(list_id)):
+    a,b=get_processtime(list_id[i])
     #print([df['event_id'][i],a,b])
     t_stamp.append(a)
     t_proc.append(b)
 df['tstamp_proc']=t_stamp
-df['time_proc (minutes)']=t_proc
+df['time_proc']=t_proc
 
 df_v=df
 
