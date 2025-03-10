@@ -171,7 +171,7 @@ for i in range(len(list_id)):
     a,b=get_processtime(list_id[i])
     #print([df['event_id'][i],a,b])
     t_stamp.append(a)
-    t_proc.append(float(b))
+    t_proc.append(b)
 df['tstamp_proc']=t_stamp
 df['time_proc (minutes)']=t_proc
 #df['time_proc (minutes)']= fix_float(df['time_proc (minutes)'])
