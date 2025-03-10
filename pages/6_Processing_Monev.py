@@ -170,6 +170,8 @@ for i in range(len(list_id)):
 df['tstamp_proc']=t_stamp
 df['time_proc (minutes)']=t_proc
 
+df_v=df[['event_id','date_time','tstamp_proc','time_proc (minutes)',
+                  'longitude','latitude','mag','depth','remarks']]
 df_v=df
 
 st.markdown(""" ### Grafik Kecepatan Prosesing Gempabumi M >=5 """)
