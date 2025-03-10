@@ -124,4 +124,9 @@ for i in range(len(df['eventid'])):
     t_proc.append(t)
 #print(t_proc)
 df['time_proc']=t_proc
+#df_display=df[ df['mag'] >= 5]
+#df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
+#df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
+#df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
+
 st.dataframe(df)
