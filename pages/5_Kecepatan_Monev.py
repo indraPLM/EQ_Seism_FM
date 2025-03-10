@@ -124,7 +124,7 @@ for i in range(len(df['eventid'])):
     #print([df['eventid'][i],t])
     t_proc.append(t)
 #print(t_proc)
-df['time_proc']=t_proc
+df['time_proc (minutes)']=t_proc
 
 def fix_float(z):
     temp=[]
@@ -143,7 +143,7 @@ df_v= df_v[(df['lon'] > West) & (df_v['lon'] < East)]
 df_v= df_v[(df['lat'] > South) & (df_v['lat'] < North)]
 
 st.markdown(""" ### Grafik Kecepatan Prosesing Gempabumi M >=5 """)
-st.scatter_chart(df_v, x="datetime", y="lapsetime (minutes)")
+st.scatter_chart(df_v, x="waktu", y="time_proc (minutes)")
 
 st.markdown("""### Data Parameter Gempa dan Kecepatan Prosesing Gempabumi""")
 st.dataframe(df_v)
