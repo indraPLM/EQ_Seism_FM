@@ -125,9 +125,12 @@ for i in range(len(df['eventid'])):
 #print(t_proc)
 df['time_proc']=t_proc
 df['mag']=fix_float(df['mag'])
+df['lon'] = pd.to_numeric(df['lon'],errors = 'coerce')
+df['lat'] = pd.to_numeric(df['lat'],errors = 'coerce')
+
 df_v=df[ df['mag'] >= 5]
 df_v= df_v[(df_v['date_time'] > time_start) & (df_v['date_time'] < time_end)]
 df_v= df_v[(df['lon'] > West) & (df_v['lon'] < East)]
 df_v= df_v[(df['lat'] > South) & (df_v['lat'] < North)]
 
-st.dataframe(df)
+st.dataframe(df_v)
