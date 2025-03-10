@@ -105,8 +105,8 @@ df['mag'] = fix_float(df['mag'])
 df['depth'] = fix_float(df['depth'])
 
 df= df[df['mag'] >= 5]
-time_start= '2025-02-08 00:00:00'
-time_end= '2025-03-09 23:59:59'
+#time_start= '2025-02-08 00:00:00'
+#time_end= '2025-03-09 23:59:59'
 West,East,North,South=90.0,145.0,10, -15
 df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['longitude'] > West) & (df['longitude'] < East)]
