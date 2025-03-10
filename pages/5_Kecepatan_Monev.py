@@ -68,16 +68,16 @@ dep = get_text(dep)
 
 area = soup.find_all('gempa')
 area = get_text(area)
-l_area=[]
-for i in range(len(area)):
-    a=area[i].split()
-    if len(area[i].split()) == 12:
-        remark=a[9]+' '+a[10]+' '+a[11]
-    if len(area[i].split()) == 11:
-        remark=a[9]+' '+a[10]
-    if len(area[i].split()) == 10:
-        remark=a[9]
-    l_area.append(remark)
+#l_area=[]
+#for i in range(len(area)):
+#    a=area[i].split()
+#    if len(area[i].split()) == 12:
+#        remark=a[9]+' '+a[10]+' '+a[11]
+#    if len(area[i].split()) == 11:
+#        remark=a[9]+' '+a[10]
+#    if len(area[i].split()) == 10:
+#        remark=a[9]
+#    l_area.append(remark)
 
 df=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
                  'depth':dep})
