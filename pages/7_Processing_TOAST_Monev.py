@@ -1,4 +1,4 @@
-import streamlit as st
+6import streamlit as st
 from PIL import Image
 from urllib.error import URLError
 import pandas as pd
@@ -56,7 +56,7 @@ print([len(text_toast),len(event_list)])
 dttime_toast,remark_toast=[],[]
 eventid_toast=[]
 for i in range(len(text_toast)):    
-    if event_list[i].startswith('bmg2024'):        
+    if event_list[i].startswith('bmg202'):        
         t=text_toast[i][2].split()
         dttime=t[0]+' '+t[1]
         remark=t[2]
