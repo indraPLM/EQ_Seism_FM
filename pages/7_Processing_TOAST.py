@@ -35,8 +35,7 @@ with layout3[-1]:
     East = float(East)
 
 
-
-path = "C://Users//Asus//Documents//@2025//KANTOR//PROJECT_STREAMLIT//EQ_Analysis//pages//file_toast"
+path="https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/pages/filetoast"
 dir_list = os.listdir(path)
 
 event_list = []
@@ -49,7 +48,7 @@ text_toast=[]
 for i in range(len(dir_list)):
     curr=os.getcwd() 
     test=dir_list[i]
-    with open(curr+'//file_toast//'+test) as f:
+    with open(path+'/'+test) as f:
         lines = f.readlines()
         text_toast.append(lines)
 print([len(text_toast),len(event_list)])
@@ -57,12 +56,11 @@ print([len(text_toast),len(event_list)])
 dttime_toast,remark_toast=[],[]
 eventid_toast=[]
 for i in range(len(text_toast)):    
-    if event_list[i].startswith('bmg2024'):
-        #print(event_list[i])
+    if event_list[i].startswith('bmg2024'):        
         t=text_toast[i][2].split()
         dttime=t[0]+' '+t[1]
         remark=t[2]
-        #print([event_list[i],dttime,remark])
+        
         dttime_toast.append(dttime)
         remark_toast.append(remark)
         eventid_toast.append(event_list[i])
