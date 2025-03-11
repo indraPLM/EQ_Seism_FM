@@ -1,0 +1,14 @@
+2024/09/24 08:20:23.466804 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2024/09/24 08:20:23.507940 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2024-09-24 00:58:44,  Lat/Lon: -31.48°/-65.72°, Depth: 156.39, Mag: 5.26 (mb)
+2024/09/24 08:20:23.508370 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.26 of event bmg2024stxg is smaller than triggerMinMagnitude: no automatic simulation
+2024/09/24 08:20:23.518999 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2024-09-24 00:58:44,  Lat/Lon: -31.4799°/-65.7191°, Depth: 156.386
+2024/09/24 08:20:23.519105 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.47 (M)
+2024/09/24 08:20:23.519135 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.47 of event bmg2024stxg is smaller than triggerMinMagnitude: no automatic simulation
+2024/09/24 12:17:31.237627 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2024-09-24 00:58:44,  Lat/Lon: -31.4799°/-65.7191°, Depth: 156.386
+2024/09/24 12:17:31.239621 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.26 (mb)
+2024/09/24 12:17:31.239700 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.26 of event bmg2024stxg is smaller than triggerMinMagnitude: no automatic simulation
+2024/09/24 12:17:46.167641 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2024-09-24 00:58:44,  Lat/Lon: -31.4799°/-65.7191°, Depth: 156.386
+2024/09/24 12:17:46.167961 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.26 of event bmg2024stxg is smaller than triggerMinMagnitude: no automatic simulation
+2024/09/24 12:17:46.186276 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2024-09-24 00:58:44,  Lat/Lon: -31.4799°/-65.7191°, Depth: 156.386
+2024/09/24 12:17:46.186403 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.26 of event bmg2024stxg is smaller than triggerMinMagnitude: no automatic simulation
+2024/09/26 05:48:39.884055 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
