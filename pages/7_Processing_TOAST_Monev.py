@@ -1,4 +1,4 @@
-6import streamlit as st
+import streamlit as st
 from PIL import Image
 from urllib.error import URLError
 import pandas as pd
