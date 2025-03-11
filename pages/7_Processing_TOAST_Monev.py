@@ -155,5 +155,6 @@ df_qc=df
 
 result = pd.merge(df_qc, df_toast, on="event_id")
 result['lapse_time_toast']=result['tstamp_toast']-result['date_time_wib']
+result['lapse_time_toast'] = (result['lapse_time_toast'].dt.total_seconds()/60).round(2)
 
 st.dataframe(result)
