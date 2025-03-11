@@ -76,7 +76,6 @@ folium.Marker(
     icon=folium.Icon(icon_shape='circle-dot'),
 ).add_to(m)
 
-st_data = st_folium(m, width=1000)
 
 url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
 page_m5=requests.get(url_m5)
@@ -133,7 +132,19 @@ i=par_xml_m5('potensi')
 
 df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1,
                  'Magnitude':f,'Kedalaman':g,'Wilayah':h,'Status Tsunami':i})
-st.markdown(""" 15 Data Gempabumi Terkini""")
+
+st.markdown(""" ### Gempa Terkini BMKG - USGS - GFZ """)
+col1, col2 = st.columns(2)
+with col1:
+    st.markdown(""" ## Parameter BMKG""")
+    st.metric(label="Mag", value="5.8 Mb", delta="1.2 °F")
+with col2:
+    st.markdown(""" ## Parameter USGS""")
+    st.metric(label="Mag", value="5.6 Mw", delta="1.2 °F")
+    
+st_data = st_folium(m, width=1000)
+
+st.markdown(""" ### 15 Data Gempabumi Terkini""")
 st.table(df)
 
 st.markdown(
