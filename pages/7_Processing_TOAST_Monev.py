@@ -35,7 +35,7 @@ with layout3[-1]:
     East = float(East)
 
 
-path="https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/pages/filetoast"
+path="https://raw.githubusercontent.com/indraPLM/EQ_Seism_FM/main/pages/filetoast/"
 dir_list = os.listdir(path)
 
 event_list = []
