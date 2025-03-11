@@ -1,0 +1,15 @@
+2025/03/08 12:54:18.085920 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/03/08 12:54:18.117308 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.31°/-77.58°, Depth: 185.96, Mag: 5.05 (mb)
+2025/03/08 12:54:18.117748 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/08 12:54:18.279907 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.30967°/-77.5773°, Depth: 185.961
+2025/03/08 12:54:18.279993 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/08 15:21:18.329695 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.29324°/-77.5296°, Depth: 186.184
+2025/03/08 15:21:18.329890 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.05 (mb)
+2025/03/08 15:21:18.329934 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/08 15:21:22.690603 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.29324°/-77.5296°, Depth: 186.184
+2025/03/08 15:21:22.690782 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/08 15:21:34.800451 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.29324°/-77.5296°, Depth: 186.184
+2025/03/08 15:21:34.800654 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/08 15:21:34.818069 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-03-08 05:37:42,  Lat/Lon: -1.29324°/-77.5296°, Depth: 186.184
+2025/03/08 15:21:34.818176 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025erai is smaller than triggerMinMagnitude: no automatic simulation
+2025/03/11 09:35:52.524057 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
