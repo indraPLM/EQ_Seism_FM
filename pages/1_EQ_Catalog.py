@@ -143,7 +143,7 @@ df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
 df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 
-st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag", zoom=4 )
+st.map(df, latitude="fixedLat", longitude="fixedLon", size="sizemag", zoom=3 )
 
 
 unique_values = df['remarks'].unique()
