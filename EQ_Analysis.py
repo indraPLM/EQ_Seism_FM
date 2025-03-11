@@ -8,8 +8,7 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 
-st.write("# Earthquake Data Analysis 👨🏽‍💼")
-
+#st.write("# Earthquake Data Analysis 👨🏽‍💼")
 #st.sidebar.success("EQ Analysis Menu")
 
 url='https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml'
@@ -129,11 +128,9 @@ df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1
 st.markdown(""" ### Gempa Terkini BMKG - USGS - GFZ """)
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown(""" ## Parameter BMKG""")
-    st.metric(label="Mag", value="5.8 Mb", delta="1.2 °F")
+    st.metric(label="BMKG", value="5.8 Mb", delta="1.2 °F")
 with col2:
-    st.markdown(""" ## Parameter USGS""")
-    st.metric(label="Mag", value="5.6 Mw", delta="1.2 °F")
+    st.metric(label="USGS", value="5.6 Mw", delta="1.2 °F")
     
 st_data = st_folium(m, width=1000)
 
