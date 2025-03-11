@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 27 12:02:47 2022
-
-@author: Asus
-"""
-
 import streamlit as st
 from PIL import Image
 import folium
@@ -17,7 +10,7 @@ st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 
 st.write("# Earthquake Data Analysis 👨🏽‍💼")
 
-st.sidebar.success("EQ Analysis Menu")
+#st.sidebar.success("EQ Analysis Menu")
 
 url='https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml'
 page=requests.get(url)
