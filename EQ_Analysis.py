@@ -133,7 +133,13 @@ for i in range(len(df_gfz['date_time'])):
         d=df_gfz['depth'][i]
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
-        continue
+        x= ' '
+        y= ' '
+        d= ' '
+        m= ' '
+        x1.append(x),y1.append(y),m1.append(m),d1.append(d)
+
+
 
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['fix_dateusgs'])):
@@ -145,7 +151,12 @@ for i in range(len(df_usgs['fix_dateusgs'])):
         d=df_usgs['depth'][i]
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
-        continue
+        x= ' '
+        y= ' '
+        d= ' '
+        m= ' '
+        x2.append(x),y2.append(y),m2.append(m),d2.append(d)
+
 
 
 import folium
