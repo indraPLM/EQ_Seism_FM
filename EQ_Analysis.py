@@ -156,7 +156,7 @@ m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-#folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 
 
@@ -169,7 +169,7 @@ folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='cir
 #with col3:
 #    st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
     
-#st_data = st_folium(m, width=1000)
+st_data = st_folium(m, width=1000)
 
 st.markdown(""" ### 15 Data Gempabumi Terkini""")
 st.table(df_bmkg)
