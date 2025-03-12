@@ -48,17 +48,23 @@ df_gfz = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'type
 df_gfz['mag_text']=df_gfz['mag']+' ' +df_gfz['typemag']
 df_gfz['date_time']=pd.to_datetime(df_gfz['date_time'])
 
-from datetime import datetime,timedelta
-now=datetime.today().strftime('%Y-%m-%d')
-p4days=(datetime.today() - timedelta(days=4)).strftime('%Y-%m-%d')
+import geopandas
+import datetime
 
-usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=%s&endtime=%s&minmagnitude=4.0' %(p4days,now)
-df_usgs = pd.read_csv(usgs_url)
+url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson"
+df_usgs = geopandas.read_file(url)
 
-df_usgs['DATEUSGS']=pd.to_datetime(df_usgs['time'])
-df_usgs['date_usgs_local'] = df_usgs['DATEUSGS']
-df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%Y-%m-%d %H:%M:%S')
-df_usgs['fix_dateusgs']=pd.to_datetime(df_usgs['noniso_dateusgs'])
+time_usgs=[]
+for i in range(len(df['time'])):
+    t=df['time'][i]
+    t=datetime.datetime.fromtimestamp(t / 1000.0)
+    time_usgs.append(t)
+df_usgs['time_usgs']=time_usgs
+df_usgs['time_usgs']=pd.to_datetime(df_usgs['time_usgs'])
+df_usgs['time_usgs']=df_usgs['time_usgs'] - pd.Timedelta(hours=7)
+df_usgs['lon'] = df.geometry.x
+df_usgs['lat'] = df.geometry.y
+df_usgs['depth'] = df.geometry.z
 
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
 #url='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
