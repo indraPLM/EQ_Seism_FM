@@ -151,7 +151,7 @@ for i in range(len(df_usgs['fix_dateusgs'])):
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
 m= folium.Map((x0, y0),tiles=tiles, attr='ESRI', zoom_start=8)
 
-html1 = """ <p> Tanggal %s </p> <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(a,m0, d0)
+html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 
 folium.Marker(location=[x0, y0], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 folium.Marker(location=[x1, y1], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
