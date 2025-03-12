@@ -119,13 +119,13 @@ df_bmkg=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':
 df_bmkg['waktu']=pd.to_datetime(df_bmkg['waktu'])
 df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
 
-x0=df_bmkg['lon'].to_list()[0]
-y0=df_bmkg['lat'].to_list()[0]
-m0=df_bmkg['mag'].to_list()[0]
-z0=df_bmkg['depth'].to_list()[0]
+x0=df_bmkg['lon'].to_list()[1]
+y0=df_bmkg['lat'].to_list()[1]
+m0=df_bmkg['mag'].to_list()[1]
+z0=df_bmkg['depth'].to_list()[1]
 
 temp=df_bmkg['waktu'].to_list()
-a=temp[0]
+a=temp[1]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
