@@ -153,10 +153,9 @@ for i in range(len(df_usgs['time_usgs'])):
         continue
 del1=round(abs(float(m0) - float(m1[0])),2)
 del1=str(del1)
-#print([x0,y0])
-#print([str(x1[0]),str(y1[0])])
-#print([x2,y2])
-#print([str(x2[0]),str(y2[0])])
+
+del2=round(abs(float(m0) - float(m2[0])),2)
+del2=str(del2)
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
@@ -180,7 +179,7 @@ with col2:
     st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
     m2=str(m2[0])
-    st.metric(label="USGS", value="%s" %(m2), delta=" ")
+    st.metric(label="USGS", value="%s" %(m2), delta=" %s" %(del2))
     
 st_data = st_folium(m, width=1000)
 
