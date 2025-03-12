@@ -223,7 +223,7 @@ with col2:
 with col3:
     st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
     
-st_data = st_folium(m, width=1000)
+#st_data = st_folium(m, width=1000)
 
 st.markdown(""" ### 15 Data Gempabumi Terkini""")
 st.table(df)
