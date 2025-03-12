@@ -137,8 +137,8 @@ for i in range(len(df_gfz['date_time'])):
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
         continue
-print(a)
-print(df_usgs['time_usgs'])
+#print(a)
+#print(df_usgs['time_usgs'])
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
@@ -152,9 +152,9 @@ for i in range(len(df_usgs['time_usgs'])):
     else:
         continue
 
-print([x0,y0])
-print([str(x1[0]),str(y1[0])])
-print([x2,y2])
+#print([x0,y0])
+#print([str(x1[0]),str(y1[0])])
+#print([x2,y2])
 #print([str(x2[0]),str(y2[0])])
 
 import folium
@@ -176,7 +176,9 @@ with col1:
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
 with col2:
     m1=str(m1[0])
-    st.metric(label="GFZ", value="%s" %(m1), delta=" ")
+    del1=abs(m0-m1[0])
+    del1=str(del1)
+    st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
     m2=str(m2[0])
     st.metric(label="USGS", value="%s" %(m2), delta=" ")
