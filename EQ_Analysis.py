@@ -149,13 +149,13 @@ for i in range(len(df_usgs['fix_dateusgs'])):
 
 
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m= folium.Map((x0, z0),tiles=tiles, attr='ESRI', zoom_start=8)
+m= folium.Map((x0, y0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 html1 = """ <p> Tanggal %s </p> <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(a,m0, d0)
 
-folium.Marker(location=[x0, z0], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[x1, z1], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[x2 z2], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[x0, y0], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[x1, y1], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[x2, y2], popup=html1,icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
 page_m5=requests.get(url_m5)
