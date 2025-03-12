@@ -172,7 +172,7 @@ with col2:
     m1=str(m1[0])
     st.metric(label="GFZ", value="%s" %(m1), delta=" ")
 with col3:
-    m2=str(m2[0])
+    #m2=str(m2[0])
     st.metric(label="USGS", value="%s" %(m1), delta=" ")
     
 st_data = st_folium(m, width=1000)
