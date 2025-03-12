@@ -153,12 +153,12 @@ tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_
 m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=7)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
-#x1=str(x1[0])
-#y1=str(y1[0])
+x1=str(x1[0])
+y1=str(y1[0])
 #x2=str(x2[0])
 #y2=str(y2[0])
 folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-#folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 #folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 
@@ -168,10 +168,10 @@ col1, col2, col3 = st.columns(3)
 with col1:
     m0=str(m0)
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
-#with col2:
-#    m1=str(m1)
-#    dm=str(abs(m0-m1))
-#    st.metric(label="USGS", value="%s" %(m1), delta="%s"(dm))
+with col2:
+    m1=str(m1)
+    dm=str(abs(m0-m1))
+    st.metric(label="USGS", value="%s" %(m1), delta="%s"(dm))
 #with col3:
 #    st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
     
