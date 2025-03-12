@@ -159,16 +159,16 @@ del2=str(del2)
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=9)
+m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 x1=str(x1[0])
 y1=str(y1[0])
 x2=str(x2[0])
 y2=str(y2[0])
-folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='BMKG',prefix='fa',color='red'),).add_to(m)
+folium.Marker(location=[y1,x1], icon=folium.Icon(icon='GFZ',prefix='fa',color='blue'),).add_to(m)
+folium.Marker(location=[y2,x2], icon=folium.Icon(icon='USGS',prefix='fa',color='green'),).add_to(m)
 
 col1, col2, col3 = st.columns(3)
 with col1:
