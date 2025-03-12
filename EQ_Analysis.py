@@ -122,7 +122,7 @@ m0=df_bmkg['mag'].to_list()[0]
 z0=df_bmkg['depth'].to_list()[0]
 
 temp=df_bmkg['waktu'].to_list()
-a=temp[0]
+a=temp[2]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
