@@ -150,12 +150,14 @@ for i in range(len(df_usgs['fix_dateusgs'])):
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
+m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=7)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
+x1=str(x1[0])
+y1=str(y1[0])
 
 folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-#folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 #folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 
