@@ -169,11 +169,11 @@ with col1:
     m0=str(m0)
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
 with col2:
-    m1=str(m1)
-    #dm=str(abs(m0-m1))
-    st.metric(label="USGS", value="%s" %(m1), delta=" ")
-#with col3:
-#    st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
+    m1=str(m1[0])
+    st.metric(label="GFZ", value="%s" %(m1), delta=" ")
+with col3:
+    m2=str(m2[0])
+    st.metric(label="USGS", value="%s" %(m2), delta=" ")
     
 st_data = st_folium(m, width=1000)
 
