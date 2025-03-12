@@ -193,13 +193,13 @@ with col3:
     st.metric(label="USGS", value="%s" %(m2), delta=" %s" %(del2))
 with col4:
     d0=str(d0)
-    st.metric(label="BMKG", value="%s" %(d0), delta= "%s" %(del11))
+    st.metric(label="BMKG", value="%s" %(d0), delta= " " )
 with col5:
     d1=str(d1[0])
-    st.metric(label="GFZ", value= "%s" %(d1), delta= "%s" %(del22))
+    st.metric(label="GFZ", value= "%s" %(d1), delta= "%s" %(del11))
 with col6:
     d2=str(d2[0])
-    st.metric(label="USGS", value="%s" %(d2), delta= " ")
+    st.metric(label="USGS", value="%s" %(d2), delta= "%s " %(del22))
 
 st_data = st_folium(m, width=1000)
 
