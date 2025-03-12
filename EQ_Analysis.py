@@ -122,7 +122,7 @@ df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
 x0=df_bmkg['lon'].to_list()[0]
 y0=df_bmkg['lat'].to_list()[0]
 m0=df_bmkg['mag'].to_list()[0]
-z0=df_bmkg['depth'].to_list()[0]
+d0=df_bmkg['depth'].to_list()[0]
 
 temp=df_bmkg['waktu'].to_list()
 a=temp[0]
