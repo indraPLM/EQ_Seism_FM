@@ -153,9 +153,13 @@ for i in range(len(df_usgs['time_usgs'])):
         continue
 del1=round(abs(float(m0) - float(m1[0])),2)
 del1=str(del1)
-
+del11=round(abs(float(d0) - float(d1[0])),2)
+del11=str(del11)
+                          
 del2=round(abs(float(m0) - float(m2[0])),2)
 del2=str(del2)
+del22=round(abs(float(d0) - float(d2[0])),2)
+del22=str(del22)
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
@@ -172,9 +176,10 @@ folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='gre
 
 col1,col2 =st.columns(2)
 with col1:
-    st.markdown(""" ## Magnitude""")
+    st.markdown("" ## Magnitude"")
+               
 with col2:
-    st.markdown(""" ## Depth """)
+    st.markdown("" ## Depth "")
 
 col1, col2, col3, col4,col5,col6 = st.columns(6)
 with col1:
@@ -188,10 +193,10 @@ with col3:
     st.metric(label="USGS", value="%s" %(m2), delta=" %s" %(del2))
 with col4:
     d0=str(d0)
-    st.metric(label="BMKG", value="%s" %(d0), delta= " ")
+    st.metric(label="BMKG", value="%s" %(d0), delta= "%s" %(del11))
 with col5:
     d1=str(d1[0])
-    st.metric(label="GFZ", value= "%s" %(d1), delta= " ")
+    st.metric(label="GFZ", value= "%s" %(d1), delta= "%s" %(del22))
 with col6:
     d2=str(d2[0])
     st.metric(label="USGS", value="%s" %(d2), delta= " ")
