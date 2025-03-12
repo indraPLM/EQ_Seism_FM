@@ -137,7 +137,8 @@ for i in range(len(df_gfz['date_time'])):
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
         continue
-
+print(a)
+print(df_usgs['time_usgs'])
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
