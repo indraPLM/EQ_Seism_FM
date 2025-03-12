@@ -121,6 +121,11 @@ y0=df_bmkg['lat'].to_list()[3]
 m0=df_bmkg['mag'].to_list()[3]
 z0=df_bmkg['depth'].to_list()[3]
 
+x0=df_bmkg['lon'].to_list()[3]
+y0=df_bmkg['lat'].to_list()[3]
+m0=df_bmkg['mag'].to_list()[3]
+z0=df_bmkg['depth'].to_list()[3]
+
 temp=df_bmkg['waktu'].to_list()
 a=temp[3]
 x1,y1,m1,d1=[],[],[],[]
@@ -146,6 +151,7 @@ for i in range(len(df_usgs['fix_dateusgs'])):
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
+
 print([x0,y0])
 print([str(x1[0]),str(y1[0])])
 print([str(x2[0]),str(y2[0])])
