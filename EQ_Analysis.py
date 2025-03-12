@@ -81,25 +81,20 @@ def fix_float(z):
 
 eventid = soup.find_all('eventid')
 eventid = get_text(eventid)
-
 waktu = soup.find_all('waktu')
 waktu = get_text(waktu)
-
 lon = soup.find_all('bujur')
 lon = get_text(lon)
-
 lat = soup.find_all('lintang')
 lat = get_text(lat)
-
 mag = soup.find_all('mag')
 mag = get_text(mag)
 mag = fix_float(mag)
-
 dep = soup.find_all('dalam')
 dep = get_text(dep)
-
 area = soup.find_all('gempa')
 area = get_text(area)
+
 l_area=[]
 for i in range(len(area)):
     a=area[i].split()
@@ -121,13 +116,13 @@ y0=df_bmkg['lat'].to_list()[3]
 m0=df_bmkg['mag'].to_list()[3]
 z0=df_bmkg['depth'].to_list()[3]
 
-x0=df_bmkg['lon'].to_list()[3]
-y0=df_bmkg['lat'].to_list()[3]
-m0=df_bmkg['mag'].to_list()[3]
-z0=df_bmkg['depth'].to_list()[3]
+x0=df_bmkg['lon'].to_list()[1]
+y0=df_bmkg['lat'].to_list()[1]
+m0=df_bmkg['mag'].to_list()[1]
+z0=df_bmkg['depth'].to_list()[1]
 
 temp=df_bmkg['waktu'].to_list()
-a=temp[3]
+a=temp[1]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
@@ -158,7 +153,7 @@ print([str(x2[0]),str(y2[0])])
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=7)
+m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=9)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 x1=str(x1[0])
@@ -169,9 +164,6 @@ folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add
 folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
-
-
-#st.markdown(""" ### Gempa Terkini BMKG - USGS - GFZ """)
 col1, col2, col3 = st.columns(3)
 with col1:
     m0=str(m0)
