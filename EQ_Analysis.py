@@ -151,7 +151,7 @@ for i in range(len(df_usgs['time_usgs'])):
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
-del1=abs(float(m0) - float(m1[0]))
+del1=round(abs(float(m0) - float(m1[0])),2)
 del1=str(del1)
 #print([x0,y0])
 #print([str(x1[0]),str(y1[0])])
