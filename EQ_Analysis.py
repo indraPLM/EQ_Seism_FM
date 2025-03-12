@@ -215,13 +215,13 @@ df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1
                  'Magnitude':f,'Kedalaman':g,'Wilayah':h,'Status Tsunami':i})
 
 #st.markdown(""" ### Gempa Terkini BMKG - USGS - GFZ """)
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.metric(label="BMKG", value="%s" %(m0), delta=" ")
-with col2:
-    st.metric(label="USGS", value="%s" %(m1), delta="%s"(abs(m0-m1)))
-with col3:
-    st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
+#col1, col2, col3 = st.columns(3)
+#with col1:
+#    st.metric(label="BMKG", value="%s" %(m0), delta=" ")
+#with col2:
+#    st.metric(label="USGS", value="%s" %(m1), delta="%s"(abs(m0-m1)))
+#with col3:
+#    st.metric(label="USGS", value="%s" %(m2), delta="%s"(abs(m0-m2)))
     
 #st_data = st_folium(m, width=1000)
 
