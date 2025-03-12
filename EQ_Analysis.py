@@ -57,7 +57,7 @@ df_usgs = pd.read_csv(usgs_url)
 
 df_usgs['DATEUSGS']=pd.to_datetime(df_usgs['time'])
 df_usgs['date_usgs_local'] = df_usgs['DATEUSGS']
-df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%d-%m-%Y %H:%M:%S')
+df_usgs['noniso_dateusgs'] = df_usgs['date_usgs_local'].dt.strftime('%Y-%m-%d %H:%M:%S')
 df_usgs['fix_dateusgs']=pd.to_datetime(df_usgs['noniso_dateusgs'])
 
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
