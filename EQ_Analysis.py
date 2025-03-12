@@ -141,13 +141,12 @@ for i in range(len(df_gfz['date_time'])):
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
         continue
-
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
     if abs(timedelta.total_seconds(a-b)) < 5:
-        x=df_usgs['longitude'][i]
-        y=df_usgs['latitude'][i]
+        x=df_usgs['lon'][i]
+        y=df_usgs['lat'][i]
         m=df_usgs['mag'][i]
         d=df_usgs['depth'][i]
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
