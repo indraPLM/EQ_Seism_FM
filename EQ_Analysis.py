@@ -150,9 +150,9 @@ for i in range(len(df_usgs['time_usgs'])):
     else:
         continue
 
-#print([x0,y0])
-#print([str(x1[0]),str(y1[0])])
-#print([str(x2[0]),str(y2[0])])
+print([x0,y0])
+print([str(x1[0]),str(y1[0])])
+print([str(x2[0]),str(y2[0])])
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
