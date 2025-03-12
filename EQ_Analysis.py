@@ -151,7 +151,8 @@ for i in range(len(df_usgs['time_usgs'])):
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
-
+del1=abs(m0-m1[0])
+del1=str(del1)
 #print([x0,y0])
 #print([str(x1[0]),str(y1[0])])
 #print([x2,y2])
@@ -172,12 +173,9 @@ folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    m00=str(m0)
-    st.metric(label="BMKG", value="%s" %(m00), delta=" ")
+    m0=str(m0)
+    st.metric(label="BMKG", value="%s" %(m0), delta=" ")
 with col2:
-    #m1=str(m1[0])
-    del1=abs(m0-m1[0])
-    del1=str(del1)
     m1=str(m1[0]
     st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
