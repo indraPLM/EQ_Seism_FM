@@ -4,6 +4,7 @@ import folium
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from datetime import timedelta
 from streamlit_folium import st_folium
 
 st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
