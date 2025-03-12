@@ -62,9 +62,9 @@ for i in range(len(df_usgs['time'])):
 df_usgs['time_usgs']=time_usgs
 df_usgs['time_usgs']=pd.to_datetime(df_usgs['time_usgs'])
 df_usgs['time_usgs']=df_usgs['time_usgs'] - pd.Timedelta(hours=7)
-df_usgs['lon'] = df.geometry.x
-df_usgs['lat'] = df.geometry.y
-df_usgs['depth'] = df.geometry.z
+df_usgs['lon'] = df_usgs.geometry.x
+df_usgs['lat'] = df_usgs.geometry.y
+df_usgs['depth'] = df_usgs.geometry.z
 
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
 #url='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
