@@ -176,10 +176,10 @@ folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='gre
 
 col1,col2 =st.columns(2)
 with col1:
-    st.markdown("" ## Magnitude"")
+    st.markdown(""" ## Magnitude""")
                
 with col2:
-    st.markdown("" ## Depth "")
+    st.markdown(""" ## Depth """)
 
 col1, col2, col3, col4,col5,col6 = st.columns(6)
 with col1:
