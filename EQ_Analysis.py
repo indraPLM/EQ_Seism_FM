@@ -133,13 +133,7 @@ for i in range(len(df_gfz['date_time'])):
         d=df_gfz['depth'][i]
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
-        x= ' '
-        y= ' '
-        d= ' '
-        m= ' '
-        x1.append(x),y1.append(y),m1.append(m),d1.append(d)
-
-
+        continue
 
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['fix_dateusgs'])):
@@ -151,12 +145,7 @@ for i in range(len(df_usgs['fix_dateusgs'])):
         d=df_usgs['depth'][i]
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
-        x= ' '
-        y= ' '
-        d= ' '
-        m= ' '
-        x2.append(x),y2.append(y),m2.append(m),d2.append(d)
-
+        continue
 
 
 import folium
@@ -170,7 +159,7 @@ x2=str(x2[0])
 y2=str(y2[0])
 folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 folium.Marker(location=[y1,x1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+#folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 
 
