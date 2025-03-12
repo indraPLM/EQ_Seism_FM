@@ -151,14 +151,14 @@ for i in range(len(df_usgs['time_usgs'])):
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
-del1=round(abs(float(m0) - float(m1[0])),2)
+del1=round((float(m1[0]) - float(m0)),2)
 del1=str(del1)
-del11=round(abs(float(d0) - float(d1[0])),2)
+del11=round((float(d1[0]) - float(d0)),2)
 del11=str(del11)
                           
-del2=round(abs(float(m0) - float(m2[0])),2)
+del2=round((float(m2[0]) - float(m0)),2)
 del2=str(del2)
-del22=round(abs(float(d0) - float(d2[0])),2)
+del22=round((float(d2[0]) - float(m0)),2)
 del22=str(del22)
 
 import folium
