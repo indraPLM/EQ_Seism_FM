@@ -226,7 +226,7 @@ df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1
 #st_data = st_folium(m, width=1000)
 
 st.markdown(""" ### 15 Data Gempabumi Terkini""")
-st.table(df)
+st.table(df_bmkg)
 
 st.markdown(
     """ 
