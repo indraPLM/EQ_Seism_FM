@@ -63,9 +63,10 @@ for i in range(len(df_usgs['time'])):
 df_usgs['time_usgs']=time_usgs
 df_usgs['time_usgs']=pd.to_datetime(df_usgs['time_usgs'])
 df_usgs['time_usgs']=df_usgs['time_usgs'] - pd.Timedelta(hours=7)
-df_usgs['lon'] = df_usgs.geometry.x
-df_usgs['lat'] = df_usgs.geometry.y
-df_usgs['depth'] = df_usgs.geometry.z
+df_usgs['lon'] = df.geometry.x
+df_usgs['lat'] = df.geometry.y
+df_usgs['depth'] = df.geometry.z
+#print(df_usgs)
 
 url='https://bmkg-content-inatews.storage.googleapis.com/live30event.xml'
 #url='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
@@ -118,11 +119,6 @@ df_bmkg=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':
 df_bmkg['waktu']=pd.to_datetime(df_bmkg['waktu'])
 df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
 
-x0=df_bmkg['lon'].to_list()[3]
-y0=df_bmkg['lat'].to_list()[3]
-m0=df_bmkg['mag'].to_list()[3]
-z0=df_bmkg['depth'].to_list()[3]
-
 x0=df_bmkg['lon'].to_list()[0]
 y0=df_bmkg['lat'].to_list()[0]
 m0=df_bmkg['mag'].to_list()[0]
@@ -141,6 +137,7 @@ for i in range(len(df_gfz['date_time'])):
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
         continue
+
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
