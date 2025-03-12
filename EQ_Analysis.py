@@ -170,7 +170,13 @@ folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='re
 folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
 folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='green'),).add_to(m)
 
-col1, col2, col3 = st.columns(3)
+col1,col2 =st.colomns(2)
+with col1:
+    st.markdown(""" ## Magnitude""")
+with col2:
+    st.markdown(""" ## Depth """)
+
+col1, col2, col3, col4,col5,col6 = st.columns(6)
 with col1:
     m0=str(m0)
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
@@ -180,7 +186,16 @@ with col2:
 with col3:
     m2=str(m2[0])
     st.metric(label="USGS", value="%s" %(m2), delta=" %s" %(del2))
-    
+with col4:
+    d0=str(d0)
+    st.metric(label="BMKG", value="%s" %(d0), delta= " ")
+with col5:
+    d1=str(d1[0])
+    st.metric(label="GFZ", value= "%s" %(d1), delta= " ")
+with col6:
+    d2=str(d2[0])
+    st.metric(label="USGS", value="%s" %(d2), delta= " ")
+
 st_data = st_folium(m, width=1000)
 
 st.markdown(""" ### 15 Data Gempabumi Terkini""")
