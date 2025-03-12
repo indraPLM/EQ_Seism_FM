@@ -170,7 +170,7 @@ folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='re
 folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
 folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='green'),).add_to(m)
 
-col1,col2 =st.colomns(2)
+col1,col2 =st.columns(2)
 with col1:
     st.markdown(""" ## Magnitude""")
 with col2:
