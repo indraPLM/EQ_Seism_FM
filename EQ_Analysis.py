@@ -155,8 +155,8 @@ m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 
 folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+#folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+#folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 
 
