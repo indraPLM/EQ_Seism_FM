@@ -158,61 +158,7 @@ folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add
 folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 #folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
-url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
-page_m5=requests.get(url_m5)
-url_pages_m5=BeautifulSoup(page_m5.text, 'html')
 
-data=url_pages_m5.find_all('tanggal')
-#print(data[0])
-#print(len(data))
-def par_xml_m5(params):
-    data=url_pages_m5.find_all(params)
-    content=[]
-    for x in data:
-        par=x.get_text()
-        content.append(par)
-    return content
-
-def fix_latitude_m5(a):
-    for x in a:
-        x = x.strip()
-        if x.endswith('LS'):
-            x = -float(x.strip('LS'))
-        else:
-            x = x.strip('LU')
-    return x
-
-def fix_longitude_m5(b):
-    for y in b:
-        y = y.strip()
-        if y.endswith('BB'):
-            y = -float(y.strip('BB'))
-        else:
-            y = y.strip('BT')
-    return y
-
-a=par_xml_m5('tanggal')
-b=par_xml_m5('jam')
-c=par_xml_m5('datetime')
-
-d=par_xml_m5('lintang')
-d1=[]
-for i in range(len(d)):
-    temp=fix_latitude(d[i])
-    d1.append(temp)
-e=par_xml_m5('bujur')
-e1=[]
-for i in range(len(e)):
-    temp=fix_longitude(e[i])
-    e1.append(temp)
-
-f=par_xml_m5('magnitude')
-g=par_xml_m5('kedalaman')
-h=par_xml_m5('wilayah')
-i=par_xml_m5('potensi')
-
-df=pd.DataFrame({'Tanggal':a,'Waktu':b,'UTC Time':c,'Latitude':d1,'Longitude':e1,
-                 'Magnitude':f,'Kedalaman':g,'Wilayah':h,'Status Tsunami':i})
 
 #st.markdown(""" ### Gempa Terkini BMKG - USGS - GFZ """)
 #col1, col2, col3 = st.columns(3)
