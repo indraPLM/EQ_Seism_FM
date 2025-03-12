@@ -55,8 +55,8 @@ url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson
 df_usgs = geopandas.read_file(url)
 
 time_usgs=[]
-for i in range(len(df['time'])):
-    t=df['time'][i]
+for i in range(len(df_usgs['time'])):
+    t=df_usgs['time'][i]
     t=datetime.datetime.fromtimestamp(t / 1000.0)
     time_usgs.append(t)
 df_usgs['time_usgs']=time_usgs
