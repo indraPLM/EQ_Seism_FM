@@ -1,4 +1,4 @@
-import streamlit as st
+iaimport streamlit as st
 from PIL import Image
 import folium
 from bs4 import BeautifulSoup
@@ -119,13 +119,13 @@ df_bmkg=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':
 df_bmkg['waktu']=pd.to_datetime(df_bmkg['waktu'])
 df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
 
-x0=df_bmkg['lon'].to_list()[1]
-y0=df_bmkg['lat'].to_list()[1]
-m0=df_bmkg['mag'].to_list()[1]
-z0=df_bmkg['depth'].to_list()[1]
+x0=df_bmkg['lon'].to_list()[0]
+y0=df_bmkg['lat'].to_list()[0]
+m0=df_bmkg['mag'].to_list()[0]
+z0=df_bmkg['depth'].to_list()[0]
 
 temp=df_bmkg['waktu'].to_list()
-a=temp[1]
+a=temp[0]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
@@ -141,6 +141,7 @@ for i in range(len(df_gfz['date_time'])):
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
+    print([a,b])
     if abs(timedelta.total_seconds(a-b)) < 5:
         x=df_usgs['lon'][i]
         y=df_usgs['lat'][i]
@@ -152,7 +153,8 @@ for i in range(len(df_usgs['time_usgs'])):
 
 print([x0,y0])
 print([str(x1[0]),str(y1[0])])
-print([str(x2[0]),str(y2[0])])
+print([x2,y2])
+#print([str(x2[0]),str(y2[0])])
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
