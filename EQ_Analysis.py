@@ -1,4 +1,4 @@
-iaimport streamlit as st
+import streamlit as st
 from PIL import Image
 import folium
 from bs4 import BeautifulSoup
