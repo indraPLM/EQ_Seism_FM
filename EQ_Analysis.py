@@ -172,12 +172,13 @@ folium.Marker(location=[y2,x2], icon=folium.Icon(icon_shape='circle-dot'),).add_
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    m0=str(m0)
-    st.metric(label="BMKG", value="%s" %(m0), delta=" ")
+    m00=str(m0)
+    st.metric(label="BMKG", value="%s" %(m00), delta=" ")
 with col2:
-    m1=str(m1[0])
+    #m1=str(m1[0])
     del1=abs(m0-m1[0])
     del1=str(del1)
+    m1=str(m1[0]
     st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
     m2=str(m2[0])
