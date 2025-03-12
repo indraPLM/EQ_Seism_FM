@@ -141,7 +141,7 @@ for i in range(len(df_gfz['date_time'])):
 x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
-    if abs(timedelta.total_seconds(a-b)) < 120:
+    if abs(timedelta.total_seconds(a-b)) < 5:
         x=df_usgs['lon'][i]
         y=df_usgs['lat'][i]
         m=df_usgs['mag'][i]
@@ -150,9 +150,9 @@ for i in range(len(df_usgs['time_usgs'])):
     else:
         continue
 
-print([x0,y0])
-print([str(x1[0]),str(y1[0])])
-print([str(x2[0]),str(y2[0])])
+#print([x0,y0])
+#print([str(x1[0]),str(y1[0])])
+#print([str(x2[0]),str(y2[0])])
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
