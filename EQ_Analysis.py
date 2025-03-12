@@ -176,7 +176,7 @@ with col1:
     m0=str(m0)
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
 with col2:
-    m1=str(m1[0]
+    m1=str(m1[0])
     st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
     m2=str(m2[0])
