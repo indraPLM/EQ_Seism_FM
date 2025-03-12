@@ -148,22 +148,23 @@ for i in range(len(df_usgs['fix_dateusgs'])):
         continue
 
 
+import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m= folium.Map((x0, y0),tiles=tiles, attr='ESRI', zoom_start=8)
+m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 
-folium.Marker(location=[x0, y0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[x1, y1], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
-folium.Marker(location=[x2, y2], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[ y0,x0], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[str(y1[0]),str(x1[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
+folium.Marker(location=[str(y2[0]),str(x2[0])], icon=folium.Icon(icon_shape='circle-dot'),).add_to(m)
 
 url_m5='https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml'
 page_m5=requests.get(url_m5)
 url_pages_m5=BeautifulSoup(page_m5.text, 'html')
 
 data=url_pages_m5.find_all('tanggal')
-print(data[0])
-print(len(data))
+#print(data[0])
+#print(len(data))
 def par_xml_m5(params):
     data=url_pages_m5.find_all(params)
     content=[]
