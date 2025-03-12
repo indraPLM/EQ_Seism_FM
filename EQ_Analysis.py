@@ -116,13 +116,13 @@ y0=df_bmkg['lat'].to_list()[3]
 m0=df_bmkg['mag'].to_list()[3]
 z0=df_bmkg['depth'].to_list()[3]
 
-x0=df_bmkg['lon'].to_list()[1]
-y0=df_bmkg['lat'].to_list()[1]
-m0=df_bmkg['mag'].to_list()[1]
-z0=df_bmkg['depth'].to_list()[1]
+x0=df_bmkg['lon'].to_list()[0]
+y0=df_bmkg['lat'].to_list()[0]
+m0=df_bmkg['mag'].to_list()[0]
+z0=df_bmkg['depth'].to_list()[0]
 
 temp=df_bmkg['waktu'].to_list()
-a=temp[1]
+a=temp[0]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
