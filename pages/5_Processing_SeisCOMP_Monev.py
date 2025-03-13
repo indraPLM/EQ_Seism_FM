@@ -57,13 +57,13 @@ def get_fc(file,par):
 event_id=get_fc(event_fc,0)
 date_time=get_fc(event_fc,1)
 mag=get_fc(event_fc,5)
-latitude=get_fc(event_fc,10)
-longitude=get_fc(event_fc,11)
-depth=get_fc(event_fc,13)
-remarks=get_fc(event_fc,21)
+latitude=get_fc(event_fc,7)
+longitude=get_fc(event_fc,8)
+depth=get_fc(event_fc,9)
+#remarks=get_fc(event_fc,21)
 
 df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'lat':latitude,
-                   'lon':longitude,'depth':depth,'remarks':remarks})
+                   'lon':longitude,'depth':depth})
 
 def fix_longitude(x):
     x = x.strip()
