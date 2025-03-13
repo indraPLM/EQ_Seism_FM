@@ -183,20 +183,20 @@ if (len(x1)== 1 and len(x2)==1):
     x2=str(x2[0])
     y2=str(y2[0])
     folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location=[y1[0],x1[0]], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
-    folium.Marker(location=[y2[0],x2[0]], icon=folium.Icon(icon='U',prefix='fa',color='green'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
+    folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='green'),).add_to(m)
 
 if (len(x1)==1 and len(x2)==0):
     x1=str(x1[0])
     y1=str(y1[0])
     folium.Marker(location=[y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location=[y1[0],x1[0]], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
 
 if (len(x1)==0 and len(x2) ==1):
     x2=str(x2[0])
     y2=str(y2[0])
     folium.Marker(location =[y0,x0], icon=folium.Icon(icon='B', prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location =[y2[0],x2[0]], icon=folium.Icon(icon='U', prefix='fa', color='green'),).add_to(m)
+    folium.Marker(location =[y2,x2], icon=folium.Icon(icon='U', prefix='fa', color='green'),).add_to(m)
 
 
 col1,col2 =st.columns(2)
