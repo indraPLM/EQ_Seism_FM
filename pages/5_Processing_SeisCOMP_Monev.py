@@ -177,7 +177,7 @@ df['time_proc (minutes)']=t_proc
 #df['time_proc (minutes)']= fix_float(df['time_proc (minutes)'])
 
 df_display=df[['event_id','date_time','tstamp_proc','time_proc (minutes)',
-                  'longitude','latitude','mag','depth','remarks']]
+                  'longitude','latitude','mag','depth']]
 
 import folium
 x=df_display['longitude'].values.tolist()
