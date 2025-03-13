@@ -67,7 +67,7 @@ for i in range(len(b)):
 def get_qc(file,par):
     par=par
     data=[]
-    for i in file[1:9000]:
+    for i in file[1:len(file)-1]:
         temp=i[par]
         data.append(temp)
     return data
