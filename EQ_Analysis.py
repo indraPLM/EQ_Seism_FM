@@ -166,7 +166,7 @@ if len(m2)==0:
 else:
     del2=round((float(m2[0]) - float(m0)),2)
     del2=str(del2)
-    del22=round((float(d2[0]) - float(m0)),2)
+    del22=round((float(d2[0]) - float(d0)),2)
     del22=str(del22)
 
 import folium
