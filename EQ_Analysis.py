@@ -100,22 +100,22 @@ mag = get_text(mag)
 mag = fix_float(mag)
 dep = soup.find_all('dalam')
 dep = get_text(dep)
-area = soup.find_all('gempa')
-area = get_text(area)
+#area = soup.find_all('gempa')
+#area = get_text(area)
 
-l_area=[]
-for i in range(len(area)):
-    a=area[i].split()
-    if len(area[i].split()) == 12:
-        text=a[9]+' '+a[10]+' '+a[11]
-    if len(area[i].split()) == 11:
-        text=a[9]+' '+a[10]
-    if len(area[i].split()) == 10:
-        text=a[9]
-    l_area.append(text)
+#l_area=[]
+#for i in range(len(area)):
+#    a=area[i].split()
+#    if len(area[i].split()) == 12:
+#        text=a[9]+' '+a[10]+' '+a[11]
+#    if len(area[i].split()) == 11:
+#        text=a[9]+' '+a[10]
+#    if len(area[i].split()) == 10:
+#        text=a[9]
+#    l_area.append(text)
 
 df_bmkg=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
-                 'depth':dep,'area':l_area})
+                 'depth':dep})
 df_bmkg['waktu']=pd.to_datetime(df_bmkg['waktu'])
 df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
 
