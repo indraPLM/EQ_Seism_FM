@@ -155,11 +155,15 @@ del1=round((float(m1[0]) - float(m0)),2)
 del1=str(del1)
 del11=round((float(d1[0]) - float(d0)),2)
 del11=str(del11)
-                          
-del2=round((float(m2[0]) - float(m0)),2)
-del2=str(del2)
-del22=round((float(d2[0]) - float(m0)),2)
-del22=str(del22)
+
+if len(m2)==0:
+    del2 = ' '
+    del22 = ' '
+else:
+    del2=round((float(m2[0]) - float(m0)),2)
+    del2=str(del2)
+    del22=round((float(d2[0]) - float(m0)),2)
+    del22=str(del22)
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
