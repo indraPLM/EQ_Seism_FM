@@ -175,9 +175,9 @@ m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 if (len(x1)== 0 and len(x2) ==0):
-    folium.Marker(location=[y0,x0], icon=folium.Icon(icon 
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='B', prefix='fa',color='red'),).add_to(m)
 
-if len(x2)== 1:
+if (len(x1)== 1 and len(x2)==1):
     x1=str(x1[0])
     y1=str(y1[0])
     x2=str(x2[0])
@@ -185,7 +185,10 @@ if len(x2)== 1:
     folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='red'),).add_to(m)
     folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
     folium.Marker(location=[y2,x2], icon=folium.Icon(icon='U',prefix='fa',color='green'),).add_to(m)
-else:
+
+if (len(x1)==1 and len(x2)==0):
+    x1=str(x1[0])
+    y1=str(y1[0])
     folium.Marker(location=[y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='red'),).add_to(m)
     folium.Marker(location=[y1,x1], icon=folium.Icon(icon='G',prefix='fa',color='blue'),).add_to(m)
 
@@ -201,8 +204,11 @@ with col1:
     m0=str(m0)
     st.metric(label="BMKG", value="%s" %(m0), delta=" ")
 with col2:
-    m1=str(m1[0])
-    st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
+    if len(m1) == 0:
+        st.metric(label= "GFZ", value = " ")
+    else:
+        m1=str(m1[0])
+        st.metric(label="GFZ", value="%s" %(m1), delta=" %s" %(del1))
 with col3:
     if len(m2) == 0:
         st.metric(label="USGS", value= " ")
@@ -213,8 +219,11 @@ with col4:
     d0=str(d0)
     st.metric(label="BMKG", value="%s" %(d0), delta= " " )
 with col5:
-    d1=str(d1[0])
-    st.metric(label="GFZ", value= "%s" %(d1), delta= "%s" %(del11))
+    if len(d1) == 0:
+        st.metric(label="GFZ", value=" ")
+    else:
+        d1=str(d1[0])
+        st.metric(label="GFZ", value= "%s" %(d1), delta= "%s" %(del11))
 with col6:
     if len(d2) == 0:
         st.metric (label = "USGS", value=" ")
