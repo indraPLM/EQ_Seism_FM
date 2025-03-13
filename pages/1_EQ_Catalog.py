@@ -63,7 +63,7 @@ event_qc=[]
 for i in range(len(b)):
     qc=b[i].split('|')
     event_qc.append(qc)
-print(len(file))
+print(len(event_qc))
 def get_qc(file,par):
     par=par
     data=[]
