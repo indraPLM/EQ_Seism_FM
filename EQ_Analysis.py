@@ -151,10 +151,14 @@ for i in range(len(df_usgs['time_usgs'])):
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
-del1=round((float(m1[0]) - float(m0)),2)
-del1=str(del1)
-del11=round((float(d1[0]) - float(d0)),2)
-del11=str(del11)
+if len(m1)==0:
+    del1= ' '
+    del11= ' '
+else:
+    del1=round((float(m1[0]) - float(m0)),2)
+    del1=str(del1)
+    del11=round((float(d1[0]) - float(d0)),2)
+    del11=str(del11)
 
 if len(m2)==0:
     del2 = ' '
@@ -170,9 +174,12 @@ tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_
 m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
-x1=str(x1[0])
-y1=str(y1[0])
+if (len(x1)== 0 and len(x2) ==0):
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon 
+
 if len(x2)== 1:
+    x1=str(x1[0])
+    y1=str(y1[0])
     x2=str(x2[0])
     y2=str(y2[0])
     folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='B',prefix='fa',color='red'),).add_to(m)
