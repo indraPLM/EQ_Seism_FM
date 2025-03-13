@@ -49,7 +49,7 @@ for i in range(len(b)):
 def get_fc(file,par):
     par=par
     data=[]
-    for i in file[1:700]:
+    for i in file[1:len(file)-2]:
         temp=i[par]
         data.append(temp)
     return data
