@@ -65,32 +65,54 @@ def get_fc(file,par):
         data.append(temp)
     return data
 
+#event_id=get_fc(event_fc,0)
+#date_time=get_fc(event_fc,1)
+#mode=get_fc(event_fc,2)
+#status=get_fc(event_fc,3)
+#phase=get_fc(event_fc,4)
+#mag=get_fc(event_fc,5)
+#type_mag= get_fc(event_fc,6)
+#n_mag=get_fc(event_fc,7)
+#azimuth=get_fc(event_fc,8)
+#rms=get_fc(event_fc,9)
+#latitude=get_fc(event_fc,10)
+#longitude=get_fc(event_fc,11)
+#depth=get_fc(event_fc,13)
+#S1=get_fc(event_fc,14)
+#D1=get_fc(event_fc,15)
+#R1=get_fc(event_fc,16)
+#S2=get_fc(event_fc,17)
+#D2=get_fc(event_fc,18)
+#R2=get_fc(event_fc,19)
+#type_event=get_fc(event_fc,20)
+#remarks=get_fc(event_fc,21)
+
+#df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mode':mode,'status':status,
+#                  'phase':phase,'mag':mag,'type_mag':type_mag,'n_mag':n_mag,'azimuth':azimuth,
+#                 'rms':rms,'lat':latitude,'lon':longitude,'depth':depth,'S1':S1,'D1':D1,'R1':R1,
+#                  'S2':S2,'D2':D2,'R2':R2,'type_event':type_event,'remarks':remarks})
+
 event_id=get_fc(event_fc,0)
 date_time=get_fc(event_fc,1)
-mode=get_fc(event_fc,2)
-status=get_fc(event_fc,3)
-phase=get_fc(event_fc,4)
+date_create=get_fc(event_fc,2)
+mode=get_fc(event_fc,3)
+status=get_fc(event_fc,4)
 mag=get_fc(event_fc,5)
 type_mag= get_fc(event_fc,6)
-n_mag=get_fc(event_fc,7)
-azimuth=get_fc(event_fc,8)
-rms=get_fc(event_fc,9)
-latitude=get_fc(event_fc,10)
-longitude=get_fc(event_fc,11)
-depth=get_fc(event_fc,13)
-S1=get_fc(event_fc,14)
-D1=get_fc(event_fc,15)
-R1=get_fc(event_fc,16)
-S2=get_fc(event_fc,17)
-D2=get_fc(event_fc,18)
-R2=get_fc(event_fc,19)
-type_event=get_fc(event_fc,20)
-remarks=get_fc(event_fc,21)
+latitude=get_fc(event_fc,7)
+longitude=get_fc(event_fc,8)
+depth=get_fc(event_fc,9)
+S1=get_fc(event_fc,10)
+D1=get_fc(event_fc,11)
+R1=get_fc(event_fc,12)
+S2=get_fc(event_fc,13)
+D2=get_fc(event_fc,14)
+R2=get_fc(event_fc,15)
 
-df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mode':mode,'status':status,
-                  'phase':phase,'mag':mag,'type_mag':type_mag,'n_mag':n_mag,'azimuth':azimuth,
-                 'rms':rms,'lat':latitude,'lon':longitude,'depth':depth,'S1':S1,'D1':D1,'R1':R1,
-                  'S2':S2,'D2':D2,'R2':R2,'type_event':type_event,'remarks':remarks})
+
+df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'date_create':date_create,'mode':mode,
+                   'status':status,'mag':mag,'type_mag':type_mag,'lat':latitude,'lon':longitude,
+                   'depth':depth,'S1':S1,'D1':D1,'R1':R1,'S2':S2,'D2':D2,'R2':R2})
 
 def fix_longitude(x):
     x = x.strip()
@@ -152,7 +174,7 @@ ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
-                  'depth','S1','D1','R1','S2','D2','R2','remarks']]
+                  'depth','S1','D1','R1','S2','D2','R2']]
 x0=list(cmt.fixedLon)
 y0=list(cmt.fixedLat)
 z0=list(cmt.depth)
@@ -199,29 +221,29 @@ st.pyplot(fig)
 
 st.dataframe(cmt)
 
-os.system('rm *.png')
-S1_list=cmt['S1'].tolist()
-D1_list=cmt['D1'].tolist()
-R1_list=cmt['R1'].tolist()
-dep_list=cmt['depth'].tolist()
+#os.system('rm *.png')
+#S1_list=cmt['S1'].tolist()
+#D1_list=cmt['D1'].tolist()
+#R1_list=cmt['R1'].tolist()
+#dep_list=cmt['depth'].tolist()
 
-cmt_plot=[]
-for i in range(len(S1_list)):
-    cmt_data=[S1_list[i],D1_list[i],R1_list[i]]
-    cmt_plot.append(cmt_data)
-
-for i in range(len(cmt_plot)):
-    no=str(i)
-    if dep_list[i] <= 60 :
-        c1='r'
-        fig = beachball(cmt_plot[i],facecolor=c1)
-    elif 60 < dep_list[i] <= 300 :
-        c2='yellow'
-        fig = beachball(cmt_plot[i],facecolor=c2)
-    elif dep_list[i] >= 300 :
-        c3='g'
-        fig = beachball(cmt_plot[i],facecolor=c3)
+#cmt_plot=[]
+#for i in range(len(S1_list)):
+#    cmt_data=[S1_list[i],D1_list[i],R1_list[i]]
+#    cmt_plot.append(cmt_data)
+#
+#for i in range(len(cmt_plot)):
+#    no=str(i)
+#    if dep_list[i] <= 60 :
+#        c1='r'
+#        fig = beachball(cmt_plot[i],facecolor=c1)
+#    elif 60 < dep_list[i] <= 300 :
+#        c2='yellow'
+#        fig = beachball(cmt_plot[i],facecolor=c2)
+#    elif dep_list[i] >= 300 :
+#        c3='g'
+#        fig = beachball(cmt_plot[i],facecolor=c3)
     
-    fig.savefig('cmt_%s.png' %(no))
+#    fig.savefig('cmt_%s.png' %(no))
 
 #plt.show()
