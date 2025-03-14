@@ -4,7 +4,7 @@ import folium
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-from datetime import timedelta
+from datetime import timedelta,datetime
 from streamlit_folium import st_folium
 
 st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
@@ -12,7 +12,8 @@ st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 #st.write("# Earthquake Data Analysis 👨🏽‍💼")
 #st.sidebar.success("EQ Analysis Menu")
 
-url='https://geofon.gfz.de/fdsnws/event/1/query?end=2025-03-13&limit=40&format=text'
+now=datetime.today().strftime('%Y-%m-%d')
+url='https://geofon.gfz.de/fdsnws/event/1/query?end=%s&limit=40&format=text' %(now)
 page=requests.get(url)
 url_pages=BeautifulSoup(page.text, 'html')
 
