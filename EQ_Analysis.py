@@ -178,28 +178,28 @@ m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 if (len(x1)== 0 and len(x2) ==0):
-    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='1', color='red'),).add_to(m)
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa', color='red'),).add_to(m)
 
 if (len(x1)== 1 and len(x2)==1):
     x1=str(x1[0])
     y1=str(y1[0])
     x2=str(x2[0])
     y2=str(y2[0])
-    folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='1',color='red'),).add_to(m)
-    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='2',color='blue'),).add_to(m)
-    folium.Marker(location=[y2,x2], icon=folium.Icon(icon='3',color='green'),).add_to(m)
+    folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='cirlce-2',prefix='fa',color='blue'),).add_to(m)
+    folium.Marker(location=[y2,x2], icon=folium.Icon(icon='cirlce-3',prefix='fa',color='green'),).add_to(m)
 
 if (len(x1)==1 and len(x2)==0):
     x1=str(x1[0])
     y1=str(y1[0])
-    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='1',color='red'),).add_to(m)
-    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='2',color='blue'),).add_to(m)
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='cirlce-2',prefix='fa',color='blue'),).add_to(m)
 
 if (len(x1)==0 and len(x2) ==1):
     x2=str(x2[0])
     y2=str(y2[0])
-    folium.Marker(location =[y0,x0], icon=folium.Icon(icon='1',color='red'),).add_to(m)
-    folium.Marker(location =[y2,x2], icon=folium.Icon(icon='3', color='green'),).add_to(m)
+    folium.Marker(location =[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location =[y2,x2], icon=folium.Icon(icon='cirlce-3',prefix='fa', color='green'),).add_to(m)
 
 
 col1,col2 =st.columns(2)
