@@ -12,7 +12,9 @@ st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 #st.write("# Earthquake Data Analysis 👨🏽‍💼")
 #st.sidebar.success("EQ Analysis Menu")
 
-now=datetime.today().strftime('%Y-%m-%d')
+now=datetime.today()+ timedelta(days=1)
+now.strftime('%Y-%m-%d')
+
 url='https://geofon.gfz.de/fdsnws/event/1/query?end=%s&limit=40&format=text' %(now)
 page=requests.get(url)
 url_pages=BeautifulSoup(page.text, 'html')
