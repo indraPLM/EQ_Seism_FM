@@ -10,8 +10,8 @@ from obspy.geodetics import locations2degrees, degrees2kilometers
 
 st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 
-#st.write("# Earthquake Data Analysis 👨🏽‍💼")
-#st.sidebar.success("EQ Analysis Menu")
+st.write("# Earthquake Data Analysis 👨🏽‍💼")
+st.sidebar.success("EQ Analysis Menu")
 
 now=datetime.today()+ timedelta(days=1)
 now.strftime('%Y-%m-%d')
