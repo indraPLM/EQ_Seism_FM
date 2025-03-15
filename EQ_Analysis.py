@@ -178,28 +178,28 @@ m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 if (len(x1)== 0 and len(x2) ==0):
-    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa', color='red'),).add_to(m)
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon="1",prefix='fa', color='red'),).add_to(m)
 
 if (len(x1)== 1 and len(x2)==1):
     x1=str(x1[0])
     y1=str(y1[0])
     x2=str(x2[0])
     y2=str(y2[0])
-    folium.Marker(location=[ y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='cirlce-2',prefix='fa',color='blue'),).add_to(m)
-    folium.Marker(location=[y2,x2], icon=folium.Icon(icon='cirlce-3',prefix='fa',color='green'),).add_to(m)
+    folium.Marker(location=[ y0,x0], icon=folium.Icon(icon="1",prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon="2",prefix='fa',color='blue'),).add_to(m)
+    folium.Marker(location=[y2,x2], icon=folium.Icon(icon="3",prefix='fa',color='green'),).add_to(m)
 
 if (len(x1)==1 and len(x2)==0):
     x1=str(x1[0])
     y1=str(y1[0])
-    folium.Marker(location=[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location=[y1,x1], icon=folium.Icon(icon='cirlce-2',prefix='fa',color='blue'),).add_to(m)
+    folium.Marker(location=[y0,x0], icon=folium.Icon(icon="1",prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location=[y1,x1], icon=folium.Icon(icon="2",prefix='fa',color='blue'),).add_to(m)
 
 if (len(x1)==0 and len(x2) ==1):
     x2=str(x2[0])
     y2=str(y2[0])
-    folium.Marker(location =[y0,x0], icon=folium.Icon(icon='cirlce-1',prefix='fa',color='red'),).add_to(m)
-    folium.Marker(location =[y2,x2], icon=folium.Icon(icon='cirlce-3',prefix='fa', color='green'),).add_to(m)
+    folium.Marker(location =[y0,x0], icon=folium.Icon(icon="1",prefix='fa',color='red'),).add_to(m)
+    folium.Marker(location =[y2,x2], icon=folium.Icon(icon="3",prefix='fa', color='green'),).add_to(m)
 
 
 col1,col2 =st.columns(2)
@@ -241,6 +241,23 @@ with col6:
         d2=str(d2[0])
         st.metric(label="3.USGS", value="%s" %(d2), delta= "%s " %(del22))
 
+col1 =st.columns(1)
+with col1:
+    st.markdown(""" ## Longitude/Latitude""")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    y0,x0
+    st.metric(label="1.BMKG", value="%s ; %s" %(x0,y0), delta=" ")
+with col2:
+    x1=str(x1[0])
+    y1=str(y1[0])
+    st.metric(label="2.GFZ", value="%s ; %s" %(x1,y1), delta=" ")
+with col3:
+    x2=str(x2[0])
+    y2=str(y2[0])
+    st.metric(label="3.USGS", value="%s ; %s" %(x2,y2), delta=" ")
+    
 st_data = st_folium(m, width=1000)
 
 st.markdown(""" ### 15 Data Gempabumi Terkini""")
