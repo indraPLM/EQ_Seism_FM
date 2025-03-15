@@ -163,7 +163,7 @@ else:
     del1=str(del1)
     del11=round((float(d1[0]) - float(d0)),2)
     del11=str(del11)
-    j1=locations2degrees(x0, y0, x1[0], y1[0])
+    j1=locations2degrees(float(x0), float(y0), float(x1[0]), float(y1[0]))
     del111=degrees2kilometers(j1)
 
 if len(m2)==0:
@@ -174,7 +174,7 @@ else:
     del2=str(del2)
     del22=round((float(d2[0]) - float(d0)),2)
     del22=str(del22)
-    j2=locations2degrees(x0, y0, x2[0], y2[0])
+    j2=locations2degrees(float(x0), float(y0), float(x2[0]), float(y2[0]))
     del222=degrees2kilometers(j2)
 
 import folium
