@@ -181,7 +181,7 @@ import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
 m= folium.Map(( y0,x0),tiles=tiles, attr='ESRI', zoom_start=8)
 geo_json_data = requests.get("https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson").json()
-folium.GeoJson(geo_json_data, style_function=lambda feature: {"color": "orange","weight": 0.5,},).add_to(m)
+folium.GeoJson(geo_json_data, style_function=lambda feature: {"color": "orange","weight": 1.0,},).add_to(m)
 
 #html1 = """ <p> Mag: %s </p> <p> Kedalaman : %s </p> """ %(m0, d0)
 if (len(x1)== 0 and len(x2) ==0):
