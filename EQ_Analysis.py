@@ -247,13 +247,15 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.metric(label="1.BMKG", value="%s ; %s" %(x0,y0), delta=" ")
 with col2:
-    #x1=str(x1[0])
-    #y1=str(y1[0])
-    st.metric(label="2.GFZ", value="%s ; %s" %(x1,y1), delta=" ")
+    if len(x1)==0:
+        st.metric(label="2.GFZ", value=" ", delta=" ")
+    else:
+        st.metric(label="2.GFZ", value="%s ; %s" %(x1,y1), delta=" ")
 with col3:
-    #x2=str(x2[0])
-    #y2=str(y2[0])
-    st.metric(label="3.USGS", value="%s ; %s" %(x2,y2), delta=" ")
+    if len(x2)==0:        
+        st.metric(label="3.USGS", value=" ", delta=" ")
+    else:
+        st.metric(label="3.USGS", value="%s ; %s" %(x2,y2), delta=" ")
     
 st_data = st_folium(m, width=1000)
 
