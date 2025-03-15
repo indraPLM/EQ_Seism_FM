@@ -241,10 +241,7 @@ with col6:
         d2=str(d2[0])
         st.metric(label="3.USGS", value="%s" %(d2), delta= "%s " %(del22))
 
-col1 =st.columns(1)
-with col1:
-    st.markdown(""" ## Longitude/Latitude""")
-
+st.markdown(""" ## Longitude/Latitude""")
 col1, col2, col3 = st.columns(3)
 with col1:
     y0,x0
