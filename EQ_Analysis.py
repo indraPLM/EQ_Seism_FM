@@ -163,9 +163,8 @@ else:
     del1=str(del1)
     del11=round((float(d1[0]) - float(d0)),2)
     del11=str(del11)
-    
-#locations2degrees(5, 5, 10, 10)
-#degrees2kilometers(1)
+    j1=locations2degrees(x0, y0, x1[0], y1[0])
+    del111=degrees2kilometers(j1)
 
 if len(m2)==0:
     del2 = ' '
@@ -175,6 +174,8 @@ else:
     del2=str(del2)
     del22=round((float(d2[0]) - float(d0)),2)
     del22=str(del22)
+    j2=locations2degrees(x0, y0, x2[0], y2[0])
+    del222=degrees2kilometers(j2)
 
 import folium
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
@@ -254,12 +255,12 @@ with col2:
     if len(x1)==0:
         st.metric(label="2.GFZ", value=" ", delta=" ")
     else:
-        st.metric(label="2.GFZ", value="%s ; %s" %(x1,y1), delta=" ")
+        st.metric(label="2.GFZ", value="%s ; %s" %(x1,y1), delta="%s " %(del111))
 with col3:
     if len(x2)==0:        
         st.metric(label="3.USGS", value=" ", delta=" ")
     else:
-        st.metric(label="3.USGS", value="%s ; %s" %(x2,y2), delta=" ")
+        st.metric(label="3.USGS", value="%s ; %s" %(x2,y2), delta="%s " %(del222))
     
 st_data = st_folium(m, width=1000)
 
