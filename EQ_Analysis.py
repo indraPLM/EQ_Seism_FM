@@ -244,7 +244,6 @@ with col6:
 st.markdown(""" ## Longitude/Latitude""")
 col1, col2, col3 = st.columns(3)
 with col1:
-    y0,x0
     st.metric(label="1.BMKG", value="%s ; %s" %(x0,y0), delta=" ")
 with col2:
     x1=str(x1[0])
