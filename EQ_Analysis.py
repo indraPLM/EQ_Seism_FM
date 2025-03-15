@@ -6,6 +6,7 @@ import requests
 import pandas as pd
 from datetime import timedelta,datetime
 from streamlit_folium import st_folium
+from obspy.geodetics import locations2degrees, degrees2kilometers
 
 st.set_page_config(page_title="EQ Analyis", layout="wide", page_icon="🌏")
 
@@ -133,10 +134,10 @@ x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
     if abs(timedelta.total_seconds(a-b)) < 5:
-        x=df_gfz['lon'][i]
-        y=df_gfz['lat'][i]
-        m=df_gfz['mag'][i]
-        d=df_gfz['depth'][i]
+        x=round(df_gfz['lon'][i],2)
+        y=round(df_gfz['lat'][i],2)
+        m=round(df_gfz['mag'][i],2)
+        d=round(df_gfz['depth'][i],2)
         x1.append(x),y1.append(y),m1.append(m),d1.append(d)
     else:
         continue
@@ -147,10 +148,10 @@ for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
     print([a,b])
     if abs(timedelta.total_seconds(a-b)) < 5:
-        x=df_usgs['lon'][i]
-        y=df_usgs['lat'][i]
-        m=df_usgs['mag'][i]
-        d=df_usgs['depth'][i]
+        x=round(df_usgs['lon'][i],2)
+        y=round(df_usgs['lat'][i],2)
+        m=round(df_usgs['mag'][i],2)
+        d=round(df_usgs['depth'][i],2)
         x2.append(x),y2.append(y),m2.append(m),d2.append(d)
     else:
         continue
@@ -162,6 +163,9 @@ else:
     del1=str(del1)
     del11=round((float(d1[0]) - float(d0)),2)
     del11=str(del11)
+    
+#locations2degrees(5, 5, 10, 10)
+#degrees2kilometers(1)
 
 if len(m2)==0:
     del2 = ' '
