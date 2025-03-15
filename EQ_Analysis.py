@@ -255,7 +255,7 @@ with col3:
     if len(x2)==0:        
         st.metric(label="3.USGS", value=" ", delta=" ")
     else:
-        st.metric(label="3.USGS", value="%s ; %s" %(round(x2,2),round(y2,2), delta=" ")
+        st.metric(label="3.USGS", value="%s ; %s" %(round(x2,2),round(y2,2)), delta=" ")
     
 st_data = st_folium(m, width=1000)
 
