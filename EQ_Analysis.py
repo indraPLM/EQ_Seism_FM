@@ -39,13 +39,24 @@ def get_qc(file,par):
         data.append(temp)
     return data
 
+def fix_float(z):
+    temp=[]
+    for i in range(len(z)):
+        b=float(z[i])
+        temp.append(b)
+    return temp
+
 event_id=get_qc(event_qc,0)
 date_time=get_qc(event_qc,1)
 mag=get_qc(event_qc,10)
+mag = fix_float(mag)
 typemag=get_qc(event_qc,9)
 lat=get_qc(event_qc,2)
+lat = fix_float(lat)
 lon=get_qc(event_qc,3)
+lon = fix_float(lon)
 depth=get_qc(event_qc,4)
+depth = fix_float(depth)
 remarks=get_qc(event_qc,12)
 
 df_gfz = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'typemag':typemag,'lat':lat,
@@ -84,12 +95,7 @@ def get_text(file):
         list_text.append(temp)
     return list_text
 
-def fix_float(z):
-    temp=[]
-    for i in range(len(z)):
-        b=float(z[i])
-        temp.append(b)
-    return temp
+
 
 eventid = soup.find_all('eventid')
 eventid = get_text(eventid)
