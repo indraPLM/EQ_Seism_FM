@@ -49,7 +49,7 @@ def fix_float(z):
 event_id=get_qc(event_qc,0)
 date_time=get_qc(event_qc,1)
 mag=get_qc(event_qc,10)
-mag = fix_float(mag)
+#mag = fix_float(mag)
 typemag=get_qc(event_qc,9)
 lat=get_qc(event_qc,2)
 lat = fix_float(lat)
