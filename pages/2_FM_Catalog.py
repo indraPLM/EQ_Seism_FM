@@ -201,9 +201,9 @@ if 15 < dist_lon <= 30:
 if 10 < dist_lon <= 15 :
     w=0.5
 if 5 < dist_lon <= 10 :
-    w=0.25
+    w=0.40
 if dist_lon <= 5:
-    w=0.1
+    w=0.30
 
 
 for i in range(len(fm_list)):
