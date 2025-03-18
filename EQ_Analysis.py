@@ -49,7 +49,7 @@ def fix_float(z):
 event_id=get_qc(event_qc,0)
 date_time=get_qc(event_qc,1)
 mag=get_qc(event_qc,10)
-#mag = fix_float(mag)
+mag = fix_float(mag)
 typemag=get_qc(event_qc,9)
 lat=get_qc(event_qc,2)
 lat = fix_float(lat)
@@ -61,7 +61,7 @@ remarks=get_qc(event_qc,12)
 
 df_gfz = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'typemag':typemag,'lat':lat,
                    'lon':lon,'depth':depth,'remarks':remarks})
-df_gfz['mag_text']=df_gfz['mag']+' ' +df_gfz['typemag']
+#df_gfz['mag_text']=df_gfz['mag']+' ' +df_gfz['typemag']
 df_gfz['date_time']=pd.to_datetime(df_gfz['date_time'])
 
 import geopandas
@@ -139,7 +139,7 @@ a=temp[0]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
-    if abs(timedelta.total_seconds(a-b)) < 5:
+    if abs(timedelta.total_seconds(a-b)) < 10:
         x=round(df_gfz['lon'][i],2)
         y=round(df_gfz['lat'][i],2)
         m=round(df_gfz['mag'][i],2)
@@ -153,7 +153,7 @@ x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
     print([a,b])
-    if abs(timedelta.total_seconds(a-b)) < 5:
+    if abs(timedelta.total_seconds(a-b)) < 10:
         x=round(df_usgs['lon'][i],2)
         y=round(df_usgs['lat'][i],2)
         m=round(df_usgs['mag'][i],2)
