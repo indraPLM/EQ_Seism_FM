@@ -211,7 +211,7 @@ cmt=[]
 for data in url_pages.find_all("p"): 
     a=data.get_text()
     cmt.append(a)
-cmt_line=text[0].split('\n')
+cmt_line=cmt[0].split('\n')
 
 date_cmt,time_cmt,lat_cmt,lon_cmt,depth_cmt,mb_cmt,Ms_cmt,loc_cmt=[],[],[],[],[],[],[],[]
 S1_cmt,D1_cmt,R1_cmt,S2_cmt,D2_cmt,R2_cmt=[],[],[],[],[],[]
