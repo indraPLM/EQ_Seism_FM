@@ -23,7 +23,7 @@ import cartopy
 
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
 
-st.sidebar.header("FOCAL BMKG :")
+st.sidebar.header("Focal BMKG :")
 time_start=st.sidebar.text_input('Start Time:', '2024-09-01 00:00:00')
 time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
 
