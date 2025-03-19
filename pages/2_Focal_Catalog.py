@@ -47,22 +47,6 @@ st.sidebar.header("Global CMT :")
 time_start1=st.sidebar.text_input('Start Time:', '2000-01-01 00:00')
 time_end1=st.sidebar.text_input('End Time:', '2020-12-31 23:59')
 
-layout4 = st.sidebar.columns(2)
-with layout4[0]: 
-    North1 = st.text_input('North:', '6.0') 
-    North1 = float(North1)
-with layout4[-1]: 
-    South1 = st.text_input('South:', '-13.0')
-    South1 = float(South1)
- 
-layout5 = st.sidebar.columns(2)
-with layout5[0]: 
-    West1 = st.text_input('West:', '90.0')
-    West1 = float(West1)
-with layout5[-1]: 
-    East1 = st.text_input('East:', '142.0')
-    East1 = float(East1)
-
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
 
 url='http://202.90.198.41/qc_focal.txt'
@@ -292,10 +276,10 @@ df['D2'] = fix_float(df['D2'])
 df['R2'] = fix_float(df['R2'])
 
 df= df[(df['Datetime'] > time_start1) & (df['Datetime'] < time_end1)]
-df= df[(df['Lon'] > West1) & (df['Lon'] < East1)]
-df= df[(df['Lat'] > South1) & (df['Lat'] < North1)]
+df= df[(df['Lon'] > West) & (df['Lon'] < East)]
+df= df[(df['Lat'] > South) & (df['Lat'] < North)]
 
-region=[West1,East1,South1-1,North1+1]
+region=[West,East,South-1,North+1]
 
 projection = ccrs.PlateCarree(central_longitude=120.0)
 
