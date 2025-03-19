@@ -50,18 +50,18 @@ time_end1=st.sidebar.text_input('End Time:', '2020-12-31 23:59')
 layout4 = st.sidebar.columns(2)
 with layout4[0]: 
     North1 = st.text_input('North:', '6.0') 
-    North1 = float(North)
+    North1 = float(North1)
 with layout4[-1]: 
     South1 = st.text_input('South:', '-13.0')
-    South1 = float(South)
+    South1 = float(South1)
  
 layout5 = st.sidebar.columns(2)
 with layout5[0]: 
     West1 = st.text_input('West:', '90.0')
-    West1 = float(West)
+    West1 = float(West1)
 with layout5[-1]: 
     East1 = st.text_input('East:', '142.0')
-    East1 = float(East)
+    East1 = float(East1)
 
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
 
