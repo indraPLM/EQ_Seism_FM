@@ -202,78 +202,87 @@ st.dataframe(cmt)
 
 st.markdown( """ ### Peta Global CMT Harvard (sumber : https://www.globalcmt.org) """)
 
-url='https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk' 
-print(url)
-page=requests.get(url)
-url_pages=BeautifulSoup(page.text, 'html')
-
-cmt=[]
-for data in url_pages.find_all("p"): 
-    a=data.get_text()
-    cmt.append(a)
-cmt_line=cmt[0].split('\n')
-
-date_cmt,time_cmt,lat_cmt,lon_cmt,depth_cmt,mb_cmt,Ms_cmt,loc_cmt=[],[],[],[],[],[],[],[]
-S1_cmt,D1_cmt,R1_cmt,S2_cmt,D2_cmt,R2_cmt=[],[],[],[],[],[]
-datetime_cmt=[]
-for i in range(int(len(cmt_line)/5)-1):
-    date=cmt_line[(i*5)+0][5:15]
-    time=cmt_line[(i*5)+0][16:21]
-    lat=cmt_line[(i*5)+0][26:33]
-    lon=cmt_line[(i*5)+0][35:41]
-    depth=cmt_line[(i*5)+0][43:47]
-    mb=cmt_line[(i*5)+0][47:51]
-    Ms=cmt_line[(i*5)+0][52:55]
-    loc=cmt_line[(i*5)+0][56:80]
-    datetime=date+' '+time
-    date_cmt.append(date)
-    time_cmt.append(time)
-    lat_cmt.append(lat)
-    lon_cmt.append(lon)
-    depth_cmt.append(depth)
-    mb_cmt.append(mb)
-    Ms_cmt.append(Ms)
-    loc_cmt.append(loc)
-    datetime_cmt.append(datetime)
+def get_cmt(url):    
+    page=requests.get(url)
+    url_pages=BeautifulSoup(page.text, 'html')
+    
+    cmt=[]
+    for data in url_pages.find_all("p"): 
+        a=data.get_text()
+        cmt.append(a)
+    cmt_line=cmt[0].split('\n')
+    date_cmt,time_cmt,lat_cmt,lon_cmt,depth_cmt,mb_cmt,Ms_cmt,loc_cmt=[],[],[],[],[],[],[],[]
+    S1_cmt,D1_cmt,R1_cmt,S2_cmt,D2_cmt,R2_cmt=[],[],[],[],[],[]
+    datetime_cmt=[]
+    for i in range(int(len(cmt_line)/5)-1):
+        date=cmt_line[(i*5)+0][5:15]
+        time=cmt_line[(i*5)+0][16:21]
+        lat=cmt_line[(i*5)+0][26:33]
+        lon=cmt_line[(i*5)+0][35:41]
+        depth=cmt_line[(i*5)+0][43:47]
+        mb=cmt_line[(i*5)+0][47:51]
+        Ms=cmt_line[(i*5)+0][52:55]
+        loc=cmt_line[(i*5)+0][56:80]
+        datetime=date+' '+time
+        date_cmt.append(date)
+        time_cmt.append(time)
+        lat_cmt.append(lat)
+        lon_cmt.append(lon)
+        depth_cmt.append(depth)
+        mb_cmt.append(mb)
+        Ms_cmt.append(Ms)
+        loc_cmt.append(loc)
+        datetime_cmt.append(datetime)
    
-    S1=cmt_line[(i*5)+4][56:60]
-    D1=cmt_line[(i*5)+4][61:64]
-    R1=cmt_line[(i*5)+4][65:69]
-    S2=cmt_line[(i*5)+4][69:72]
-    D2=cmt_line[(i*5)+4][73:76]
-    R2=cmt_line[(i*5)+4][77:80]
-    S1_cmt.append(S1)
-    D1_cmt.append(D1)
-    R1_cmt.append(R1)
-    S2_cmt.append(S2)
-    D2_cmt.append(D2)
-    R2_cmt.append(R2)
-
-df = pd.DataFrame({'Datetime':datetime_cmt,'Mag_mb':mb_cmt,'Mag_Ms':Ms_cmt,'Lat':lat_cmt,'Lon':lon_cmt,
+        S1=cmt_line[(i*5)+4][56:60]
+        D1=cmt_line[(i*5)+4][61:64]
+        R1=cmt_line[(i*5)+4][65:69]
+        S2=cmt_line[(i*5)+4][69:72]
+        D2=cmt_line[(i*5)+4][73:76]
+        R2=cmt_line[(i*5)+4][77:80]
+        S1_cmt.append(S1)
+        D1_cmt.append(D1)
+        R1_cmt.append(R1)
+        S2_cmt.append(S2)
+        D2_cmt.append(D2)
+        R2_cmt.append(R2)
+    df = pd.DataFrame({'Datetime':datetime_cmt,'Mag_mb':mb_cmt,'Mag_Ms':Ms_cmt,'Lat':lat_cmt,'Lon':lon_cmt,
                        'Depth':depth_cmt,'S1':S1_cmt,'D1':D1_cmt,'R1':R1_cmt,
                        'S2':S2_cmt,'D2':D2_cmt,'R2':R2_cmt,'Location':loc_cmt})
+    
+    df['Datetime'] = pd.to_datetime(df['Datetime'])
+    df['Lon'] = pd.to_numeric(df['Lon'],errors = 'coerce')
+    df['Lat'] = pd.to_numeric(df['Lat'],errors = 'coerce')
+
+    df['Mag_mb'] = fix_float(df['Mag_mb'])
+    df['Mag_Ms'] = fix_float(df['Mag_Ms'])
+    df['Depth'] = fix_float(df['Depth'])
+
+    df['S1'] = fix_float(df['S1'])
+    df['D1'] = fix_float(df['D1'])
+    df['R1'] = fix_float(df['R1'])
+
+    df['S2'] = fix_float(df['S2'])
+    df['D2'] = fix_float(df['D2'])
+    df['R2'] = fix_float(df['R2'])
+    return df
+
+url1='https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk'
+url2='https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk'
+url3='https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk'
+cmt_1=get_cmt(url1)
+cmt_2=get_cmt(url2)
+cmt_3=get_cmt(url3)
+
+frames = [cmt_1, cmt_2, cmt_3]
+df = pd.concat(frames)
+
 def fix_float(z):
     temp=[]
     for i in range(len(z)):
         b=float(z[i])
         temp.append(b)
     return temp
-
-df['Datetime'] = pd.to_datetime(df['Datetime'])
-df['Lon'] = pd.to_numeric(df['Lon'],errors = 'coerce')
-df['Lat'] = pd.to_numeric(df['Lat'],errors = 'coerce')
-
-df['Mag_mb'] = fix_float(df['Mag_mb'])
-df['Mag_Ms'] = fix_float(df['Mag_Ms'])
-df['Depth'] = fix_float(df['Depth'])
-
-df['S1'] = fix_float(df['S1'])
-df['D1'] = fix_float(df['D1'])
-df['R1'] = fix_float(df['R1'])
-
-df['S2'] = fix_float(df['S2'])
-df['D2'] = fix_float(df['D2'])
-df['R2'] = fix_float(df['R2'])
 
 df= df[(df['Datetime'] > time_start1) & (df['Datetime'] < time_end1)]
 df= df[(df['Lon'] > West) & (df['Lon'] < East)]
