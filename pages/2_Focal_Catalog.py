@@ -136,7 +136,7 @@ df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df= df[(df['fixedLon'] > West) & (df['fixedLon'] < East)]
 df= df[(df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
-region=[West,East,South-1,North+1]
+region=[West,East,South,North]
                                        
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
@@ -146,7 +146,7 @@ projection = ccrs.PlateCarree(central_longitude=120.0)
 
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((West, East, South-2, North+2))
+ax.set_extent((West, East, South-0.5, North+0.5))
 ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
@@ -279,13 +279,13 @@ df= df[(df['Datetime'] > time_start1) & (df['Datetime'] < time_end1)]
 df= df[(df['Lon'] > West) & (df['Lon'] < East)]
 df= df[(df['Lat'] > South) & (df['Lat'] < North)]
 
-region=[West,East,South-1,North+1]
+region=[West,East,South,North]
 
 projection = ccrs.PlateCarree(central_longitude=120.0)
 
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((West, East, South-2, North+2))
+ax.set_extent((West, East, South-0.5, North+0.5))
 ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
