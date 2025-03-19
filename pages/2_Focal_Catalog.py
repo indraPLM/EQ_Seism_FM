@@ -285,7 +285,7 @@ projection = ccrs.PlateCarree(central_longitude=120.0)
 
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
-ax.set_extent((West1, East1, South1-2, North1+2))
+ax.set_extent((West, East, South-2, North+2))
 ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
