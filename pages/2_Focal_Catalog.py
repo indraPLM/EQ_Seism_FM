@@ -23,7 +23,7 @@ import cartopy
 
 st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
 
-st.sidebar.header("Input Parameter :")
+st.sidebar.header("FOCAL BMKG :")
 time_start=st.sidebar.text_input('Start Time:', '2024-09-01 00:00:00')
 time_end=st.sidebar.text_input('End Time:', '2025-01-31 23:59:59')
 
@@ -42,6 +42,26 @@ with layout3[0]:
 with layout3[-1]: 
     East = st.text_input('East:', '142.0')
     East = float(East)
+
+st.sidebar.header("Global CMT :")
+time_start1=st.sidebar.text_input('Start Time:', '2000-01-01 00:00')
+time_end1=st.sidebar.text_input('End Time:', '2020-12-31 23:59')
+
+layout4 = st.sidebar.columns(2)
+with layout4[0]: 
+    North1 = st.text_input('North:', '6.0') 
+    North1 = float(North)
+with layout4[-1]: 
+    South1 = st.text_input('South:', '-13.0')
+    South1 = float(South)
+ 
+layout5 = st.sidebar.columns(2)
+with layout5[0]: 
+    West1 = st.text_input('West:', '90.0')
+    West1 = float(West)
+with layout5[-1]: 
+    East1 = st.text_input('East:', '142.0')
+    East1 = float(East)
 
 st.markdown( """ ### Peta Focal Mechanism BMKG (sumber : http://202.90.198.41/qc_focal.txt) """)
 
@@ -64,33 +84,6 @@ def get_fc(file,par):
         temp=i[par]
         data.append(temp)
     return data
-
-#event_id=get_fc(event_fc,0)
-#date_time=get_fc(event_fc,1)
-#mode=get_fc(event_fc,2)
-#status=get_fc(event_fc,3)
-#phase=get_fc(event_fc,4)
-#mag=get_fc(event_fc,5)
-#type_mag= get_fc(event_fc,6)
-#n_mag=get_fc(event_fc,7)
-#azimuth=get_fc(event_fc,8)
-#rms=get_fc(event_fc,9)
-#latitude=get_fc(event_fc,10)
-#longitude=get_fc(event_fc,11)
-#depth=get_fc(event_fc,13)
-#S1=get_fc(event_fc,14)
-#D1=get_fc(event_fc,15)
-#R1=get_fc(event_fc,16)
-#S2=get_fc(event_fc,17)
-#D2=get_fc(event_fc,18)
-#R2=get_fc(event_fc,19)
-#type_event=get_fc(event_fc,20)
-#remarks=get_fc(event_fc,21)
-
-#df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mode':mode,'status':status,
-#                  'phase':phase,'mag':mag,'type_mag':type_mag,'n_mag':n_mag,'azimuth':azimuth,
-#                 'rms':rms,'lat':latitude,'lon':longitude,'depth':depth,'S1':S1,'D1':D1,'R1':R1,
-#                  'S2':S2,'D2':D2,'R2':R2,'type_event':type_event,'remarks':remarks})
 
 event_id=get_fc(event_fc,0)
 date_time=get_fc(event_fc,1)
@@ -221,29 +214,141 @@ st.pyplot(fig)
 
 st.dataframe(cmt)
 
-#os.system('rm *.png')
-#S1_list=cmt['S1'].tolist()
-#D1_list=cmt['D1'].tolist()
-#R1_list=cmt['R1'].tolist()
-#dep_list=cmt['depth'].tolist()
+## GLOBAL CMT
 
-#cmt_plot=[]
-#for i in range(len(S1_list)):
-#    cmt_data=[S1_list[i],D1_list[i],R1_list[i]]
-#    cmt_plot.append(cmt_data)
-#
-#for i in range(len(cmt_plot)):
-#    no=str(i)
-#    if dep_list[i] <= 60 :
-#        c1='r'
-#        fig = beachball(cmt_plot[i],facecolor=c1)
-#    elif 60 < dep_list[i] <= 300 :
-#        c2='yellow'
-#        fig = beachball(cmt_plot[i],facecolor=c2)
-#    elif dep_list[i] >= 300 :
-#        c3='g'
-#        fig = beachball(cmt_plot[i],facecolor=c3)
-    
-#    fig.savefig('cmt_%s.png' %(no))
+st.markdown( """ ### Peta Global CMT Harvard (sumber : https://www.globalcmt.org) """)
 
-#plt.show()
+url='https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk' 
+print(url)
+page=requests.get(url)
+url_pages=BeautifulSoup(page.text, 'html')
+
+cmt=[]
+for data in url_pages.find_all("p"): 
+    a=data.get_text()
+    cmt.append(a)
+cmt_line=text[0].split('\n')
+
+date_cmt,time_cmt,lat_cmt,lon_cmt,depth_cmt,mb_cmt,Ms_cmt,loc_cmt=[],[],[],[],[],[],[],[]
+S1_cmt,D1_cmt,R1_cmt,S2_cmt,D2_cmt,R2_cmt=[],[],[],[],[],[]
+datetime_cmt=[]
+for i in range(int(len(cmt_line)/5)-1):
+    date=cmt_line[(i*5)+0][5:15]
+    time=cmt_line[(i*5)+0][16:21]
+    lat=cmt_line[(i*5)+0][26:33]
+    lon=cmt_line[(i*5)+0][35:41]
+    depth=cmt_line[(i*5)+0][43:47]
+    mb=cmt_line[(i*5)+0][47:51]
+    Ms=cmt_line[(i*5)+0][52:55]
+    loc=cmt_line[(i*5)+0][56:80]
+    datetime=date+' '+time
+    date_cmt.append(date)
+    time_cmt.append(time)
+    lat_cmt.append(lat)
+    lon_cmt.append(lon)
+    depth_cmt.append(depth)
+    mb_cmt.append(mb)
+    Ms_cmt.append(Ms)
+    loc_cmt.append(loc)
+    datetime_cmt.append(datetime)
+   
+    S1=cmt_line[(i*5)+4][56:60]
+    D1=cmt_line[(i*5)+4][61:64]
+    R1=cmt_line[(i*5)+4][65:69]
+    S2=cmt_line[(i*5)+4][69:72]
+    D2=cmt_line[(i*5)+4][73:76]
+    R2=cmt_line[(i*5)+4][77:80]
+    S1_cmt.append(S1)
+    D1_cmt.append(D1)
+    R1_cmt.append(R1)
+    S2_cmt.append(S2)
+    D2_cmt.append(D2)
+    R2_cmt.append(R2)
+
+df = pd.DataFrame({'Datetime':datetime_cmt,'Mag_mb':mb_cmt,'Mag_Ms':Ms_cmt,'Lat':lat_cmt,'Lon':lon_cmt,
+                       'Depth':depth_cmt,'S1':S1_cmt,'D1':D1_cmt,'R1':R1_cmt,
+                       'S2':S2_cmt,'D2':D2_cmt,'R2':R2_cmt,'Location':loc_cmt})
+def fix_float(z):
+    temp=[]
+    for i in range(len(z)):
+        b=float(z[i])
+        temp.append(b)
+    return temp
+
+df['Datetime'] = pd.to_datetime(df['Datetime'])
+df['Lon'] = pd.to_numeric(df['Lon'],errors = 'coerce')
+df['Lat'] = pd.to_numeric(df['Lat'],errors = 'coerce')
+
+df['Mag_mb'] = fix_float(df['Mag_mb'])
+df['Mag_Ms'] = fix_float(df['Mag_Ms'])
+df['Depth'] = fix_float(df['Depth'])
+
+df['S1'] = fix_float(df['S1'])
+df['D1'] = fix_float(df['D1'])
+df['R1'] = fix_float(df['R1'])
+
+df['S2'] = fix_float(df['S2'])
+df['D2'] = fix_float(df['D2'])
+df['R2'] = fix_float(df['R2'])
+
+df= df[(df['Datetime'] > time_start1) & (df['Datetime'] < time_end1)]
+df= df[(df['Lon'] > West1) & (df['Lon'] < East1)]
+df= df[(df['Lat'] > South1) & (df['Lat'] < North1)]
+
+region=[West1,East1,South1-1,North1+1]
+
+projection = ccrs.PlateCarree(central_longitude=120.0)
+
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=projection)
+ax.set_extent((West1, East1, South1-2, North1+2))
+ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
+
+cmt=df[['Datetime','Lon','Lat','Mag_mb','Mag_Ms',
+                  'Depth','S1','D1','R1','S2','D2','R2']]
+x0=list(cmt.Lon)
+y0=list(cmt.Lat)
+z0=list(cmt.Depth)
+a=list(cmt.S1)
+b=list(cmt.D1)
+c=list(cmt.R1)
+fm_list=[]
+xy_list=[]
+for i in range(len(a)):
+    x, y = projection.transform_point(x=x0[i], y=y0[i],src_crs=ccrs.Geodetic())
+    focmecs=[a[i],b[i],c[i]]
+    fm_list.append(focmecs)
+    xy_list.append((x,y))
+
+dist_lon=East-West
+if dist_lon >55:
+    w=1.5
+if 40 < dist_lon <= 55:
+    w=1.25
+if 30 < dist_lon <= 40:
+    w=1.0
+if 15 < dist_lon <= 30:
+    w=0.75
+if 10 < dist_lon <= 15 :
+    w=0.5
+if 5 < dist_lon <= 10 :
+    w=0.40
+if dist_lon <= 5:
+    w=0.30
+
+
+for i in range(len(fm_list)):
+    if z0[i] < 60:
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='r')
+        ax.add_collection(b)
+    if 60 < z0[i] < 300:
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='y')
+        ax.add_collection(b)
+    if z0[i] >= 300:
+        b = beach(fm_list[i], xy=xy_list[i],width=w, linewidth=0.5, alpha=0.65, zorder=10,facecolor='g')
+        ax.add_collection(b)
+
+st.pyplot(fig)
+
+st.dataframe(cmt)
