@@ -95,8 +95,6 @@ def get_text(file):
         list_text.append(temp)
     return list_text
 
-
-
 eventid = soup.find_all('eventid')
 eventid = get_text(eventid)
 waktu = soup.find_all('waktu')
@@ -120,6 +118,9 @@ for i in range(len(area)):
 
 df_bmkg=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
                  'depth':dep,'area':l_area})
+df_bmkg['waktu']=pd.to_datetime(df_bmkg['waktu'])
+df_bmkg= df_bmkg[df_bmkg['mag'] >=5]
+
 x0=df_bmkg['lon'].to_list()[0]
 y0=df_bmkg['lat'].to_list()[0]
 m0=df_bmkg['mag'].to_list()[0]
