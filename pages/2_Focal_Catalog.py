@@ -314,19 +314,19 @@ for i in range(len(a)):
 
 dist_lon=East-West
 if dist_lon >55:
-    w=1.
-if 40 < dist_lon <= 55:
     w=0.9
-if 30 < dist_lon <= 40:
+if 40 < dist_lon <= 55:
     w=0.8
-if 15 < dist_lon <= 30:
+if 30 < dist_lon <= 40:
     w=0.7
-if 10 < dist_lon <= 15 :
+if 15 < dist_lon <= 30:
     w=0.6
-if 5 < dist_lon <= 10 :
+if 10 < dist_lon <= 15 :
     w=0.5
-if dist_lon <= 5:
+if 5 < dist_lon <= 10 :
     w=0.4
+if dist_lon <= 5:
+    w=0.3
 
 
 for i in range(len(fm_list)):
