@@ -130,7 +130,7 @@ a=temp[0]
 x1,y1,m1,d1=[],[],[],[]
 for i in range(len(df_gfz['date_time'])):
     b=df_gfz['date_time'][i]
-    if abs(timedelta.total_seconds(a-b)) < 30:
+    if abs(timedelta.total_seconds(a-b)) < 60:
         x=round(df_gfz['lon'][i],2)
         y=round(df_gfz['lat'][i],2)
         m=round(df_gfz['mag'][i],2)
@@ -144,7 +144,7 @@ x2,y2,m2,d2=[],[],[],[]
 for i in range(len(df_usgs['time_usgs'])):
     b=df_usgs['time_usgs'][i]
     print([a,b])
-    if abs(timedelta.total_seconds(a-b)) < 30:
+    if abs(timedelta.total_seconds(a-b)) < 60:
         x=round(df_usgs['lon'][i],2)
         y=round(df_usgs['lat'][i],2)
         m=round(df_usgs['mag'][i],2)
