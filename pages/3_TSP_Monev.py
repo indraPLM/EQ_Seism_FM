@@ -9,8 +9,8 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi',  layout='wide', pag
 
 st.sidebar.header("Input Parameter :")
  
-time_start=st.sidebar.text_input('Start DateTime:', '2024-11-01 00:00:00')
-time_end=st.sidebar.text_input('End DateTime:', '2025-01-31 23:59:59')
+time_start=st.sidebar.text_input('Start DateTime:', '2024-11-01')
+time_end=st.sidebar.text_input('End DateTime:', '2025-01-31')
 
 def split_list(lst, chunk_size):
     chunks = []
@@ -106,7 +106,7 @@ st.map(df_rtsp, latitude="fixedLat", longitude="fixedLon", size="sizemag")
 st.markdown(""" ### Tabel RTSP BMKG """)
 st.dataframe(df_rtsp)
 
-usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=2025-03-02&minmagnitude=6.0'
+usgs_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime=%s&minmagnitude=6.0' %(time_end)
 df_usgs = pd.read_csv(usgs_url)
 
 df_usgs['DATEUSGS']=pd.to_datetime(df_usgs['time'])
