@@ -15,8 +15,8 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
-time_start=st.sidebar.text_input('Start DateTime:', '2025-02-01 00:00:00' )
-time_end=st.sidebar.text_input('End DateTime:', '2025-02-28 23:59:59')
+time_start=st.sidebar.text_input('Start DateTime:', '2025-03-01 00:00:00' )
+time_end=st.sidebar.text_input('End DateTime:', '2025-03-31 23:59:59')
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
