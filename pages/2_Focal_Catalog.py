@@ -83,11 +83,12 @@ R1=get_fc(event_fc,12)
 S2=get_fc(event_fc,13)
 D2=get_fc(event_fc,14)
 R2=get_fc(event_fc,15)
+Reg=get_fc(event_fc,34)
 
 
 df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'date_create':date_create,'mode':mode,
                    'status':status,'mag':mag,'type_mag':type_mag,'lat':latitude,'lon':longitude,
-                   'depth':depth,'S1':S1,'D1':D1,'R1':R1,'S2':S2,'D2':D2,'R2':R2})
+                   'depth':depth,'S1':S1,'D1':D1,'R1':R1,'S2':S2,'D2':D2,'R2':R2,'Region':Reg})
 
 def fix_longitude(x):
     x = x.strip()
@@ -138,7 +139,7 @@ region=[West,East,South,North]
                                        
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
-                  'depth','S1','D1','R1','S2','D2','R2']]
+                  'depth','S1','D1','R1','S2','D2','R2','Region']]
 
 projection = ccrs.PlateCarree(central_longitude=120.0)
 
@@ -149,7 +150,7 @@ ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5,alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-',linewidth=0.5,alpha=0.5)
 
 cmt=df[['event_id','date_time','fixedLon','fixedLat','mag',
-                  'depth','S1','D1','R1','S2','D2','R2']]
+                  'depth','S1','D1','R1','S2','D2','R2','Region']]
 x0=list(cmt.fixedLon)
 y0=list(cmt.fixedLat)
 z0=list(cmt.depth)
