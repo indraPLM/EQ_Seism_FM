@@ -15,8 +15,8 @@ from streamlit_folium import st_folium
 st.set_page_config(page_title='Kecepatan Processing Gempabumi',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
-time_start=st.sidebar.text_input('Start DateTime:', '2025-02-01 00:00:00' )
-time_end=st.sidebar.text_input('End DateTime:', '2025-02-28 23:59:59')
+time_start=st.sidebar.text_input('Start DateTime:', '2025-03-01 00:00:00' )
+time_end=st.sidebar.text_input('End DateTime:', '2025-03-31 23:59:59')
 
 layout2 = st.sidebar.columns(2)
 with layout2[0]: 
@@ -184,7 +184,7 @@ x=df_display['longitude'].values.tolist()
 y=df_display['latitude'].values.tolist()
 text=df['title'].values.tolist()
 tiles='https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-m = folium.Map([-4, 120], tiles=tiles, attr='ESRI', zoom_start=4.75)
+m = folium.Map([-4, 120], tiles=tiles, attr='ESRI', zoom_start=5)
 
 for i in range(len(x)):
     folium.Marker(location=[y[i], x[i]],popup=text[i],
