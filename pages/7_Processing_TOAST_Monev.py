@@ -162,11 +162,11 @@ result= result[(result['date_time_wib'] > time_start) & (result['date_time_wib']
 result= result[(result['lon'] > West) & (result['lon'] < East)]
 result= result[(result['lat'] > South) & (result['lat'] < North)]
 
-st.markdown(""" ### Peta Lokasi Gempabumi Prosesing TOAST M >=5 """)
-st.map(result, latitude="lat", longitude="lon", size=2000, zoom=3 )
+#st.markdown(""" ### Peta Lokasi Gempabumi Prosesing TOAST M >=5 """)
+#st.map(result, latitude="lat", longitude="lon", size=2000, zoom=3 )
 
-st.markdown(""" ### Grafik Kecepatan Prosesing TOAST M >=5 """)
-st.scatter_chart(result, x="date_time_wib", y="lapse_time_toast")
+#st.markdown(""" ### Grafik Kecepatan Prosesing TOAST M >=5 """)
+#st.scatter_chart(result, x="date_time_wib", y="lapse_time_toast")
 
 st.markdown("""### Data Parameter Gempa dan Kecepatan Prosesing TOAST""")
 st.dataframe(result)
