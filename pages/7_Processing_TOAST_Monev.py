@@ -154,6 +154,7 @@ df['mag'] = fix_float(df['mag'])
 df= df[df['mag'] >=5]
 df= df[(df['date_time'] > df_toast['tstamp_toast'][0] ) & (df['date_time'] < df_toast['tstamp_toast'][len(df_toast)-1])]
 df_qc=df
+st.dataframe(df_qc)
 
 result = pd.merge(df_qc, df_toast, on="event_id")
 result['lapse_time_toast']=result['tstamp_toast']-result['date_time_wib']
