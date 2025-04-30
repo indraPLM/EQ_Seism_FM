@@ -71,8 +71,6 @@ for i in range(len(text_toast)):
 df_toast= pd.DataFrame({'event_id':eventid_toast,'tstamp_toast':dttime_toast,'remark_toast':remark_toast})
 df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'])
 
-st.dataframe(df_toast)
-
 url='http://202.90.198.41/qc.txt'
 page=requests.get(url)
 url_pages=BeautifulSoup(page.text, 'html')
@@ -104,7 +102,7 @@ remarks=get_qc(event_qc,14)
 
 df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'lat':lat,
                    'lon':lon,'depth':depth,'remarks':remarks})
-st.dataframe(df)
+
 def fix_longitude(x):
     x = x.strip()
     if x.endswith('W'):
@@ -138,6 +136,7 @@ def fix_split(a):
     return a
 
 df['event_id'] = df.event_id.apply(fix_split)
+st.markdown(""" ### Test""")
 st.dataframe(df)
 df['lat'] = df.lat.apply(fix_latitude)
 df['lat'] = pd.to_numeric(df['lat'],errors = 'coerce')
