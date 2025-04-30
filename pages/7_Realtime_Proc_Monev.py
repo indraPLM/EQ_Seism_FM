@@ -11,7 +11,7 @@ from matplotlib.pyplot import figure
 import geopandas
 import datetime
 
-st.set_page_config(page_title='Peta Focal Mechanism',  layout='wide', page_icon="🌍")
+st.set_page_config(page_title='Realtime Gempabumi Monev',  layout='wide', page_icon="🌍")
 
 st.sidebar.header("Input Parameter :")
 last1 = datetime.datetime.now() - datetime.timedelta(1)
@@ -83,6 +83,7 @@ area = get_text(area)
 df=pd.DataFrame({'eventid':eventid,'waktu':waktu,'lat':lat,'lon':lon,'mag':mag,
                  'depth':dep})
 df['waktu']=pd.to_datetime(df['waktu'])
+st.dataframe(df)
 
 def get_processtime(eventid):
     url='https://bmkg-content-inatews.storage.googleapis.com/history.%s.txt' %(eventid)
