@@ -34,7 +34,6 @@ with layout3[-1]:
     East = st.text_input('East:', '142.0')
     East = float(East)
 
-
 path="./pages/filetoast/"
 dir_list = os.listdir(path)
 
@@ -66,7 +65,6 @@ for i in range(len(text_toast)):
         eventid_toast.append(event_list[i])
     else:
         continue
-    
 
 df_toast= pd.DataFrame({'event_id':eventid_toast,'tstamp_toast':dttime_toast,'remark_toast':remark_toast})
 df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'])
@@ -102,7 +100,6 @@ remarks=get_qc(event_qc,14)
 
 df = pd.DataFrame({'event_id':event_id,'date_time':date_time,'mag':mag,'lat':lat,
                    'lon':lon,'depth':depth,'remarks':remarks})
-
 def fix_longitude(x):
     x = x.strip()
     if x.endswith('W'):
@@ -150,18 +147,9 @@ df['date_time'] = pd.to_datetime(df['date_time'])
 df['date_time_wib'] = df['date_time'] + pd.Timedelta(hours=7)
 df['mag'] = fix_float(df['mag'])
 df= df[df['mag'] >=5]
-
-st.markdown(""" ### Test1""")
-st.dataframe(df_toast)
-st.markdown(""" ### Test2""")
-st.dataframe(df)
 #df= df[(df['date_time'] > df_toast['tstamp_toast'][0] ) & (df['date_time'] < df_toast['tstamp_toast'][len(df_toast)-1])]
 df= df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
-st.markdown(""" ### Test3""")
-st.dataframe(df)
-st.markdown(""" ### Test4""")
 df_qc=df
-st.dataframe(df_qc)
 
 result = pd.merge(df_qc, df_toast, on="event_id")
 result['lapse_time_toast']=result['tstamp_toast']-result['date_time_wib']
@@ -172,11 +160,11 @@ result= result[(result['date_time_wib'] > time_start) & (result['date_time_wib']
 result= result[(result['lon'] > West) & (result['lon'] < East)]
 result= result[(result['lat'] > South) & (result['lat'] < North)]
 
-#st.markdown(""" ### Peta Lokasi Gempabumi Prosesing TOAST M >=5 """)
-#st.map(result, latitude="lat", longitude="lon", size=2000, zoom=3 )
+st.markdown(""" ### Peta Lokasi Gempabumi Prosesing TOAST M >=5 """)
+st.map(result, latitude="lat", longitude="lon", size=2000, zoom=3 )
 
-#st.markdown(""" ### Grafik Kecepatan Prosesing TOAST M >=5 """)
-#st.scatter_chart(result, x="date_time_wib", y="lapse_time_toast")
+st.markdown(""" ### Grafik Kecepatan Prosesing TOAST M >=5 """)
+st.scatter_chart(result, x="date_time_wib", y="lapse_time_toast")
 
 st.markdown("""### Data Parameter Gempa dan Kecepatan Prosesing TOAST""")
 st.dataframe(result)
