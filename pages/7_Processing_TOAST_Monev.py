@@ -149,7 +149,7 @@ df['depth'] = pd.to_numeric(df['depth'],errors = 'coerce')
 df['date_time'] = pd.to_datetime(df['date_time'])
 df['date_time_wib'] = df['date_time'] + pd.Timedelta(hours=7)
 df['mag'] = fix_float(df['mag'])
-st.markdown(""" ### Test""")
+st.markdown(""" ### Test1""")
 st.dataframe(df)
 
 df= df[df['mag'] >=5]
