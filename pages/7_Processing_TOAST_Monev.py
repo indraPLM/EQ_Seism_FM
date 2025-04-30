@@ -138,7 +138,7 @@ def fix_split(a):
     return a
 
 df['event_id'] = df.event_id.apply(fix_split)
-
+st.dataframe(df)
 df['lat'] = df.lat.apply(fix_latitude)
 df['lat'] = pd.to_numeric(df['lat'],errors = 'coerce')
 
