@@ -136,8 +136,7 @@ def fix_split(a):
     return a
 
 df['event_id'] = df.event_id.apply(fix_split)
-st.markdown(""" ### Test""")
-st.dataframe(df)
+
 df['lat'] = df.lat.apply(fix_latitude)
 df['lat'] = pd.to_numeric(df['lat'],errors = 'coerce')
 
@@ -150,6 +149,9 @@ df['depth'] = pd.to_numeric(df['depth'],errors = 'coerce')
 df['date_time'] = pd.to_datetime(df['date_time'])
 df['date_time_wib'] = df['date_time'] + pd.Timedelta(hours=7)
 df['mag'] = fix_float(df['mag'])
+st.markdown(""" ### Test""")
+st.dataframe(df)
+
 df= df[df['mag'] >=5]
 df= df[(df['date_time'] > df_toast['tstamp_toast'][0] ) & (df['date_time'] < df_toast['tstamp_toast'][len(df_toast)-1])]
 st.dataframe(df)
