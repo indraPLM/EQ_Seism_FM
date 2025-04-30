@@ -156,7 +156,8 @@ st.dataframe(df_toast)
 st.markdown(""" ### Test2""")
 st.dataframe(df)
 df= df[(df['date_time'] > df_toast['tstamp_toast'][0] ) & (df['date_time'] < df_toast['tstamp_toast'][len(df_toast)-1])]
-
+st.markdown(""" ### Test3""")
+st.dataframe(df)
 df_qc=df
 st.dataframe(df_qc)
 
