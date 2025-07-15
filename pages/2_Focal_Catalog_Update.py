@@ -104,9 +104,8 @@ for _, row in df.iterrows():
 
     html_popup = f"""
     <div style="font-family:Arial; font-size:13px">
-        <b>ID:</b> {row['event_id']}<br>
         <b>Date:</b> {row['date_time'].strftime('%Y-%m-%d %H:%M:%S')}<br>
-        <b>Magnitude:</b> {row['mag']} ML<br>
+        <b>Magnitude:</b> {row['mag']} M<br>
         <b>Depth:</b> {depth:.1f} km<br>
         <b>Lat/Lon:</b> ({row['fixedLat']:.2f}, {row['fixedLon']:.2f})<br><br>
         <b>Focal Mechanism:</b><br>
