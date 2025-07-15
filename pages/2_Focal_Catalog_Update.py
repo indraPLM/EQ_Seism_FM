@@ -87,6 +87,16 @@ for _, row in df.iterrows():
         ax.add_collection(ball)
 st.pyplot(fig)
 
+summary_df = df[['date_time', 'mag', 'type_mag', 'fixedLat', 'fixedLon', 'depth',
+                 'S1', 'D1', 'R1', 'S2', 'D2', 'R2', 'location']].copy()
+
+# Rename columns for clarity
+summary_df.columns = ['DateTime', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
+                      'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark']
+
+# Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
+# summary_df['Focal Mechanism'] = [generate_beachball_image(row) for _, row in summary_df.iterrows()]
+
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
