@@ -85,6 +85,15 @@ def beachball_base64(S, D, R):
 # 🧾 Seismic Summary Table
 st.markdown("### 📋 Seismic Event Table with Beachball Diagrams")
 
+def safe(val, precision=None):
+    if pd.isnull(val):
+        return "—"
+    if isinstance(val, float) and precision is not None:
+        return f"{val:.{precision}f}"
+    return str(val)
+
+
+
 table_rows = []
 csv_rows = []
 for i, row in df.iterrows():
@@ -92,14 +101,14 @@ for i, row in df.iterrows():
     table_rows.append(f"""
     <tr>
         <td>{i+1}</td>
-        <td>{row['date_time'].date()}</td>
-        <td>{row['date_time'].time()}</td>
-        <td>{row['mag']:.1f}</td>
-        <td>{row['lat']:.2f}</td>
-        <td>{row['lon']:.2f}</td>
-        <td>{row['depth']} km</td>
-        <td>{row['S1']} / {row['D1']} / {row['R1']}</td>
-        <td>{row['location']}</td>
+        <td>{safe(row['date_time'].date())}</td>
+        <td>{safe(row['date_time'].time())}</td>
+        <td>{safe(row['mag'], 1)}</td>
+        <td>{safe(row['lat'], 2)}°</td>
+        <td>{safe(row['lon'], 2)}°</td>
+        <td>{safe(row['depth'])} km</td>
+        <td>{safe(row['S1'])} / {safe(row['D1'])} / {safe(row['R1'])}</td>
+        <td>{safe(row['location'])}</td>
         <td>{img if img else '<i>Invalid</i>'}</td>
     </tr>
     """)
