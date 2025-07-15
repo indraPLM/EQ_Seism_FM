@@ -73,14 +73,54 @@ df_bmkg = df_bmkg[
 ]
 
 # 🗺️ Plot BMKG Focal Mechanisms
-fig1 = plt.figure(dpi=300)
-ax1 = fig1.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-ax1.set_extent((west, east, south-0.5, north+0.5))
-ax1.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax1.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
-draw_beachballs(df_bmkg, ax1, ax1.projection)
-st.pyplot(fig1)
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+from obspy.imaging.beachball import beach
+
+# Set up projection
+projection = ccrs.PlateCarree(central_longitude=120)
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=projection)
+ax.set_extent((West, East, South-0.5, North+0.5))
+ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+
+# Plot beachballs
+for _, row in df_bmkg.iterrows():
+    x, y = projection.transform_point(row['fixedLon'], row['fixedLat'], src_crs=ccrs.Geodetic())
+    color = 'r' if row['depth'] < 60 else 'y' if row['depth'] < 300 else 'g'
+    ball = beach([row['S1'], row['D1'], row['R1']], xy=(x, y), width=0.5, facecolor=color,
+                 linewidth=0.5, alpha=0.65, zorder=10)
+    ax.add_collection(ball)
+
+st.markdown("### 🎯 Visualisasi Statis dengan Cartopy")
+st.pyplot(fig)
 st.dataframe(df_bmkg)
+
+from streamlit_folium import st_folium
+
+# Create Folium map
+center_lat, center_lon = (South + North) / 2, (West + East) / 2
+m = folium.Map(location=[center_lat, center_lon], zoom_start=5, tiles='CartoDB positron')
+
+# Add markers for BMKG focal mechanism events
+for _, row in df_bmkg.iterrows():
+    depth = row['depth']
+    color = 'red' if depth < 60 else 'orange' if depth < 300 else 'green'
+    popup_text = f"ID: {row['event_id']}<br>Mag: {row['mag']}<br>Depth: {depth} km"
+    folium.CircleMarker(
+        location=[row['fixedLat'], row['fixedLon']],
+        radius=4,
+        color=color,
+        fill=True,
+        fill_opacity=0.7,
+        popup=folium.Popup(popup_text, max_width=300)
+    ).add_to(m)
+
+st.markdown("### 🧭 Visualisasi Interaktif dengan Folium")
+st_folium(m, width=900, height=600)
+
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
