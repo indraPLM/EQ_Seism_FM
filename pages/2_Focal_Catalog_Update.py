@@ -41,16 +41,11 @@ def fix_float(col): return pd.to_numeric(col, errors='coerce')
 
 # 📦 Function to fetch and parse HTML catalog
 @st.cache_data(show_spinner=False)
-def load_bmkg_focal_from_html(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    raw_text = soup.find("p")
-    if not raw_text:
-        return pd.DataFrame()  # Empty fallback
-    
-    lines = raw_text.text.strip().split('\n')
-    rows = [line.strip() for line in lines if line and "|" in line]
-    
+def load_bmkg_focal(url):
+    res = requests.get(url)
+    lines = res.text.strip().split('\n')
+    rows = [line.split('|') for line in lines if line]
+        
     # First line is header
     header = [col.strip() for col in rows[0].split('|')]
     data = [row.split('|') for row in rows[1:]]
@@ -83,7 +78,7 @@ def load_bmkg_focal_from_html(url):
 
 # 🔗 URL to BMKG Focal Catalog in HTML
 url = "http://202.90.198.41/qc_focal.txt"
-df_focal = load_bmkg_focal_from_html(url)
+df_focal = load_bmkg_focal(url)
 
 # 🧾 Show parsed table
 st.markdown("### 📋 Parsed BMKG Focal Mechanism Table")
