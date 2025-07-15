@@ -53,8 +53,9 @@ rows = load_bmkg_focal(url)
 print(rows) 
 
 # 🧾 Build DataFrame 
-base_cols = ['event_id', 'mode', 'status', 'mag', 'type_mag',
-             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2'] 
+base_cols = ['event_id', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
+             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2','Fit','DC','CLVD','type','location'] 
+
 n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0 
 cols = base_cols + [f'extra_{i}' for i in range(n_extra)] 
 df = pd.DataFrame(rows[1:], columns=cols) 
