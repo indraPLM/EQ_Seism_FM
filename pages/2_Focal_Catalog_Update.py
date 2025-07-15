@@ -41,52 +41,24 @@ def fix_float(col): return pd.to_numeric(col, errors='coerce')
 
 # 📦 Function to fetch and parse HTML catalog
 @st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def load_bmkg_focal(url):
     res = requests.get(url)
     lines = res.text.strip().split('\n')
     rows = [line.split('|') for line in lines if line]
-        
-    # First line is header
-    header = [col.strip() for col in rows[0].split('|')]
-    data = [row.split('|') for row in rows[1:]]
+    return rows
 
-    # Clean and format rows
-    clean_rows = []
-    for row in data:
-        if len(row) == len(header):
-            clean_rows.append([cell.strip() for cell in row])
+url = "http://202.90.198.41/qc_focal.txt" 
+rows = load_bmkg_focal(url) 
+print(rows) 
 
-    df = pd.DataFrame(clean_rows, columns=header)
-
-    # Convert column types
-    df["Datetime (UTC)"] = pd.to_datetime(df["Datetime (UTC)"], errors="coerce")
-    df["Mag"] = pd.to_numeric(df["Mag"], errors="coerce")
-    df["Lat"] = pd.to_numeric(df["Lat"], errors="coerce")
-    df["Long"] = pd.to_numeric(df["Long"], errors="coerce")
-    df["D(Km)"] = pd.to_numeric(df["D(Km)"], errors="coerce")
-    df["S1"] = pd.to_numeric(df["S1"], errors="coerce")
-    df["D1"] = pd.to_numeric(df["D1"], errors="coerce")
-    df["R1"] = pd.to_numeric(df["R1"], errors="coerce")
-    df["S2"] = pd.to_numeric(df["S2"], errors="coerce")
-    df["D2"] = pd.to_numeric(df["D2"], errors="coerce")
-    df["R2"] = pd.to_numeric(df["R2"], errors="coerce")
-    df["Fit(%)"] = pd.to_numeric(df["Fit(%)"], errors="coerce")
-    df["DC(%)"] = pd.to_numeric(df["DC(%)"], errors="coerce")
-    df["CLVD(%)"] = pd.to_numeric(df["CLVD(%)"], errors="coerce")
-    
-    return df
-
-# 🔗 URL to BMKG Focal Catalog in HTML
-url = "http://202.90.198.41/qc_focal.txt"
-df_focal = load_bmkg_focal(url)
-df=df_focal
-print(df)
-# 🧾 Show parsed table
-st.markdown("### 📋 Parsed BMKG Focal Mechanism Table")
-if df_focal.empty:
-    st.warning("No data found or parsing failed.")
-else:
-    st.dataframe(df_focal)
+# 🧾 Build DataFrame 
+base_cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 'type_mag',
+             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2'] 
+n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0 
+cols = base_cols + [f'extra_{i}' for i in range(n_extra)] 
+df = pd.DataFrame(rows[1:], columns=cols) 
+st.dataframe(df)
 
 # 🔄 Convert columns
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
