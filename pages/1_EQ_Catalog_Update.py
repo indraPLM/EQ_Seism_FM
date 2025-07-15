@@ -146,10 +146,25 @@ for i, pulau in enumerate(list_pulau):
     except Exception as e:
         st.warning(f"Gagal memuat shapefile untuk {pulau}: {e}")
 
-# 🗺️ Add base map
+# 🗺️ Base map features
 ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-', linewidth=0.5, alpha=0.5)
-ax.legend(loc='lower left', fontsize='small')
+
+# 📍 Custom legend below map (2-row grid)
+from matplotlib.lines import Line2D
+
+legend_elements = [
+    Line2D([0], [0], marker='o', color='w', label=list_pulau[i], markerfacecolor=list_color[i], markersize=8)
+    for i in range(len(list_pulau))
+]
+
+# Arrange legend in 2 rows below the map
+ax.legend(handles=legend_elements,
+          loc='lower center',
+          bbox_to_anchor=(0.5, -0.25),
+          ncol=4,
+          frameon=False,
+          fontsize='small')
 
 # 📊 Show figure
 st.markdown("### Seismisitas Berdasarkan Pulau")
