@@ -3,7 +3,6 @@
 Streamlit app: Focal Mechanism Viewer (BMKG + Global CMT)
 Created by: Indra Gunawan
 """
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -13,127 +12,122 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from obspy.imaging.beachball import beach
 from bs4 import BeautifulSoup
+import folium
+from streamlit_folium import st_folium
 
-# 🌍 Streamlit config
-st.set_page_config(page_title="Focal Mechanism Viewer", layout="wide", page_icon="🌋")
+# 🌍 Page Configuration
+st.set_page_config(page_title="BMKG Focal Viewer", layout="wide", page_icon="🌋")
 
-# 🛠️ Sidebar input: BMKG
-st.sidebar.header("BMKG Parameter")
-bmkg_start = st.sidebar.text_input("Start Time", "2024-09-01 00:00:00", key="bmkg_start")
-bmkg_end = st.sidebar.text_input("End Time", "2025-01-31 23:59:59", key="bmkg_end")
-bmkg_col1, bmkg_col2 = st.sidebar.columns(2)
-bmkg_North = float(bmkg_col1.text_input("North", "6.0", key="bmkg_north"))
-bmkg_South = float(bmkg_col2.text_input("South", "-13.0", key="bmkg_south"))
-bmkg_col3, bmkg_col4 = st.sidebar.columns(2)
-bmkg_West = float(bmkg_col3.text_input("West", "90.0", key="bmkg_west"))
-bmkg_East = float(bmkg_col4.text_input("East", "142.0", key="bmkg_east"))
+# 🛠️ Sidebar Inputs
+st.sidebar.header("BMKG Focal Filter")
+start_time = st.sidebar.text_input("Start Time", "2024-09-01 00:00:00")
+end_time = st.sidebar.text_input("End Time", "2025-01-31 23:59:59")
+col1, col2 = st.sidebar.columns(2)
+North = float(col1.text_input("North", "6.0"))
+South = float(col2.text_input("South", "-13.0"))
+col3, col4 = st.sidebar.columns(2)
+West = float(col3.text_input("West", "90.0"))
+East = float(col4.text_input("East", "142.0"))
 
-# 📡 Sidebar input: Global CMT
-st.sidebar.header("Global CMT Parameter")
-cmt_start = st.sidebar.text_input("Start Time", "2000-01-01 00:00", key="cmt_start")
-cmt_end = st.sidebar.text_input("End Time", "2020-12-31 23:59", key="cmt_end")
-cmt_col1, cmt_col2 = st.sidebar.columns(2)
-cmt_North = float(cmt_col1.text_input("North", "6.0", key="cmt_north"))
-cmt_South = float(cmt_col2.text_input("South", "-13.0", key="cmt_south"))
-cmt_col3, cmt_col4 = st.sidebar.columns(2)
-cmt_West = float(cmt_col3.text_input("West", "90.0", key="cmt_west"))
-cmt_East = float(cmt_col4.text_input("East", "142.0", key="cmt_east"))
-
-
-# 🔄 Utility Functions
-def fix_coord(val, pos='lat'):
+# 🧹 Coordinate Conversion
+def fix_coord(val, axis):
     val = val.strip()
-    if pos == 'lat':
+    if axis == 'lat':
         return -float(val.strip('S')) if val.endswith('S') else float(val.strip('N'))
-    else:
+    if axis == 'lon':
         return -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
 
 def fix_float(col): return pd.to_numeric(col, errors='coerce')
 
-def draw_beachballs(df, ax, proj, depth_col='depth', s_col='S1', d_col='D1', r_col='R1', lon_col='fixedLon', lat_col='fixedLat'):
-    for _, row in df.iterrows():
-        x, y = proj.transform_point(row[lon_col], row[lat_col], src_crs=ccrs.Geodetic())
-        width = 0.5
-        color = 'r' if row[depth_col] < 60 else 'y' if row[depth_col] < 300 else 'g'
-        mech = [row[s_col], row[d_col], row[r_col]]
-        ball = beach(mech, xy=(x, y), width=width, linewidth=0.5, alpha=0.65, zorder=10, facecolor=color)
-        ax.add_collection(ball)
+# 📡 Fetch BMKG Focal Catalog
+@st.cache_data(show_spinner=False)
+def load_bmkg_focal(url):
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, "html.parser")
+    lines = soup.p.text.split('\n') if soup.p else []
+    rows = [line.split('|') for line in lines if line]
+    return rows
 
-# 📡 BMKG Section
-st.markdown("### 🧭 Peta Focal Mechanism BMKG")
-bmkg_url = "http://202.90.198.41/qc_focal.txt"
-response = requests.get(bmkg_url)
-soup = BeautifulSoup(response.text, "html.parser")
-raw_lines = soup.p.text.split("\n") if soup.p else []
-entries = [line.split("|") for line in raw_lines if line]
+url = "http://202.90.198.41/qc_focal.txt"
+rows = load_bmkg_focal(url)
 
+# 🧾 Build DataFrame
 base_cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 'type_mag',
              'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2']
+n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0
+cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
+df = pd.DataFrame(rows[1:], columns=cols)
 
-extra_len = len(entries[0]) if entries else 0
-n_extra = max(0, extra_len - len(base_cols))
-full_cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
+# 🔄 Convert columns
+df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
+df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
+df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
+for col in ['mag','depth','S1','D1','R1','S2','D2','R2']: df[col] = fix_float(df[col])
 
-df_bmkg = pd.DataFrame(entries[1:], columns=full_cols)
-
-df_bmkg['fixedLat'] = df_bmkg['lat'].apply(lambda x: fix_coord(x, 'lat'))
-df_bmkg['fixedLon'] = df_bmkg['lon'].apply(lambda x: fix_coord(x, 'lon'))
-df_bmkg['date_time'] = pd.to_datetime(df_bmkg['date_time'], errors='coerce')
-for col in ['mag','depth','S1','D1','R1']: df_bmkg[col] = fix_float(df_bmkg[col])
-df_bmkg = df_bmkg[
-    (df_bmkg['date_time'] >= bmkg_start) & (df_bmkg['date_time'] <= bmkg_end) &
-    (df_bmkg['fixedLat'].between(south, north)) & (df_bmkg['fixedLon'].between(west, east))
+# 📋 Filter Data
+df = df[
+    (df['date_time'] >= start_time) & (df['date_time'] <= end_time) &
+    (df['fixedLat'].between(South, North)) &
+    (df['fixedLon'].between(West, East))
 ]
 
-# 🗺️ Plot BMKG Focal Mechanisms
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-from obspy.imaging.beachball import beach
+st.markdown("### 🧭 Static Focal Mechanism Plot (Cartopy Beachballs)")
 
-# Set up projection
-projection = ccrs.PlateCarree(central_longitude=120)
+# 🗺️ Cartopy Beachball Plot
+proj = ccrs.PlateCarree(central_longitude=120)
 fig = plt.figure(dpi=300)
-ax = fig.add_subplot(111, projection=projection)
+ax = fig.add_subplot(111, projection=proj)
 ax.set_extent((West, East, South-0.5, North+0.5))
 ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 
-# Plot beachballs
-for _, row in df_bmkg.iterrows():
-    x, y = projection.transform_point(row['fixedLon'], row['fixedLat'], src_crs=ccrs.Geodetic())
-    color = 'r' if row['depth'] < 60 else 'y' if row['depth'] < 300 else 'g'
-    ball = beach([row['S1'], row['D1'], row['R1']], xy=(x, y), width=0.5, facecolor=color,
-                 linewidth=0.5, alpha=0.65, zorder=10)
+for _, row in df.iterrows():
+    x, y = proj.transform_point(row["fixedLon"], row["fixedLat"], src_crs=ccrs.Geodetic())
+    color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
+    ball = beach([row["S1"], row["D1"], row["R1"]],
+                 xy=(x, y), width=0.5, linewidth=0.5,
+                 alpha=0.65, zorder=10, facecolor=color)
     ax.add_collection(ball)
 
-st.markdown("### 🎯 Visualisasi Statis dengan Cartopy")
 st.pyplot(fig)
-st.dataframe(df_bmkg)
 
-from streamlit_folium import st_folium
+# 🌐 Folium Interactive Plot
+st.markdown("### 🌎 Interactive Map with HTML Popups (Folium)")
 
-# Create Folium map
-center_lat, center_lon = (South + North) / 2, (West + East) / 2
-m = folium.Map(location=[center_lat, center_lon], zoom_start=5, tiles='CartoDB positron')
+map_center = [(South + North)/2, (West + East)/2]
+m = folium.Map(location=map_center, zoom_start=5, tiles="CartoDB positron")
 
-# Add markers for BMKG focal mechanism events
-for _, row in df_bmkg.iterrows():
-    depth = row['depth']
-    color = 'red' if depth < 60 else 'orange' if depth < 300 else 'green'
-    popup_text = f"ID: {row['event_id']}<br>Mag: {row['mag']}<br>Depth: {depth} km"
+for _, row in df.iterrows():
+    depth = row["depth"]
+    color = "red" if depth < 60 else "orange" if depth < 300 else "green"
+
+    html_popup = f"""
+    <div style="font-family:Arial; font-size:13px">
+        <b>ID:</b> {row['event_id']}<br>
+        <b>Date:</b> {row['date_time'].strftime('%Y-%m-%d %H:%M:%S')}<br>
+        <b>Magnitude:</b> {row['mag']} ML<br>
+        <b>Depth:</b> {depth:.1f} km<br>
+        <b>Lat/Lon:</b> ({row['fixedLat']:.2f}, {row['fixedLon']:.2f})<br><br>
+        <b>Focal Mechanism:</b><br>
+        Strike1: {row['S1']}° &nbsp; Dip1: {row['D1']}° &nbsp; Rake1: {row['R1']}°<br>
+        Strike2: {row['S2']}° &nbsp; Dip2: {row['D2']}° &nbsp; Rake2: {row['R2']}°
+    </div>
+    """
+
     folium.CircleMarker(
-        location=[row['fixedLat'], row['fixedLon']],
+        location=[row["fixedLat"], row["fixedLon"]],
         radius=4,
         color=color,
         fill=True,
-        fill_opacity=0.7,
-        popup=folium.Popup(popup_text, max_width=300)
+        fill_opacity=0.8,
+        popup=folium.Popup(html_popup, max_width=350)
     ).add_to(m)
 
-st.markdown("### 🧭 Visualisasi Interaktif dengan Folium")
 st_folium(m, width=900, height=600)
 
+# 🧾 Display Catalog
+st.markdown("### 📋 BMKG Focal Catalog Table")
+st.dataframe(df)
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
