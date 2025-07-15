@@ -104,6 +104,57 @@ def clip_df(df, island):
     geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
     return geo_df.clip(load_clip(island))
 
+# 📍 Convert to GeoDataFrame
+gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
+
+# 🔁 Island setup
+list_pulau = ['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
+list_color = ['r','g','b','y','c','m','purple','orange']
+projection = ccrs.PlateCarree(central_longitude=120.0)
+
+# 📦 Extract clipped coordinates per island
+def get_eq_coords(pulau_name):
+    try:
+        polygon = gpd.read_file(f"{pulau_name}_Area.shp")
+        clipped = gpd_seis.clip(polygon)
+        a = np.array(clipped.fixedLon)
+        b = np.array(clipped.fixedLat)
+        x, y, _ = projection.transform_points(ccrs.Geodetic(), a, b).T
+        return x, y
+    except Exception as e:
+        st.warning(f"Gagal memproses data untuk {pulau_name}: {e}")
+        return [], []
+
+# 🖼️ Set up figure
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=projection)
+ax.set_extent((85, 145, -15, 10))
+
+# 🌀 Plot per island
+for i, pulau in enumerate(list_pulau):
+    x, y = get_eq_coords(pulau)
+    ax.scatter(x, y, s=5, color=list_color[i], marker="o", label=pulau, zorder=3)
+
+    try:
+        ax.add_geometries(
+            Reader(f"{pulau}_Area.shp").geometries(),
+            ccrs.PlateCarree(),
+            facecolor="white",
+            edgecolor=list_color[i],
+            linewidth=0.5
+        )
+    except Exception as e:
+        st.warning(f"Gagal memuat shapefile untuk {pulau}: {e}")
+
+# 🗺️ Add base map
+ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linestyle='-', linewidth=0.5, alpha=0.5)
+ax.legend(loc='lower left', fontsize='small')
+
+# 📊 Show figure
+st.markdown("### Seismisitas Berdasarkan Pulau")
+st.pyplot(fig)
+
 # 📉 Depth & Magnitude Stats
 def stats(df):
     return [
