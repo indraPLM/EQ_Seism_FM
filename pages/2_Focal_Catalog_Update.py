@@ -126,8 +126,63 @@ for _, row in df.iterrows():
 st_folium(m, width=900, height=600)
 
 # 🧾 Display Catalog
-st.markdown("### 📋 BMKG Focal Catalog Table")
-st.dataframe(df)
+#st.markdown("### 📋 BMKG Focal Catalog Table")
+#st.dataframe(df)
+
+
+# 🖼️ Generate beachball image and return as HTML
+def beachball_html(S, D, R):
+    fig, ax = plt.subplots(figsize=(1.2, 1.2), dpi=100)
+    ax.set_xlim(-100, 100)
+    ax.set_ylim(-100, 100)
+    ax.axis("off")
+    ball = beach([S, D, R], width=90, linewidth=1, facecolor="black", xy=(0, 0))
+    ax.add_collection(ball)
+    buf = BytesIO()
+    fig.savefig(buf, format="png", bbox_inches="tight", pad_inches=0)
+    plt.close(fig)
+    encoded = base64.b64encode(buf.getvalue()).decode()
+    return f'<img src="data:image/png;base64,{encoded}" width="70"/>'
+
+# 🧾 Display table with HTML
+st.markdown("### 📋 Seismic Event Table with Beachball Diagrams")
+
+table_rows = []
+for i, row in df.iterrows():
+    mech_img = beachball_html(row["S1"], row["D1"], row["R1"])
+    row_html = f"""
+    <tr>
+        <td>{i+1}</td>
+        <td>{row['date_time'].date()}</td>
+        <td>{row['date_time'].time()}</td>
+        <td>{row['mag']:.1f}</td>
+        <td>{row['lat']:.2f}°</td>
+        <td>{row['lon']:.2f}°</td>
+        <td>{row['depth']} km</td>
+        <td>{row['S1']} / {row['D1']} / {row['R1']}</td>
+        <td>{row['location']}</td>
+        <td>{mech_img}</td>
+    </tr>
+    """
+    table_rows.append(row_html)
+
+html_table = f"""
+<table border="1" style="border-collapse:collapse; text-align:center; font-family:Arial; font-size:12px">
+    <thead>
+        <tr>
+            <th>No</th><th>Date</th><th>Time</th><th>Mag</th>
+            <th>Lat</th><th>Lon</th><th>Depth</th><th>S/D/R</th>
+            <th>Location</th><th>Focal Mechanism</th>
+        </tr>
+    </thead>
+    <tbody>
+        {''.join(table_rows)}
+    </tbody>
+</table>
+"""
+
+st.markdown(html_table, unsafe_allow_html=True)
+
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
