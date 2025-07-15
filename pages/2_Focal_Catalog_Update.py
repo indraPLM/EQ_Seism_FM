@@ -121,6 +121,28 @@ st.download_button(
     mime="text/csv"
 )
 
+from IPython.display import HTML
+
+def render_table_with_images(df):
+    html_rows = ""
+    for _, row in df.iterrows():
+        img_html = f'<img src="data:image/png;base64,{row["Beachball"]}" width="40"/>'
+        html_rows += f"""
+        <tr>
+            <td>{row["DateTime"]}</td>
+            <td>{row["Magnitude"]}</td>
+            <td>{row["Depth"]}</td>
+            <td>{row["Location"]}</td>
+            <td>{img_html}</td>
+        </tr>
+        """
+    html_table = f"""
+    <table>
+        <tr><th>DateTime</th><th>Magnitude</th><th>Depth</th><th>Location</th><th>Beachball</th></tr>
+        {html_rows}
+    </table>
+    """
+    st.markdown(html_table, unsafe_allow_html=True)
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
 def load_cmt(url):
