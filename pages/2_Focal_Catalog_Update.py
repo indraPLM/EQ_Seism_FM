@@ -14,24 +14,31 @@ import cartopy.feature as cfeature
 from obspy.imaging.beachball import beach
 from bs4 import BeautifulSoup
 
-# 🌍 Page Config
-st.set_page_config(page_title="Peta Focal Mechanism", layout="wide", page_icon="🌋")
+# 🌍 Streamlit config
+st.set_page_config(page_title="Focal Mechanism Viewer", layout="wide", page_icon="🌋")
 
-# 🎛️ Sidebar Filters
-def get_bounds(prefix=""):
-    st.sidebar.header(f"{prefix} Parameter")
-    col1, col2 = st.sidebar.columns(2)
-    north = float(col1.text_input("North", "6.0"))
-    south = float(col2.text_input("South", "-13.0"))
-    col3, col4 = st.sidebar.columns(2)
-    west = float(col3.text_input("West", "90.0"))
-    east = float(col4.text_input("East", "142.0"))
-    t_start = st.sidebar.text_input("Start Time", "2024-09-01 00:00:00" if prefix == "Focal BMKG" else "2000-01-01 00:00")
-    t_end = st.sidebar.text_input("End Time", "2025-01-31 23:59:59" if prefix == "Focal BMKG" else "2020-12-31 23:59")
-    return t_start, t_end, west, east, south, north
+# 🛠️ Sidebar input: BMKG
+st.sidebar.header("BMKG Parameter")
+bmkg_start = st.sidebar.text_input("Start Time", "2024-09-01 00:00:00", key="bmkg_start")
+bmkg_end = st.sidebar.text_input("End Time", "2025-01-31 23:59:59", key="bmkg_end")
+bmkg_col1, bmkg_col2 = st.sidebar.columns(2)
+bmkg_North = float(bmkg_col1.text_input("North", "6.0", key="bmkg_north"))
+bmkg_South = float(bmkg_col2.text_input("South", "-13.0", key="bmkg_south"))
+bmkg_col3, bmkg_col4 = st.sidebar.columns(2)
+bmkg_West = float(bmkg_col3.text_input("West", "90.0", key="bmkg_west"))
+bmkg_East = float(bmkg_col4.text_input("East", "142.0", key="bmkg_east"))
 
-bmkg_start, bmkg_end, west, east, south, north = get_bounds("Focal BMKG")
-cmt_start, cmt_end, *_ = get_bounds("Global CMT")
+# 📡 Sidebar input: Global CMT
+st.sidebar.header("Global CMT Parameter")
+cmt_start = st.sidebar.text_input("Start Time", "2000-01-01 00:00", key="cmt_start")
+cmt_end = st.sidebar.text_input("End Time", "2020-12-31 23:59", key="cmt_end")
+cmt_col1, cmt_col2 = st.sidebar.columns(2)
+cmt_North = float(cmt_col1.text_input("North", "6.0", key="cmt_north"))
+cmt_South = float(cmt_col2.text_input("South", "-13.0", key="cmt_south"))
+cmt_col3, cmt_col4 = st.sidebar.columns(2)
+cmt_West = float(cmt_col3.text_input("West", "90.0", key="cmt_west"))
+cmt_East = float(cmt_col4.text_input("East", "142.0", key="cmt_east"))
+
 
 # 🔄 Utility Functions
 def fix_coord(val, pos='lat'):
