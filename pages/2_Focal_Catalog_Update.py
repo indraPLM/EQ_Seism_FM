@@ -14,6 +14,7 @@ from obspy.imaging.beachball import beach
 from bs4 import BeautifulSoup
 import folium
 from streamlit_folium import st_folium
+from io import BytesIO
 
 # 🌍 Page Configuration
 st.set_page_config(page_title="BMKG Focal Viewer", layout="wide", page_icon="🌋")
