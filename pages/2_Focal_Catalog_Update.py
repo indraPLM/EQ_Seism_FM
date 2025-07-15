@@ -50,6 +50,7 @@ def load_bmkg_focal(url):
 
 url = "http://202.90.198.41/qc_focal.txt"
 rows = load_bmkg_focal(url)
+print(rows)
 
 # 🧾 Build DataFrame
 base_cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 'type_mag',
@@ -57,6 +58,7 @@ base_cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 't
 n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0
 cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
 df = pd.DataFrame(rows[1:], columns=cols)
+st.dataframe(df)
 
 # 🔄 Convert columns
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
