@@ -121,28 +121,50 @@ st.download_button(
     mime="text/csv"
 )
 
-from IPython.display import HTML
+import pdfkit
+import streamlit as st
+import pandas as pd
+import base64
+from io import BytesIO
 
-def render_table_with_images(df):
-    html_rows = ""
+# Sample DataFrame with base64 beachball images
+df = summary_df  # Your DataFrame with 'Beachball' column (base64 strings)
+
+def generate_html_table(df):
+    rows = ""
     for _, row in df.iterrows():
-        img_html = f'<img src="data:image/png;base64,{row["Beachball"]}" width="40"/>'
-        html_rows += f"""
+        img_tag = f'<img src="data:image/png;base64,{row["Beachball"]}" width="40"/>'
+        rows += f"""
         <tr>
-            <td>{row["DateTime"]}</td>
-            <td>{row["Magnitude"]}</td>
-            <td>{row["Depth"]}</td>
-            <td>{row["Location"]}</td>
-            <td>{img_html}</td>
+            <td>{row['DateTime']}</td>
+            <td>{row['Magnitude']}</td>
+            <td>{row['Depth']}</td>
+            <td>{row['Location']}</td>
+            <td>{img_tag}</td>
         </tr>
         """
-    html_table = f"""
+    html = f"""
+    <html>
+    <head><style>table, th, td {{ border: 1px solid black; border-collapse: collapse; padding: 5px; }}</style></head>
+    <body>
+    <h2>Seismic Summary with Focal Mechanisms</h2>
     <table>
         <tr><th>DateTime</th><th>Magnitude</th><th>Depth</th><th>Location</th><th>Beachball</th></tr>
-        {html_rows}
+        {rows}
     </table>
+    </body>
+    </html>
     """
-    st.markdown(html_table, unsafe_allow_html=True)
+    return html
+html_content = generate_html_table(df)
+pdf_bytes = pdfkit.from_string(html_content, False)
+
+st.download_button(
+    label="📄 Download Seismic Summary PDF",
+    data=pdf_bytes,
+    file_name="seismic_summary.pdf",
+    mime="application/pdf"
+)
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
