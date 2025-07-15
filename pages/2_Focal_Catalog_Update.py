@@ -67,9 +67,15 @@ soup = BeautifulSoup(response.text, "html.parser")
 raw_lines = soup.p.text.split("\n") if soup.p else []
 entries = [line.split("|") for line in raw_lines if line]
 
-cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 'type_mag',
-        'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2'] + ['...'] * (len(entries[0]) - 16)
-df_bmkg = pd.DataFrame(entries[1:], columns=cols)
+base_cols = ['event_id', 'date_time', 'date_create', 'mode', 'status', 'mag', 'type_mag',
+             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2']
+
+extra_len = len(entries[0]) if entries else 0
+n_extra = max(0, extra_len - len(base_cols))
+full_cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
+
+df_bmkg = pd.DataFrame(entries[1:], columns=full_cols)
+
 df_bmkg['fixedLat'] = df_bmkg['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df_bmkg['fixedLon'] = df_bmkg['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df_bmkg['date_time'] = pd.to_datetime(df_bmkg['date_time'], errors='coerce')
