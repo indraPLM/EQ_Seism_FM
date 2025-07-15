@@ -79,7 +79,8 @@ def load_bmkg_focal(url):
 # 🔗 URL to BMKG Focal Catalog in HTML
 url = "http://202.90.198.41/qc_focal.txt"
 df_focal = load_bmkg_focal(url)
-
+df=df_focal
+print(df)
 # 🧾 Show parsed table
 st.markdown("### 📋 Parsed BMKG Focal Mechanism Table")
 if df_focal.empty:
