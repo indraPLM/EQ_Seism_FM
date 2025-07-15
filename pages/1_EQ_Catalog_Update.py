@@ -51,13 +51,21 @@ if df.empty:
 
 # 🔄 Data Cleaning & Conversion
 def preprocess(df):
-    df['fixedLat'] = df['lat'].str.extract(r'([\d.]+)').astype(float) * df['lat'].str.contains('S').apply(lambda x: -1 if x else 1)
-    df['fixedLon'] = df['lon'].str.extract(r'([\d.]+)').astype(float) * df['lon'].str.contains('W').apply(lambda x: -1 if x else 1)
-    df['fixedDepth'] = df['depth'].str.replace('km','').astype(float)
+    lat_num = df['lat'].str.extract(r'([\d.]+)')[0].astype(float)
+    lat_sign = df['lat'].str.contains('S').apply(lambda x: -1 if x else 1)
+    df['fixedLat'] = lat_num * lat_sign
+
+    lon_num = df['lon'].str.extract(r'([\d.]+)')[0].astype(float)
+    lon_sign = df['lon'].str.contains('W').apply(lambda x: -1 if x else 1)
+    df['fixedLon'] = lon_num * lon_sign
+
+    df['fixedDepth'] = df['depth'].str.replace('km', '').astype(float)
     df['mag'] = df['mag'].astype(float)
-    df['date_time'] = pd.to_datetime(df['date_time'])
     df['sizemag'] = df['mag'] * 1000
+    df['date_time'] = pd.to_datetime(df['date_time'])
+
     return df
+
 
 df = preprocess(df)
 
