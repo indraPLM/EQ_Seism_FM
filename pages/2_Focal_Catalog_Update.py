@@ -107,8 +107,10 @@ def generate_beachball_base64(strike, dip, rake):
     return base64.b64encode(buf.getvalue()).decode('utf-8')
 
 summary_df['Beachball'] = df.apply(lambda row: generate_beachball_base64(row['S1'], row['D1'], row['R1']), axis=1)
+st.dataframe(summary_df)
 
 summary_df.drop(columns=['Beachball']).to_csv("seismic_summary.csv", index=False)
+st.dataframe(summary_df)
 
 # Convert DataFrame to CSV
 csv_data = summary_df.to_csv(index=False).encode('utf-8')
