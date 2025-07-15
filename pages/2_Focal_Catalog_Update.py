@@ -103,6 +103,7 @@ def generate_beachball_base64(strike, dip, rake):
     ax.axis('off')
     buf = BytesIO()
     fig.savefig(buf, format='png', bbox_inches='tight')
+    fig.canvas.draw()
     plt.close(fig)
     return base64.b64encode(buf.getvalue()).decode('utf-8')
 
