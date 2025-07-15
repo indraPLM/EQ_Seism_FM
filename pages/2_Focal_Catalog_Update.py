@@ -43,8 +43,7 @@ def fix_float(col): return pd.to_numeric(col, errors='coerce')
 @st.cache_data(show_spinner=False)
 def load_bmkg_focal(url):
     res = requests.get(url)
-    soup = BeautifulSoup(res.text, "html.parser")
-    lines = soup.p.text.split('\n') if soup.p else []
+    lines = res.text.strip().split('\n')
     rows = [line.split('|') for line in lines if line]
     return rows
 
