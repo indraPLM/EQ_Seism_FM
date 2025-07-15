@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Streamlit app: Focal Mechanism Viewer (BMKG + Global CMT)
+Streamlit App: BMKG Focal Mechanism Viewer with Summary and Beachball Export
 Created by: Indra Gunawan
 """
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,15 +13,15 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 from obspy.imaging.beachball import beach
 from bs4 import BeautifulSoup
-import folium
-from streamlit_folium import st_folium
 from io import BytesIO
 import base64
+import folium
+from streamlit_folium import st_folium
 
-# 🌍 Page Configuration
+# 🌍 Page config
 st.set_page_config(page_title="BMKG Focal Viewer", layout="wide", page_icon="🌋")
 
-# 🛠️ Sidebar Inputs
+# 🛠 Sidebar Inputs
 st.sidebar.header("BMKG Focal Filter")
 start_time = st.sidebar.text_input("Start Time", "2024-09-01 00:00:00")
 end_time = st.sidebar.text_input("End Time", "2025-01-31 23:59:59")
@@ -31,162 +32,132 @@ col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
-# 🧹 Coordinate Conversion
+# 📦 Fetch BMKG catalog
+@st.cache_data
+def load_bmkg_focal(url):
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, "html.parser")
+    raw = soup.find("p")
+    lines = raw.text.strip().split("\n") if raw else []
+    rows = [line.split("|") for line in lines if "|" in line]
+    return rows
+
+url = "http://202.90.198.41/qc_focal.txt"
+rows = load_bmkg_focal(url)
+
+base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
+             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2','Fit','DC','CLVD','type','location']
+n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0
+cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
+df = pd.DataFrame(rows[1:], columns=cols)
+
+# 🔁 Preprocess columns
 def fix_coord(val, axis):
     val = val.strip()
-    if axis == 'lat':
-        return -float(val.strip('S')) if val.endswith('S') else float(val.strip('N'))
-    if axis == 'lon':
-        return -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
+    return -float(val.strip('S')) if val.endswith('S') else float(val.strip('N')) if axis == 'lat' else \
+           -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
 
 def fix_float(col): return pd.to_numeric(col, errors='coerce')
 
-# 📦 Function to fetch and parse HTML catalog
-@st.cache_data(show_spinner=False)
-@st.cache_data(show_spinner=False)
-def load_bmkg_focal(url):
-    res = requests.get(url)
-    lines = res.text.strip().split('\n')
-    rows = [line.split('|') for line in lines if line]
-    return rows
-
-url = "http://202.90.198.41/qc_focal.txt" 
-rows = load_bmkg_focal(url) 
-
-# 🧾 Build DataFrame 
-base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
-             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2','Fit','DC','CLVD','type','location'] 
-
-n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0 
-cols = base_cols + [f'extra_{i}' for i in range(n_extra)] 
-df = pd.DataFrame(rows[1:], columns=cols) 
-
-# 🔄 Convert columns
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
 for col in ['mag','depth','S1','D1','R1','S2','D2','R2']: df[col] = fix_float(df[col])
 
-# 📋 Filter Data
 df = df[
     (df['date_time'] >= start_time) & (df['date_time'] <= end_time) &
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East))
 ]
 
-st.markdown("### 🧭 Static Focal Mechanism Plot (Cartopy Beachballs)")
-
-# 🗺️ Cartopy Beachball Plot
-proj = ccrs.PlateCarree(central_longitude=120)
-fig = plt.figure(dpi=300)
-ax = fig.add_subplot(111, projection=proj)
-ax.set_extent((West, East, South-0.5, North+0.5))
-ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
-
-for _, row in df.iterrows():
-    x, y = proj.transform_point(row["fixedLon"], row["fixedLat"], src_crs=ccrs.Geodetic())
-    color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
-    ball = beach([row["S1"], row["D1"], row["R1"]],
-                 xy=(x, y), width=1.5, linewidth=0.5,
-                 alpha=0.65, zorder=10, facecolor=color)
-    ax.add_collection(ball)
-
-st.pyplot(fig)
-
-# 🌐 Folium Interactive Plot
-st.markdown("### 🌎 Interactive Map with HTML Popups (Folium)")
-
-map_center = [(South + North)/2, (West + East)/2]
-m = folium.Map(location=map_center, zoom_start=5, tiles="CartoDB positron")
-
-for _, row in df.iterrows():
-    depth = row["depth"]
-    color = "red" if depth < 60 else "orange" if depth < 300 else "green"
-
-    html_popup = f"""
-    <div style="font-family:Arial; font-size:13px">
-        <b>Date:</b> {row['date_time'].strftime('%Y-%m-%d %H:%M:%S')}<br>
-        <b>Magnitude:</b> {row['mag']} M<br>
-        <b>Depth:</b> {depth:.1f} km<br>
-        <b>Lat/Lon:</b> ({row['fixedLat']:.2f}, {row['fixedLon']:.2f})<br><br>
-        <b>Focal Mechanism:</b><br>
-        Strike1: {row['S1']}° &nbsp; Dip1: {row['D1']}° &nbsp; Rake1: {row['R1']}°<br>
-        Strike2: {row['S2']}° &nbsp; Dip2: {row['D2']}° &nbsp; Rake2: {row['R2']}°
-    </div>
-    """
-
-    folium.CircleMarker(
-        location=[row["fixedLat"], row["fixedLon"]],
-        radius=4,
-        color=color,
-        fill=True,
-        fill_opacity=0.8,
-        popup=folium.Popup(html_popup, max_width=350)
-    ).add_to(m)
-
-st_folium(m, width=900, height=600)
-
-# 🧾 Display Catalog
-#st.markdown("### 📋 BMKG Focal Catalog Table")
-#st.dataframe(df)
-
-
-# 🖼️ Generate beachball image and return as HTML
-def beachball_html(S, D, R):
+# 🎯 Beachball image encoder
+def beachball_base64(S, D, R):
+    if pd.isnull(S) or pd.isnull(D) or pd.isnull(R): return None
+    if not (0 <= D <= 90 and -180 <= R <= 180): return None
     fig, ax = plt.subplots(figsize=(1.2, 1.2), dpi=100)
-    ax.set_xlim(-100, 100)
-    ax.set_ylim(-100, 100)
-    ax.axis("off")
-    ball = beach([S, D, R], width=90, linewidth=1, facecolor="black", xy=(0, 0))
+    ax.set_xlim(-100, 100); ax.set_ylim(-100, 100); ax.axis("off")
+    ball = beach([S, D, R], xy=(0, 0), width=90, linewidth=1, facecolor="black")
     ax.add_collection(ball)
-    buf = BytesIO()
-    fig.savefig(buf, format="png", bbox_inches="tight", pad_inches=0)
-    plt.close(fig)
+    buf = BytesIO(); fig.savefig(buf, format="png", bbox_inches="tight", pad_inches=0); plt.close(fig)
     encoded = base64.b64encode(buf.getvalue()).decode()
     return f'<img src="data:image/png;base64,{encoded}" width="70"/>'
 
-# 🧾 Display table with HTML
+# 🧾 Seismic Summary Table
 st.markdown("### 📋 Seismic Event Table with Beachball Diagrams")
 
-def safe(val):
-    return str(val) if pd.notnull(val) else ""
-
+table_rows = []
+csv_rows = []
 for i, row in df.iterrows():
-    mech_img = beachball_html(safe(row["S1"]), safe(row["D1"]), safe(row["R1"]))
-    row_html = f"""
+    img = beachball_base64(row["S1"], row["D1"], row["R1"])
+    table_rows.append(f"""
     <tr>
         <td>{i+1}</td>
-        <td>{safe(row['date_time'].date())}</td>
-        <td>{safe(row['date_time'].time())}</td>
-        <td>{safe(row['mag'])}</td>
-        <td>{safe(row['lat'])}°</td>
-        <td>{safe(row['lon'])}°</td>
-        <td>{safe(row['depth'])} km</td>
-        <td>{safe(row['S1'])} / {safe(row['D1'])} / {safe(row['R1'])}</td>
-        <td>{safe(row['location'])}</td>
-        <td>{mech_img}</td>
+        <td>{row['date_time'].date()}</td>
+        <td>{row['date_time'].time()}</td>
+        <td>{row['mag']:.1f}</td>
+        <td>{row['lat']:.2f}</td>
+        <td>{row['lon']:.2f}</td>
+        <td>{row['depth']} km</td>
+        <td>{row['S1']} / {row['D1']} / {row['R1']}</td>
+        <td>{row['location']}</td>
+        <td>{img if img else '<i>Invalid</i>'}</td>
     </tr>
-    """
-    table_rows.append(row_html)
-   
+    """)
+
+    # Add CSV row with raw image (encoded or placeholder)
+    csv_rows.append({
+        'date_time': row['date_time'],
+        'lat': row['lat'],
+        'lon': row['lon'],
+        'depth': row['depth'],
+        'mag': row['mag'],
+        'S1': row['S1'],
+        'D1': row['D1'],
+        'R1': row['R1'],
+        'S2': row['S2'],
+        'D2': row['D2'],
+        'R2': row['R2'],
+        'location': row['location'],
+        'beachball_image': img if img else 'Invalid'
+    })
 
 html_table = f"""
 <table border="1" style="border-collapse:collapse; text-align:center; font-family:Arial; font-size:12px">
-    <thead>
-        <tr>
-            <th>No</th><th>Date</th><th>Time</th><th>Mag</th>
-            <th>Lat</th><th>Lon</th><th>Depth</th><th>S/D/R</th>
-            <th>Location</th><th>Focal Mechanism</th>
-        </tr>
-    </thead>
-    <tbody>
-        {''.join(table_rows)}
-    </tbody>
+<thead>
+    <tr>
+        <th>No</th><th>Date</th><th>Time</th><th>Mag</th><th>Lat</th><th>Lon</th>
+        <th>Depth</th><th>S/D/R</th><th>Location</th><th>Focal Mechanism</th>
+    </tr>
+</thead>
+<tbody>
+    {''.join(table_rows)}
+</tbody>
 </table>
 """
-
 st.markdown(html_table, unsafe_allow_html=True)
+
+# 📥 Download CSV with encoded image as string
+st.markdown("### 📥 Download Summary CSV")
+df_export = pd.DataFrame(csv_rows)
+csv = df_export.to_csv(index=False)
+st.download_button("Download Focal Summary CSV", csv, file_name="focal_summary.csv", mime="text/csv")
+
+# 🗺️ Cartopy Plot
+st.markdown("### 🗺️ Static Beachball Plot (Cartopy)")
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
+ax.set_extent((West, East, South-0.5, North+0.5))
+ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+for _, row in df.iterrows():
+    if pd.notnull(row["S1"]) and pd.notnull(row["D1"]) and pd.notnull(row["R1"]):
+        x, y = ax.projection.transform_point(row["fixedLon"], row["fixedLat"], ccrs.Geodetic())
+        color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
+        ball = beach([row["S1"], row["D1"], row["R1"]],
+                     xy=(x, y), width=1.5, linewidth=0.5,
+                     alpha=0.65, zorder=10, facecolor=color)
+        ax.add_collection(ball)
+st.pyplot(fig)
 
 
 # 🌐 Global CMT Section
