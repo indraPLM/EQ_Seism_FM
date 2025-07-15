@@ -97,6 +97,44 @@ st.dataframe(summary_df)
 # Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
 # summary_df['Focal Mechanism'] = [generate_beachball_image(row) for _, row in summary_df.iterrows()]
 
+def generate_beachball_base64(strike, dip, rake):
+    fig, ax = plt.subplots(figsize=(1.5, 1.5))
+    beach([strike, dip, rake], xy=(0, 0), width=100, linewidth=0.5, facecolor='k', alpha=0.8)
+    ax.axis('off')
+    buf = BytesIO()
+    fig.savefig(buf, format='png', bbox_inches='tight')
+    plt.close(fig)
+    return base64.b64encode(buf.getvalue()).decode('utf-8')
+
+summary_df['Beachball'] = df.apply(lambda row: generate_beachball_base64(row['S1'], row['D1'], row['R1']), axis=1)
+
+summary_df.drop(columns=['Beachball']).to_csv("seismic_summary.csv", index=False)
+
+from fpdf import FPDF
+
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.add_page()
+pdf.set_font("Arial", size=10)
+
+for i, row in summary_df.iterrows():
+    pdf.cell(200, 10, txt=f"{row['DateTime']} | Mag: {row['Magnitude']} | Depth: {row['Depth']} km | {row['Location']}", ln=True)
+    img_data = base64.b64decode(row['Beachball'])
+    with open("temp.png", "wb") as f: f.write(img_data)
+    pdf.image("temp.png", x=10, y=pdf.get_y(), w=20)
+    pdf.ln(25)
+
+pdf.output("seismic_summary_with_beachballs.pdf")
+
+import streamlit as st
+from streamlit_pdf_viewer import pdf_viewer
+
+st.title("📄 Seismic Summary PDF Viewer")
+
+with open("seismic_summary_with_beachballs.pdf", "rb") as f:
+    binary_data = f.read()
+
+pdf_viewer(input=binary_data, width=800, height=1000)
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
