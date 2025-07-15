@@ -45,11 +45,6 @@ def load_bmkg_focal(url):
 url = "http://202.90.198.41/qc_focal.txt"
 rows = load_bmkg_focal(url)
 
-if not rows or len(rows) < 2:
-    st.warning("⚠️ No focal mechanism data found at source or parsing failed.")
-    st.stop()
-
-
 base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
              'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2','Fit','DC','CLVD','type','location']
 n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0
