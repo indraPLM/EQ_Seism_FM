@@ -15,8 +15,8 @@ st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='
 
 # 🛠️ Sidebar Inputs
 st.sidebar.header("Input Parameters")
-time_start = st.sidebar.text_input('Start Time', '2025-01-01 00:00:00')
-time_end = st.sidebar.text_input('End Time', '2025-01-31 23:59:59')
+time_start = st.sidebar.text_input('Start Time', '2025-06-01 00:00:00')
+time_end = st.sidebar.text_input('End Time', '2025-06-30 23:59:59')
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input('North', '6.0'))
 South = float(col2.text_input('South', '-13.0'))
