@@ -143,6 +143,7 @@ def render_table_with_images(df):
     </table>
     """
     st.markdown(html_table, unsafe_allow_html=True)
+
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
 def load_cmt(url):
