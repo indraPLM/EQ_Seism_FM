@@ -33,12 +33,14 @@ West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
 # 📦 Fetch BMKG catalog
-@st.cache_data(show_spinner=False) 
-def load_bmkg_focal(url): 
-    res = requests.get(url) 
-    lines = res.text.strip().split('\n') 
-    rows = [line.split('|') for line in lines if line] 
-    return rows 
+@st.cache_data
+def load_bmkg_focal(url):
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, "html.parser")
+    raw = soup.find("p")
+    lines = raw.text.strip().split("\n") if raw else []
+    rows = [line.split("|") for line in lines if "|" in line]
+    return rows
 
 url = "http://202.90.198.41/qc_focal.txt"
 rows = load_bmkg_focal(url)
