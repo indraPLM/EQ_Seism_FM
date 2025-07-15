@@ -86,7 +86,7 @@ for _, row in df.iterrows():
     x, y = proj.transform_point(row["fixedLon"], row["fixedLat"], src_crs=ccrs.Geodetic())
     color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
     ball = beach([row["S1"], row["D1"], row["R1"]],
-                 xy=(x, y), width=0.5, linewidth=0.5,
+                 xy=(x, y), width=1.5, linewidth=0.5,
                  alpha=0.65, zorder=10, facecolor=color)
     ax.add_collection(ball)
 
