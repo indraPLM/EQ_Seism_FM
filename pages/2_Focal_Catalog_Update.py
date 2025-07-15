@@ -149,24 +149,27 @@ def beachball_html(S, D, R):
 # 🧾 Display table with HTML
 st.markdown("### 📋 Seismic Event Table with Beachball Diagrams")
 
-table_rows = []
+def safe(val):
+    return str(val) if pd.notnull(val) else ""
+
 for i, row in df.iterrows():
-    mech_img = beachball_html(row["S1"], row["D1"], row["R1"])
+    mech_img = beachball_html(safe(row["S1"]), safe(row["D1"]), safe(row["R1"]))
     row_html = f"""
     <tr>
         <td>{i+1}</td>
-        <td>{row['date_time'].date()}</td>
-        <td>{row['date_time'].time()}</td>
-        <td>{row['mag']:.1f}</td>
-        <td>{row['lat']:.2f}°</td>
-        <td>{row['lon']:.2f}°</td>
-        <td>{row['depth']} km</td>
-        <td>{row['S1']} / {row['D1']} / {row['R1']}</td>
-        <td>{row['location']}</td>
+        <td>{safe(row['date_time'].date())}</td>
+        <td>{safe(row['date_time'].time())}</td>
+        <td>{safe(row['mag'])}</td>
+        <td>{safe(row['lat'])}°</td>
+        <td>{safe(row['lon'])}°</td>
+        <td>{safe(row['depth'])} km</td>
+        <td>{safe(row['S1'])} / {safe(row['D1'])} / {safe(row['R1'])}</td>
+        <td>{safe(row['location'])}</td>
         <td>{mech_img}</td>
     </tr>
     """
     table_rows.append(row_html)
+   
 
 html_table = f"""
 <table border="1" style="border-collapse:collapse; text-align:center; font-family:Arial; font-size:12px">
