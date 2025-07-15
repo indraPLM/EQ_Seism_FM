@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 import folium
 from streamlit_folium import st_folium
 from io import BytesIO
+import base64
 
 # 🌍 Page Configuration
 st.set_page_config(page_title="BMKG Focal Viewer", layout="wide", page_icon="🌋")
