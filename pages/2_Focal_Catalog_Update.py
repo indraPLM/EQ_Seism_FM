@@ -110,6 +110,16 @@ summary_df['Beachball'] = df.apply(lambda row: generate_beachball_base64(row['S1
 
 summary_df.drop(columns=['Beachball']).to_csv("seismic_summary.csv", index=False)
 
+# Convert DataFrame to CSV
+csv_data = summary_df.to_csv(index=False).encode('utf-8')
+
+# Display download button
+st.download_button(
+    label="📥 Download Seismic Summary CSV",
+    data=csv_data,
+    file_name="seismic_summary.csv",
+    mime="text/csv"
+)
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
