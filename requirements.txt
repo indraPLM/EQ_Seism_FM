@@ -13,3 +13,5 @@ cartopy
 streamlit_pdf_viewer
 fpdf
 ipython
+pdfkit
+wkhtmltopdf
