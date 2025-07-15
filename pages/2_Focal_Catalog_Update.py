@@ -110,31 +110,6 @@ summary_df['Beachball'] = df.apply(lambda row: generate_beachball_base64(row['S1
 
 summary_df.drop(columns=['Beachball']).to_csv("seismic_summary.csv", index=False)
 
-from fpdf import FPDF
-
-pdf = FPDF()
-pdf.set_auto_page_break(auto=True, margin=15)
-pdf.add_page()
-pdf.set_font("Arial", size=10)
-
-for i, row in summary_df.iterrows():
-    pdf.cell(200, 10, txt=f"{row['DateTime']} | Mag: {row['Magnitude']} | Depth: {row['Depth']} km | {row['Location']}", ln=True)
-    img_data = base64.b64decode(row['Beachball'])
-    with open("temp.png", "wb") as f: f.write(img_data)
-    pdf.image("temp.png", x=10, y=pdf.get_y(), w=20)
-    pdf.ln(25)
-
-pdf.output("seismic_summary_with_beachballs.pdf")
-
-import streamlit as st
-from streamlit_pdf_viewer import pdf_viewer
-
-st.title("📄 Seismic Summary PDF Viewer")
-
-with open("seismic_summary_with_beachballs.pdf", "rb") as f:
-    binary_data = f.read()
-
-pdf_viewer(input=binary_data, width=800, height=1000)
 
 # 🌐 Global CMT Section
 st.markdown("### 🌎 Peta Global CMT Harvard")
