@@ -59,6 +59,13 @@ def get_processtime(eventid):
     except:
         return ' ', None
 
+for eid in df['event_id']:
+    try:
+        get_processtime(eid)
+    except Exception as e:
+        st.warning(f"Failed to process event_id {eid}: {e}")
+
+
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
 # --- Map Visualization ---
