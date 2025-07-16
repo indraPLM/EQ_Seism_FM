@@ -22,8 +22,8 @@ def extract_xml_tag(soup, tag):
 
 def to_float(lst): return [float(x) for x in lst]
 
-def match_event(df, t_ref, tol_sec=60):
-    matched = df[df['date_time'].apply(lambda t: abs((t_ref - t).total_seconds()) < tol_sec)]
+def match_event(df, t_ref, time_column='date_time', tol_sec=60):
+    matched = df[df[time_column].apply(lambda t: abs((t_ref - t).total_seconds()) < tol_sec)]
     return matched.iloc[0] if not matched.empty else None
 
 def geo_distance(x0, y0, x1, y1):
@@ -77,8 +77,8 @@ x0, y0, m0, d0 = map(float, bmkg_df.loc[bmkg_df.index[0], ['lon', 'lat', 'mag', 
 #x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
 t_ref = bmkg_df['waktu'].iloc[0]
 
-gfz_match = match_event(gfz_df, t_ref)
-usgs_match = match_event(usgs, t_ref)
+gfz_match = match_event(gfz_df, t_ref)  # uses default 'date_time'
+usgs_match = match_event(usgs, t_ref, time_column='time_usgs')  # specify USGS time column
 
 # --- Map Visualization ---
 tiles = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
