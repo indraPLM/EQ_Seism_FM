@@ -11,8 +11,9 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page
 
 # 🎛 Sidebar input
 st.sidebar.header("Parameter Waktu")
-time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2024-11-01'))
-time_end = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-01-31'))
+time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2024-11-01')).tz_localize('UTC')
+time_end = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-01-31')).tz_localize('UTC')
+
 
 # 🛠️ Utility Functions
 def fix_coord(val):
