@@ -137,13 +137,13 @@ st.dataframe(df_cmt)
 df_cmt['Datetime'] = pd.to_datetime(df_cmt['Datetime'], errors='coerce')
 df_cmt = df_cmt[
     (df_cmt['Datetime'] >= cmt_start) & (df_cmt['Datetime'] <= cmt_end) &
-    (df_cmt['Lat'].between(south, north)) & (df_cmt['Lon'].between(west, east))
+    (df_cmt['Lat'].between(South, North)) & (df_cmt['Lon'].between(West, East))
 ]
 
 # 🗺️ Plot Global CMT
 fig2 = plt.figure(dpi=300)
 ax2 = fig2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-ax2.set_extent((west, east, south-0.5, north+0.5))
+ax2.set_extent((West, East, South - 0.5, North + 0.5))
 ax2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat')
