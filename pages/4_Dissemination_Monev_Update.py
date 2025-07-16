@@ -131,3 +131,21 @@ else:
 
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 st.dataframe(df)
+
+url = 'https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
+response = requests.get(url)
+
+# Use XML-aware parser for correct tag detection
+soup = BeautifulSoup(response.text, 'xml')  # <- critical change here
+
+# 🧪 Optional debug print
+# st.write(soup.prettify())  # Shows XML structure in Streamlit (comment out if not needed)
+
+# Extract area safely
+areas = soup.find_all('area')
+if not areas:
+    st.warning("🚨 Tag <area> not found — check XML structure or parser type.")
+else:
+    list_areas = [a.text.strip() for a in areas]
+    df['area'] = list_areas  # assuming alignment with other fields
+
