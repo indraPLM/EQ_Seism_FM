@@ -141,6 +141,7 @@ else:
 
 # --- Final Outputs ---
 st_data = st_folium(m, width=1000)
+bmkg_df.index = range(1, len(bmkg_df) + 1)  # Reindex starting from 1
 st.markdown("### 15 Data Gempabumi Terkini")
 st.table(bmkg_df)
 
