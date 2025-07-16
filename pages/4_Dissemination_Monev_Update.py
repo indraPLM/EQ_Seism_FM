@@ -58,7 +58,13 @@ lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
 areas  = extract_text('area')
-#st.write(areas)
+# --- Extract <area> tag safely ---
+areas_raw = soup.find_all('area')
+if areas_raw:
+    list_area = [a.text.strip() for a in areas_raw]
+else:
+    list_area = ['Unknown'] * len(dates)  # Fallback if tag missing or misaligned
+
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
@@ -67,7 +73,7 @@ df = pd.DataFrame({
     'lon': list(map(convert_lon, lons)),
     'mag': mags,
     'depth': depths,
-    'remark': areas
+    'remark': list_area
 })
 
 dates     = extract_text('date')
