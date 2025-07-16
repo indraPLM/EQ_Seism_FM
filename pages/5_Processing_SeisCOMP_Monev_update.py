@@ -75,35 +75,35 @@ df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag
 #st.dataframe(df)
 
 # --- Fetch Dissemination Time ---
-def get_processtime(eventid):
+def manual_fetch_timestamp(eventid):
     try:
         eid = eventid.strip()
-        url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt'
+        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
         response = requests.get(url)
 
-        # Detect XML error response
-        if '<Error>' in response.text or 'NoSuchKey' in response.text:
-            return None, None
+        text = response.text.strip()
+        lines = text.split('\n')
 
-        lines = response.text.strip().split('\n')
+        # Skip header line — get first data line
         if len(lines) < 2:
             return None, None
 
-        parts = lines[1].split('|')
-        if len(parts) >= 2:
-            timestamp = pd.to_datetime(parts[0].strip(), errors='coerce')
-            offset = float(parts[1].strip())
-            return timestamp, offset
+        row2 = lines[1].split('|')
+        if len(row2) >= 2:
+            t_stamp = pd.to_datetime(row2[0].strip(), errors='coerce')
+            elapse = float(row2[1].strip())
+            return t_stamp, elapse
 
         return None, None
-    except:
+    except Exception:
         return None, None
-
 
         
 # Assign fetched values to DataFrame
-proc_data = [get_processtime(eid) for eid in df['event_id']]
-df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame(proc_data)
+df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
+    manual_fetch_timestamp(eid) for eid in df['event_id']
+])
+
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
