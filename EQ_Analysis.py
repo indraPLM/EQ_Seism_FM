@@ -60,13 +60,15 @@ bmkg_df = pd.DataFrame({
     'depth': extract_xml_tag(soup, 'dalam'),
     'area': [x.split('\n')[9] for x in extract_xml_tag(soup, 'gempa')]
 })
-st.write("BMKG columns:", bmkg_df.columns.tolist())
-st.write("BMKG head preview:", bmkg_df.head())
+
 bmkg_df['waktu'] = pd.to_datetime(bmkg_df['waktu'])
 bmkg_df = bmkg_df[bmkg_df['mag'] >= 5]
 bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
+st.dataframe(bmkg_df)
 
 # --- Reference Event ---
+x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
+
 x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
 t_ref = bmkg_df['waktu'][0]
 
