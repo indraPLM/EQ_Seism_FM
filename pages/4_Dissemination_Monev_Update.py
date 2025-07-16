@@ -4,12 +4,26 @@ import pandas as pd
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
+import datetime
 
 # --- Page Setup ---
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page_icon="🌍")
 st.sidebar.header("Input Parameter :")
-time_start = st.sidebar.text_input('Start DateTime:', '2025-03-01 00:00:00')
-time_end   = st.sidebar.text_input('End DateTime:', '2025-03-31 23:59:59')
+
+# Calculate dynamic dates
+yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+month_before = yesterday - datetime.timedelta(days=30)
+
+# Format as strings
+yesterday_str = yesterday.strftime('%Y-%m-%d %H:%M:%S')
+month_before_str = month_before.strftime('%Y-%m-%d %H:%M:%S')
+
+# Sidebar inputs with default values
+time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
+time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
+
+#time_start = st.sidebar.text_input('Start DateTime:', '2025-03-01 00:00:00')
+#time_end   = st.sidebar.text_input('End DateTime:', '2025-03-31 23:59:59')
 
 # --- Helper Functions ---
 def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
