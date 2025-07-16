@@ -46,20 +46,29 @@ if df.empty:
     
 st.write(df)
 
-# --- Extract Columns ---
-def get_column(data, col): return [row[col].strip() for row in data[1:-1]]
+# 🔄 Data Cleaning & Conversion
+def preprocess(df):
+    lat_num = df['lat'].str.extract(r'([\d.]+)')[0].astype(float)
+    lat_sign = df['lat'].str.contains('S').apply(lambda x: -1 if x else 1)
+    df['fixedLat'] = lat_num * lat_sign
 
-df = pd.DataFrame({
-    'event_id': get_column(qc_data, 0),
-    'date_time': pd.to_datetime(get_column(qc_data, 1), errors='coerce'),
-    'mag': pd.to_numeric(get_column(qc_data, 5), errors='coerce'),
-    'lat': pd.to_numeric([float(x[:-1]) * (-1 if 'S' in x else 1) for x in get_column(qc_data, 7)], errors='coerce'),
-    'lon': pd.to_numeric([float(x[:-1]) * (-1 if 'W' in x else 1) for x in get_column(qc_data, 8)], errors='coerce'),
-    'depth': pd.to_numeric(get_column(qc_data, 9), errors='coerce')
-})
+    lon_num = df['lon'].str.extract(r'([\d.]+)')[0].astype(float)
+    lon_sign = df['lon'].str.contains('W').apply(lambda x: -1 if x else 1)
+    df['fixedLon'] = lon_num * lon_sign
+
+    df['fixedDepth'] = df['depth'].str.replace('km', '').astype(float)
+    df['mag'] = df['mag'].astype(float)
+    df['sizemag'] = df['mag'] * 1000
+    df['date_time'] = pd.to_datetime(df['date_time'])
+
+    return df
+
+
+df = preprocess(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
+st.dataframe(df)
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['lon'] > West) & (df['lon'] < East) & (df['lat'] > South) & (df['lat'] < North)]
 
