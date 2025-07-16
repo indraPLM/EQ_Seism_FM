@@ -55,7 +55,11 @@ st.markdown("### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)")
 st_folium(m, width=1000)
 
 # --- Filtered Scatter Chart ---
-df_filtered = df[(df['datetime'] > time_start) & (df['datetime'] < time_end)]
+start_dt = pd.to_datetime(time_start)
+end_dt   = pd.to_datetime(time_end)
+
+df_filtered = df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
+#df_filtered = df[(df['datetime'] > time_start) & (df['datetime'] < time_end)]
 st.markdown("### Grafik Kecepatan Diseminasi Gempabumi M >=5")
 st.scatter_chart(df_filtered, x='datetime', y='lapsetime (minutes)')
 
