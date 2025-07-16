@@ -77,17 +77,17 @@ df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag
 # --- Fetch Dissemination Time ---
 def get_processtime(eventid):
     try:
-        eid = eventid.strip().split()[0]  # Clean up ID
+        eid = eventid.strip()
         url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt'
         response = requests.get(url)
 
-        # Handle missing files (XML error page)
+        # Detect XML error response
         if '<Error>' in response.text or 'NoSuchKey' in response.text:
             return None, None
 
         lines = response.text.strip().split('\n')
         if len(lines) < 2:
-            return None, None  # No data
+            return None, None
 
         parts = lines[1].split('|')
         if len(parts) >= 2:
