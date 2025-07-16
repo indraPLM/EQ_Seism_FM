@@ -75,7 +75,8 @@ df = df[
 ]
 
 # 🗺️ Cartopy Plot
-st.markdown("### 🗺️ Peta Focal Mechanism BMKG")
+st.markdown(f"### 🗺️ Peta Focal Mechanism BMKG \n{start_time} – {end_time}")
+
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
 ax.set_extent((West, East, South-0.5, North+0.5))
