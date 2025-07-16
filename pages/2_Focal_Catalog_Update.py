@@ -129,6 +129,7 @@ urls = [
 ]
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
+st.dataframe(df_cmt)
 df_cmt['Datetime'] = pd.to_datetime(df_cmt['Datetime'], errors='coerce')
 df_cmt = df_cmt[
     (df_cmt['Datetime'] >= cmt_start) & (df_cmt['Datetime'] <= cmt_end) &
