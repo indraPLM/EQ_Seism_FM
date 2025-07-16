@@ -64,6 +64,7 @@ st.write("BMKG columns:", bmkg_df.columns.tolist())
 st.write("BMKG head preview:", bmkg_df.head())
 bmkg_df['waktu'] = pd.to_datetime(bmkg_df['waktu'])
 bmkg_df = bmkg_df[bmkg_df['mag'] >= 5]
+bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
 
 # --- Reference Event ---
 x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
