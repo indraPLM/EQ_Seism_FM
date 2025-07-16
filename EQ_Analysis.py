@@ -13,8 +13,8 @@ st.set_page_config(page_title="EQ Analysis", layout="wide", page_icon="🌏")
 
 # --- Utility Functions ---
 def fetch_text_data(url, delimiter='|'):
-    soup = BeautifulSoup(requests.get(url).text, 'html')
-    lines = soup.p.text.split('\n') if soup.p else []
+    response = requests.get(url)
+    lines = response.text.strip().split('\n')
     return [line.split(delimiter) for line in lines if delimiter in line]
 
 def extract_xml_tag(soup, tag):
@@ -33,6 +33,7 @@ def geo_distance(x0, y0, x1, y1):
 today = (datetime.today() + timedelta(days=1)).strftime('%Y-%m-%d')
 gfz_raw = fetch_text_data(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
 st.write(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
+st.write("First few GFZ rows:", gfz_raw[:5])
 
 if gfz_raw and len(gfz_raw[0]) > 1:
     gfz_df = pd.DataFrame(gfz_raw[1:], columns=gfz_raw[0])
