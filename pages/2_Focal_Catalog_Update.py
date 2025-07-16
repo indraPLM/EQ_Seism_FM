@@ -75,7 +75,7 @@ df = df[
 ]
 
 # 🗺️ Cartopy Plot
-st.markdown("### 🗺️ Static Beachball Plot (Cartopy)")
+st.markdown("### 🗺️ Peta Focal Mechanism BMKG")
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
 ax.set_extent((West, East, South-0.5, North+0.5))
