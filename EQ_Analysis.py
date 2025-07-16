@@ -32,7 +32,7 @@ def geo_distance(x0, y0, x1, y1):
 # --- GFZ Data ---
 today = (datetime.today() + timedelta(days=1)).strftime('%Y-%m-%d')
 gfz_raw = fetch_text_data(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
-print(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
+st.write(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
 
 if gfz_raw and len(gfz_raw[0]) > 1:
     gfz_df = pd.DataFrame(gfz_raw[1:], columns=gfz_raw[0])
