@@ -58,13 +58,6 @@ lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
 areas  = extract_text('area')
-# --- Extract <area> tag safely ---
-areas_raw = soup.find_all('area')
-if areas_raw:
-    list_area = [a.text.strip() for a in areas_raw]
-else:
-    list_area = ['Unknown'] * len(dates)  # Fallback if tag missing or misaligned
-
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
@@ -72,8 +65,7 @@ df = pd.DataFrame({
     'lat': list(map(convert_lat, lats)),
     'lon': list(map(convert_lon, lons)),
     'mag': mags,
-    'depth': depths,
-    'remark': list_area
+    'depth': depths
 })
 
 dates     = extract_text('date')
@@ -96,16 +88,6 @@ combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
 
 df['datetime'] = pd.to_datetime(combined_dt, format="%d/%m/%Y %H:%M:%S", errors='coerce')
 
-
-# Recalculate lapsetime only for valid rows
-#valid_mask = df['datetime'].notna() & df['timesent'].notna()
-#df.loc[valid_mask, 'lapsetime (minutes)'] = (
-#    (df.loc[valid_mask, 'timesent'] - df.loc[valid_mask, 'datetime'])
-#    .dt.total_seconds() / 60
-#).round(2)
-
-# Optional: flag invalid rows
-#df['lapsetime (minutes)'] = df['lapsetime (minutes)'].fillna('Invalid')
 df['lapsetime (minutes)'] = df['timesent']-df['datetime']
 df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
 df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
@@ -135,17 +117,11 @@ if not filtered.empty:
 else:
     st.info("📉 Tidak ada data dalam rentang waktu yang dipilih.")
 
-st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
-st.dataframe(df)
 
-url = 'https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
+
 response = requests.get(url)
-
 # Use XML-aware parser for correct tag detection
 soup = BeautifulSoup(response.text, 'xml')  # <- critical change here
-
-# 🧪 Optional debug print
-# st.write(soup.prettify())  # Shows XML structure in Streamlit (comment out if not needed)
 
 # Extract area safely
 areas = soup.find_all('area')
@@ -155,5 +131,6 @@ else:
     list_areas = [a.text.strip() for a in areas]
     df['area'] = list_areas  # assuming alignment with other fields
 
+st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 st.dataframe(df)
 
