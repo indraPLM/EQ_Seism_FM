@@ -146,7 +146,7 @@ urls = [
 ]
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
-st.dataframe(df_cmt)
+
 df_cmt['Datetime'] = pd.to_datetime(df_cmt['Datetime'], errors='coerce')
 df_cmt = df_cmt[
     (df_cmt['Datetime'] >= cmt_start) & (df_cmt['Datetime'] <= cmt_end) &
@@ -162,4 +162,5 @@ ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat')
 
 st.pyplot(fig2)
+df_cmt.index = range(1, len(df_cmt) + 1)  # Reindex starting from 1
 st.dataframe(df_cmt)
