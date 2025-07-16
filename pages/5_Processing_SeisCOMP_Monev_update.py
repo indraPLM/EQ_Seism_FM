@@ -100,7 +100,7 @@ tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocea
 map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
 
 for _, row in df.iterrows():
-    folium.Marker([row['lat'], row['lon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
+    folium.Marker([row['fixedLat'], row['fixedLon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
 
 st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
 st_folium(map_obj, width=1000)
