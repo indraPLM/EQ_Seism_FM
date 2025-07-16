@@ -64,7 +64,7 @@ for eid in df['event_id']:
         get_processtime(eid)
     except Exception as e:
         st.warning(f"Failed to process event_id {eid}: {e}")
-
+st.dataframe(df)
 
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
