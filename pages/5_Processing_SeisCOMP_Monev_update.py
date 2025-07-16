@@ -19,15 +19,32 @@ East  = float(st.sidebar.text_input('East:', '142.0'))
 
 # --- Fetch & Parse QC Focal Data ---
 
-def fetch_qc_focal(url):
-    res = requests.get(url)
-    raw_text = res.text.strip()
-    lines = raw_text.split("\n")
-    rows = [line.split("|") for line in lines if "|" in line]
-    return rows
+# 🔎 Load Earthquake Catalog (with robust HTML fallback)
+@st.cache_data(show_spinner=False)
+def fetch_qc(url):
+    try:
+        response = requests.get(url)
+        text = response.text.strip()
+        if "|" in text:
+            rows = [line.split('|') for line in text.split('\n') if line]
+        else:
+            soup = BeautifulSoup(text, 'html.parser')
+            if soup.p and soup.p.text:
+                rows = [line.split('|') for line in soup.p.text.split('\n') if line]
+            else:
+                return pd.DataFrame()
+        columns = ['event_id','date_time','mode','status','phase','mag','type_mag',
+                   'n_mag','azimuth','rms','lat','lon','depth','type_event','remarks']
+        return pd.DataFrame([dict(zip(columns, row)) for row in rows[1:-2]])
+    except Exception:
+        return pd.DataFrame()
 
-qc_data = fetch_qc_focal('http://202.90.198.41/qc_focal.txt')
-st.write(qc_data)
+df = fetch_qc("http://202.90.198.41/qc.txt")
+if df.empty:
+    st.error("⚠️ Failed to retrieve or parse earthquake data from source.")
+    st.stop()
+    
+st.write(df)
 
 # --- Extract Columns ---
 def get_column(data, col): return [row[col].strip() for row in data[1:-1]]
