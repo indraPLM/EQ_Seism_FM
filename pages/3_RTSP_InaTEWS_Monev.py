@@ -127,12 +127,13 @@ st.dataframe(df_comp)
 
 
 # 📊 Difference Metrics
-#df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
-#df_tsp['depth_diff'] = abs(df_tsp['depth_bmkg'] - df_tsp['depth_usgs'])
-#df_tsp['distance_diff_km'] = np.sqrt(
-#    degrees2kilometers(abs(df_tsp['lon_bmkg'] - df_tsp['lon_usgs'])) ** 2 +
-#    degrees2kilometers(abs(df_tsp['lat_bmkg'] - df_tsp['lat_usgs'])) ** 2
-#)
+df_tsp=df_comp.copy()
+df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
+df_tsp['depth_diff'] = abs(df_tsp['depth_bmkg'] - df_tsp['depth_usgs'])
+df_tsp['distance_diff_km'] = np.sqrt(
+    degrees2kilometers(abs(df_tsp['lon_bmkg'] - df_tsp['lon_usgs'])) ** 2 +
+    degrees2kilometers(abs(df_tsp['lat_bmkg'] - df_tsp['lat_usgs'])) ** 2
+)
 
 # 📈 Visuals
 st.markdown("### 📉 Selisih Magnitudo USGS - BMKG")
