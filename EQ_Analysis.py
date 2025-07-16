@@ -34,12 +34,12 @@ today = (datetime.today() + timedelta(days=1)).strftime('%Y-%m-%d')
 gfz_raw = fetch_text_data(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
 gfz_df = pd.DataFrame(gfz_raw[1:], columns=gfz_raw[0])
 st.dataframe(gfz_df)
-gfz_df['mag'] = to_float(gfz_df[10])
-gfz_df['lat'] = to_float(gfz_df[2])
-gfz_df['lon'] = to_float(gfz_df[3])
-gfz_df['depth'] = to_float(gfz_df[4])
-gfz_df['date_time'] = pd.to_datetime(gfz_df[1])
-gfz_df['remarks'] = gfz_df[12]
+gfz_df['mag'] = to_float(gfz_df['Magnitude'])
+gfz_df['lat'] = to_float(gfz_df['Latitude'])
+gfz_df['lon'] = to_float(gfz_df['Longitude'])
+gfz_df['depth'] = to_float(gfz_df['Depth/km'])
+gfz_df['date_time'] = pd.to_datetime(gfz_df['Time'])
+gfz_df['remarks'] = gfz_df[EventLocationName]
 
 # --- USGS Data ---
 usgs = gpd.read_file("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
