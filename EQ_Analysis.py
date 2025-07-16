@@ -39,7 +39,7 @@ gfz_df['lat'] = to_float(gfz_df['Latitude'])
 gfz_df['lon'] = to_float(gfz_df['Longitude'])
 gfz_df['depth'] = to_float(gfz_df['Depth/km'])
 gfz_df['date_time'] = pd.to_datetime(gfz_df['Time'])
-gfz_df['remarks'] = gfz_df[EventLocationName]
+gfz_df['remarks'] = gfz_df['EventLocationName']
 
 # --- USGS Data ---
 usgs = gpd.read_file("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
