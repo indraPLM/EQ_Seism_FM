@@ -77,6 +77,7 @@ t_ref = bmkg_df['waktu'].iloc[0]
 gfz_match = match_event(gfz_df, t_ref)  # uses default 'date_time'
 usgs_match = match_event(usgs, t_ref, time_column='time_usgs')  # specify USGS time column
 
+# ... [imports and existing code above remain unchanged] ...
 # --- Map Visualization ---
 tiles = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
 m = folium.Map((y0, x0), tiles=tiles, attr="ESRI", zoom_start=8)
@@ -86,14 +87,26 @@ folium.GeoJson(
     style_function=lambda feature: {"color": "orange", "weight": 1}
 ).add_to(m)
 
-def add_marker(lat, lon, label, color):
+def add_marker_with_label(lat, lon, label, color, text):
+    # Main icon marker
     folium.Marker([lat, lon], icon=folium.Icon(icon=label, prefix='fa', color=color)).add_to(m)
+    # Slight vertical offset for label clarity
+    folium.Marker(
+        location=[lat + 0.5, lon],
+        icon=folium.DivIcon(html=f"""<div style="font-size:12px; color:{color};"><b>{text}</b></div>""")
+    ).add_to(m)
 
-add_marker(y0, x0, "1", "red")
+# BMKG (Red)
+add_marker_with_label(y0, x0, "1", "red", "BMKG")
+
+# GFZ (Blue)
 if gfz_match is not None:
-    add_marker(gfz_match['lat'], gfz_match['lon'], "2", "blue")
+    add_marker_with_label(gfz_match['lat'], gfz_match['lon'], "2", "blue", "GFZ")
+
+# USGS (Green)
 if usgs_match is not None:
-    add_marker(usgs_match['lat'], usgs_match['lon'], "3", "green")
+    add_marker_with_label(usgs_match['lat'], usgs_match['lon'], "3", "green", "USGS")
+
 
 # --- Metrics Display ---
 col1, col2 = st.columns(2)
