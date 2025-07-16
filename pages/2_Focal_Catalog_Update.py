@@ -32,6 +32,10 @@ col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
+st.sidebar.header("Global CMT Filter :")
+cmt_start=st.sidebar.text_input('Start Time:', '2015-01-01 00:00')
+cmt_end=st.sidebar.text_input('End Time:', '2020-12-31 23:59')
+
 # 📦 Fetch BMKG catalog
 @st.cache_data
 def load_bmkg_focal(url):
