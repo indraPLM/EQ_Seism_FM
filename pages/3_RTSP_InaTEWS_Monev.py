@@ -81,44 +81,56 @@ st.map(df_usgs, latitude="latitude", longitude="longitude")
 st.markdown("### Tabel USGS Significant EQ")
 st.dataframe(df_usgs)
 
-# 🔁 Matching Events
-def find_nearby_events(df_rtsp, df_usgs, max_seconds=30):
-    matches = []
-    for bmkg in df_rtsp.itertuples(index=False):
-        bmkg_time = pd.to_datetime(bmkg.date_time, utc=True, errors='coerce')
-        if not pd.notnull(bmkg_time): continue
-        for usgs in df_usgs.itertuples(index=False):
-            usgs_time = pd.to_datetime(usgs.fix_dateusgs, utc=True, errors='coerce')
-            if not pd.notnull(usgs_time): continue
-            lapse = abs((bmkg_time - usgs_time).total_seconds())
-            if lapse <= max_seconds:
-                matches.append({
-                    'date_bmkg': bmkg_time,
-                    'date_usgs': usgs.time,
-                    'lapse_time(s)': lapse,
-                    'loc_bmkg': usgs.place,
-                    'lon_bmkg': bmkg.lon,
-                    'lon_usgs': usgs.longitude,
-                    'lat_bmkg': bmkg.lat,
-                    'lat_usgs': usgs.latitude,
-                    'mag_bmkg': bmkg.mag,
-                    'mag_usgs': usgs.mag,
-                    'depth_bmkg': bmkg.depth,
-                    'depth_usgs': usgs.depth,
-                    'event_group': bmkg.evt_group
-                })
-    return pd.DataFrame(matches)
+# After you've finished loading and normalizing BMKG and USGS:
+df_rtsp['date_time'] = pd.to_datetime(df_rtsp['date_time'], errors='coerce')
+df_rtsp['date_time'] = df_rtsp['date_time'].dt.tz_localize('Asia/Jakarta', ambiguous='NaT').dt.tz_convert('UTC')
+df_rtsp_filtered = df_rtsp[(df_rtsp['date_time'] >= time_start) & (df_rtsp['date_time'] <= time_end)]
 
-df_tsp = find_nearby_events(df_rtsp, df_usgs)
-df_tsp = df_tsp[(df_tsp['date_time'] >= time_start) & (df_tsp['date_time'] <= time_end)]
+df_usgs['fix_dateusgs'] = pd.to_datetime(df_usgs['time'], utc=True)
+df_usgs_filtered = df_usgs[(df_usgs['fix_dateusgs'] >= time_start) & (df_usgs['fix_dateusgs'] <= time_end)]
+
+# 🔁 Comparison function (add above if not already defined)
+def compare_events(df1, df2, time_col1, time_col2, threshold_seconds=30):
+    results = []
+    for row1 in df1.itertuples(index=False):
+        t1 = getattr(row1, time_col1)
+        for row2 in df2.itertuples(index=False):
+            t2 = getattr(row2, time_col2)
+            if pd.notnull(t1) and pd.notnull(t2):
+                delta = abs((t1 - t2).total_seconds())
+                if delta <= threshold_seconds:
+                    results.append({
+                        'bmkg_time': t1,
+                        'usgs_time': t2,
+                        'time_diff_s': delta,
+                        'bmkg_mag': row1.mag,
+                        'usgs_mag': row2.mag,
+                        'bmkg_depth': row1.depth,
+                        'usgs_depth': row2.depth,
+                        'bmkg_lat': row1.lat,
+                        'usgs_lat': row2.latitude,
+                        'bmkg_lon': row1.lon,
+                        'usgs_lon': row2.longitude,
+                        'bmkg_evt_group': row1.evt_group,
+                        'usgs_place': row2.place
+                    })
+    return pd.DataFrame(results)
+
+# ✅ Call the function to generate the comparison DataFrame
+df_comp = compare_events(df_rtsp_filtered, df_usgs_filtered, 'date_time', 'fix_dateusgs')
+
+# 📋 Display the comparison
+st.markdown("### 📊 Perbandingan Event RTSP vs USGS (berdasarkan waktu ±30s)")
+st.dataframe(df_comp)
+
 
 # 📊 Difference Metrics
-df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
-df_tsp['depth_diff'] = abs(df_tsp['depth_bmkg'] - df_tsp['depth_usgs'])
-df_tsp['distance_diff_km'] = np.sqrt(
-    degrees2kilometers(abs(df_tsp['lon_bmkg'] - df_tsp['lon_usgs'])) ** 2 +
-    degrees2kilometers(abs(df_tsp['lat_bmkg'] - df_tsp['lat_usgs'])) ** 2
-)
+#df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
+#df_tsp['depth_diff'] = abs(df_tsp['depth_bmkg'] - df_tsp['depth_usgs'])
+#df_tsp['distance_diff_km'] = np.sqrt(
+#    degrees2kilometers(abs(df_tsp['lon_bmkg'] - df_tsp['lon_usgs'])) ** 2 +
+#    degrees2kilometers(abs(df_tsp['lat_bmkg'] - df_tsp['lat_usgs'])) ** 2
+#)
 
 # 📈 Visuals
 st.markdown("### 📉 Selisih Magnitudo USGS - BMKG")
