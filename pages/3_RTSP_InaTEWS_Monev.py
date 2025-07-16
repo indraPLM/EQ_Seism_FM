@@ -83,12 +83,9 @@ st.markdown("### Tabel USGS Significant EQ")
 st.dataframe(df_usgs)
 
 # After you've finished loading and normalizing BMKG and USGS:
-try:
-    df_rtsp['date_time'] = df_rtsp['date_time'].dt.tz_localize('Asia/Jakarta').dt.tz_convert('UTC')
-except TypeError:
-    df_rtsp['date_time'] = df_rtsp['date_time'].dt.tz_convert('UTC')
-#df_rtsp['date_time'] = pd.to_datetime(df_rtsp['date_time'], errors='coerce')
-#df_rtsp['date_time'] = df_rtsp['date_time'].dt.tz_localize('Asia/Jakarta', ambiguous='NaT').dt.tz_convert('UTC')
+from datetime import timedelta
+
+df_rtsp['date_time'] = pd.to_datetime(df_rtsp['date_time'], errors='coerce') + timedelta(hours=7)
 df_rtsp_filtered = df_rtsp[(df_rtsp['date_time'] >= time_start) & (df_rtsp['date_time'] <= time_end)]
 
 df_usgs['fix_dateusgs'] = pd.to_datetime(df_usgs['time'], utc=True)
