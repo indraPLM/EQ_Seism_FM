@@ -16,10 +16,13 @@ def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
 
 def parse_date_time(date_str, time_str):
     combo = f"{date_str.strip()} {time_str.strip().replace('WIB','').replace('UTC','')}"
-    for fmt in ["%d-%m-%y %H:%M:%S", "%d-%b-%y %H:%M:%S", "%Y-%m-%d %H:%M:%S"]:
-        try: return pd.to_datetime(combo, format=fmt)
-        except: continue
+    for fmt in ["%d-%m-%y %H:%M:%S", "%d-%m-%Y %H:%M:%S", "%d-%b-%y %H:%M:%S"]:
+        try:
+            return pd.to_datetime(combo, format=fmt)
+        except ValueError:
+            continue
     return pd.NaT
+
 
 def parse_timesent(ts):
     ts = ts.strip().replace('WIB','').replace('UTC','')
