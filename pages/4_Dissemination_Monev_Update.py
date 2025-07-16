@@ -149,3 +149,5 @@ else:
     list_areas = [a.text.strip() for a in areas]
     df['area'] = list_areas  # assuming alignment with other fields
 
+st.dataframe(df)
+
