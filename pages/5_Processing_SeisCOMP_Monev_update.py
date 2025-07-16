@@ -19,7 +19,7 @@ East  = float(st.sidebar.text_input('East:', '142.0'))
 
 # --- Fetch & Parse QC Focal Data ---
 
-def fetch_bmkg_focal(url):
+def fetch_qc_focal(url):
     res = requests.get(url)
     raw_text = res.text.strip()
     lines = raw_text.split("\n")
