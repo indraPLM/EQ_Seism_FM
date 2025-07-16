@@ -149,6 +149,6 @@ st.markdown("### 📋 Tabel Perbandingan Parameter Gempa USGS - BMKG")
 st.dataframe(df_tsp)
 
 # ⏱ Diseminasi Time
-df_diss = fetch_dissemination_times(df_tsp['event_group'].dropna().unique())
+df_diss = fetch_dissemination_times(df_tsp['bmkg_evt_group'].dropna().unique())
 st.markdown("### ⏱ Tabel Waktu Kirim OT vs Diseminasi RTSP BMKG")
 st.dataframe(df_diss)
