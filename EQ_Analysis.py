@@ -33,7 +33,7 @@ def geo_distance(x0, y0, x1, y1):
 today = (datetime.today() + timedelta(days=1)).strftime('%Y-%m-%d')
 gfz_raw = fetch_text_data(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
 gfz_df = pd.DataFrame(gfz_raw[1:], columns=gfz_raw[0])
-st.dataframe(gfz_df)
+
 gfz_df['mag'] = to_float(gfz_df['Magnitude'])
 gfz_df['lat'] = to_float(gfz_df['Latitude'])
 gfz_df['lon'] = to_float(gfz_df['Longitude'])
@@ -63,9 +63,6 @@ bmkg_df = pd.DataFrame({
 
 bmkg_df['waktu'] = pd.to_datetime(bmkg_df['waktu'])
 bmkg_df = bmkg_df[bmkg_df['mag'] >= 5]
-bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
-st.dataframe(bmkg_df)
-st.write("BMKG Columns:", bmkg_df.columns.tolist())
 bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
 
 # --- Reference Event ---
