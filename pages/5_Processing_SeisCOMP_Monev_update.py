@@ -68,7 +68,7 @@ df = preprocess(df)
 df = df.query('mag >= 5')
 st.dataframe(df)
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
-df = df[(df['lon'] > West) & (df['lon'] < East) & (df['lat'] > South) & (df['lat'] < North)]
+df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 
 # --- Title Field ---
