@@ -78,21 +78,26 @@ st.dataframe(df)
 # --- Fetch Dissemination Time ---
 def get_processtime(eventid):
     try:
-        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eventid.split()[0]}.txt"
-        soup = BeautifulSoup(requests.get(url).text, 'html')
-        lines = soup.p.text.strip().split('\n')
-        parts = lines[1].split('|') if len(lines) > 1 else [' ', ' ']
-        return parts[0], float(parts[1])
-    except:
-        return ' ', None
+        eid = eventid.strip().split()[0]
+        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html')
+        p_tag = soup.find('p')
+        if not p_tag:
+            return None, None
 
-for eid in df['event_id']:
-    try:
-        get_processtime(eid)
-    except Exception as e:
-        st.warning(f"Failed to process event_id {eid}: {e}")
-st.dataframe(df)
-
+        lines = p_tag.text.strip().split('\n')
+        for line in lines[1:]:  # skip header
+            parts = line.split('|')
+            if len(parts) >= 2:
+                timestamp = parts[0].strip()
+                offset = float(parts[1].strip())
+                return timestamp, offset
+        return None, None  # fallback if no valid row
+    except Exception:
+        return None, None
+        
+# Assign fetched values to DataFrame
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
 # --- Map Visualization ---
