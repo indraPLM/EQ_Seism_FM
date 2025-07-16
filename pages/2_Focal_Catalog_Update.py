@@ -93,7 +93,9 @@ summary_df = df[['date_time', 'mag', 'type_mag', 'fixedLat', 'fixedLon', 'depth'
 # Rename columns for clarity
 summary_df.columns = ['DateTime', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
                       'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark']
+summary_df.index = range(1, len(summary_df) + 1)  # Reindex starting from 1
 st.dataframe(summary_df)
+
 # Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
 # summary_df['Focal Mechanism'] = [generate_beachball_image(row) for _, row in summary_df.iterrows()]
 
