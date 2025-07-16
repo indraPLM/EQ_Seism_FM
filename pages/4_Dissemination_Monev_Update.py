@@ -57,13 +57,22 @@ df = pd.DataFrame({
 
 dates     = extract_text('date')
 times     = extract_text('time')
-# --- Manual DateTime Assembly ---
-clean_time = [t.replace('WIB', '').replace('UTC', '').strip() for t in times]
-clean_date = [d.strip() for d in dates]
-combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
 
-# Convert to datetime with coercion
-df['datetime'] = pd.to_datetime(combined_dt, errors='coerce')
+def format_date_str(d):
+    parts = d.strip().split('-')  # e.g. "14-07-25"
+    if len(parts) == 3:
+        day, month, year = parts
+        year = '20' + year if len(year) == 2 else year  # Safeguard against YY
+        return f"{day}/{month}/{year}"
+    return d  # fallback
+
+# Clean time: remove "WIB" or "UTC" and strip
+clean_time = [t.replace('WIB', '').replace('UTC', '').strip() for t in times]
+clean_date = [format_date_str(d) for d in dates]
+
+# Combine and convert to datetime
+combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
+df['datetime'] = pd.to_datetime(combined_dt, format="%d/%m/%Y %H:%M:%S", errors='coerce')
 
 # Recalculate lapsetime only for valid rows
 #valid_mask = df['datetime'].notna() & df['timesent'].notna()
