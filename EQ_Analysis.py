@@ -33,6 +33,7 @@ def geo_distance(x0, y0, x1, y1):
 today = (datetime.today() + timedelta(days=1)).strftime('%Y-%m-%d')
 gfz_raw = fetch_text_data(f'https://geofon.gfz.de/fdsnws/event/1/query?end={today}&limit=40&format=text')
 gfz_df = pd.DataFrame(gfz_raw[1:], columns=gfz_raw[0])
+st.dataframe(gfz_df)
 gfz_df['mag'] = to_float(gfz_df[10])
 gfz_df['lat'] = to_float(gfz_df[2])
 gfz_df['lon'] = to_float(gfz_df[3])
