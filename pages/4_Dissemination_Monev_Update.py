@@ -44,6 +44,7 @@ lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
 areas  = extract_text('area')
+st.write(areas)
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
@@ -72,7 +73,7 @@ clean_date = [format_date_str(d) for d in dates]
 
 # Combine and convert to datetime
 combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
-st.write(combined_dt)
+
 df['datetime'] = pd.to_datetime(combined_dt, format="%d/%m/%Y %H:%M:%S", errors='coerce')
 
 
