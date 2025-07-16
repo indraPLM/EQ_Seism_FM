@@ -110,7 +110,7 @@ def find_nearby_events(df_rtsp, df_usgs, max_seconds=30):
     return pd.DataFrame(matches)
 
 df_tsp = find_nearby_events(df_rtsp, df_usgs)
-df_tsp = df_tsp[(df_tsp['date_bmkg'] >= time_start) & (df_tsp['date_bmkg'] <= time_end)]
+df_tsp = df_tsp[(df_tsp['date_time'] >= time_start) & (df_tsp['date_time'] <= time_end)]
 
 # 📊 Difference Metrics
 df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
