@@ -53,7 +53,7 @@ st.markdown("### Tabel USGS EQ Significant")
 st.dataframe(df_usgs)
 
 # --- Match Events Based on Timing ---
-def find_nearby_events(df_bmkg, df_usgs, max_seconds=20):
+def find_nearby_events_a(df_bmkg, df_usgs, max_seconds=20):
     matches = []
     for bmkg in df_bmkg.itertuples(index=False):
         dt_bmkg = pd.to_datetime(bmkg.date_time, errors='coerce')
@@ -82,6 +82,43 @@ def find_nearby_events(df_bmkg, df_usgs, max_seconds=20):
                 })
     return pd.DataFrame(matches)
 
+def find_nearby_events(df_bmkg, df_usgs, max_seconds=20):
+    matches = []
+
+    for bmkg in df_bmkg.itertuples(index=False):
+        try:
+            dt_bmkg = pd.to_datetime(bmkg.date_time, errors='coerce')
+        except Exception:
+            continue
+
+        for usgs in df_usgs.itertuples(index=False):
+            try:
+                dt_usgs = pd.to_datetime(usgs.fix_dateusgs, errors='coerce')
+            except Exception:
+                continue
+
+            if pd.isna(dt_bmkg) or pd.isna(dt_usgs):
+                continue  # skip if either timestamp is invalid
+
+            lapse = abs((dt_bmkg - dt_usgs).total_seconds())
+            if lapse <= max_seconds:
+                matches.append({
+                    'date_bmkg': dt_bmkg,
+                    'date_usgs': usgs.time,
+                    'lapse_time(s)': lapse,
+                    'loc_bmkg': getattr(usgs, 'place', ''),
+                    'lon_bmkg': bmkg.lon,
+                    'lon_usgs': usgs.longitude,
+                    'lat_bmkg': bmkg.lat,
+                    'lat_usgs': usgs.latitude,
+                    'mag_bmkg': bmkg.mag,
+                    'mag_usgs': usgs.mag,
+                    'depth_bmkg': bmkg.depth,
+                    'depth_usgs': usgs.depth,
+                    'event_group': bmkg.evt_group
+                })
+
+    return pd.DataFrame(matches)
 
 df_tsp = find_nearby_events(df_rtsp, df_usgs)
 df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
