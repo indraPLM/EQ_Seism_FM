@@ -44,7 +44,7 @@ lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
 areas  = extract_text('area')
-st.write(areas)
+#st.write(areas)
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
