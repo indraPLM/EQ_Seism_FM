@@ -136,6 +136,6 @@ st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area']
 existing_cols = [col for col in required_cols if col in df.columns]
 df_show = df[existing_cols]
-
+df_show.index = range(1, len(df_cmt) + 1)  # Reindex starting from 1
 st.dataframe(df_show)
 
