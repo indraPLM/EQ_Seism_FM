@@ -43,7 +43,7 @@ lats      = extract_text('latitude')
 lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
-statuses  = extract_text('potential')
+areas  = extract_text('area')
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
@@ -52,7 +52,7 @@ df = pd.DataFrame({
     'lon': list(map(convert_lon, lons)),
     'mag': mags,
     'depth': depths,
-    'status': statuses
+    'remark': areas
 })
 
 dates     = extract_text('date')
@@ -65,8 +65,17 @@ combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
 # Convert to datetime with coercion
 df['datetime'] = pd.to_datetime(combined_dt, errors='coerce')
 
-df['lapsetime (minutes)'] = ((df['timesent'] - df['datetime']).dt.total_seconds() / 60).round(2)
-df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
+# Recalculate lapsetime only for valid rows
+valid_mask = df['datetime'].notna() & df['timesent'].notna()
+df.loc[valid_mask, 'lapsetime (minutes)'] = (
+    (df.loc[valid_mask, 'timesent'] - df.loc[valid_mask, 'datetime'])
+    .dt.total_seconds() / 60
+).round(2)
+
+# Optional: flag invalid rows
+df['lapsetime (minutes)'] = df['lapsetime (minutes)'].fillna('Invalid')
+
+#df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
 
 # --- Interactive Map ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
