@@ -67,9 +67,15 @@ bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
 st.dataframe(bmkg_df)
 st.write("BMKG Columns:", bmkg_df.columns.tolist())
 bmkg_df.columns = ['eventid', 'waktu', 'lat', 'lon', 'mag', 'depth', 'area']
+
 # --- Reference Event ---
-x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
-t_ref = bmkg_df['waktu'][0]
+x0 = float(bmkg_df['lon'].iloc[0])
+y0 = float(bmkg_df['lat'].iloc[0])
+m0 = float(bmkg_df['mag'].iloc[0])
+d0 = float(bmkg_df['depth'].iloc[0])
+x0, y0, m0, d0 = map(float, bmkg_df.loc[bmkg_df.index[0], ['lon', 'lat', 'mag', 'depth']])
+#x0, y0, m0, d0 = map(float, [bmkg_df['lon'][0], bmkg_df['lat'][0], bmkg_df['mag'][0], bmkg_df['depth'][0]])
+t_ref = bmkg_df['waktu'].iloc[0]
 
 gfz_match = match_event(gfz_df, t_ref)
 usgs_match = match_event(usgs, t_ref)
