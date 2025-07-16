@@ -117,7 +117,33 @@ if not filtered.empty:
 else:
     st.info("📉 Tidak ada data dalam rentang waktu yang dipilih.")
 
+import altair as alt
 
+# Add a flag column for threshold
+threshold = 3.0
+df_filtered['flag'] = df_filtered['lapsetime (minutes)'].astype(float) > threshold
+
+# Create the base chart
+base = alt.Chart(df_filtered).encode(
+    x='datetime:T',
+    y='lapsetime (minutes):Q'
+)
+
+# Circle markers below threshold
+circles = base.transform_filter('datum.flag == false').mark_circle(size=60, color='blue')
+
+# X markers above threshold
+crosses = base.transform_filter('datum.flag == true').mark_point(
+    shape='cross', color='red', size=80, strokeWidth=2
+)
+
+# Threshold line
+rule = alt.Chart(pd.DataFrame({'y': [threshold]})).mark_rule(
+    color='gray', strokeDash=[6, 3]
+).encode(y='y:Q')
+
+# Compose and display
+st.altair_chart(circles + crosses + rule, use_container_width=True)
 
 response = requests.get(url)
 # Use XML-aware parser for correct tag detection
