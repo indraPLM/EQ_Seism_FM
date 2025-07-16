@@ -132,5 +132,10 @@ else:
     df['area'] = list_areas  # assuming alignment with other fields
 
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
-st.dataframe(df)
+
+required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area']
+existing_cols = [col for col in required_cols if col in df.columns]
+df_show = df[existing_cols]
+
+st.dataframe(df_show)
 
