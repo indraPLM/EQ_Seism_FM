@@ -128,22 +128,22 @@ st.dataframe(df_comp)
 
 # 📊 Difference Metrics
 df_tsp=df_comp.copy()
-df_tsp['mag_diff'] = abs(df_tsp['mag_bmkg'] - df_tsp['mag_usgs'])
-df_tsp['depth_diff'] = abs(df_tsp['depth_bmkg'] - df_tsp['depth_usgs'])
+df_tsp['mag_diff'] = abs(df_tsp['bmkg_mag'] - df_tsp['usgs_mag'])
+df_tsp['depth_diff'] = abs(df_tsp['bmkg_depth'] - df_tsp['usgs_depth'])
 df_tsp['distance_diff_km'] = np.sqrt(
-    degrees2kilometers(abs(df_tsp['lon_bmkg'] - df_tsp['lon_usgs'])) ** 2 +
-    degrees2kilometers(abs(df_tsp['lat_bmkg'] - df_tsp['lat_usgs'])) ** 2
+    degrees2kilometers(abs(df_tsp['bmkg_lon'] - df_tsp['usgs_lon'])) ** 2 +
+    degrees2kilometers(abs(df_tsp['bmkg_lat'] - df_tsp['usgs_lat'])) ** 2
 )
 
 # 📈 Visuals
 st.markdown("### 📉 Selisih Magnitudo USGS - BMKG")
-st.line_chart(df_tsp, x="date_bmkg", y="mag_diff")
+st.line_chart(df_tsp, x="bmkg_time", y="mag_diff")
 
 st.markdown("### 📉 Selisih Kedalaman USGS - BMKG")
-st.line_chart(df_tsp, x="date_bmkg", y="depth_diff")
+st.line_chart(df_tsp, x="bmkg_time", y="depth_diff")
 
 st.markdown("### 📉 Selisih Jarak USGS - BMKG")
-st.line_chart(df_tsp, x="date_bmkg", y="distance_diff_km")
+st.line_chart(df_tsp, x="bmkg_time", y="distance_diff_km")
 
 st.markdown("### 📋 Tabel Perbandingan Parameter Gempa USGS - BMKG")
 st.dataframe(df_tsp)
