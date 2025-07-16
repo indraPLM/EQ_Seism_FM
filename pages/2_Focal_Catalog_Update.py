@@ -126,6 +126,19 @@ def load_cmt(url):
         rows.append(row)
     return pd.DataFrame(rows)
 
+from obspy.imaging.beachball import beach
+
+def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_col='Lat'):
+    for _, row in df.iterrows():
+        if all(pd.notnull(row[col]) for col in ['S1', 'D1', 'R1']):
+            x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.Geodetic())
+            color = "r" if row[depth_col] < 60 else "y" if row[depth_col] < 300 else "g"
+            bb = beach([row['S1'], row['D1'], row['R1']],
+                       xy=(x, y), width=1.5, linewidth=0.5,
+                       alpha=0.65, zorder=10, facecolor=color)
+            ax.add_collection(bb)
+
+
 urls = [
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
@@ -147,5 +160,6 @@ ax2.set_extent((West, East, South - 0.5, North + 0.5))
 ax2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat')
+
 st.pyplot(fig2)
 st.dataframe(df_cmt)
