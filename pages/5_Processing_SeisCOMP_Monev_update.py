@@ -102,6 +102,9 @@ proc_data = [get_processtime(eid) for eid in df['event_id']]
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame(proc_data)
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
+test_url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{df["event_id"].iloc[0]}.txt'
+test_txt = requests.get(test_url).text
+st.text(test_txt)  # Show raw text in Streamlit
 
 # --- Map Visualization ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
