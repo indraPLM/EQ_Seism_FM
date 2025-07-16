@@ -66,14 +66,13 @@ df = preprocess(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
-st.dataframe(df)
+#st.dataframe(df)
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
-
 # --- Title Field ---
 df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag']}, Depth: {row['depth']}", axis=1)
-st.dataframe(df)
+#st.dataframe(df)
 
 # --- Fetch Dissemination Time ---
 def get_processtime(eventid):
