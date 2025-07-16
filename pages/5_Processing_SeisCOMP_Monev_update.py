@@ -18,16 +18,13 @@ West  = float(st.sidebar.text_input('West:', '90.0'))
 East  = float(st.sidebar.text_input('East:', '142.0'))
 
 # --- Fetch & Parse QC Focal Data ---
-def fetch_qc_focal(url):
-    soup = BeautifulSoup(requests.get(url).text, 'html')
-    p_tag = soup.find('p')
-    if p_tag:
-        raw_text = p_tag.text.split('\n')
-        return [row.split('|') for row in raw_text]
-    else:
-        st.error("⚠️ No <p> tag found in the response. Check the URL or HTML structure.")
-        return []
 
+def fetch_bmkg_focal(url):
+    res = requests.get(url)
+    raw_text = res.text.strip()
+    lines = raw_text.split("\n")
+    rows = [line.split("|") for line in lines if "|" in line]
+    return rows
 
 qc_data = fetch_qc_focal('http://202.90.198.41/qc_focal.txt')
 
