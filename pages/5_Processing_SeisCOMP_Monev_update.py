@@ -81,21 +81,22 @@ def get_processtime(eventid):
         eid = eventid.strip().split()[0]
         url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
         response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html')
-        p_tag = soup.find('p')
-        if not p_tag:
-            return None, None
+        lines = response.text.strip().split('\n')
 
-        lines = p_tag.text.strip().split('\n')
-        for line in lines[1:]:  # skip header
-            parts = line.split('|')
-            if len(parts) >= 2:
-                timestamp = parts[0].strip()
-                offset = float(parts[1].strip())
-                return timestamp, offset
-        return None, None  # fallback if no valid row
+        if len(lines) < 2:
+            return None, None  # No data rows
+
+        # Parse first data row after header
+        parts = lines[1].split('|')
+        if len(parts) >= 2:
+            timestamp = pd.to_datetime(parts[0].strip(), errors='coerce')
+            offset = float(parts[1].strip())
+            return timestamp, offset
+
+        return None, None
     except Exception:
         return None, None
+
         
 # Assign fetched values to DataFrame
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
