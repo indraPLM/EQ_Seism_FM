@@ -27,6 +27,7 @@ def fetch_qc_focal(url):
     return rows
 
 qc_data = fetch_qc_focal('http://202.90.198.41/qc_focal.txt')
+st.write(qc_data)
 
 # --- Extract Columns ---
 def get_column(data, col): return [row[col].strip() for row in data[1:-1]]
