@@ -75,7 +75,7 @@ df.loc[valid_mask, 'lapsetime (minutes)'] = (
 # Optional: flag invalid rows
 df['lapsetime (minutes)'] = df['lapsetime (minutes)'].fillna('Invalid')
 
-#df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
+df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
 
 # --- Interactive Map ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
