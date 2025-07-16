@@ -103,7 +103,7 @@ st.dataframe(summary_df)
 # Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
 
 # 🌐 Global CMT Section
-st.markdown("### 🌎 Peta Global CMT Harvard")
+st.markdown("### 🌎 Peta Global CMT Harvard \n %s - %s " (cmt_start,cmt_end))
 def load_cmt(url):
     txt = requests.get(url).text
     lines = txt.split("\n")
