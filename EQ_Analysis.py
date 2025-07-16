@@ -92,7 +92,7 @@ def add_marker_with_label(lat, lon, label, color, text):
     folium.Marker([lat, lon], icon=folium.Icon(icon=label, prefix='fa', color=color)).add_to(m)
     # Adjusted label position: slightly above marker for proximity
     folium.Marker(
-        location=[lat + 0.3, lon],  # reduced offset for tighter positioning
+        location=[lat + 0.25, lon],  # reduced offset for tighter positioning
         icon=folium.DivIcon(html=f"""
             <div style="font-size:11px; color:{color}; font-weight:bold; text-align:center;">
                 {text}
