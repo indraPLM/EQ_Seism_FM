@@ -112,10 +112,10 @@ except:
 
 # --- Chart & Table Display ---
 st.markdown("### Grafik Kecepatan Diseminasi Gempabumi M >=5")
-if not filtered.empty:
-    st.scatter_chart(filtered, x='datetime', y='lapsetime (minutes)')
-else:
-    st.info("📉 Tidak ada data dalam rentang waktu yang dipilih.")
+#if not filtered.empty:
+#    st.scatter_chart(filtered, x='datetime', y='lapsetime (minutes)')
+#else:
+#    st.info("📉 Tidak ada data dalam rentang waktu yang dipilih.")
 
 import altair as alt
 
