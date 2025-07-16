@@ -82,9 +82,9 @@ st.markdown("### Tabel USGS Significant EQ")
 st.dataframe(df_usgs)
 
 # 🔁 Matching Events
-def find_nearby_events(df_bmkg, df_usgs, max_seconds=30):
+def find_nearby_events(df_rtsp, df_usgs, max_seconds=30):
     matches = []
-    for bmkg in df_bmkg.itertuples(index=False):
+    for bmkg in df_rtsp.itertuples(index=False):
         bmkg_time = pd.to_datetime(bmkg.date_time, utc=True, errors='coerce')
         if not pd.notnull(bmkg_time): continue
         for usgs in df_usgs.itertuples(index=False):
