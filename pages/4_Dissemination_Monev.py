@@ -121,6 +121,7 @@ import altair as alt
 
 # Add a flag column for threshold
 threshold = 3.0
+df_filtered = filtered.copy()
 df_filtered['flag'] = df_filtered['lapsetime (minutes)'].astype(float) > threshold
 
 # Create the base chart
