@@ -66,15 +66,16 @@ combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
 df['datetime'] = pd.to_datetime(combined_dt, errors='coerce')
 
 # Recalculate lapsetime only for valid rows
-valid_mask = df['datetime'].notna() & df['timesent'].notna()
-df.loc[valid_mask, 'lapsetime (minutes)'] = (
-    (df.loc[valid_mask, 'timesent'] - df.loc[valid_mask, 'datetime'])
-    .dt.total_seconds() / 60
-).round(2)
+#valid_mask = df['datetime'].notna() & df['timesent'].notna()
+#df.loc[valid_mask, 'lapsetime (minutes)'] = (
+#    (df.loc[valid_mask, 'timesent'] - df.loc[valid_mask, 'datetime'])
+#    .dt.total_seconds() / 60
+#).round(2)
 
 # Optional: flag invalid rows
-df['lapsetime (minutes)'] = df['lapsetime (minutes)'].fillna('Invalid')
-
+#df['lapsetime (minutes)'] = df['lapsetime (minutes)'].fillna('Invalid')
+df['lapsetime (minutes)'] = df['timesent']-df['datetime']
+df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
 df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
 
 # --- Interactive Map ---
