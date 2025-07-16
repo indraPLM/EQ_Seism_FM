@@ -60,6 +60,8 @@ bmkg_df = pd.DataFrame({
     'depth': extract_xml_tag(soup, 'dalam'),
     'area': [x.split('\n')[9] for x in extract_xml_tag(soup, 'gempa')]
 })
+st.write("BMKG columns:", bmkg_df.columns.tolist())
+st.write("BMKG head preview:", bmkg_df.head())
 bmkg_df['waktu'] = pd.to_datetime(bmkg_df['waktu'])
 bmkg_df = bmkg_df[bmkg_df['mag'] >= 5]
 
