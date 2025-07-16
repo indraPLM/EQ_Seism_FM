@@ -90,12 +90,16 @@ folium.GeoJson(
 def add_marker_with_label(lat, lon, label, color, text):
     # Main icon marker
     folium.Marker([lat, lon], icon=folium.Icon(icon=label, prefix='fa', color=color)).add_to(m)
-    # Slight vertical offset for label clarity
+    # Adjusted label position: slightly above marker for proximity
     folium.Marker(
-        location=[lat + 0.5, lon],
-        icon=folium.DivIcon(html=f"""<div style="font-size:12px; color:{color};"><b>{text}</b></div>""")
+        location=[lat + 0.08, lon],  # reduced offset for tighter positioning
+        icon=folium.DivIcon(html=f"""
+            <div style="font-size:11px; color:{color}; font-weight:bold; text-align:center;">
+                {text}
+            </div>
+        """)
     ).add_to(m)
-
+    
 # BMKG (Red)
 add_marker_with_label(y0, x0, "1", "red", "BMKG")
 
