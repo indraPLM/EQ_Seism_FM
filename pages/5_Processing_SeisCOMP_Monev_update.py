@@ -81,20 +81,24 @@ def get_processtime(eventid):
         url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt'
         response = requests.get(url)
 
-        # Parse plain text directly
+        if response.status_code != 200:
+            return None, None  # File not found
+
         lines = response.text.strip().split('\n')
         if len(lines) < 2:
-            return None, None  # No data
+            return None, None  # No data rows
 
-        first_data_line = lines[1].split('|')
-        if len(first_data_line) >= 2:
-            timestamp = pd.to_datetime(first_data_line[0].strip(), errors='coerce')
-            offset = float(first_data_line[1].strip())
+        # Get first valid row after header (lines[1])
+        first_data = lines[1].split('|')
+        if len(first_data) >= 2:
+            timestamp = pd.to_datetime(first_data[0].strip(), errors='coerce')
+            offset = float(first_data[1].strip())
             return timestamp, offset
 
         return None, None
     except Exception as e:
         return None, None
+
 
         
 # Assign fetched values to DataFrame
@@ -102,9 +106,6 @@ proc_data = [get_processtime(eid) for eid in df['event_id']]
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame(proc_data)
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
-test_url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{df["event_id"].iloc[0]}.txt'
-test_txt = requests.get(test_url).text
-st.text(test_txt)  # Show raw text in Streamlit
 
 # --- Map Visualization ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
