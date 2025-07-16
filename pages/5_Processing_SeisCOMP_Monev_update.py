@@ -77,20 +77,20 @@ df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag
 # --- Fetch Dissemination Time ---
 def get_processtime(eventid):
     try:
-        eid = eventid.strip().split()[0]  # Clean ID
-        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
+        eid = eventid.strip().split()[0]
+        url = f'https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt'
         response = requests.get(url)
 
-        if response.status_code != 200:
-            return None, None
-
+        # Parse plain text directly
         lines = response.text.strip().split('\n')
-        for line in lines[1:]:  # Skip header
-            parts = line.split('|')
-            if len(parts) >= 2:
-                timestamp = pd.to_datetime(parts[0].strip(), errors='coerce')
-                offset = float(parts[1].strip())
-                return timestamp, offset
+        if len(lines) < 2:
+            return None, None  # No data
+
+        first_data_line = lines[1].split('|')
+        if len(first_data_line) >= 2:
+            timestamp = pd.to_datetime(first_data_line[0].strip(), errors='coerce')
+            offset = float(first_data_line[1].strip())
+            return timestamp, offset
 
         return None, None
     except Exception as e:
