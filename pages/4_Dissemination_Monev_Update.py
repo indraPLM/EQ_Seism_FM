@@ -38,8 +38,6 @@ def convert_lon(lon): return -float(lon.replace('BB','').strip()) if 'BB' in lon
 url = 'https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
 soup = BeautifulSoup(requests.get(url).text, 'html')
 
-dates     = extract_text('date')
-times     = extract_text('time')
 timesent  = extract_text('timesent')
 lats      = extract_text('latitude')
 lons      = extract_text('longitude')
@@ -49,7 +47,6 @@ statuses  = extract_text('potential')
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
-    'datetime': [parse_date_time(d, t) for d, t in zip(dates, times)],
     'timesent': [parse_timesent(ts) for ts in timesent],
     'lat': list(map(convert_lat, lats)),
     'lon': list(map(convert_lon, lons)),
@@ -57,6 +54,16 @@ df = pd.DataFrame({
     'depth': depths,
     'status': statuses
 })
+
+dates     = extract_text('date')
+times     = extract_text('time')
+# --- Manual DateTime Assembly ---
+clean_time = [t.replace('WIB', '').replace('UTC', '').strip() for t in times]
+clean_date = [d.strip() for d in dates]
+combined_dt = [f"{d} {t}" for d, t in zip(clean_date, clean_time)]
+
+# Convert to datetime with coercion
+df['datetime'] = pd.to_datetime(combined_dt, errors='coerce')
 
 df['lapsetime (minutes)'] = ((df['timesent'] - df['datetime']).dt.total_seconds() / 60).round(2)
 df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
