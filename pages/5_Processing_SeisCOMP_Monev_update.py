@@ -44,8 +44,6 @@ if df.empty:
     st.error("⚠️ Failed to retrieve or parse earthquake data from source.")
     st.stop()
     
-st.write(df)
-
 # 🔄 Data Cleaning & Conversion
 def preprocess(df):
     lat_num = df['lat'].str.extract(r'([\d.]+)')[0].astype(float)
@@ -68,12 +66,13 @@ df = preprocess(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
-st.dataframe(df)
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['lon'] > West) & (df['lon'] < East) & (df['lat'] > South) & (df['lat'] < North)]
 
+
 # --- Title Field ---
 df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag']}, Depth: {row['depth']}", axis=1)
+st.dataframe(df)
 
 # --- Fetch Dissemination Time ---
 def get_processtime(eventid):
