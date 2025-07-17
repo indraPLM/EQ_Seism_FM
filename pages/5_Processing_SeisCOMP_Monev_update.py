@@ -110,6 +110,8 @@ df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
 eid_test = df['event_id'].iloc[0]
 st.write(f"Testing URL for: {eid_test}")
 st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
+test=load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
+st.write(test)
 st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
