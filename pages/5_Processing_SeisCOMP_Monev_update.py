@@ -104,9 +104,18 @@ df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
     manual_fetch_timestamp(eid) for eid in df['event_id']
 ])
 
+def load_seiscomp_process(url):
+    res = requests.get(url)
+    raw_text = res.text.strip()
+    lines = raw_text.split("\n")
+    rows = [line.split("|") for line in lines if "|" in line]
+    return rows
+
+
 test_id = df['event_id'].iloc[0]
 test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
-st.text(requests.get(test_url).text)  # Show exact raw file contents
+text_url =load_seiscomp_process(test_url)
+st.text(text_url)  # Show exact raw file contents
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
