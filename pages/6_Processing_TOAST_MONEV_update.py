@@ -36,6 +36,7 @@ def load_toast_logs(path="./pages/filetoast/"):
     return df_toast
 
 df_toast = load_toast_logs()
+st.dataframe(df_toast)
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
 @st.cache_data(show_spinner=False)
