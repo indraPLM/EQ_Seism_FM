@@ -146,14 +146,14 @@ df_plot = df_display[df_display['elapse(minutes)'] > 0]
 # Define base chart
 chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
     x='date_time:T',
-    y=alt.Y('time_process (minutes):Q', scale=alt.Scale(domain=[0, 5])),
+    y=alt.Y('elapse(minutes):Q', scale=alt.Scale(domain=[0, 5])),
     shape=alt.condition(
-        alt.datum['time_process (minutes)'] > 3, alt.ShapeValue('cross'), alt.ShapeValue('circle')
+        alt.datum['elapse(minutes)'] > 3, alt.ShapeValue('cross'), alt.ShapeValue('circle')
     ),
     color=alt.condition(
-        alt.datum['time_process (minutes)'] > 3, alt.value('red'), alt.value('steelblue')
+        alt.datum['elapse(minutes)'] > 3, alt.value('red'), alt.value('steelblue')
     ),
-    tooltip=['event_id', 'date_time', 'time_process (minutes)', 'mag', 'depth']
+    tooltip=['event_id', 'date_time', 'mag', 'depth']
 ).properties(
     width=900,
     height=400,
