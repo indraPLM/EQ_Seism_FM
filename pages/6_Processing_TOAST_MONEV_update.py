@@ -44,6 +44,12 @@ def load_toast_logs(path="./pages/filetoast/"):
 df_toast = load_toast_logs()
 st.dataframe(df_toast)
 
+import os
+
+base_path = os.getcwd()
+toast_path = os.path.join(base_path, "pages", "filetoast")
+st.write("🔍 Full path used:", toast_path)
+st.write("📁 Available files:", os.listdir(toast_path))
 
 path = "./pages/filetoast/"
 for i, fname in enumerate(os.listdir(path)):
