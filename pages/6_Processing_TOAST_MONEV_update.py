@@ -25,14 +25,21 @@ def load_toast_logs(path="./pages/filetoast/"):
             continue
         with open(os.path.join(path, fname)) as f:
             lines = f.readlines()
-            if len(lines) >= 3:
-                parts = lines[2].split()
-                dt = parts[0] + ' ' + parts[1]
-                event_ids.append(eid)
-                timestamps.append(dt)
-                remarks.append(parts[2])
+
+        # 🔎 Search for line that contains Incident creation
+        for line in lines:
+            if "Incident created" in line:
+                parts = line.split()
+                if len(parts) >= 3:
+                    ts = parts[0] + ' ' + parts[1]
+                    rm = parts[-1]  # often ends with magnitude or source
+                    event_ids.append(eid)
+                    timestamps.append(ts)
+                    remarks.append(rm)
+                break  # Take only the first match
+
     df_toast = pd.DataFrame({'event_id': event_ids, 'tstamp_toast': timestamps, 'remark_toast': remarks})
-    df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'])
+    df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'], errors='coerce')
     return df_toast
 
 df_toast = load_toast_logs()
