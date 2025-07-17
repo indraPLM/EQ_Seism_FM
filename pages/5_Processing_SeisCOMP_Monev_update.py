@@ -115,6 +115,7 @@ def load_seiscomp_process(url):
 test_id = df['event_id'].iloc[0]
 test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
 text_url =load_seiscomp_process(test_url)
+st.text(test_url)
 st.text(text_url)  # Show exact raw file contents
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
