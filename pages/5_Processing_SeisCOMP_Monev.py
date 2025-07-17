@@ -136,7 +136,7 @@ df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace
 
 # --- Chart Visualization ---
 st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
-st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
+#st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
 
 import altair as alt
 
