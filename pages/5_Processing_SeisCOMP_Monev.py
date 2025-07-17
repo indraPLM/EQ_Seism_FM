@@ -138,6 +138,30 @@ df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace
 st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
 
+import altair as alt
+
+# Filter clean data
+df_plot = df_display[df_display['elapse(minutes)'] > 0]
+
+# Define base chart
+chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
+    x='date_time:T',
+    y=alt.Y('time_process (minutes):Q', scale=alt.Scale(domain=[0, 5])),
+    shape=alt.condition(
+        alt.datum['time_process (minutes)'] > 3, alt.ShapeValue('cross'), alt.ShapeValue('circle')
+    ),
+    color=alt.condition(
+        alt.datum['time_process (minutes)'] > 3, alt.value('red'), alt.value('steelblue')
+    ),
+    tooltip=['event_id', 'date_time', 'time_process (minutes)', 'mag', 'depth']
+).properties(
+    width=900,
+    height=400,
+    title='Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5'
+)
+
+st.altair_chart(chart, use_container_width=True)
+
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing SeisCOMP ")
 df_display.index = range(1, len(df_display) + 1)
