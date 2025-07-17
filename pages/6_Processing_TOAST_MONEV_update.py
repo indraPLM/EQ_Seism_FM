@@ -81,10 +81,12 @@ def preprocess(df):
 
 df = preprocess(df)
 
-df_qc = fix_coords(df_qc)
-df_qc = df_qc.query('mag >= 5')
-df_qc = df_qc[(df_qc['date_time'] > time_start) & (df_qc['date_time'] < time_end)]
-df_qc = df_qc[(df_qc['lat'] > South) & (df_qc['lat'] < North) & (df_qc['lon'] > West) & (df_qc['lon'] < East)]
+# --- Filter by Magnitude & Region ---
+df = df.query('mag >= 5')
+df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
+df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
+df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
+#st.dataframe(df)
 
 # --- Merge with TOAST data ---
 df_merge = pd.merge(df_qc, df_toast, on='event_id')
