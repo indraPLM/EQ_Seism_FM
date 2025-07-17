@@ -112,6 +112,7 @@ results_df = pd.DataFrame(results, columns=['tstamp_process', 'time_process (min
 
 # Combine with original DataFrame
 df = pd.concat([df.reset_index(drop=True), results_df], axis=1)
+df['tstamp_process'] = pd.to_datetime(df['tstamp_process'], unit='s', errors='coerce')
 
 st.dataframe(df)
 
