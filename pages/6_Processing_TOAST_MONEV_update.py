@@ -44,7 +44,7 @@ def load_toast_logs(path="./pages/filetoast/"):
 df_toast = load_toast_logs()
 st.dataframe(df_toast)
 
-uploaded_files = st.file_uploader("Upload TOAST log files", accept_multiple_files=True, type="log")
+uploaded_files = st.sidebar.file_uploader("Upload TOAST log files", accept_multiple_files=True, type="log")
 
 if uploaded_files:
     event_ids, timestamps, remarks = [], [], []
