@@ -112,8 +112,9 @@ def manual_fetch_timestamp(eventid):
 df['event_id'] = df['event_id'].str.strip()
 
 # ⏱ Apply timestamp fetch across catalog
-df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
-    manual_fetch_timestamp(eid) for eid in df['event_id']
+df[['tstamp_process', 'time_process (minutes)']] = pd.DataFrame([
+    manual_fetch_timestamp(eid) if eid.startswith('bmg') else (None, None)
+    for eid in df['event_id']
 ])
 
 eid_test = df['event_id'].iloc[0]
