@@ -10,8 +10,8 @@ st.set_page_config(page_title='Kecepatan Prosesing Gempabumi', layout='wide', pa
 st.sidebar.header("Input Parameter:")
 
 # --- Input Parameters ---
-time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-03-01 00:00:00'))
-time_end   = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-03-31 23:59:59'))
+time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00'))
+time_end   = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59'))
 North = float(st.sidebar.text_input('North:', '6.0'))
 South = float(st.sidebar.text_input('South:', '-13.0'))
 West  = float(st.sidebar.text_input('West:', '90.0'))
@@ -135,9 +135,9 @@ df_display = df[['event_id', 'date_time','tstamp_process', 'time_process (minute
 df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace=True)
 
 # --- Chart Visualization ---
-st.markdown("### Grafik Kecepatan Prosesing Gempabumi M ≥5")
+st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
+st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing SeisCOMP ")
 st.dataframe(df_display)
