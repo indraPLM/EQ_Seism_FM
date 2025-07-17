@@ -12,10 +12,10 @@ with st.sidebar:
 
     time_start = pd.to_datetime(st.text_input('Start DateTime:', '2025-03-01 00:00:00'))
     time_end   = pd.to_datetime(st.text_input('End DateTime:', '2025-03-31 23:59:59'))
-    North      = float(st.text_input('North:', '6.0'))
-    South      = float(st.text_input('South:', '-13.0'))
-    West       = float(st.text_input('West:', '90.0'))
-    East       = float(st.text_input('East:', '142.0'))
+    #North      = float(st.text_input('North:', '6.0'))
+    #South      = float(st.text_input('South:', '-13.0'))
+    #West       = float(st.text_input('West:', '90.0'))
+    #East       = float(st.text_input('East:', '142.0'))
 
     uploaded_files = st.file_uploader("📤 Upload TOAST log files", accept_multiple_files=True, type="log")
 
