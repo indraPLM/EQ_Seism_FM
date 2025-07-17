@@ -114,27 +114,27 @@ results_df = pd.DataFrame(results, columns=['tstamp_process', 'time_process (min
 df = pd.concat([df.reset_index(drop=True), results_df], axis=1)
 df['tstamp_process'] = pd.to_datetime(df['tstamp_process'], unit='s', errors='coerce')
 
-st.dataframe(df)
+#st.dataframe(df)
 
-eid_test = df['event_id'].iloc[0]
-st.write(f"Testing URL for: {eid_test}")
-st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
-st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
+#eid_test = df['event_id'].iloc[0]
+#st.write(f"Testing URL for: {eid_test}")
+#st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
+#st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
-#tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-#map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
+tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
+map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
 
-#for _, row in df.iterrows():
-#    folium.Marker([row['fixedLat'], row['fixedLon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
+for _, row in df.iterrows():
+    folium.Marker([row['fixedLat'], row['fixedLon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
 
-#st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
-#st_folium(map_obj, width=1000)
+st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
+st_folium(map_obj, width=1000)
 
 # --- Chart Visualization ---
-#st.markdown("### Grafik Kecepatan Prosesing Gempabumi M ≥5")
-#st.scatter_chart(df, x='date_time', y='time_proc (minutes)')
+st.markdown("### Grafik Kecepatan Prosesing Gempabumi M ≥5")
+st.scatter_chart(df, x='date_time', y='time_proc (minutes)')
 
 # --- Table Display ---
-#st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
-#st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
+st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
+st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
