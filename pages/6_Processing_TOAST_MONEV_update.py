@@ -55,6 +55,42 @@ def load_toast_logs(path="./pages/filetoast/"):
         st.write(f"🔍 File: {fname}", lines)
         break  # Just show one file for now
 
+path="./pages/filetoast/"
+dir_list = os.listdir(path)
+
+event_list = []
+for i in range(len(dir_list)):
+    temp=dir_list[i].split('.log')
+    temp=temp[0]
+    event_list.append(temp)
+
+text_toast=[]
+for i in range(len(dir_list)):
+    curr=os.getcwd() 
+    test=dir_list[i]
+    with open(path+'/'+test) as f:
+        lines = f.readlines()
+        text_toast.append(lines)
+print([len(text_toast),len(event_list)])
+
+dttime_toast,remark_toast=[],[]
+eventid_toast=[]
+for i in range(len(text_toast)):    
+    if event_list[i].startswith('bmg202'):        
+        t=text_toast[i][2].split()
+        dttime=t[0]+' '+t[1]
+        remark=t[2]
+        
+        dttime_toast.append(dttime)
+        remark_toast.append(remark)
+        eventid_toast.append(event_list[i])
+    else:
+        continue
+
+df_toast1= pd.DataFrame({'event_id':eventid_toast,'tstamp_toast':dttime_toast,'remark_toast':remark_toast})
+df_toast1['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'])
+st.dataframe(df_toast1)
+
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
 @st.cache_data(show_spinner=False)
 def fetch_qc(url):
