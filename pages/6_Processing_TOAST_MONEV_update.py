@@ -44,6 +44,17 @@ def load_toast_logs(path="./pages/filetoast/"):
 df_toast = load_toast_logs()
 st.dataframe(df_toast)
 
+toast_files = os.listdir("./pages/filetoast/")
+st.write("📁 Detected TOAST files:", toast_files)
+
+def load_toast_logs(path="./pages/filetoast/"):
+    for fname in os.listdir(path):
+        eid = fname.split('.log')[0]
+        with open(os.path.join(path, fname)) as f:
+            lines = f.readlines()
+        st.write(f"🔍 File: {fname}", lines)
+        break  # Just show one file for now
+
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
 @st.cache_data(show_spinner=False)
 def fetch_qc(url):
