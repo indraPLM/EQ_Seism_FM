@@ -73,22 +73,29 @@ for i in range(len(dir_list)):
         text_toast.append(lines)
 print([len(text_toast),len(event_list)])
 
-dttime_toast,remark_toast=[],[]
-eventid_toast=[]
-for i in range(len(text_toast)):    
-    if event_list[i].startswith('bmg202'):        
-        t=text_toast[i][2].split()
-        dttime=t[0]+' '+t[1]
-        remark=t[2]
-        
-        dttime_toast.append(dttime)
-        remark_toast.append(remark)
-        eventid_toast.append(event_list[i])
-    else:
-        continue
+dttime_toast, remark_toast, eventid_toast = [], [], []
 
-df_toast1= pd.DataFrame({'event_id':eventid_toast,'tstamp_toast':dttime_toast,'remark_toast':remark_toast})
-df_toast1['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'])
+for i in range(len(text_toast)):
+    if event_list[i].startswith('bmg202'):
+        for line in text_toast[i]:
+            parts = line.strip().split()
+            # Look for lines that begin with a valid timestamp
+            if len(parts) >= 3:
+                try:
+                    pd.to_datetime(parts[0] + ' ' + parts[1])  # Validate timestamp
+                    dttime = parts[0] + ' ' + parts[1]
+                    remark = parts[2]
+                    dttime_toast.append(dttime)
+                    remark_toast.append(remark)
+                    eventid_toast.append(event_list[i])
+                    break  # Take the first valid timestamped line only
+                except:
+                    continue
+
+df_toast1 = pd.DataFrame({'event_id': eventid_toast,
+                         'tstamp_toast': dttime_toast,
+                         'remark_toast': remark_toast})
+df_toast1['tstamp_toast'] = pd.to_datetime(df_toast1['tstamp_toast'], errors='coerce')
 st.dataframe(df_toast1)
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
