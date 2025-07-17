@@ -9,6 +9,7 @@ st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide
 
 with st.sidebar:
     st.header("Input Parameter:")
+
     time_start = pd.to_datetime(st.text_input('Start DateTime:', '2025-03-01 00:00:00'))
     time_end   = pd.to_datetime(st.text_input('End DateTime:', '2025-03-31 23:59:59'))
     North      = float(st.text_input('North:', '6.0'))
@@ -16,12 +17,14 @@ with st.sidebar:
     West       = float(st.text_input('West:', '90.0'))
     East       = float(st.text_input('East:', '142.0'))
 
-    uploaded_files = st.file_uploader("📤 Upload TOAST .log files", accept_multiple_files=True, type="log")
+    uploaded_files = st.file_uploader("📤 Upload TOAST log files", accept_multiple_files=True, type="log")
+
 
 if uploaded_files:
-    # your parsing logic goes here...
+    st.success(f"{len(uploaded_files)} file(s) uploaded")
 else:
-    st.warning("🕵️‍♂️ No TOAST log files uploaded yet.")
+    st.info("No TOAST log files uploaded yet.")
+
 
 # --- Parse TOAST Logs ---
 def load_toast_logs(path="./pages/filetoast/"):
