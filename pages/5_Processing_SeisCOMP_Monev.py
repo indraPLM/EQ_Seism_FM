@@ -157,7 +157,11 @@ chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
 ).properties(
     width=900,
     height=400,
-    title='Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5'
+    title=alt.TitleParams(
+        text='Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5 ',
+        anchor='middle',  # ✅ This centers the title
+        fontSize=18
+    )
 )
 
 st.altair_chart(chart, use_container_width=True)
