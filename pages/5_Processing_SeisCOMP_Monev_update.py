@@ -107,12 +107,9 @@ df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
     manual_fetch_timestamp(eid) for eid in df['event_id']
 ])
 
-#test_id = df['event_id'].iloc[0]
-#test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
-#text_url =load_seiscomp_process(test_url)
-#st.text(text_url)  # Show exact raw file contents
-
-#df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
+eid_test = df['event_id'].iloc[0]
+st.write(f"Testing URL for: {eid_test}")
+st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
