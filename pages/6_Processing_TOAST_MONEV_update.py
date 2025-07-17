@@ -44,22 +44,35 @@ def load_toast_logs(path="./pages/filetoast/"):
 df_toast = load_toast_logs()
 st.dataframe(df_toast)
 
-import os
-pages/filetoast
-base_path = os.getcwd()
-toast_path = os.path.join(base_path, "pages", "filetoast")
-st.write("🔍 Full path used:", toast_path)
-st.write("📁 Available files:", os.listdir(toast_path))
+uploaded_files = st.file_uploader("Upload TOAST log files", accept_multiple_files=True, type="log")
 
-path = "./pages/filetoast/"
-file_path = os.path.join(path, 'bmg2010uxkl.log')
-try:
-    with open(file_path, encoding='utf-8', errors='replace') as f:
-        lines = f.readlines()
-    st.write(f"📄 Preview of {file_path}", lines[:5])
-except Exception as e:
-    st.error(f"❌ Failed to read file: {e}")
+if uploaded_files:
+    event_ids, timestamps, remarks = [], [], []
+    for file in uploaded_files:
+        name = file.name.replace('.log','')
+        lines = file.read().decode("utf-8", errors="replace").split("\n")
 
+        # Find first valid timestamp line
+        for line in lines:
+            parts = line.strip().split()
+            if len(parts) >= 3:
+                try:
+                    pd.to_datetime(parts[0] + ' ' + parts[1])
+                    event_ids.append(name)
+                    timestamps.append(parts[0] + ' ' + parts[1])
+                    remarks.append(parts[2])
+                    break
+                except:
+                    continue
+
+    df_toast = pd.DataFrame({
+        'event_id': event_ids,
+        'tstamp_toast': timestamps,
+        'remark_toast': remarks
+    })
+    df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'], errors='coerce')
+    st.success(f"✅ Parsed {len(df_toast)} TOAST events from uploaded logs")
+    
 
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
