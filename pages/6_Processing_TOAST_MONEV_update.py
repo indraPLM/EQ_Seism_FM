@@ -60,6 +60,11 @@ for i, fname in enumerate(os.listdir(path)):
     for j, line in enumerate(lines[:10]):
         st.text(f"Line {j}: {line.strip()}")
 
+if 'bmg2010uxkl.log' in files:
+    with open(os.path.join(path, 'bmg2010uxkl.log')) as f:
+        lines = f.readlines()
+        st.write("📄 Sample content:", lines[:5])
+
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
 @st.cache_data(show_spinner=False)
