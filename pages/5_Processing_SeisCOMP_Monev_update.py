@@ -75,50 +75,42 @@ df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag
 #st.dataframe(df)
 
 # --- Fetch Dissemination Time ---
-def manual_fetch_timestamp(eventid):
-    try:
-        eid = eventid.strip()
-        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
-        response = requests.get(url)
-
-        text = response.text.strip()
-        lines = text.split('\n')
-
-        # Skip header line — get first data line
-        if len(lines) < 2:
-            return None, None
-
-        row2 = lines[1].split('|')
-        if len(row2) >= 2:
-            t_stamp = pd.to_datetime(row2[0].strip(), errors='coerce')
-            elapse = float(row2[1].strip())
-            return t_stamp, elapse
-
-        return None, None
-    except Exception:
-        return None, None
-
-        
-# Assign fetched values to DataFrame
-df['event_id'] = df['event_id'].str.strip()
-df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
-    manual_fetch_timestamp(eid) for eid in df['event_id']
-])
-
+# --- Revised Dissemination Time Fetch ---
 def load_seiscomp_process(url):
     res = requests.get(url)
     raw_text = res.text.strip()
     lines = raw_text.split("\n")
     rows = [line.split("|") for line in lines if "|" in line]
     return rows
+    
+def manual_fetch_timestamp(eventid):
+    try:
+        eid = eventid.strip()  # ⚠️ Ensure no trailing space breaks the URL
+        url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
+        rows = load_seiscomp_process(url)
 
+        # Expect at least two lines: header and data
+        if len(rows) < 2 or len(rows[1]) < 2:
+            return None, None
+
+        t_stamp = pd.to_datetime(rows[1][0].strip(), errors='coerce')
+        elapse = float(rows[1][1].strip())
+        return t_stamp, elapse
+    except Exception:
+        return None, None
+
+# 🧹 Strip trailing space from event_id before applying function
 df['event_id'] = df['event_id'].str.strip()
-test_id = df['event_id'].iloc[0]
-st.text(test_id)
-test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
-text_url =load_seiscomp_process(test_url)
-st.text(test_url)
-st.text(text_url)  # Show exact raw file contents
+
+# ⏱ Apply timestamp fetch across catalog
+df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
+    manual_fetch_timestamp(eid) for eid in df['event_id']
+])
+
+#test_id = df['event_id'].iloc[0]
+#test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
+#text_url =load_seiscomp_process(test_url)
+#st.text(text_url)  # Show exact raw file contents
 
 #df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([get_processtime(eid) for eid in df['event_id']])
 
