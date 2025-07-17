@@ -110,6 +110,7 @@ df['event_id'] = df['event_id'].str.strip()
 df[['tstamp_process', 'time_process (minutes)']] = pd.DataFrame([
     manual_fetch_timestamp(eid) for eid in df['event_id']
 ])
+st.dataframe(df)
 
 eid_test = df['event_id'].iloc[0]
 st.write(f"Testing URL for: {eid_test}")
@@ -131,5 +132,5 @@ st_folium(map_obj, width=1000)
 #st.scatter_chart(df, x='date_time', y='time_proc (minutes)')
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
-st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
+#st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
+#st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
