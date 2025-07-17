@@ -135,8 +135,7 @@ st_folium(map_obj, width=1000)
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
 st.dataframe(df)
 st.write("🧾 Column headers:", df.columns.tolist())
-df_display = df[['event_id', 'date_time', 'tstamp_process', 'time_process (minutes)', 
-                 'lon', 'lat', 'mag', 'depth']].copy()
+df_display = df[['event_id', 'date_time', 'lon', 'lat', 'mag', 'depth']].copy()
 st.datframe(df_display)
 st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
 
