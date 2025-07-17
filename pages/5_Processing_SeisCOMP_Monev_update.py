@@ -106,25 +106,13 @@ def manual_fetch_timestamp(eventid):
 # 🧹 Strip trailing space from event_id before applying function
 df['event_id'] = df['event_id'].str.strip()
 
-# ⏱ Apply timestamp fetch across catalog
-df[['tstamp_process', 'time_process (minutes)']] = pd.DataFrame([
-    manual_fetch_timestamp(eid) for eid in df['event_id']
-])
-st.dataframe(df)
-
-# Strip trailing spaces and confirm shape
-df['event_id'] = df['event_id'].str.strip()
-
-# Generate fetch results
+# Extract timestamp and processing time
 results = [manual_fetch_timestamp(eid) for eid in df['event_id']]
-
-# ✅ Confirm output structure
-st.write("Preview of timestamp fetch results:", results[:5])
-st.write("Number of rows:", len(results), "Expected:", len(df))
-
-# Convert to DataFrame and assign
 results_df = pd.DataFrame(results, columns=['tstamp_process', 'time_process (minutes)'])
+
+# Combine with original DataFrame
 df = pd.concat([df.reset_index(drop=True), results_df], axis=1)
+
 st.dataframe(df)
 
 eid_test = df['event_id'].iloc[0]
