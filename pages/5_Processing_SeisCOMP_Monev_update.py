@@ -74,6 +74,7 @@ df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > So
 df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag']}, Depth: {row['depth']}", axis=1)
 #st.dataframe(df)
 
+df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 # --- Fetch Dissemination Time ---
 # --- Revised Dissemination Time Fetch ---
 def load_seiscomp_process(url):
@@ -86,11 +87,6 @@ def load_seiscomp_process(url):
 def manual_fetch_timestamp(eventid):
     try:
         eid = eventid.strip()
-
-        # 🚫 Skip non-bmg entries with zero placeholders
-        if not eid.startswith('bmg'):
-            return 0.0, 0.0
-
         url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
         rows = load_seiscomp_process(url)
 
@@ -102,14 +98,11 @@ def manual_fetch_timestamp(eventid):
 
         t_stamp = pd.to_datetime(ts_raw, errors='coerce')
         elapse = float(elapse_raw) if elapse_raw else 0.0
-
-        # Convert datetime to numeric timestamp for plotting
         ts_float = t_stamp.timestamp() if pd.notnull(t_stamp) else 0.0
 
         return ts_float, elapse
     except:
         return 0.0, 0.0
-
 # 🧹 Strip trailing space from event_id before applying function
 df['event_id'] = df['event_id'].str.strip()
 
