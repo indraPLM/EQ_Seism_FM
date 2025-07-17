@@ -112,20 +112,35 @@ df[['tstamp_process', 'time_process (minutes)']] = pd.DataFrame([
 ])
 st.dataframe(df)
 
+# Strip trailing spaces and confirm shape
+df['event_id'] = df['event_id'].str.strip()
+
+# Generate fetch results
+results = [manual_fetch_timestamp(eid) for eid in df['event_id']]
+
+# ✅ Confirm output structure
+st.write("Preview of timestamp fetch results:", results[:5])
+st.write("Number of rows:", len(results), "Expected:", len(df))
+
+# Convert to DataFrame and assign
+results_df = pd.DataFrame(results, columns=['tstamp_process', 'time_process (minutes)'])
+df = pd.concat([df.reset_index(drop=True), results_df], axis=1)
+st.dataframe(df)
+
 eid_test = df['event_id'].iloc[0]
 st.write(f"Testing URL for: {eid_test}")
 st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
 st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
-tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
+#tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
+#map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
 
-for _, row in df.iterrows():
-    folium.Marker([row['fixedLat'], row['fixedLon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
+#for _, row in df.iterrows():
+#    folium.Marker([row['fixedLat'], row['fixedLon']], popup=row['title'], icon=folium.Icon(color='red')).add_to(map_obj)
 
-st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
-st_folium(map_obj, width=1000)
+#st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
+#st_folium(map_obj, width=1000)
 
 # --- Chart Visualization ---
 #st.markdown("### Grafik Kecepatan Prosesing Gempabumi M ≥5")
