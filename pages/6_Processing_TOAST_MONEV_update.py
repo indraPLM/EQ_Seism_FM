@@ -87,9 +87,10 @@ df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 st.dataframe(df)
+st.dataframe(df_toast)
 
 # --- Merge with TOAST data ---
-df_merge = pd.merge(df_qc, df_toast, on='event_id')
+df_merge = pd.merge(df, df_toast, on='event_id')
 df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time_wib']).dt.total_seconds() / 60
 df_merge = df_merge.query('lapse_time_toast <= 60')
 
