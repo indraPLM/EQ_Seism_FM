@@ -100,6 +100,7 @@ def manual_fetch_timestamp(eventid):
 
         
 # Assign fetched values to DataFrame
+df['event_id'] = df['event_id'].str.strip()
 df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
     manual_fetch_timestamp(eid) for eid in df['event_id']
 ])
