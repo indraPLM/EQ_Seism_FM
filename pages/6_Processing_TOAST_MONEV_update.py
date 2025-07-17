@@ -37,33 +37,49 @@ def load_toast_logs(path="./pages/filetoast/"):
 
 df_toast = load_toast_logs()
 
-# --- Parse QC Catalog ---
-def fetch_qc(url='http://202.90.198.41/qc.txt'):
-    page = requests.get(url)
-    soup = BeautifulSoup(page.text, 'html.parser')
-    if not soup.p or not soup.p.text:
+# 🔎 Load Earthquake Catalog (with robust HTML fallback)
+@st.cache_data(show_spinner=False)
+def fetch_qc(url):
+    try:
+        response = requests.get(url)
+        text = response.text.strip()
+        if "|" in text:
+            rows = [line.split('|') for line in text.split('\n') if line]
+        else:
+            soup = BeautifulSoup(text, 'html.parser')
+            if soup.p and soup.p.text:
+                rows = [line.split('|') for line in soup.p.text.split('\n') if line]
+            else:
+                return pd.DataFrame()
+        columns = ['event_id','date_time','mode','status','phase','mag','type_mag',
+                   'n_mag','azimuth','rms','lat','lon','depth','type_event','remarks']
+        return pd.DataFrame([dict(zip(columns, row)) for row in rows[1:-2]])
+    except Exception:
         return pd.DataFrame()
-    rows = [line.split('|') for line in soup.p.text.strip().split('\n') if line]
-    rows = rows[1:-2]  # Remove header and footer
-    columns = ['event_id','date_time','mode','status','phase','mag','type_mag',
-               'n_mag','azimuth','rms','lat','lon','depth','type_event','remarks']
-    return pd.DataFrame([dict(zip(columns, r)) for r in rows])
 
-df_qc = fetch_qc()
-if df_qc.empty:
-    st.error("⚠️ Gagal mengambil data QC.")
+df = fetch_qc("http://202.90.198.41/qc.txt")
+if df.empty:
+    st.error("⚠️ Failed to retrieve or parse earthquake data from source.")
     st.stop()
+    
+# 🔄 Data Cleaning & Conversion
+def preprocess(df):
+    lat_num = df['lat'].str.extract(r'([\d.]+)')[0].astype(float)
+    lat_sign = df['lat'].str.contains('S').apply(lambda x: -1 if x else 1)
+    df['fixedLat'] = lat_num * lat_sign
 
-# --- Clean QC Data ---
-def fix_coords(df):
-    df['event_id'] = df['event_id'].str.strip()
-    df['lat'] = df['lat'].str.extract(r'([\d.]+)')[0].astype(float) * df['lat'].str.contains('S').apply(lambda x: -1 if x else 1)
-    df['lon'] = df['lon'].str.extract(r'([\d.]+)')[0].astype(float) * df['lon'].str.contains('W').apply(lambda x: -1 if x else 1)
-    df['depth'] = df['depth'].str.replace('km','', regex=False).astype(float)
-    df['mag'] = pd.to_numeric(df['mag'], errors='coerce')
-    df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
-    df['date_time_wib'] = df['date_time'] + pd.Timedelta(hours=7)
+    lon_num = df['lon'].str.extract(r'([\d.]+)')[0].astype(float)
+    lon_sign = df['lon'].str.contains('W').apply(lambda x: -1 if x else 1)
+    df['fixedLon'] = lon_num * lon_sign
+
+    df['fixedDepth'] = df['depth'].str.replace('km', '').astype(float)
+    df['mag'] = df['mag'].astype(float)
+    df['sizemag'] = df['mag'] * 1000
+    df['date_time'] = pd.to_datetime(df['date_time'])
+
     return df
+
+df = preprocess(df)
 
 df_qc = fix_coords(df_qc)
 df_qc = df_qc.query('mag >= 5')
