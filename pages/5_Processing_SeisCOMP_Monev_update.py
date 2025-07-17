@@ -131,10 +131,14 @@ for _, row in df.iterrows():
 st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
 st_folium(map_obj, width=1000)
 
+# --- Table Display ---
+st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
+st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
+
 # --- Chart Visualization ---
 st.markdown("### Grafik Kecepatan Prosesing Gempabumi M ≥5")
 st.scatter_chart(df, x='date_time', y='time_proc (minutes)')
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
-st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
+#st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
+#st.dataframe(df[['event_id', 'date_time', 'tstamp_proc', 'time_proc (minutes)', 'lon', 'lat', 'mag', 'depth']])
