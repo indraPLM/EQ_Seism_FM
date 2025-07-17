@@ -140,4 +140,5 @@ st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
 
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing SeisCOMP ")
+df_display.index = range(1, len(df_display) + 1)
 st.dataframe(df_display)
