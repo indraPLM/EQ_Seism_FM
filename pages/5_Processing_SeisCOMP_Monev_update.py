@@ -111,7 +111,7 @@ def load_seiscomp_process(url):
     rows = [line.split("|") for line in lines if "|" in line]
     return rows
 
-
+df['event_id'] = df['event_id'].str.strip()
 test_id = df['event_id'].iloc[0]
 st.text(test_id)
 test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
