@@ -15,6 +15,7 @@ North      = float(st.sidebar.text_input('North:', '6.0'))
 South      = float(st.sidebar.text_input('South:', '-13.0'))
 West       = float(st.sidebar.text_input('West:', '90.0'))
 East       = float(st.sidebar.text_input('East:', '142.0'))
+uploaded_files = st.sidebar.file_uploader("Upload TOAST log files", accept_multiple_files=True, type="log")
 
 # --- Parse TOAST Logs ---
 def load_toast_logs(path="./pages/filetoast/"):
@@ -44,10 +45,6 @@ def load_toast_logs(path="./pages/filetoast/"):
 df_toast = load_toast_logs()
 st.dataframe(df_toast)
 
-with st.sidebar.expander("Upload TOAST Files"):
-    uploaded_files = st.file_uploader("📤 Select .log files", accept_multiple_files=True, type="log")
-
-#uploaded_files = st.sidebar.file_uploader("Upload TOAST log files", accept_multiple_files=True, type="log")
 
 if uploaded_files:
     event_ids, timestamps, remarks = [], [], []
