@@ -20,24 +20,23 @@ East       = float(st.sidebar.text_input('East:', '142.0'))
 def load_toast_logs(path="./pages/filetoast/"):
     event_ids, timestamps, remarks = [], [], []
     for fname in os.listdir(path):
-        eid = fname.split('.log')[0]
-        if not eid.startswith('bmg202'):
+        if not fname.endswith('.log'):
             continue
+        eid = fname.split('.log')[0]
         with open(os.path.join(path, fname)) as f:
             lines = f.readlines()
 
-        # 🔎 Search for line that contains Incident creation
+        # 🔍 Look for the first line that includes "Incident created" or similar marker
         for line in lines:
-            if "Incident created" in line:
-                parts = line.split()
+            if "Incident created" in line or "Info" in line:
+                parts = line.strip().split()
                 if len(parts) >= 3:
                     ts = parts[0] + ' ' + parts[1]
-                    rm = parts[-1]  # often ends with magnitude or source
+                    remark = parts[2]
                     event_ids.append(eid)
                     timestamps.append(ts)
-                    remarks.append(rm)
-                break  # Take only the first match
-
+                    remarks.append(remark)
+                break  # Use only the first matching line
     df_toast = pd.DataFrame({'event_id': event_ids, 'tstamp_toast': timestamps, 'remark_toast': remarks})
     df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'], errors='coerce')
     return df_toast
