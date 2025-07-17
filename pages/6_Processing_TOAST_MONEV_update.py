@@ -137,18 +137,18 @@ st.dataframe(df)
 st.dataframe(df_toast)
 
 # --- Merge with TOAST data ---
-df_merge = pd.merge(df, df_toast, on='event_id')
-df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time_wib']).dt.total_seconds() / 60
-df_merge = df_merge.query('lapse_time_toast <= 60')
+#df_merge = pd.merge(df, df_toast, on='event_id')
+#df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time_wib']).dt.total_seconds() / 60
+#df_merge = df_merge.query('lapse_time_toast <= 60')
 
 # --- Visualization: Map ---
-st.markdown("### Peta Lokasi Gempabumi Prosesing TOAST M ≥5")
-st.map(df_merge, latitude='lat', longitude='lon', size=2000, zoom=3)
+#st.markdown("### Peta Lokasi Gempabumi Prosesing TOAST M ≥5")
+#st.map(df_merge, latitude='lat', longitude='lon', size=2000, zoom=3)
 
 # --- Visualization: Chart ---
-st.markdown("### Grafik Kecepatan Prosesing TOAST M ≥5")
-st.scatter_chart(df_merge, x='date_time_wib', y='lapse_time_toast')
+#st.markdown("### Grafik Kecepatan Prosesing TOAST M ≥5")
+#st.scatter_chart(df_merge, x='date_time_wib', y='lapse_time_toast')
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
-st.dataframe(df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag','depth']])
+#st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
+#st.dataframe(df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag','depth']])
