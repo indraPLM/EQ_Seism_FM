@@ -52,18 +52,14 @@ st.write("🔍 Full path used:", toast_path)
 st.write("📁 Available files:", os.listdir(toast_path))
 
 path = "./pages/filetoast/"
-for i, fname in enumerate(os.listdir(path)):
-    if i > 2: break  # limit to 3 files
-    st.write(f"📄 Preview of {fname}")
-    with open(os.path.join(path, fname)) as f:
+file_path = os.path.join(path, 'bmg2010uxkl.log')
+try:
+    with open(file_path, encoding='utf-8', errors='replace') as f:
         lines = f.readlines()
-    for j, line in enumerate(lines[:10]):
-        st.text(f"Line {j}: {line.strip()}")
+    st.write(f"📄 Preview of {file_path}", lines[:5])
+except Exception as e:
+    st.error(f"❌ Failed to read file: {e}")
 
-if 'bmg2010uxkl.log' in files:
-    with open(os.path.join(path, 'bmg2010uxkl.log')) as f:
-        lines = f.readlines()
-        st.write("📄 Sample content:", lines[:5])
 
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
