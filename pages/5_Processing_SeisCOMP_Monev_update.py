@@ -133,8 +133,8 @@ st_folium(map_obj, width=1000)
 
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing")
-df_display = df[['event_id', 'date_time','tstamp_process', 'time_process (minutes)','lon', 'lat', 'mag', 'depth']].copy()
-df_display.rename(columns={'tstamp_process': 'elapse(minutes)'}, inplace=True)
+df_display = df[['event_id', 'date_time','tstamp_process', 'time_process (minutes)','lon', 'lat', 'mag', 'depth','remarks']].copy()
+df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace=True)
 st.dataframe(df_display)
 
 # --- Chart Visualization ---
