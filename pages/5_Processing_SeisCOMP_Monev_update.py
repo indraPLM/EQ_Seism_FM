@@ -113,6 +113,7 @@ def load_seiscomp_process(url):
 
 
 test_id = df['event_id'].iloc[0]
+st.text(test_id)
 test_url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{test_id}.txt"
 text_url =load_seiscomp_process(test_url)
 st.text(test_url)
