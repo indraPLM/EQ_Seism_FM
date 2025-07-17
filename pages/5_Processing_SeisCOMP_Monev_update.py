@@ -85,18 +85,27 @@ def load_seiscomp_process(url):
     
 def manual_fetch_timestamp(eventid):
     try:
-        eid = eventid.strip()  # ⚠️ Ensure no trailing space breaks the URL
+        eid = eventid.strip()
         url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
         rows = load_seiscomp_process(url)
 
-        # Expect at least two lines: header and data
-        if len(rows) < 2 or len(rows[1]) < 2:
+        # Safely check if the first row exists and has enough fields
+        if not rows or len(rows[0]) < 2:
+            st.warning(f"⚠️ Invalid or empty content for {eid}")
             return None, None
 
-        t_stamp = pd.to_datetime(rows[1][0].strip(), errors='coerce')
-        elapse = float(rows[1][1].strip())
+        ts_raw = rows[0][0].strip()
+        elapse_raw = rows[0][1].strip()
+
+        t_stamp = pd.to_datetime(ts_raw, errors='coerce')
+        try:
+            elapse = float(elapse_raw)
+        except ValueError:
+            elapse = None
+
         return t_stamp, elapse
-    except Exception:
+    except Exception as e:
+        st.error(f"🚨 Error processing {eventid}: {e}")
         return None, None
 
 # 🧹 Strip trailing space from event_id before applying function
@@ -110,8 +119,6 @@ df[['tstamp_proc', 'time_proc (minutes)']] = pd.DataFrame([
 eid_test = df['event_id'].iloc[0]
 st.write(f"Testing URL for: {eid_test}")
 st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
-test=load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
-st.write(test)
 st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
