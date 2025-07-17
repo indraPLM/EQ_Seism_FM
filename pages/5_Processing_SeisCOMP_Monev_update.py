@@ -86,35 +86,36 @@ def load_seiscomp_process(url):
 def manual_fetch_timestamp(eventid):
     try:
         eid = eventid.strip()
+
+        # 🚫 Skip non-bmg entries with zero placeholders
+        if not eid.startswith('bmg'):
+            return 0.0, 0.0
+
         url = f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid}.txt"
         rows = load_seiscomp_process(url)
 
-        # Safely check if the first row exists and has enough fields
         if not rows or len(rows[0]) < 2:
-            st.warning(f"⚠️ Invalid or empty content for {eid}")
-            return None, None
+            return 0.0, 0.0
 
         ts_raw = rows[0][0].strip()
         elapse_raw = rows[0][1].strip()
 
         t_stamp = pd.to_datetime(ts_raw, errors='coerce')
-        try:
-            elapse = float(elapse_raw)
-        except ValueError:
-            elapse = None
+        elapse = float(elapse_raw) if elapse_raw else 0.0
 
-        return t_stamp, elapse
-    except Exception as e:
-        st.error(f"🚨 Error processing {eventid}: {e}")
-        return None, None
+        # Convert datetime to numeric timestamp for plotting
+        ts_float = t_stamp.timestamp() if pd.notnull(t_stamp) else 0.0
+
+        return ts_float, elapse
+    except:
+        return 0.0, 0.0
 
 # 🧹 Strip trailing space from event_id before applying function
 df['event_id'] = df['event_id'].str.strip()
 
 # ⏱ Apply timestamp fetch across catalog
 df[['tstamp_process', 'time_process (minutes)']] = pd.DataFrame([
-    manual_fetch_timestamp(eid) if eid.startswith('bmg') else (None, None)
-    for eid in df['event_id']
+    manual_fetch_timestamp(eid) for eid in df['event_id']
 ])
 
 eid_test = df['event_id'].iloc[0]
