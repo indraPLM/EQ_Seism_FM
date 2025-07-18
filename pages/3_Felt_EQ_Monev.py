@@ -59,6 +59,7 @@ lons      = extract_text('longitude')
 mags      = extract_text('magnitude')
 depths    = extract_text('depth')
 areas  = extract_text('area')
+felts  = extract_text('felts')
 
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({
@@ -66,7 +67,8 @@ df = pd.DataFrame({
     'lat': list(map(convert_lat, lats)),
     'lon': list(map(convert_lon, lons)),
     'mag': mags,
-    'depth': depths
+    'depth': depths,
+    'felt': felts
 })
 
 dates     = extract_text('date')
@@ -161,7 +163,7 @@ else:
 
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 
-required_cols = ['datetime', 'timesent', 'lapsetime (minutes)','lon', 'lat', 'mag', 'depth', 'area']
+required_cols = ['datetime', 'timesent', 'lapsetime (minutes)','lon', 'lat', 'mag', 'depth', 'area','felt']
 existing_cols = [col for col in required_cols if col in df.columns]
 df_show = df[existing_cols]
 df_show.index = range(1, len(df_show) + 1)  # Reindex starting from 1
