@@ -1,0 +1,13 @@
+2025/05/28 09:01:49.953956 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/28 09:01:49.983031 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-05-28 01:30:45,  Lat/Lon: 19.98°/-109.00°, Depth: 62.18, Mag: 5.72 (M)
+2025/05/28 09:01:49.983410 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.72 of event bmg2025kiry is smaller than triggerMinMagnitude: no automatic simulation
+2025/05/28 09:01:50.005820 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-28 01:30:45,  Lat/Lon: 19.9799°/-108.995°, Depth: 62.1764
+2025/05/28 09:01:50.005903 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.72 of event bmg2025kiry is smaller than triggerMinMagnitude: no automatic simulation
+2025/06/21 01:01:34.441353 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-28 01:30:38,  Lat/Lon: 19.712°/-109.275°, Depth: 5
+2025/06/21 01:01:34.442531 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.70 (mb)
+2025/06/21 01:01:34.442555 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.70 of event bmg2025kiry is smaller than triggerMinMagnitude: no automatic simulation
+2025/06/21 01:01:40.775930 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-28 01:30:38,  Lat/Lon: 19.712°/-109.275°, Depth: 5
+2025/06/21 01:01:40.776087 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.70 of event bmg2025kiry is smaller than triggerMinMagnitude: no automatic simulation
+2025/06/21 01:01:40.809970 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-28 01:30:38,  Lat/Lon: 19.712°/-109.275°, Depth: 5
+2025/06/21 01:01:40.810056 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.59 (Mw(mB))
+2025/06/21 01:01:40.810090 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.59 of event bmg2025kiry is smaller than triggerMinMagnitude: no automatic simulation
