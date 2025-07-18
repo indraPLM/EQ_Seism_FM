@@ -67,8 +67,8 @@ df = pd.DataFrame({
     'lat': list(map(convert_lat, lats)),
     'lon': list(map(convert_lon, lons)),
     'mag': mags,
-    'depth': depths,
-    'felt': felts
+    'depth': depths
+    #'felt': felts
 })
 
 dates     = extract_text('date')
