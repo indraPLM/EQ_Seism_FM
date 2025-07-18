@@ -156,5 +156,6 @@ st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
-
-st.dataframe(df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag_str','depth','remarks']])
+df_display=df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag_str','depth','remarks']]
+df_display.index = range(1, len(df_display) + 1)
+st.dataframe(df_display)
