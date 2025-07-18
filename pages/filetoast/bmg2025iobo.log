@@ -1,0 +1,902 @@
+2025/05/02 20:04:59.818393 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:04:59.860119 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-05-02 12:58:28,  Lat/Lon: -56.77°/-68.20°, Depth: 10.00, Mag: 7.20 (Mw(mB))
+2025/05/02 20:04:59.861739 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:04:59.862444 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.77°/ -68.20° (MT), Depth: 10.00km (MT), Mag: 7.20 (MT)
+2025/05/02 20:04:59.863415 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:04:59.863562 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:04:59.866543 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:04:59.872674 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:28,  Lat/Lon: -56.7709°/-68.1968°, Depth: 10
+2025/05/02 20:04:59.873868 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:04:59.874290 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.77°/ -68.20° (MT), Depth: 10.00km (MT), Mag: 7.20 (MT)
+2025/05/02 20:04:59.875277 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:04:59.875519 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:04:59.878630 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:04:59.899614 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:04:59.900568 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:04:59.924437 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:04:59.968196 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:02.323774 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:28,  Lat/Lon: -56.7709°/-68.1968°, Depth: 10
+2025/05/02 20:05:02.323953 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.18 (Mw(mB))
+2025/05/02 20:05:02.325334 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:02.325845 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.77°/ -68.20° (MT), Depth: 10.00km (MT), Mag: 7.18 (MT)
+2025/05/02 20:05:02.327047 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:02.327333 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:02.331298 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:02.353491 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:02.359742 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:10.209838 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:28,  Lat/Lon: -56.7709°/-68.1968°, Depth: 10
+2025/05/02 20:05:10.210006 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (Mw(mB))
+2025/05/02 20:05:10.211320 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:10.211750 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.77°/ -68.20° (MT), Depth: 10.00km (MT), Mag: 7.20 (MT)
+2025/05/02 20:05:10.212799 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:10.213021 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:10.216470 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:10.239211 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:10.245291 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:15.127109 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8518°/-68.2577°, Depth: 10
+2025/05/02 20:05:15.127335 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.21 (Mw(mB))
+2025/05/02 20:05:15.128743 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:15.129268 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.21 (MT)
+2025/05/02 20:05:15.130509 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:15.130745 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:15.134726 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:15.155600 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:15.170662 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:20.899362 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8518°/-68.2577°, Depth: 10
+2025/05/02 20:05:20.899562 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.21 (Mw(mB))
+2025/05/02 20:05:20.901012 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:20.901493 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.21 (MT)
+2025/05/02 20:05:20.902747 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:20.902986 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:20.906946 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:20.929158 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:20.935754 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:31.337942 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8518°/-68.2577°, Depth: 10
+2025/05/02 20:05:31.338124 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.23 (Mw(mB))
+2025/05/02 20:05:31.339502 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:31.339995 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.23 (MT)
+2025/05/02 20:05:31.341219 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:31.341442 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:31.345620 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:31.368321 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:31.374553 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:34.605850 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8516°/-68.261°, Depth: 10
+2025/05/02 20:05:34.607424 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.23 (Mw(mB))
+2025/05/02 20:05:34.608841 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:34.609353 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.23 (MT)
+2025/05/02 20:05:34.610702 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:34.610908 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:34.614527 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:34.637275 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:34.652444 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:36.757412 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8516°/-68.261°, Depth: 10
+2025/05/02 20:05:36.757634 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:05:36.759212 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:36.759680 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:05:36.761065 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:36.761378 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:36.765542 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:36.797158 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:36.803471 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:37.422892 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8516°/-68.261°, Depth: 10
+2025/05/02 20:05:37.423090 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:05:37.424581 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:37.425020 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:05:37.426235 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:37.426523 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:37.430516 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:37.452751 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:37.459217 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:38.647359 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8516°/-68.261°, Depth: 10
+2025/05/02 20:05:38.647583 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.24 (Mw(mB))
+2025/05/02 20:05:38.649132 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:38.649649 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.24 (MT)
+2025/05/02 20:05:38.651071 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:38.651392 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:38.655356 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:38.684779 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:38.691185 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:43.377225 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8516°/-68.261°, Depth: 10
+2025/05/02 20:05:43.377425 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:05:43.378908 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:43.379423 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.85°/ -68.26° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:05:43.380793 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:43.381076 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:43.385214 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:43.411320 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:43.427677 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:05:54.916230 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:05:54.916444 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:05:54.917895 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:05:54.918392 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:05:54.919865 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:05:54.920148 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:05:54.924028 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:05:54.953991 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:05:54.969469 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:02.339205 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:02.339424 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:06:02.340734 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:02.341209 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:02.342583 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:02.342808 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:02.346738 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:02.368499 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:02.375012 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:03.381392 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:03.381591 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:06:03.383200 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:03.383753 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:03.385186 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:03.385529 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:03.389468 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:03.421341 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:03.428075 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:10.374225 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:10.374433 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:06:10.375722 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:10.376193 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:06:10.377555 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:10.377855 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:10.382234 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:10.407961 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:10.414693 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:11.472474 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:11.472675 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:06:11.474124 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:11.474590 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:11.475871 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:11.476165 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:11.480090 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:11.501801 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:11.508118 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:12.699833 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:06:12.699918 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:12.700363 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:12.701790 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:12.701993 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:12.704933 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:12.740947 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:12.754465 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:13.331571 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:13.331766 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:06:13.333215 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:13.333715 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:06:13.335019 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:13.335283 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:13.339284 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:13.361601 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:13.368275 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:14.338437 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:14.338619 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:06:14.340034 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:14.340521 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:06:14.341852 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:14.342111 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:14.346139 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:14.367730 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:14.374440 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:16.328173 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:16.328356 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:06:16.329819 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:16.330251 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:06:16.331510 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:16.331727 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:16.335671 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:16.357341 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:16.363668 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:18.376740 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8584°/-68.2834°, Depth: 10
+2025/05/02 20:06:18.376941 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.27 (Mw(mB))
+2025/05/02 20:06:18.378390 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:18.378878 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.86°/ -68.28° (MT), Depth: 10.00km (MT), Mag: 7.27 (MT)
+2025/05/02 20:06:18.380199 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:18.380473 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:18.384515 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:18.407193 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:18.413965 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:20.071702 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:20.071903 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.25 (Mw(mB))
+2025/05/02 20:06:20.073312 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:20.073769 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:20.074960 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:20.075189 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:20.078970 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:20.099743 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:20.121114 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:06:20.121153 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:20.121577 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.25 (MT)
+2025/05/02 20:06:20.122337 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:20.122499 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:20.122756 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:20.126142 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:20.146128 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:20.160449 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:23.345736 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:23.345911 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.26 (Mw(mB))
+2025/05/02 20:06:23.347365 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:23.347796 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.26 (MT)
+2025/05/02 20:06:23.349024 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:23.349232 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:23.353060 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:23.375042 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:23.387303 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:28.318871 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:28.319093 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.27 (Mw(mB))
+2025/05/02 20:06:28.320599 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:28.321104 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.27 (MT)
+2025/05/02 20:06:28.322464 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:28.322852 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:28.326976 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:28.355803 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:28.363393 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:29.358639 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:29.358813 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.27 (Mw(mB))
+2025/05/02 20:06:29.360147 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:29.360572 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.27 (MT)
+2025/05/02 20:06:29.361812 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:29.362117 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:29.366104 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:29.388012 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:29.395640 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:30.424685 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:30.424875 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.28 (Mw(mB))
+2025/05/02 20:06:30.426338 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:30.426805 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:06:30.427980 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:30.428260 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:30.432237 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:30.454556 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:30.462325 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:35.853029 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:06:35.853132 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:35.853713 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:06:35.855201 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:35.855603 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:35.859748 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:35.894104 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:35.909614 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:38.321793 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:38.322007 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.28 (Mw(mB))
+2025/05/02 20:06:38.323299 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:38.323661 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:06:38.325022 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:38.325323 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:38.329509 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:38.355185 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:38.362777 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:40.394592 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:40.395392 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.29 (Mw(mB))
+2025/05/02 20:06:40.396414 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:40.396707 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.29 (MT)
+2025/05/02 20:06:40.397696 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:40.397854 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:40.401336 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:40.431251 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:40.431508 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:42.481603 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:42.481791 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.29 (Mw(mB))
+2025/05/02 20:06:42.483024 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:42.483368 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.29 (MT)
+2025/05/02 20:06:42.484605 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:42.484815 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:42.488750 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:42.510385 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:42.524086 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:47.374542 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8366°/-68.1587°, Depth: 10
+2025/05/02 20:06:47.374653 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.28 (Mw(mB))
+2025/05/02 20:06:47.375494 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:47.375759 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.84°/ -68.16° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:06:47.376529 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:47.376619 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:47.379486 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:47.399943 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:47.405672 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:59.526219 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.913°/-68.1015°, Depth: 10
+2025/05/02 20:06:59.526428 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.30 (M)
+2025/05/02 20:06:59.527627 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:59.527964 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.10° (MT), Depth: 10.00km (MT), Mag: 7.30 (MT)
+2025/05/02 20:06:59.529229 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:59.529462 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:59.533393 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:59.554241 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:59.574932 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:06:59.797743 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.913°/-68.1015°, Depth: 10
+2025/05/02 20:06:59.797915 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.28 (M)
+2025/05/02 20:06:59.799354 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:06:59.799724 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.10° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:06:59.800933 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:06:59.801204 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:06:59.805210 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:06:59.826058 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:06:59.837999 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:07:02.854097 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:07:02.854197 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:07:02.854813 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.10° (MT), Depth: 10.00km (MT), Mag: 7.28 (MT)
+2025/05/02 20:07:02.856382 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:07:02.856771 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:07:02.860934 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:07:02.895378 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:07:02.909993 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:07:03.944940 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.9382°/-68.1828°, Depth: 10
+2025/05/02 20:07:03.945119 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.29 (M)
+2025/05/02 20:07:03.946575 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:07:03.947019 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.94°/ -68.18° (MT), Depth: 10.00km (MT), Mag: 7.29 (MT)
+2025/05/02 20:07:03.948284 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:07:03.948532 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:07:03.952729 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:07:03.973022 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:07:03.988126 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:07:08.926472 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.9382°/-68.1828°, Depth: 10
+2025/05/02 20:07:08.977707 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:07:10.200945 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.9382°/-68.1828°, Depth: 10
+2025/05/02 20:07:10.251579 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:07:12.222238 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:07:12.222368 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:07:12.223077 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.94°/ -68.18° (MT), Depth: 10.00km (MT), Mag: 7.29 (MT)
+2025/05/02 20:07:12.224988 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:07:12.225604 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:07:12.229861 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:07:12.261946 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:07:12.266278 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:07:25.221580 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:07:25.221804 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.56 (mb)
+2025/05/02 20:07:25.223123 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:07:25.223475 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.87°/ -67.91° (MT), Depth: 35.06km (MT), Mag: 6.56 (MT)
+2025/05/02 20:07:25.224841 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:07:25.225052 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:07:25.229013 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:07:25.244930 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:07:25.245036 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.28 (M)
+2025/05/02 20:07:25.246149 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:07:25.246438 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.87°/ -67.91° (MT), Depth: 35.06km (MT), Mag: 7.28 (MT)
+2025/05/02 20:07:25.247334 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:07:25.247513 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:07:25.250937 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:07:25.269122 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:07:25.269360 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:07:25.289677 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:07:25.304067 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:08:38.893601 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:08:38.893704 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:08:38.894353 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.87°/ -67.91° (MT), Depth: 35.06km (MT), Mag: 7.28 (MT)
+2025/05/02 20:08:38.895941 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:08:38.896414 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:08:38.900560 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:08:38.933376 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:08:38.937953 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:08:44.653776 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:08:44.653882 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:08:44.654755 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.87°/ -67.91° (MT), Depth: 35.06km (MT), Mag: 7.28 (MT)
+2025/05/02 20:08:44.656446 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:08:44.656838 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:08:44.661025 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:08:44.695634 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:08:44.699061 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:08:52.075103 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:08:52.088832 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:08:52.487875 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:08:52.501633 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:08:52.667974 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:08:52.687454 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:08:52.831348 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:30,  Lat/Lon: -56.873°/-67.9134°, Depth: 35.0558
+2025/05/02 20:08:52.845114 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/05/02 20:08:54.793576 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:08:54.793688 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:08:54.794340 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.87°/ -67.91° (MT), Depth: 35.06km (MT), Mag: 7.28 (MT)
+2025/05/02 20:08:54.795965 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:08:54.796355 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:08:54.800575 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:08:54.835966 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:08:54.839642 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:11:50.164311 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.8097°/-67.8972°, Depth: 37.1693
+2025/05/02 20:11:50.164546 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.09 (Mw(mB))
+2025/05/02 20:11:50.165893 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:11:50.166396 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.81°/ -67.90° (MT), Depth: 37.17km (MT), Mag: 7.09 (MT)
+2025/05/02 20:11:50.167652 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:11:50.167918 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:11:50.172089 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:11:50.198018 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:11:50.213138 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:13:30.407048 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.8776°/-68.1444°, Depth: 40.9107
+2025/05/02 20:13:30.407256 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.08 (Mw(mB))
+2025/05/02 20:13:30.408693 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:13:30.408991 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.88°/ -68.14° (MT), Depth: 40.91km (MT), Mag: 7.08 (MT)
+2025/05/02 20:13:30.410116 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:13:30.410287 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:13:30.414215 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:13:30.435564 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:13:30.450373 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:20:36.973924 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.8983°/-68.0964°, Depth: 11.13
+2025/05/02 20:20:36.974150 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.13 (Mw(mB))
+2025/05/02 20:20:36.975482 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:20:36.975823 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.90°/ -68.10° (MT), Depth: 11.13km (MT), Mag: 7.13 (MT)
+2025/05/02 20:20:36.976937 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:20:36.977151 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:20:36.981314 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:20:37.003384 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:20:37.018166 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:23:14.254882 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.8985°/-68.0522°, Depth: 41.3289
+2025/05/02 20:23:14.255089 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.07 (Mw(mB))
+2025/05/02 20:23:14.256338 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:23:14.256816 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.90°/ -68.05° (MT), Depth: 41.33km (MT), Mag: 7.07 (MT)
+2025/05/02 20:23:14.258012 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:23:14.258320 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:23:14.262251 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:23:14.282862 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:23:14.298897 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:29:55.150043 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.8985°/-68.0522°, Depth: 41.3289
+2025/05/02 20:29:55.150256 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:29:55.151169 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:29:55.151256 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:29:55.151634 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.90°/ -68.05° (MT), Depth: 41.33km (MT), Mag: 7.07 (MT)
+2025/05/02 20:29:55.152622 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:29:55.152815 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:29:55.156079 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:29:55.180137 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:29:55.195949 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:30:24.216404 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:30:24.216505 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:30:24.217029 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.90°/ -68.05° (MT), Depth: 41.33km (MT), Mag: 7.07 (MT)
+2025/05/02 20:30:24.218238 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:30:24.218466 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:30:24.218910 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.90°/ -68.05° (MT), Depth: 41.33km (MT), Mag: 7.07 (MT)
+2025/05/02 20:30:24.220184 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:30:24.220395 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:30:24.220786 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with fault plane, Lat/Lon: -56.90°/ -68.05° (MT), Depth: 41.33km (MT), Mag: 7.07 (MT)
+2025/05/02 20:30:24.221698 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:30:24.221944 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:30:24.222065 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:30:24.223348 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:30:24.224531 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:30:24.259967 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:30:24.281098 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:30:24.281337 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:30:24.302411 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:30:24.316578 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:30:24.316914 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:31:46.582586 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:31:46.582822 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.08 (Mw(mB))
+2025/05/02 20:31:46.583511 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:31:46.583569 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:31:46.584053 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:31:46.585244 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:31:46.585414 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:31:46.589411 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:31:46.611087 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:31:46.625944 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:37:53.128076 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:37:53.128267 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:37:53.129117 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:37:53.129180 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:37:53.129619 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:37:53.130823 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:37:53.130979 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:37:53.135044 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:37:53.156320 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:37:53.170137 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:38:33.740056 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:38:33.740251 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:38:33.741162 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:38:33.741245 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:38:33.741655 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:38:33.742757 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:38:33.743000 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:38:33.747157 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:38:33.766911 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:38:33.772827 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:40:55.022563 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:40:55.022830 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:40:55.023599 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:40:55.023670 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:40:55.023943 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:40:55.024842 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:40:55.024999 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:40:55.027867 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:40:55.053238 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:40:55.085506 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:41:06.935503 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:41:06.935790 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:41:06.936644 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:41:06.936726 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:41:06.937202 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:41:06.938245 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:41:06.938424 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:41:06.941409 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:41:06.968053 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:41:06.984112 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:43:15.144295 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:43:15.148830 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:43:15.149897 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/05/02 20:43:15.149985 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:43:15.150438 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:43:15.151779 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:43:15.151985 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:43:15.155891 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:43:15.177424 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:43:15.198374 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:44:41.730722 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:44:41.731040 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/05/02 20:44:41.732077 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:44:41.732552 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:44:41.733849 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:44:41.734104 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:44:41.734477 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:44:41.735573 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:44:41.735732 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:44:41.735826 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:44:41.738081 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:44:41.739193 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:44:41.759054 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:44:41.778419 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:44:41.790269 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:44:41.790553 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:44:43.787444 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:44:43.787564 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:44:43.788189 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:44:43.789710 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:44:43.790091 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:44:43.790624 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:44:43.791970 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:44:43.792363 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:44:43.792428 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:44:43.794386 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:44:43.795895 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:44:43.828896 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:44:43.848313 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:44:43.852501 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:44:43.852741 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:45:23.575490 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:45:23.576288 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:45:23.576629 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:45:23.578663 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:45:23.579207 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:45:23.579547 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.08 (MT)
+2025/05/02 20:45:23.580978 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:45:23.581266 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:45:23.581306 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:45:23.582112 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:45:23.583894 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:45:23.609953 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:45:23.632390 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:45:23.657560 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:45:23.658558 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:46:47.540475 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:46:47.540668 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.47 (Mw)
+2025/05/02 20:46:47.541214 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:46:47.541493 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:46:47.542434 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:46:47.542508 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:46:47.542662 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:46:47.543396 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:46:47.543564 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:46:47.543590 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:46:47.545686 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:46:47.546259 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:46:47.565499 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:46:47.584040 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:46:47.604184 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:46:47.604409 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:48:33.905672 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:48:33.905802 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:48:33.906482 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:48:33.908075 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:48:33.908468 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:48:33.909255 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:48:33.910989 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:48:33.911325 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:48:33.911462 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:48:33.912879 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:48:33.914945 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:48:33.947481 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:48:33.967118 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:48:33.971643 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:48:33.971893 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:36.396683 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:49:36.397411 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:49:36.397604 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:36.398515 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:36.398652 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:36.398702 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:36.399408 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:36.399803 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:49:36.399848 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:36.401515 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:36.402236 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:36.423250 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:36.442127 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:36.456905 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:36.457128 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:42.323804 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:49:42.324505 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:49:42.324784 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:42.325696 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:42.325789 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:42.325971 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:42.326725 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:42.326878 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:49:42.326924 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:42.328721 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:42.329436 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:42.352661 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:42.371515 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:42.386727 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:42.386930 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:57.900999 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:31,  Lat/Lon: -56.9064°/-68.078°, Depth: 42.6123
+2025/05/02 20:49:57.901559 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:49:57.901808 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:57.902575 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:57.902664 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:57.902782 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.91°/ -68.08° (MT), Depth: 42.61km (MT), Mag: 7.47 (MT)
+2025/05/02 20:49:57.903465 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:49:57.903768 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:49:57.903801 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:49:57.905656 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:57.906503 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:49:57.964066 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:57.982166 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:49:57.982345 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:49:57.982517 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:50:12.528834 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:26,  Lat/Lon: -56.951°/-68.0586°, Depth: 10
+2025/05/02 20:50:12.529854 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:50:12.530336 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.95°/ -68.06° (MT), Depth: 10.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:50:12.531543 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:50:12.531801 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:50:12.532144 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.95°/ -68.06° (MT), Depth: 10.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:50:12.533313 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:50:12.533859 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:50:12.533920 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:50:12.535893 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:50:12.537391 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:50:12.556947 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:50:12.577142 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:50:12.577692 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:50:12.577935 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:50:21.565468 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:28,  Lat/Lon: -56.9435°/-68.0575°, Depth: 19
+2025/05/02 20:50:21.566451 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:50:21.566853 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.06° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:50:21.567915 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:50:21.568132 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:50:21.568453 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.06° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:50:21.569378 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:50:21.569521 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:50:21.569583 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:50:21.571978 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:50:21.572899 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:50:21.592523 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:50:21.612583 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:50:21.615753 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:50:21.615969 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:57:43.142249 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/02 20:57:43.142359 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 20:57:43.142995 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.06° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:57:43.144797 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:57:43.145076 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:57:43.145698 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.06° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 20:57:43.147154 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 20:57:43.147704 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 20:57:43.147793 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 20:57:43.149319 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:57:43.151069 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 20:57:43.183133 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:57:43.202474 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 20:57:43.205937 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 20:57:43.206167 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:45:51.376423 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.9356°/-68.0063°, Depth: 19
+2025/05/02 22:45:51.379122 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 22:45:51.379393 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:45:51.380383 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:45:51.380547 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:45:51.380778 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:45:51.381645 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:45:51.381793 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 22:45:51.381842 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:45:51.384105 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:45:51.384788 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:45:51.402115 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:45:51.422626 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:45:51.423160 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:45:51.423388 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:45:54.812684 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.9356°/-68.0063°, Depth: 19
+2025/05/02 22:45:54.813630 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 22:45:54.813944 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:45:54.815450 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:45:54.815632 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:45:54.815994 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:45:54.817054 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:45:54.817294 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 22:45:54.817341 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:45:54.819572 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:45:54.820579 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:45:54.838669 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:45:54.857696 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:45:54.858166 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:45:54.858398 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:05.289341 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.9356°/-68.0063°, Depth: 19
+2025/05/02 22:46:05.290301 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 22:46:05.290580 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:05.291926 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:05.292113 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:05.292370 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:05.293278 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:05.293464 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 22:46:05.293498 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:05.295759 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:05.296672 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:05.316229 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:05.336069 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:05.336563 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:05.336783 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:13.518583 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.9356°/-68.0063°, Depth: 19
+2025/05/02 22:46:13.519701 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 22:46:13.520009 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:13.521556 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:13.521800 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:13.522126 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:13.523224 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:13.523456 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:13.523622 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 22:46:13.525731 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:13.526789 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:13.535738 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-05-02 12:58:27,  Lat/Lon: -56.9356°/-68.0063°, Depth: 19
+2025/05/02 22:46:13.536579 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/02 22:46:13.536819 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:13.538024 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:13.538200 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:13.538498 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/02 22:46:13.539438 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/02 22:46:13.539825 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/02 22:46:13.539872 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/02 22:46:13.541711 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:13.542833 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/02 22:46:13.560511 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:13.579868 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:13.580078 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:13.580266 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:13.598823 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:13.616847 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/02 22:46:13.617267 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/02 22:46:13.617470 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 15:25:19.576899 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 15:25:19.577009 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 15:25:19.577516 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 15:25:19.578430 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 15:25:19.578569 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 15:25:19.579017 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 15:25:19.579735 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 15:25:19.580022 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 15:25:19.581504 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 15:25:19.582245 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 15:25:19.584550 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 15:25:19.585338 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 15:25:19.587238 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 15:25:19.590136 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 15:25:19.590352 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 15:26:31.609024 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 15:26:31.609137 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 15:26:31.609650 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 15:26:31.610539 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 15:26:31.610646 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 15:26:31.611040 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 15:26:31.611775 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 15:26:31.611984 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 15:26:31.612066 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 15:26:31.613607 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 15:26:31.614159 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 15:26:31.614209 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 15:26:31.616207 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 15:26:31.620695 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 15:26:31.620909 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 17:02:58.329526 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 17:02:58.329652 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 17:02:58.330344 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 17:02:58.332226 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 17:02:58.332520 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 17:02:58.333174 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 17:02:58.334523 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 17:02:58.334826 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 17:02:58.334903 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 17:02:58.336719 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 17:02:58.338420 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 17:02:58.346041 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 17:02:58.354142 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 17:02:58.360246 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 17:02:58.360505 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 17:34:15.376318 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 17:34:15.376402 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 17:34:15.376875 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 17:34:15.377933 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 17:34:15.378160 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 17:34:15.378588 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 17:34:15.379641 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 17:34:15.379728 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 17:34:15.379788 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 17:34:15.381070 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 17:34:15.381997 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 17:34:15.392711 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 17:34:15.401022 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 17:34:15.405032 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 17:34:15.405148 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:03:44.310659 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 19:03:44.310781 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:03:44.311290 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:03:44.312287 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:03:44.312624 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:03:44.313090 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:03:44.314182 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:03:44.314641 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:03:44.315545 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:03:44.316904 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:03:44.319026 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:03:44.320391 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:03:44.321863 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:03:44.325313 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:03:44.325541 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:03:48.652422 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 19:03:48.652509 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:03:48.652994 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:03:48.653859 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:03:48.653963 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:03:48.654317 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:03:48.655083 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:03:48.655263 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:03:48.655333 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:03:48.656895 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:03:48.657444 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:03:48.657488 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:03:48.659352 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:03:48.664187 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:03:48.664422 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:09:51.510609 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Simulation profile EasyWave2 - RTSP triggered manually
+2025/05/05 19:09:51.527388 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:09:51.538591 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:51.546619 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:51.546738 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:51.552912 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:09:51.553119 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:51.564339 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:51.575015 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:54.248402 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Simulation profile EasyWave2 - NTWC triggered manually
+2025/05/05 19:09:54.266491 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:09:54.276640 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:54.285041 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:54.285287 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:54.292758 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:09:54.292949 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:54.306621 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:54.320389 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:57.128248 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 19:09:57.144404 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:09:57.155010 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:57.163084 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:09:57.163159 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:57.163362 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:09:57.165997 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:09:57.169417 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:09:57.169489 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:09:57.169553 [Simulation:Error:toast@toast-new:Simulation] EasyWave2: Failed to find grid file
+2025/05/05 19:09:57.172215 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:09:57.186325 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:57.196569 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:09:57.213531 [Simulation:Info:toast@toast-new:No simulation returned] EasyWave2 simulation backend returned no simulation.
+2025/05/05 19:09:57.224531 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:35:33.664773 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/05/05 19:35:33.676144 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/05/05 19:35:33.684432 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:35:33.691302 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [argentina] is used instead.
+2025/05/05 19:35:33.691350 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:35:33.691582 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -56.94°/ -68.01° (MT), Depth: 19.00km (MT), Mag: 7.47 (MT)
+2025/05/05 19:35:33.693869 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:35:33.698874 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [argentina] is used instead.
+2025/05/05 19:35:33.698996 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/05/05 19:35:33.699025 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/05/05 19:35:33.702099 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/05/05 19:35:33.767486 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74056058S068070W8132cf15ee8e764e8ded35f2c4d0e20b78d27af8
+2025/05/05 19:35:33.778015 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74056058S068070W41f066c6f9b33ef472f7b00216b9252741fe8946
+2025/05/05 19:35:33.793323 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:35:33.831817 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/05/05 19:35:33.843136 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74056058S068070W1157c35ccf16367ec148fdb1ade2dcc7d8ac75d2
+2025/05/05 19:35:33.854943 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74056058S068070W0e99edfed399f6ab93d5a6ae506283d694a09982
+2025/05/05 19:36:13.581152 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74056058S068070W8132cf15ee8e764e8ded35f2c4d0e20b78d27af8 in 39 seconds
+2025/05/05 19:37:40.571707 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74056058S068070W41f066c6f9b33ef472f7b00216b9252741fe8946 in 126 seconds
+2025/05/05 19:38:15.565929 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74056058S068070W1157c35ccf16367ec148fdb1ade2dcc7d8ac75d2 in 161 seconds
+2025/05/05 19:39:27.565743 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74056058S068070W0e99edfed399f6ab93d5a6ae506283d694a09982 in 233 seconds
