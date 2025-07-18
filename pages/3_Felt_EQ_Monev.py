@@ -12,19 +12,19 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page
 st.sidebar.header("Input Parameter :")
 
 # Calculate dynamic dates
-#yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-#month_before = yesterday - datetime.timedelta(days=30)
+yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+month_before = yesterday - datetime.timedelta(days=30)
 
 # Format as strings
-#yesterday_str = yesterday.strftime('%Y-%m-%d %H:%M:%S')
-#month_before_str = month_before.strftime('%Y-%m-%d %H:%M:%S')
+yesterday_str = yesterday.strftime('%Y-%m-%d %H:%M:%S')
+month_before_str = month_before.strftime('%Y-%m-%d %H:%M:%S')
 
 # Sidebar inputs with default values
-#time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
-#time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
+time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
+time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
 
-time_start = st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00')
-time_end   = st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59')
+#time_start = st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00')
+#time_end   = st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59')
 
 # --- Helper Functions ---
 def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
@@ -99,7 +99,7 @@ map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.
 for lat, lon, title in zip(df['lat'], df['lon'], df['title']):
     folium.Marker([lat, lon], popup=title, icon=folium.Icon(color='red')).add_to(map_obj)
 
-st.markdown("### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)")
+st.markdown("### Seismisitas 30 Kejadian Gempabumi Dirasakan terakhir (BMKG)")
 st_folium(map_obj, width=1000)
 
 # --- Date Filtering ---
@@ -112,7 +112,7 @@ except:
     filtered = pd.DataFrame()
 
 # --- Chart & Table Display ---
-st.markdown("### Grafik Kecepatan Diseminasi Gempabumi M >=5")
+st.markdown("### Grafik Kecepatan Diseminasi Gempabumi Dirasakan (BMKG)")
 #if not filtered.empty:
 #    st.scatter_chart(filtered, x='datetime', y='lapsetime (minutes)')
 #else:
