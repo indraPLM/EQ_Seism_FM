@@ -50,7 +50,7 @@ def convert_lat(lat): return -float(lat.replace('LS','').strip()) if 'LS' in lat
 def convert_lon(lon): return -float(lon.replace('BB','').strip()) if 'BB' in lon else float(lon.replace('BT','').strip())
 
 # --- Fetch and Parse XML ---
-url = 'https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
+url = 'https://bmkg-content-inatews.storage.googleapis.com/last30feltevent.xml'
 soup = BeautifulSoup(requests.get(url).text, 'html')
 
 timesent  = extract_text('timesent')
