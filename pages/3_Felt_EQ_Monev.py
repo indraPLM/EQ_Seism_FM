@@ -161,6 +161,14 @@ else:
     list_areas = [a.text.strip() for a in areas]
     df['area'] = list_areas  # assuming alignment with other fields
 
+# Extract area safely
+felts = soup.find_all('felt')
+if not areas:
+    st.warning("🚨 Tag <area> not found — check XML structure or parser type.")
+else:
+    list_felts = [a.text.strip() for a in felts]
+    df['felt'] = list_felts  # assuming alignment with other fields
+
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 
 required_cols = ['datetime', 'timesent', 'lapsetime (minutes)','lon', 'lat', 'mag', 'depth', 'area','felt']
