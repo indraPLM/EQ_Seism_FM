@@ -110,6 +110,7 @@ except:
     st.warning("🧭 Format waktu tidak valid. Pastikan input sesuai contoh: YYYY-MM-DD HH:MM:SS")
     filtered = pd.DataFrame()
 
+#st.dataframe(filtered)
 # --- Chart & Table Display ---
 st.markdown("### Grafik Kecepatan Diseminasi Gempabumi M >=5")
 #if not filtered.empty:
@@ -162,7 +163,8 @@ st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area']
 existing_cols = [col for col in required_cols if col in df.columns]
-df_show = df[existing_cols]
+filtered = df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
+df_show = filtered[existing_cols]
 df_show.index = range(1, len(df_show) + 1)  # Reindex starting from 1
 st.dataframe(df_show)
 
