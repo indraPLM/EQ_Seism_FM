@@ -92,15 +92,6 @@ df['lapsetime (minutes)'] = df['timesent']-df['datetime']
 df['lapsetime (minutes)'] = (df['lapsetime (minutes)'].dt.total_seconds()/60).round(2)
 df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip(dates, times, mags, depths)]
 
-# --- Interactive Map ---
-tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
-map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
-for lat, lon, title in zip(df['lat'], df['lon'], df['title']):
-    folium.Marker([lat, lon], popup=title, icon=folium.Icon(color='red')).add_to(map_obj)
-
-st.markdown("### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)")
-st_folium(map_obj, width=1000)
-
 # --- Date Filtering ---
 try:
     start_dt = pd.to_datetime(time_start, errors='coerce')
@@ -110,13 +101,17 @@ except:
     st.warning("🧭 Format waktu tidak valid. Pastikan input sesuai contoh: YYYY-MM-DD HH:MM:SS")
     filtered = pd.DataFrame()
 
-#st.dataframe(filtered)
+# --- Interactive Map ---
+tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
+map_obj = folium.Map(location=[-4, 118], tiles=tiles, attr='ESRI', zoom_start=4.5)
+for lat, lon, title in zip(filtered['lat'], filtered['lon'], filtered ['title']):
+    folium.Marker([lat, lon], popup=title, icon=folium.Icon(color='red')).add_to(map_obj)
+
+st.markdown("### Seismisitas 30 Kejadian Gempabumi terakhir (BMKG)")
+st_folium(map_obj, width=1000)
+
 # --- Chart & Table Display ---
 st.markdown("### Grafik Kecepatan Diseminasi Gempabumi M >=5")
-#if not filtered.empty:
-#    st.scatter_chart(filtered, x='datetime', y='lapsetime (minutes)')
-#else:
-#    st.info("📉 Tidak ada data dalam rentang waktu yang dipilih.")
 
 import altair as alt
 
@@ -162,8 +157,7 @@ else:
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area']
-existing_cols = [col for col in required_cols if col in df.columns]
-filtered = df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
+existing_cols = [col for col in required_cols if col in filtered.columns]
 df_show = filtered[existing_cols]
 df_show.index = range(1, len(df_show) + 1)  # Reindex starting from 1
 st.dataframe(df_show)
