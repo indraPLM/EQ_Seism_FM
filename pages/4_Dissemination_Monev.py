@@ -176,7 +176,7 @@ df.rename(columns={
     'area': 'Lokasi'
 }, inplace=True)
 
-df_show = df[['date', 'OT', 'Diss Time', 'Diss Time-OT', 'Lat-Diss', 'Lon-Diss', 
+df_show = df[['date', 'OT', 'Diss Time', 'Lat-Diss', 'Lon-Diss', 
               'Mag Diss', 'Depth-Diss', 'Lokasi']].copy()
 df_show.index = range(1, len(df_show) + 1)
 
