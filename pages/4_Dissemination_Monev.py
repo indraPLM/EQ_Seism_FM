@@ -166,7 +166,14 @@ df['date'] = df['datetime'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
 df['OT'] = df['datetime'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 df['Diss Time'] = df['timesent'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
 #df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
-df['Diss Time-OT'] = (df['timesent'] - df['datetime']).apply(lambda x: str(x) if pd.notnull(x) else '')
+def format_timedelta(td):
+    if pd.isnull(td): return ''
+    total_seconds = int(td.total_seconds())
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+
+df['Diss Time-OT'] = (df['timesent'] - df['datetime']).apply(format_timedelta)
 
 df.rename(columns={
     'Lat-Diss': 'Lat-Diss',
