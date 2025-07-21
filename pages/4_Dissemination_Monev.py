@@ -64,6 +64,8 @@ df = pd.DataFrame({
     'timesent': [parse_timesent(ts) for ts in timesent],
     'lat': list(map(convert_lat, lats)),
     'lon': list(map(convert_lon, lons)),
+    'Lat-Diss':lats,
+    'Lon-Diss':lons,
     'mag': mags,
     'depth': depths
 })
@@ -156,7 +158,7 @@ else:
 
 st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
 
-required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area']
+required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area','Lat-Diss','Lon-Diss']
 existing_cols = [col for col in required_cols if col in df.columns]
 df=df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
 df_show = df[existing_cols]
