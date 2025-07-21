@@ -191,8 +191,5 @@ st.dataframe(df_merge)
 
 df_show=df_merge[['Event ID','Date','OT (UTC)', 'Respon TOAST (UTC)','KECEPATAN', 'Latitude','Longitude','Magnitude','Mag Type',
                   'Depth (km)','Phase Count','Azimuth Gap','Location']]
-
+df_show.index = range(1, len(df_display) + 1)
 st.dataframe(df_show)
-df_display=df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag_str','depth','remarks']]
-df_display.index = range(1, len(df_display) + 1)
-st.dataframe(df_display)
