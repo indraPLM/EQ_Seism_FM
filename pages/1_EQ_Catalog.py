@@ -200,4 +200,4 @@ st.image(Image.open("depth_mag.png"), caption="Depth & Magnitude per Island")
 
 # 🧾 Table Summary
 st.subheader("📋 Earthquake Summary per Island")
-st.table(stat_df)
+st.dataframe(stat_df)
