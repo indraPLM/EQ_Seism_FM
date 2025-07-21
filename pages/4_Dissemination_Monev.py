@@ -170,13 +170,15 @@ df['Diss Time'] = df['timesent'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
 
 
 df.rename(columns={
+    'date':'Date',
     'Lat-Diss': 'Lat-Diss',
     'Lon-Diss': 'Lon-Diss',
+    'lapsetime (minutes)':'Diss Time-OT',
     'mag': 'Mag Diss',
-    'depth': 'Depth-Diss',
+    'depth': 'Depth-Diss (Km)',
     'area': 'Lokasi'
 }, inplace=True)
-st.dataframe(df)
+st.dataframe(df[['Date','OT', 'Diss Time','Diss Time-OT', 'Lat-Diss','Lon-Diss','Mag Diss','Depth-Diss (Km)','Lokasi']])
 df_show = df[['date', 'OT', 'Diss Time', 'Lat-Diss', 'Lon-Diss', 
               'Mag Diss', 'Depth-Diss', 'Lokasi']].copy()
 df_show.index = range(1, len(df_show) + 1)
