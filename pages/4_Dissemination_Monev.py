@@ -167,13 +167,21 @@ df['OT'] = df['datetime'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 df['Diss Time'] = df['timesent'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
 #df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
 #df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
+def minutes_to_hms(minutes):
+    if pd.isnull(minutes): return ''
+    total_seconds = int(minutes * 60)
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    seconds = total_seconds % 60
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
 
+df['lapsetime (HH:MM:SS)'] = df['lapsetime (minutes)'].apply(minutes_to_hms)
 
 df.rename(columns={
     'date':'Date',
     'Lat-Diss': 'Lat-Diss',
     'Lon-Diss': 'Lon-Diss',
-    'lapsetime (minutes)':'Diss Time-OT',
+    'lapsetime (HH:MM:SS)':'Diss Time-OT',
     'mag': 'Mag Diss',
     'depth': 'Depth-Diss (Km)',
     'area': 'Lokasi'
