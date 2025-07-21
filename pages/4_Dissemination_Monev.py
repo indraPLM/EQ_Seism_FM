@@ -167,7 +167,7 @@ df['OT'] = df['datetime'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 df['Diss Time'] = df['timesent'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
 #df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
 #df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
-st.dataframe(df)
+
 
 df.rename(columns={
     'Lat-Diss': 'Lat-Diss',
@@ -176,7 +176,7 @@ df.rename(columns={
     'depth': 'Depth-Diss',
     'area': 'Lokasi'
 }, inplace=True)
-
+st.dataframe(df)
 df_show = df[['date', 'OT', 'Diss Time', 'Lat-Diss', 'Lon-Diss', 
               'Mag Diss', 'Depth-Diss', 'Lokasi']].copy()
 df_show.index = range(1, len(df_show) + 1)
