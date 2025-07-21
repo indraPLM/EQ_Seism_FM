@@ -157,7 +157,7 @@ else:
     df['area'] = list_areas  # assuming alignment with other fields
 
 st.markdown("### KECEPATAN PENYAMPAIAN INFORMASI PERINGATAN DINI TSUNAMI AKIBAT GEMPABUMI")
-st.markdown(f"### 🕒 Periode Monitoring:** `{time_start}` s.d. `{time_end}`")
+st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
 
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area','Lat-Diss','Lon-Diss']
 existing_cols = [col for col in required_cols if col in df.columns]
