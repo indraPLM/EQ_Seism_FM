@@ -185,7 +185,7 @@ df_merge.rename(columns={
     'depth': 'Depth (km)',
     'phase':'Phase Count',
     'azimuth':'Azimuth Gap',
-    'area': 'Location'    
+    'remarks': 'Location'    
 }, inplace=True)
 st.dataframe(df_merge)
 
