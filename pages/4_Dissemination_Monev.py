@@ -156,12 +156,31 @@ else:
     list_areas = [a.text.strip() for a in areas]
     df['area'] = list_areas  # assuming alignment with other fields
 
-st.markdown("### Data Parameter Gempa dan Perbedaan Waktu Pengiriman Informasi")
+st.markdown("### KECEPATAN PENYAMPAIAN INFORMASI PERINGATAN DINI TSUNAMI AKIBAT GEMPABUMI")
 
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area','Lat-Diss','Lon-Diss']
 existing_cols = [col for col in required_cols if col in df.columns]
 df=df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
+
+df['date'] = df['datetime'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
+df['OT'] = df['datetime'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
+df['Diss Time'] = df['timesent'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
+df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
+
+df.rename(columns={
+    'Lat-Diss': 'Lat-Diss',
+    'Lon-Diss': 'Lon-Diss',
+    'mag': 'Mag Diss',
+    'depth': 'Depth-Diss',
+    'area': 'Lokasi'
+}, inplace=True)
+
+df_show = df[['date', 'OT', 'Diss Time', 'Diss Time-OT', 'Lat-Diss', 'Lon-Diss', 
+              'Mag Diss', 'Depth-Diss', 'Lokasi']].copy()
+df_show.index = range(1, len(df_show) + 1)
+
 df_show = df[existing_cols]
 df_show.index = range(1, len(df_show) + 1)  # Reindex starting from 1
+
 st.dataframe(df_show)
 
