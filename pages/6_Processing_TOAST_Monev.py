@@ -156,12 +156,13 @@ chart = alt.Chart(df_merge).mark_point(size=70, filled=True).encode(
 st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
+st.markdown("### KECEPATAN PROCESSING SISTEM TOAST LOG PENGIRIMAN GEMPA M ≥ 5")
+st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
+
 df_merge['date'] = df_merge['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
 df_merge['OT'] = df_merge['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 df_merge['Toast Time'] = df_merge['tstamp_toast'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
-#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
-#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
+
 def minutes_to_hms(minutes):
     if pd.isnull(minutes): return ''
     total_seconds = int(minutes * 60)
