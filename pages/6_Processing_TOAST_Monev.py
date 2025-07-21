@@ -187,6 +187,8 @@ df_merge.rename(columns={
     'azimuth':'Azimuth Gap',
     'area': 'Location'    
 }, inplace=True)
+st.dataframe(df_merge)
+
 df_show=df_merge[['Event ID','Date','OT (UTC)', 'Respon TOAST (UTC)','KECEPATAN', 'Latitude','Longitude','Magnitude','Mag Type',
                   'Depth (km)','Phase Count','Azimuth Gap','Location']]
 
