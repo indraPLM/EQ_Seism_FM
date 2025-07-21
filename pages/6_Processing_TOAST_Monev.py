@@ -157,6 +157,39 @@ st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
+df_merge['date'] = df_merge['datetime'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
+df_merge['OT'] = df_merge['datetime'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
+df_merge['Toast Time'] = df_merge['tstamp_toast'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
+#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
+#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
+def minutes_to_hms(minutes):
+    if pd.isnull(minutes): return ''
+    total_seconds = int(minutes * 60)
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    seconds = total_seconds % 60
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+
+df_merge['lapsetime (HH:MM:SS)'] = df_merge['lapse_time_toast'].apply(minutes_to_hms)
+
+df_merge.rename(columns={
+    'event_id': 'Event ID',
+    'date':'Date',
+    'OT':'OT (UTC)',
+    'Toast Time': 'Respon TOAST (UTC)',
+    'lat': 'Latitude',
+    'lon': 'Longitude',
+    'lapsetime (HH:MM:SS)':'KECEPATAN',
+    'mag': 'Magnitude',
+    'type_mag':'Mag Type',
+    'depth': 'Depth (km)',
+    'phase':'Phase Count',
+    'azimuth':'Azimuth Gap',
+    'area': 'Location'    
+}, inplace=True)
+df_show=df_merge[['Event ID','Date','OT (UTC)', 'Respon TOAST (UTC)','KECEPATAN', 'Latitude','Longitude','Magnitude','Mag Type',
+                  'Depth (km)','Phase Count','Azimuth Gap','Location']]
+
 st.dataframe(df_merge)
 df_display=df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag_str','depth','remarks']]
 df_display.index = range(1, len(df_display) + 1)
