@@ -178,13 +178,6 @@ df.rename(columns={
     'depth': 'Depth-Diss (Km)',
     'area': 'Lokasi'
 }, inplace=True)
-st.dataframe(df[['Date','OT', 'Diss Time','Diss Time-OT', 'Lat-Diss','Lon-Diss','Mag Diss','Depth-Diss (Km)','Lokasi']])
-df_show = df[['date', 'OT', 'Diss Time', 'Lat-Diss', 'Lon-Diss', 
-              'Mag Diss', 'Depth-Diss', 'Lokasi']].copy()
+df_show=df[['Date','OT', 'Diss Time','Diss Time-OT', 'Lat-Diss','Lon-Diss','Mag Diss','Depth-Diss (Km)','Lokasi']]
 df_show.index = range(1, len(df_show) + 1)
-
-df_show = df[existing_cols]
-df_show.index = range(1, len(df_show) + 1)  # Reindex starting from 1
-
 st.dataframe(df_show)
-
