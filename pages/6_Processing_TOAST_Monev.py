@@ -187,9 +187,8 @@ df_merge.rename(columns={
     'azimuth':'Azimuth Gap',
     'remarks': 'Location'    
 }, inplace=True)
-st.dataframe(df_merge)
 
 df_show=df_merge[['Event ID','Date','OT (UTC)', 'Respon TOAST (UTC)','KECEPATAN', 'Latitude','Longitude','Magnitude','Mag Type',
                   'Depth (km)','Phase Count','Azimuth Gap','Location']]
-df_show.index = range(1, len(df_display) + 1)
+df_show.index = range(1, len(df_show) + 1)
 st.dataframe(df_show)
