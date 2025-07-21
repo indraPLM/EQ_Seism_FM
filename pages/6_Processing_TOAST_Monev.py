@@ -105,6 +105,7 @@ df_merge = pd.merge(df, df_toast, on='event_id')
 df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time']).dt.total_seconds() / 60
 df_merge = df_merge.query('lapse_time_toast <= 60')
 
+
 # --- Visualization: Map ---
 import folium
 from streamlit_folium import st_folium
@@ -156,6 +157,7 @@ st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
 st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing TOAST")
+st.dataframe(df_merge)
 df_display=df_merge[['event_id','date_time','tstamp_toast','lapse_time_toast','lon','lat','mag_str','depth','remarks']]
 df_display.index = range(1, len(df_display) + 1)
 st.dataframe(df_display)
