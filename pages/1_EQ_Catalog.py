@@ -93,6 +93,7 @@ st.image(Image.open("region_freq.png"), caption="Frequency by Region")
 
 # 📋 Display Table
 st.subheader("📋 Earthquake Catalog")
+df.index = range(1, len(df) + 1)
 st.dataframe(df)
 st.table(remarks)
 
