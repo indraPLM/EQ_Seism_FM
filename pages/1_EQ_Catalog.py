@@ -167,6 +167,36 @@ plt.tight_layout()
 plt.savefig("mag_pie_3d.png")
 st.image("mag_pie_3d.png", caption="Magnitude Class Distribution (3D Style)")
 
+import plotly.graph_objects as go
+
+# 🧮 Total frequency across all magnitude categories
+mag_totals = region_mag_freq.sum()
+labels = mag_totals.index
+values = mag_totals.values
+colors = ['blue', 'red', 'green', 'yellow']
+
+# 🥧 3D-style Pie Chart with Plotly
+fig_pie = go.Figure(
+    data=[go.Pie(
+        labels=labels,
+        values=values,
+        marker=dict(colors=colors),
+        hole=0.3,
+        pull=[0.05]*len(values),
+        textinfo='label+percent',
+        textfont=dict(size=14),
+        showlegend=False
+    )]
+)
+
+fig_pie.update_layout(
+    title="Magnitude Classification Distribution",
+    height=600
+)
+
+# 🎯 Display in Streamlit
+st.subheader("🥧 Magnitude Class Distribution (3D Style)")
+st.plotly_chart(fig_pie, use_container_width=True
 
 # 📍 Load Island Shapefiles
 def load_clip(name):
