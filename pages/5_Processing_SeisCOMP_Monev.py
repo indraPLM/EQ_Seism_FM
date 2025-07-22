@@ -66,13 +66,11 @@ df = preprocess(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
-#st.dataframe(df)
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 # --- Title Field ---
 df['title'] = df.apply(lambda row: f"Tanggal: {row['date_time']}, Mag: {row['mag']}, Depth: {row['depth']}", axis=1)
-#st.dataframe(df)
 
 df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 # --- Fetch Dissemination Time ---
@@ -117,8 +115,7 @@ df['tstamp_process'] = pd.to_datetime(df['tstamp_process'], unit='s', errors='co
 df['date'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
 df['OT'] = df['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 df['Proc Time'] = df['tstamp_process'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
-#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
-#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
+
 def minutes_to_hms(minutes):
     if pd.isnull(minutes): return ''
     total_seconds = int(minutes * 60)
@@ -128,14 +125,6 @@ def minutes_to_hms(minutes):
     return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
 
 df['lapsetime (HH:MM:SS)'] = df['time_process (minutes)'].apply(minutes_to_hms)
-
-
-st.dataframe(df)
-
-#eid_test = df['event_id'].iloc[0]
-#st.write(f"Testing URL for: {eid_test}")
-#st.write(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt")
-#st.write(load_seiscomp_process(f"https://bmkg-content-inatews.storage.googleapis.com/history.{eid_test}.txt"))
 
 # --- Map Visualization ---
 tiles = 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}'
@@ -157,17 +146,17 @@ st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 import altair as alt
 
 # Filter clean data
-df_plot = df_display[df_display['elapse(minutes)'] > 0]
+df_plot = df[df_['time_process (minutes)'] > 0]
 
 # Define base chart
 chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
     x='date_time:T',
-    y=alt.Y('elapse(minutes):Q', scale=alt.Scale(domain=[0, 5])),
+    y=alt.Y('time_process (minutes):Q', scale=alt.Scale(domain=[0, 5])),
     shape=alt.condition(
-        alt.datum['elapse(minutes)'] > 3, alt.ShapeValue('cross'), alt.ShapeValue('circle')
+        alt.datum['time_process (minutes)'] > 3, alt.ShapeValue('cross'), alt.ShapeValue('circle')
     ),
     color=alt.condition(
-        alt.datum['elapse(minutes)'] > 3, alt.value('red'), alt.value('steelblue')
+        alt.datum['time_process (minutes)'] > 3, alt.value('red'), alt.value('steelblue')
     ),
     tooltip=['event_id', 'date_time', 'mag', 'depth']
 ).properties(
@@ -201,5 +190,5 @@ st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
 #df_show.index = range(1, len(df_show) + 1)
 #st.dataframe(df_show)
 
-df_display.index = range(1, len(df_display) + 1)
-st.dataframe(df_display)
+df.index = range(1, len(df_display) + 1)
+st.dataframe(df)
