@@ -196,7 +196,7 @@ fig_pie.update_layout(
 
 # 🎯 Display in Streamlit
 st.subheader("🥧 Magnitude Class Distribution (3D Style)")
-st.plotly_chart(fig_pie, use_container_width=True
+st.plotly_chart(fig_pie, use_container_width=True)
 
 # 📍 Load Island Shapefiles
 def load_clip(name):
