@@ -114,7 +114,23 @@ results_df = pd.DataFrame(results, columns=['tstamp_process', 'time_process (min
 df = pd.concat([df.reset_index(drop=True), results_df], axis=1)
 df['tstamp_process'] = pd.to_datetime(df['tstamp_process'], unit='s', errors='coerce')
 
-#st.dataframe(df)
+df['date'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
+df['OT'] = df['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
+df['Proc Time'] = df['tstamp_process'].dt.strftime('%H:%M:%S')   # Example: 06:41:41
+#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.strftime('%H:%M:%S')
+#df['Diss Time-OT'] = (df['timesent'] - df['datetime']).dt.total_seconds() / 60
+def minutes_to_hms(minutes):
+    if pd.isnull(minutes): return ''
+    total_seconds = int(minutes * 60)
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    seconds = total_seconds % 60
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
+
+df['lapsetime (HH:MM:SS)'] = df['time_process (minutes)'].apply(minutes_to_hms)
+
+
+st.dataframe(df)
 
 #eid_test = df['event_id'].iloc[0]
 #st.write(f"Testing URL for: {eid_test}")
@@ -133,7 +149,7 @@ st_folium(map_obj, width=1000)
 
 df_display = df[['event_id', 'date_time','tstamp_process', 'time_process (minutes)','lon', 'lat', 'mag', 'depth','remarks']].copy()
 df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace=True)
-
+st.dataframe(df_display)
 # --- Chart Visualization ---
 st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 #st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
@@ -167,6 +183,23 @@ chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
 st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
-st.markdown("### Data Parameter Gempa dan Kecepatan Prosesing SeisCOMP ")
+st.markdown("### KECEPATAN ANALISIS PROCESSING INFORMASI GEMPABUMI")
+st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
+
+
+
+#df.rename(columns={
+#    'date':'Date',
+#    'Lat-Diss': 'Lat-Diss',
+#    'Lon-Diss': 'Lon-Diss',
+#    'lapsetime (HH:MM:SS)':'Diss Time-OT',
+#    'mag': 'Mag Diss',
+#    'depth': 'Depth-Diss (Km)',
+#    'area': 'Lokasi'
+#}, inplace=True)
+#df_show=df[['Date','OT', 'Diss Time','Diss Time-OT', 'Lat-Diss','Lon-Diss','Mag Diss','Depth-Diss (Km)','Lokasi']]
+#df_show.index = range(1, len(df_show) + 1)
+#st.dataframe(df_show)
+
 df_display.index = range(1, len(df_display) + 1)
 st.dataframe(df_display)
