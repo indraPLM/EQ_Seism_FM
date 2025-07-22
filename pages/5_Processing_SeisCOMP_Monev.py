@@ -189,4 +189,4 @@ df_show.index = range(1, len(df_show) + 1)
 st.dataframe(df_show)
 
 #df.index = range(1, len(df_display) + 1)
-#st.dataframe(df)
+st.dataframe(df)
