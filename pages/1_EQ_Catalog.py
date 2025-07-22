@@ -147,26 +147,6 @@ sizes = mag_totals.values
 colors = ['blue', 'red', 'green', 'yellow']
 explode = [0.05]*len(sizes)  # slightly "explode" all slices for effect
 
-# 🥧 3D-style Pie Chart
-fig, ax = plt.subplots(figsize=(8,8))
-wedges, texts, autotexts = ax.pie(
-    sizes,
-    explode=explode,
-    labels=labels,
-    autopct='%1.1f%%',
-    colors=colors,
-    shadow=True,
-    startangle=140,
-    textprops={'color':"black", 'fontsize':12}
-)
-
-ax.set_title("Magnitude Class Distribution", fontsize=16)
-plt.tight_layout()
-
-# 📸 Display in Streamlit
-plt.savefig("mag_pie_3d.png")
-st.image("mag_pie_3d.png", caption="Magnitude Class Distribution (3D Style)")
-
 import plotly.graph_objects as go
 
 # 🧮 Total frequency across all magnitude categories
