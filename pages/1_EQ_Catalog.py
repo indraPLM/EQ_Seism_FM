@@ -136,6 +136,26 @@ plt.savefig("region_mag_bar.png")
 st.subheader("📊 Frequency by Region and Magnitude Category")
 st.image("region_mag_bar.png", caption="Frequency by Region and Magnitude Classification")
 
+# 📋 Show Frequency DataFrame
+st.subheader("📋 Earthquake Frequency by Region and Magnitude Class")
+st.dataframe(region_mag_freq)
+
+# 🥧 Pie Chart of Magnitude Class Distribution
+st.subheader("🥧 Magnitude Classification Percentage")
+
+# Flatten counts for pie chart
+mag_totals = region_mag_freq.sum()
+
+# Plot pie chart
+plt.figure(figsize=(8,8))
+colors = ['blue', 'red', 'green', 'yellow']
+plt.pie(mag_totals.values, labels=mag_totals.index, autopct='%1.1f%%', colors=colors, startangle=140)
+plt.title("Percentage of Earthquake Events by Magnitude Category")
+plt.tight_layout()
+
+# Display chart
+plt.savefig("mag_pie_chart.png")
+st.image("mag_pie_chart.png", caption="Magnitude Class Distribution")
 
 # 📍 Load Island Shapefiles
 def load_clip(name):
