@@ -146,7 +146,7 @@ st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 import altair as alt
 
 # Filter clean data
-df_plot = df[df_['time_process (minutes)'] > 0]
+df_plot = df[df['time_process (minutes)'] > 0]
 
 # Define base chart
 chart = alt.Chart(df_plot).mark_point(filled=False, size=80).encode(
