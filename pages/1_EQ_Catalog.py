@@ -113,11 +113,17 @@ df['mag_class'] = df['mag'].apply(classify_mag)
 
 # 🧮 Count Frequency by Region and Magnitude Class
 region_mag_freq = df.groupby(['remarks', 'mag_class']).size().unstack(fill_value=0)
-region_mag_freq = region_mag_freq[['<5','5–6','6–7','≥7']]  # Ensure column order
 
-# 🎨 Bar Chart with Custom Colors
+# ✨ Ensure consistent column order and fill missing ones
+expected_cols = ['<5', '5–6', '6–7', '≥7']
+for col in expected_cols:
+    if col not in region_mag_freq.columns:
+        region_mag_freq[col] = 0
+region_mag_freq = region_mag_freq[expected_cols]
+
+# 🎨 Plot Bar Chart
 color_map = {'<5': 'blue', '5–6': 'red', '6–7': 'green', '≥7': 'yellow'}
-region_mag_freq.plot(kind='bar', stacked=False, figsize=(20,12), color=[color_map[col] for col in region_mag_freq.columns])
+region_mag_freq.plot(kind='bar', stacked=False, figsize=(20, 12), color=[color_map[col] for col in expected_cols])
 
 plt.title("Earthquake Frequency by Region and Magnitude Category")
 plt.xlabel("Region")
@@ -125,9 +131,11 @@ plt.ylabel("Number of Earthquakes")
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-# 📸 Save and Show Chart in Streamlit
+# 📸 Export and Render Chart
 plt.savefig("region_mag_bar.png")
+st.subheader("📊 Frequency by Region and Magnitude Category")
 st.image("region_mag_bar.png", caption="Frequency by Region and Magnitude Classification")
+
 
 # 📍 Load Island Shapefiles
 def load_clip(name):
