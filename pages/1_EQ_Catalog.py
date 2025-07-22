@@ -97,6 +97,38 @@ df.index = range(1, len(df) + 1)
 st.dataframe(df)
 st.table(remarks)
 
+
+# 🔢 Magnitude Classification
+def classify_mag(mag):
+    if mag < 5:
+        return '<5'
+    elif 5 <= mag < 6:
+        return '5–6'
+    elif 6 <= mag < 7:
+        return '6–7'
+    else:
+        return '≥7'
+
+df['mag_class'] = df['mag'].apply(classify_mag)
+
+# 🧮 Count Frequency by Region and Magnitude Class
+region_mag_freq = df.groupby(['remarks', 'mag_class']).size().unstack(fill_value=0)
+region_mag_freq = region_mag_freq[['<5','5–6','6–7','≥7']]  # Ensure column order
+
+# 🎨 Bar Chart with Custom Colors
+color_map = {'<5': 'blue', '5–6': 'red', '6–7': 'green', '≥7': 'yellow'}
+region_mag_freq.plot(kind='bar', stacked=False, figsize=(20,12), color=[color_map[col] for col in region_mag_freq.columns])
+
+plt.title("Earthquake Frequency by Region and Magnitude Category")
+plt.xlabel("Region")
+plt.ylabel("Number of Earthquakes")
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# 📸 Save and Show Chart in Streamlit
+plt.savefig("region_mag_bar.png")
+st.image("region_mag_bar.png", caption="Frequency by Region and Magnitude Classification")
+
 # 📍 Load Island Shapefiles
 def load_clip(name):
     return gpd.read_file(f"{name}_Area.shp")
