@@ -140,22 +140,33 @@ st.image("region_mag_bar.png", caption="Frequency by Region and Magnitude Classi
 st.subheader("📋 Earthquake Frequency by Region and Magnitude Class")
 st.dataframe(region_mag_freq)
 
-# 🥧 Pie Chart of Magnitude Class Distribution
-st.subheader("🥧 Magnitude Classification Percentage")
-
-# Flatten counts for pie chart
+# 📊 Frequency totals per magnitude class
 mag_totals = region_mag_freq.sum()
-
-# Plot pie chart
-plt.figure(figsize=(8,8))
+labels = mag_totals.index
+sizes = mag_totals.values
 colors = ['blue', 'red', 'green', 'yellow']
-plt.pie(mag_totals.values, labels=mag_totals.index, autopct='%1.1f%%', colors=colors, startangle=140)
-plt.title("Percentage of Earthquake Events by Magnitude Category")
+explode = [0.05]*len(sizes)  # slightly "explode" all slices for effect
+
+# 🥧 3D-style Pie Chart
+fig, ax = plt.subplots(figsize=(8,8))
+wedges, texts, autotexts = ax.pie(
+    sizes,
+    explode=explode,
+    labels=labels,
+    autopct='%1.1f%%',
+    colors=colors,
+    shadow=True,
+    startangle=140,
+    textprops={'color':"black", 'fontsize':12}
+)
+
+ax.set_title("Magnitude Class Distribution", fontsize=16)
 plt.tight_layout()
 
-# Display chart
-plt.savefig("mag_pie_chart.png")
-st.image("mag_pie_chart.png", caption="Magnitude Class Distribution")
+# 📸 Display in Streamlit
+plt.savefig("mag_pie_3d.png")
+st.image("mag_pie_3d.png", caption="Magnitude Class Distribution (3D Style)")
+
 
 # 📍 Load Island Shapefiles
 def load_clip(name):
