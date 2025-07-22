@@ -136,9 +136,6 @@ for _, row in df.iterrows():
 st.markdown("### Peta Seismisitas Gempabumi M ≥5 (BMKG)")
 st_folium(map_obj, width=1000)
 
-df_display = df[['event_id', 'date_time','tstamp_process', 'time_process (minutes)','lon', 'lat', 'mag', 'depth','remarks']].copy()
-df_display.rename(columns={'time_process (minutes)': 'elapse(minutes)'}, inplace=True)
-st.dataframe(df_display)
 # --- Chart Visualization ---
 st.markdown("### Grafik Kecepatan Prosesing SeisCOMP Gempabumi M ≥5")
 #st.scatter_chart(df_display, x='date_time', y='elapse(minutes)')
@@ -175,20 +172,21 @@ st.altair_chart(chart, use_container_width=True)
 st.markdown("### KECEPATAN ANALISIS PROCESSING INFORMASI GEMPABUMI")
 st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
 
+df.rename(columns={
+    'date':'Date',
+    'OT':'OT (UTC) Gempa',
+    'Proc Time':'OT-Create (UTC)',
+    'fixedLat': 'Lat-Diss',
+    'fixedLon': 'Lon-Diss',
+    'lapsetime (HH:MM:SS)':'Selisih OT dengan Create FL',
+    'mag': 'Mag Diss',
+    'depth': 'Depth-Diss (Km)',
+    'remarks': 'Lokasi'
+}, inplace=True)
+df_show=df[['Date','OT (UTC) Gempa', 'OT-Create (UTC)','Selisih OT dengan Create FL',
+            'Mag Diss','Lat-Diss','Lon-Diss','Depth-Diss (Km)','Lokasi']]
+df_show.index = range(1, len(df_show) + 1)
+st.dataframe(df_show)
 
-
-#df.rename(columns={
-#    'date':'Date',
-#    'Lat-Diss': 'Lat-Diss',
-#    'Lon-Diss': 'Lon-Diss',
-#    'lapsetime (HH:MM:SS)':'Diss Time-OT',
-#    'mag': 'Mag Diss',
-#    'depth': 'Depth-Diss (Km)',
-#    'area': 'Lokasi'
-#}, inplace=True)
-#df_show=df[['Date','OT', 'Diss Time','Diss Time-OT', 'Lat-Diss','Lon-Diss','Mag Diss','Depth-Diss (Km)','Lokasi']]
-#df_show.index = range(1, len(df_show) + 1)
-#st.dataframe(df_show)
-
-df.index = range(1, len(df_display) + 1)
-st.dataframe(df)
+#df.index = range(1, len(df_display) + 1)
+#st.dataframe(df)
