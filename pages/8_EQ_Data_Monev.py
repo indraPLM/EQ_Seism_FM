@@ -28,27 +28,8 @@ West  = float(col3.text_input('West', '90.0'))
 East  = float(col4.text_input('East', '142.0'))
 
 # 📂 Load and Clean Data
-file_path = './pages/event_jan-mar_2024.txt'
-expected_columns = 7
-
-# === Step 2: Read and preprocess lines ===
-with open(file_path, 'r') as file:
-    lines = file.readlines()
-
-data = []
-for line in lines:
-    parts = line.strip().split(None, expected_columns)
-    fixed = parts[:expected_columns]
-    tail = parts[expected_columns] if len(parts) > expected_columns else ''
-    combined = fixed[:6] + [fixed[6] + ', ' + tail]  # Combine col_7 and last
-    data.append(combined)
-
-# === Step 3: Create DataFrame ===
-df = pd.DataFrame(data)
-
-# === Step 4: Promote first row as header ===
-df.columns = df.iloc[0]
-df = df[1:].reset_index(drop=True)
+file_path = './pages/event_jan-mar_2024_cleaned.csv'
+df = pd.read_csv(file_path)
 
 df['DATE'] = pd.to_datetime(df['DATE'], errors='coerce', dayfirst=True)
 df['MAG']   = pd.to_numeric(df['MAG'], errors='coerce')
