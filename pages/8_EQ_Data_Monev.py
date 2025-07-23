@@ -36,7 +36,6 @@ expected_columns = [
     'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
 ]
 
-# 🧵 Parse file manually
 data_rows = []
 try:
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -44,23 +43,27 @@ try:
             line = line.strip()
             if not line:
                 continue
-            # Try splitting by comma first
+            # Try comma first
             parts = line.split(',')
-            # If not enough parts, try tab
+            # Fallback to tab
             if len(parts) != len(columns):
                 parts = line.split('\t')
             if len(parts) == len(columns):
                 data_rows.append(parts)
             else:
-                st.warning(f"⚠️ Skipped line {line_num} due to column mismatch.")
+                st.warning(f"⚠️ Skipped line {line_num} — expected {len(columns)} columns, got {len(parts)}.")
+
 except FileNotFoundError:
     st.error(f"🚫 File not found: {file_path}")
     st.stop()
 
-# 🧾 Build DataFrame
-df = pd.DataFrame(data_rows, columns=columns)
-st.write(f"✅ Loaded {len(df)} rows")
-st.dataframe(df.head())
+# ✅ Create DataFrame
+if data_rows:
+    df = pd.DataFrame(data_rows, columns=columns)
+    st.success(f"✅ Loaded {len(df)} rows")
+    st.dataframe(df.head())
+else:
+    st.warning("⚠️ No valid rows loaded — please check file formatting.")
 
 # Optional: convert columns to proper types
 df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
