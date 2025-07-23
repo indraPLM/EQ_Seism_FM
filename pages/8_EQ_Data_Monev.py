@@ -41,8 +41,8 @@ clean_rows = []
 with open(file_path, 'r', encoding='utf-8') as f:
     for i, line in enumerate(f, start=1):
         parts = [x.strip() for x in line.strip().split(',')]
-        if 12 <= len(parts) <= 14:
-            fixed = parts + [''] * (14 - len(parts)) if len(parts) < 14 else parts[:14]
+        if 6 <= len(parts) <= 8:
+            fixed = parts + [''] * (8 - len(parts)) if len(parts) < 8 else parts[:8]
             clean_rows.append(fixed)
         else:
             st.warning(f"⚠️ Line {i}: column mismatch ({len(parts)} columns) — skipped.")
@@ -51,9 +51,9 @@ with open(file_path, 'r', encoding='utf-8') as f:
 df = pd.DataFrame(clean_rows, columns=expected_cols)
 
 # ⏳ Type Conversion
-df = df.iloc[1:].reset_index(drop=True)  # Remove possible broken first row
-df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce', dayfirst=True)
-df['DATE TIME B'] = pd.to_datetime(df['DATE TIME B'], errors='coerce', dayfirst=True)
+#df = df.iloc[1:].reset_index(drop=True)  # Remove possible broken first row
+#df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce', dayfirst=True)
+df['DATE'] = pd.to_datetime(df['DATE'], errors='coerce', dayfirst=True)
 df['MAG']   = pd.to_numeric(df['MAG'], errors='coerce')
 df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
 df['LAT']   = pd.to_numeric(df['LAT'], errors='coerce')
