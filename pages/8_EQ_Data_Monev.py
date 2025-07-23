@@ -66,8 +66,8 @@ st.dataframe(df)
 # 🧹 Filter Data
 df = df[
     (df['DATE'].between(time_start, time_end)) &
-    (df['fixedLat'].between(South, North)) &
-    (df['fixedLon'].between(West, East))
+    (df['LAT'].between(South, North)) &
+    (df['LON'].between(West, East))
 ]
 st.dataframe(df)
 # 📍 Load Island Shapefiles
