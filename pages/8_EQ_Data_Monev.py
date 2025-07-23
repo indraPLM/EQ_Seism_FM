@@ -27,11 +27,13 @@ West = float(col3.text_input('West', '90.0'))
 East = float(col4.text_input('East', '142.0'))
 
 # 📂 Load earthquake .txt file
-file_path = './pages/events_2019-2024.txt'
+file_path = './pages/bmkg_events_2019-2024.csv'
 
 
 # Define expected column names
-columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
+columns = ['ID', 'DATE TIME A', 'DATE TIME B', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'PHASE',	
+           'AGENCY',	'STATUS',	'LOCATION-A',	'LOCATION-B']
+
 
 # Pre-parse and clean each line manually
 def clean_lines(path):
