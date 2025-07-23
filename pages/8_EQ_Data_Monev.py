@@ -36,28 +36,35 @@ expected_columns = [
     'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
 ]
 
-def load_robust_csv(path):
-    raw_lines, good_rows, bad_rows = [], [], []
+# Store parsed rows here
+data_rows = []
 
-    with open(path, 'r', encoding='utf-8') as f:
-        for line_num, line in enumerate(f, start=1):
-            raw = line.strip()
-            raw_lines.append(raw)
-            parts = re.split(r'\s*,\s*|\t+', raw)  # Split on comma or tab
-            if len(parts) == len(expected_columns):
-                good_rows.append(parts)
-            else:
-                bad_rows.append((line_num, raw))
+# Open and process line-by-line
+with open(file_path, 'r', encoding='utf-8') as f:
+    for line_num, line in enumerate(f, start=1):
+        line = line.strip()
 
-    if bad_rows:
-        print(f"⚠️ Skipped {len(bad_rows)} malformed rows:")
-        for i, row in bad_rows[:5]:  # Show first few
-            print(f"Line {i}: {row}")
+        # Skip empty lines
+        if not line:
+            continue
 
-    return pd.DataFrame(good_rows, columns=expected_columns)
+        # Try splitting with comma or tab
+        parts = line.split(',')
+        if len(parts) != len(columns):
+            parts = line.split('\t')
 
-df = load_robust_csv(file_path)
-print(f"✅ Loaded {len(df)} valid rows")
+        # Append only if column count matches
+        if len(parts) == len(columns):
+            data_rows.append(parts)
+        else:
+            print(f"⚠️ Line {line_num} skipped: column mismatch")
+
+# Create DataFrame
+df = pd.DataFrame(data_rows, columns=columns)
+
+# Show result
+print("✅ Parsed rows:", len(df))
+st.dataframe(df.head())
 
 # Optional: convert columns to proper types
 df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
