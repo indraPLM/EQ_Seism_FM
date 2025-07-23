@@ -64,8 +64,8 @@ df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
 df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
 df['LAT'] = pd.to_numeric(df['LAT'], errors='coerce')
 df['LON'] = pd.to_numeric(df['LON'], errors='coerce')
-df['DATE_TIME_A'] = pd.to_datetime(df['DATE_TIME_A'], errors='coerce')
-df['DATE_TIME_B'] = pd.to_datetime(df['DATE_TIME_B'], errors='coerce')
+df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce')
+df['DATE TIME B'] = pd.to_datetime(df['DATE TIME B'], errors='coerce')
 
 st.dataframe(df)
 
