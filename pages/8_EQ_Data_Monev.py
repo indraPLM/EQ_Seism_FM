@@ -148,13 +148,13 @@ list_pgr = [f'PGR{i}' for i in range(1, 12)]
 list_color = plt.cm.get_cmap('tab10', len(list_pgr)).colors
 
 def clip_df(df, pgr_name):
-    polygon = gpd.read_file(f"./fileSHP/{pgr_name}.shp")
+    polygon = gpd.read_file(f"./pages/fileSHP/{pgr_name}.shp")
     geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
     return geo_df.clip(polygon)
 
 def get_eq_coords(pgr_name):
     try:
-        polygon = gpd.read_file(f"./fileSHP/{pgr_name}.shp")
+        polygon = gpd.read_file(f"./pages/fileSHP/{pgr_name}.shp")
         clipped = gpd_seis.clip(polygon)
         x, y, _ = projection.transform_points(ccrs.Geodetic(), np.array(clipped.LON), np.array(clipped.LAT)).T
         return x, y
@@ -172,7 +172,7 @@ for i, pgr in enumerate(list_pgr):
     ax.scatter(x, y, s=5, color=list_color[i], marker="o", label=pgr, zorder=3)
     try:
         ax.add_geometries(
-            Reader(f"./fileSHP/{pgr}.shp").geometries(),
+            Reader(f"./pages/fileSHP/{pgr}.shp").geometries(),
             ccrs.PlateCarree(),
             facecolor="white",
             edgecolor=list_color[i],
