@@ -29,13 +29,27 @@ East  = float(col4.text_input('East', '142.0'))
 
 # 📂 Load and Clean Data
 file_path = './pages/event_jan-mar_2024_cleaned.csv'
-df = pd.read_csv(file_path)
+# Robust CSV loading with header fallback
+try:
+    df_raw = pd.read_csv(file_path, header=None)
+except Exception as e:
+    st.error(f"❌ Failed to read CSV: {e}")
+    st.stop()
 
-df['DATE'] = pd.to_datetime(df['DATE'], errors='coerce', dayfirst=True)
-df['MAG']   = pd.to_numeric(df['MAG'], errors='coerce')
-df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
-df['LAT']   = pd.to_numeric(df['LAT'], errors='coerce')
-df['LON']   = pd.to_numeric(df['LON'], errors='coerce')
+# Promote first row to header
+df_raw.columns = df_raw.iloc[0]
+df = df_raw[1:].copy()
+
+# Convert necessary columns to correct types
+for col in ['DATE', 'MAG', 'DEPTH', 'LAT', 'LON']:
+    if col in df.columns:
+        if col == 'DATE':
+            df[col] = pd.to_datetime(df[col], errors='coerce', dayfirst=True)
+        else:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    else:
+        st.error(f"⚠️ Column '{col}' not found in data. Please check formatting.")
+        st.stop()
 
 # 🧹 Filter Data
 df_filtered = df[
