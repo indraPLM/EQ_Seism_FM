@@ -19,34 +19,43 @@ st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='
 # 🛠️ Sidebar Inputs
 st.sidebar.header("Input Parameters")
 time_start = st.sidebar.text_input('Start Time', '2025-06-01 00:00:00')
-time_end = st.sidebar.text_input('End Time', '2025-06-30 23:59:59')
+time_end   = st.sidebar.text_input('End Time', '2025-06-30 23:59:59')
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input('North', '6.0'))
 South = float(col2.text_input('South', '-13.0'))
 col3, col4 = st.sidebar.columns(2)
-West = float(col3.text_input('West', '90.0'))
-East = float(col4.text_input('East', '142.0'))
+West  = float(col3.text_input('West', '90.0'))
+East  = float(col4.text_input('East', '142.0'))
 
-# 📂 Load Data
+# 📂 Load and Clean Data
 file_path = './pages/malformed_cleaned.csv'
-columns = [
-    'NO','EVENT_ID', 'DATE TIME A', 'DATE TIME B', 'MAG', 'TYPE',
-    'LAT', 'LON', 'DEPTH', 'PHASE', 'AGENCY', 'STATUS', 'REMARKS'
+expected_cols = [
+    'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
+    'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
 ]
 
-if not os.path.exists(file_path):
+clean_rows = []
+if os.path.exists(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for i, line in enumerate(f, start=1):
+            parts = [x.strip() for x in line.strip().split(',')]
+            if 12 <= len(parts) <= 14:
+                padded = parts + [''] * (14 - len(parts)) if len(parts) < 14 else parts[:14]
+                clean_rows.append(padded)
+else:
     st.error(f"🚫 File not found: {file_path}")
     st.stop()
 
-df = pd.read_csv(file_path, names=columns, header=None, skiprows=1)
+df = pd.DataFrame(clean_rows, columns=expected_cols)
 
 # ⏳ Type Conversion
+df = df.iloc[1:].reset_index(drop=True)  # Remove possible broken first row
 df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce', dayfirst=True)
 df['DATE TIME B'] = pd.to_datetime(df['DATE TIME B'], errors='coerce', dayfirst=True)
-df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
+df['MAG']   = pd.to_numeric(df['MAG'], errors='coerce')
 df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
-df['LAT'] = pd.to_numeric(df['LAT'], errors='coerce')
-df['LON'] = pd.to_numeric(df['LON'], errors='coerce')
+df['LAT']   = pd.to_numeric(df['LAT'], errors='coerce')
+df['LON']   = pd.to_numeric(df['LON'], errors='coerce')
 
 # 🧹 Filter Data
 df_filtered = df[
@@ -58,7 +67,13 @@ df_filtered = df[
 st.subheader("📋 Filtered Earthquake Events")
 st.dataframe(df_filtered)
 
-# 📍 Island Geometries
+# 🗺️ Island Setup
+list_pulau = ['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
+list_color = ['r','g','b','y','c','m','purple','orange']
+labels     = ['SUMATRA','JAWA','BALI','NUSA TENGGARA','KALIMANTAN','SULAWESI','MALUKU','PAPUA']
+projection = ccrs.PlateCarree(central_longitude=120.0)
+
+# 📍 Island Functions
 def load_clip(name):
     return gpd.read_file(f"{name}_Area.shp")
 
@@ -66,16 +81,8 @@ def clip_df(df, island):
     geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
     return geo_df.clip(load_clip(island))
 
-# 🔁 Island setup
-list_pulau = ['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
-list_color = ['r','g','b','y','c','m','purple','orange']
-labels = ['SUMATRA','JAWA','BALI','NUSA TENGGARA','KALIMANTAN','SULAWESI','MALUKU','PAPUA']
-projection = ccrs.PlateCarree(central_longitude=120.0)
-
-# 📍 Convert to GeoDataFrame
 gpd_seis = gpd.GeoDataFrame(df_filtered, geometry=gpd.points_from_xy(df_filtered.LON, df_filtered.LAT), crs="EPSG:4326")
 
-# 📦 Extract coordinates
 def get_eq_coords(pulau_name):
     try:
         polygon = gpd.read_file(f"{pulau_name}_Area.shp")
@@ -83,10 +90,10 @@ def get_eq_coords(pulau_name):
         x, y, _ = projection.transform_points(ccrs.Geodetic(), np.array(clipped.LON), np.array(clipped.LAT)).T
         return x, y
     except Exception as e:
-        st.warning(f"Gagal memproses data untuk {pulau_name}: {e}")
+        st.warning(f"Gagal memproses {pulau_name}: {e}")
         return [], []
 
-# 🖼️ Plot Map
+# 🖼️ Plot Earthquake Map
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=projection)
 ax.set_extent((85, 145, -15, 10))
@@ -109,4 +116,36 @@ ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-', linewidth=0.5, alpha=0.5)
 
 legend_elements = [
-    Line2D([0], [0], marker='o',
+    Line2D([0], [0], marker='o', color='w', label=labels[i], markerfacecolor=list_color[i], markersize=8)
+    for i in range(len(list_pulau))
+]
+ax.legend(handles=legend_elements, loc='lower center', bbox_to_anchor=(0.5, -0.25), ncol=4, frameon=False, fontsize='small')
+
+st.markdown("### 🗺️ Seismic Events by Island")
+st.pyplot(fig)
+
+# 📉 Depth & Magnitude Stats
+def stats(df):
+    return [
+        df[df.DEPTH < 60].shape[0],
+        df[(df.DEPTH >= 60) & (df.DEPTH <= 300)].shape[0],
+        df[df.DEPTH > 300].shape[0],
+        df[df.MAG < 4].shape[0],
+        df[(df.MAG >= 4) & (df.MAG < 5)].shape[0],
+        df[df.MAG >= 5].shape[0],
+        df.shape[0]
+    ]
+
+stat_rows = [stats(clip_df(df_filtered, reg)) for reg in list_pulau]
+stat_df = pd.DataFrame(stat_rows, columns=['<60 km','60–300 km','>300 km','M<4','M4–5','M≥5','Total'])
+stat_df['Wilayah'] = labels
+stat_df.set_index('Wilayah', inplace=True)
+
+st.subheader("📊 Depth & Magnitude by Island")
+stat_df.drop(columns='Total').plot.bar(rot=6, figsize=(15,10))
+plt.tight_layout()
+plt.savefig("depth_mag.png")
+st.image(Image.open("depth_mag.png"), caption="Depth & Magnitude per Island")
+
+st.subheader("📋 Earthquake Summary per Island")
+st.dataframe(stat_df)
