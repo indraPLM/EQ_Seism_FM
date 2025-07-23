@@ -25,7 +25,7 @@ West = float(col3.text_input('West', '90.0'))
 East = float(col4.text_input('East', '142.0'))
 
 # Define the file path to your .txt file
-file_path = 'events_2019-2024.txt'
+file_path = './pages/events_2019-2024.txt'
 
 # Define column names based on your image
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
