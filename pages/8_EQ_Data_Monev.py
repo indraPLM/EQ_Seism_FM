@@ -29,17 +29,15 @@ East = float(col4.text_input('East', '142.0'))
 file_path = './pages/events_2019-2024.txt'
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
-if not os.path.exists(file_path):
-    st.error(f"🚫 File not found: {file_path}")
-    st.stop()
+# Define the file path to your .txt file
+file_path = 'earthquake_data.txt'
 
-try:
-    df = pd.read_csv(file_path, sep=r'\s*,\s*', engine='python', header=None, names=columns, on_bad_lines='skip')
-    df['DATE'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'], errors='coerce')
-    df.rename(columns={'MAG': 'mag', 'DEPTH': 'fixedDepth', 'LAT': 'fixedLat', 'LON': 'fixedLon'}, inplace=True)
-except Exception as e:
-    st.error(f"⚠️ Error loading earthquake data: {e}")
-    st.stop()
+# Define column names based on your image
+columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
+
+# Load the data
+df = pd.read_csv(file_path, sep=',', header=None, names=columns)
+st.dataframe(df)
 
 # 🧹 Filter Data
 df = df[
@@ -47,17 +45,17 @@ df = df[
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East))
 ]
-
+st.dataframe(df)
 # 📍 Load Island Shapefiles
 def load_clip(name):
     return gpd.read_file(f"{name}_Area.shp")
 
 def clip_df(df, island):
-    geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
+    geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
     return geo_df.clip(load_clip(island))
 
 # 📍 Convert to GeoDataFrame
-gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
+gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
 
 # 🔁 Island setup
 list_pulau = ['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
@@ -69,8 +67,8 @@ def get_eq_coords(pulau_name):
     try:
         polygon = gpd.read_file(f"{pulau_name}_Area.shp")
         clipped = gpd_seis.clip(polygon)
-        a = np.array(clipped.fixedLon)
-        b = np.array(clipped.fixedLat)
+        a = np.array(clipped.LON)
+        b = np.array(clipped.LAT)
         x, y, _ = projection.transform_points(ccrs.Geodetic(), a, b).T
         return x, y
     except Exception as e:
@@ -122,12 +120,12 @@ st.pyplot(fig)
 # 📉 Depth & Magnitude Stats
 def stats(df):
     return [
-        df[df.fixedDepth < 60].shape[0],                         
-        df[(df.fixedDepth >= 60) & (df.fixedDepth <= 300)].shape[0],
-        df[df.fixedDepth > 300].shape[0],                        
-        df[df.mag < 4].shape[0],                                
-        df[(df.mag >= 4) & (df.mag < 5)].shape[0],               
-        df[df.mag >= 5].shape[0],                                
+        df[df.DEPTH < 60].shape[0],                         
+        df[(df.DEPTH >= 60) & (df.DEPTH <= 300)].shape[0],
+        df[df.DEPTH > 300].shape[0],                        
+        df[df.MAG < 4].shape[0],                                
+        df[(df.MAG >= 4) & (df.MAG < 5)].shape[0],               
+        df[df.MAG >= 5].shape[0],                                
         df.shape[0]                                              
     ]
 
