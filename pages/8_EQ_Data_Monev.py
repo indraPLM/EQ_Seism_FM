@@ -33,22 +33,13 @@ file_path = './pages/event_jan-mar_2024.txt'
 #    'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
 #    'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
 #]
-expected_cols = [
-    'DATE', 'MAG' ,'TYPE', 'LAT', 'LON', 'DEPTH', 'REMARK'
-]
+#expected_cols = [
+#    'DATE', 'MAG' ,'TYPE', 'LAT', 'LON', 'DEPTH', 'REMARK'
+#]
 
-clean_rows = []
-with open(file_path, 'r', encoding='utf-8') as f:
-    for i, line in enumerate(f, start=1):
-        parts = [x.strip() for x in line.strip().split(',')]
-        if 6 <= len(parts) <= 8:
-            fixed = parts + [''] * (8 - len(parts)) if len(parts) < 8 else parts[:8]
-            clean_rows.append(fixed)
-        else:
-            st.warning(f"⚠️ Line {i}: column mismatch ({len(parts)} columns) — skipped.")
-
-
-df = pd.DataFrame(clean_rows, columns=expected_cols)
+# Read the file using whitespace delimiter
+df = pd.read_csv(file_path, delim_whitespace=True
+#df = pd.DataFrame(clean_rows, columns=expected_cols)
 
 # ⏳ Type Conversion
 #df = df.iloc[1:].reset_index(drop=True)  # Remove possible broken first row
