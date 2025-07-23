@@ -36,34 +36,31 @@ expected_columns = [
     'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
 ]
 
+# 🧵 Manual loader to handle trailing commas
 data_rows = []
 try:
     with open(file_path, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, start=1):
-            line = line.strip()
+            line = line.strip().rstrip(',')  # 🚫 Remove trailing comma
             if not line:
                 continue
-            # Try comma first
-            parts = line.split(',')
-            # Fallback to tab
-            if len(parts) != len(columns):
-                parts = line.split('\t')
+            parts = line.split(',')  # 📎 Use comma as delimiter
             if len(parts) == len(columns):
                 data_rows.append(parts)
             else:
-                st.warning(f"⚠️ Skipped line {line_num} — expected {len(columns)} columns, got {len(parts)}.")
+                st.warning(f"⚠️ Skipped line {line_num}: expected {len(columns)} columns, got {len(parts)}.")
 
 except FileNotFoundError:
     st.error(f"🚫 File not found: {file_path}")
     st.stop()
 
-# ✅ Create DataFrame
+# 🧾 Build and display DataFrame
 if data_rows:
     df = pd.DataFrame(data_rows, columns=columns)
-    st.success(f"✅ Loaded {len(df)} rows")
+    st.success(f"✅ Loaded {len(df)} valid rows")
     st.dataframe(df.head())
 else:
-    st.warning("⚠️ No valid rows loaded — please check file formatting.")
+    st.warning("⚠️ No valid rows loaded — check for column formatting issues.")
 
 # Optional: convert columns to proper types
 df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
