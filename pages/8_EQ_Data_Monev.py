@@ -28,12 +28,7 @@ West  = float(col3.text_input('West', '90.0'))
 East  = float(col4.text_input('East', '142.0'))
 
 # 📂 Load and Clean Data
-file_path = './pages/malformed_cleaned.csv'
-expected_cols = [
-    'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
-    'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
-]
-
+file_path = './pages/malformed_consistent.csv'
 expected_cols = [
     'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
     'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
