@@ -33,7 +33,7 @@ columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
 # Load the data
-df = pd.read_csv(file_path, sep=',', header=None, names=columns)
+df = pd.read_text(file_path, sep=',', header=None, names=columns)
 st.dataframe(df)
 
 # 🧹 Filter Data
