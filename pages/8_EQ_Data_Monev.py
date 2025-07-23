@@ -34,17 +34,21 @@ expected_cols = [
     'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
 ]
 
+expected_cols = [
+    'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
+    'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
+]
+
 clean_rows = []
-if os.path.exists(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        for i, line in enumerate(f, start=1):
-            parts = [x.strip() for x in line.strip().split(',')]
-            if 12 <= len(parts) <= 14:
-                padded = parts + [''] * (14 - len(parts)) if len(parts) < 14 else parts[:14]
-                clean_rows.append(padded)
-else:
-    st.error(f"🚫 File not found: {file_path}")
-    st.stop()
+with open(file_path, 'r', encoding='utf-8') as f:
+    for i, line in enumerate(f, start=1):
+        parts = [x.strip() for x in line.strip().split(',')]
+        if 12 <= len(parts) <= 14:
+            fixed = parts + [''] * (14 - len(parts)) if len(parts) < 14 else parts[:14]
+            clean_rows.append(fixed)
+        else:
+            st.warning(f"⚠️ Line {i}: column mismatch ({len(parts)} columns) — skipped.")
+
 
 df = pd.DataFrame(clean_rows, columns=expected_cols)
 
