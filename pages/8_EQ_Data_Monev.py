@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy
 from cartopy.io.shapereader import Reader
+import os
 
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='🌋')
@@ -24,20 +25,27 @@ col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input('West', '90.0'))
 East = float(col4.text_input('East', '142.0'))
 
-# Define the file path to your .txt file
+# 📂 Load earthquake .txt file
 file_path = './pages/events_2019-2024.txt'
-
-# Define column names based on your image
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
-# Load the data
-df = pd.read_csv(file_path, sep=',', header=None, names=columns)
+if not os.path.exists(file_path):
+    st.error(f"🚫 File not found: {file_path}")
+    st.stop()
+
+try:
+    df = pd.read_csv(file_path, sep=r'\s*,\s*', engine='python', header=None, names=columns, on_bad_lines='skip')
+    df['DATE'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'], errors='coerce')
+    df.rename(columns={'MAG': 'mag', 'DEPTH': 'fixedDepth', 'LAT': 'fixedLat', 'LON': 'fixedLon'}, inplace=True)
+except Exception as e:
+    st.error(f"⚠️ Error loading earthquake data: {e}")
+    st.stop()
 
 # 🧹 Filter Data
 df = df[
-    (df.date_time.between(time_start, time_end)) &
-    (df.fixedLat.between(South, North)) &
-    (df.fixedLon.between(West, East))
+    (df['DATE'].between(time_start, time_end)) &
+    (df['fixedLat'].between(South, North)) &
+    (df['fixedLon'].between(West, East))
 ]
 
 # 📍 Load Island Shapefiles
@@ -45,11 +53,11 @@ def load_clip(name):
     return gpd.read_file(f"{name}_Area.shp")
 
 def clip_df(df, island):
-    geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
+    geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
     return geo_df.clip(load_clip(island))
 
 # 📍 Convert to GeoDataFrame
-gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
+gpd_seis = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.fixedLon, df.fixedLat), crs="EPSG:4326")
 
 # 🔁 Island setup
 list_pulau = ['Sumatra','Jawa','Bali-A','Nustra','Kalimantan','Sulawesi','Maluku','Papua']
@@ -61,8 +69,8 @@ def get_eq_coords(pulau_name):
     try:
         polygon = gpd.read_file(f"{pulau_name}_Area.shp")
         clipped = gpd_seis.clip(polygon)
-        a = np.array(clipped.LON)
-        b = np.array(clipped.LAT)
+        a = np.array(clipped.fixedLon)
+        b = np.array(clipped.fixedLat)
         x, y, _ = projection.transform_points(ccrs.Geodetic(), a, b).T
         return x, y
     except Exception as e:
@@ -94,15 +102,12 @@ for i, pulau in enumerate(list_pulau):
 ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax.coastlines(resolution='10m', color='black', linestyle='-', linewidth=0.5, alpha=0.5)
 
-# 📍 Custom legend below map (2-row grid)
+# 📍 Custom legend below map
 from matplotlib.lines import Line2D
-
 legend_elements = [
     Line2D([0], [0], marker='o', color='w', label=list_pulau[i], markerfacecolor=list_color[i], markersize=8)
     for i in range(len(list_pulau))
 ]
-
-# Arrange legend in 2 rows below the map
 ax.legend(handles=legend_elements,
           loc='lower center',
           bbox_to_anchor=(0.5, -0.25),
@@ -117,13 +122,13 @@ st.pyplot(fig)
 # 📉 Depth & Magnitude Stats
 def stats(df):
     return [
-        df[df.fixedDepth < 60].shape[0],                         # Dangkal
-        df[(df.fixedDepth >= 60) & (df.fixedDepth <= 300)].shape[0],  # Menengah
-        df[df.fixedDepth > 300].shape[0],                        # Dalam
-        df[df.mag < 4].shape[0],                                 # Kecil
-        df[(df.mag >= 4) & (df.mag < 5)].shape[0],               # Sedang
-        df[df.mag >= 5].shape[0],                                # Besar
-        df.shape[0]                                              # Total
+        df[df.fixedDepth < 60].shape[0],                         
+        df[(df.fixedDepth >= 60) & (df.fixedDepth <= 300)].shape[0],
+        df[df.fixedDepth > 300].shape[0],                        
+        df[df.mag < 4].shape[0],                                
+        df[(df.mag >= 4) & (df.mag < 5)].shape[0],               
+        df[df.mag >= 5].shape[0],                                
+        df.shape[0]                                              
     ]
 
 # 🔁 Compute Stats Per Island
