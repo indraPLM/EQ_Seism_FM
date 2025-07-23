@@ -29,9 +29,6 @@ East = float(col4.text_input('East', '142.0'))
 file_path = './pages/events_2019-2024.txt'
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
-# Define the file path to your .txt file
-file_path = 'earthquake_data.txt'
-
 # Define column names based on your image
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
