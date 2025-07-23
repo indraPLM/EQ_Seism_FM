@@ -29,21 +29,27 @@ East  = float(col4.text_input('East', '142.0'))
 
 # 📂 Load and Clean Data
 file_path = './pages/event_jan-mar_2024.txt'
-#expected_cols = [
-#    'NO','EVENT_ID','DATE TIME A','DATE TIME B','MAG','TYPE',
-#    'LAT','LON','DEPTH','PHASE','AGENCY','STATUS','REMARKS'
-#]
-#expected_cols = [
-#    'DATE', 'MAG' ,'TYPE', 'LAT', 'LON', 'DEPTH', 'REMARK'
-#]
+expected_columns = 7
 
-# Read the file using whitespace delimiter
-df = pd.read_csv(file_path, delim_whitespace=True
-#df = pd.DataFrame(clean_rows, columns=expected_cols)
+# === Step 2: Read and preprocess lines ===
+with open(file_path, 'r') as file:
+    lines = file.readlines()
 
-# ⏳ Type Conversion
-#df = df.iloc[1:].reset_index(drop=True)  # Remove possible broken first row
-#df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce', dayfirst=True)
+data = []
+for line in lines:
+    parts = line.strip().split(None, expected_columns)
+    fixed = parts[:expected_columns]
+    tail = parts[expected_columns] if len(parts) > expected_columns else ''
+    combined = fixed[:6] + [fixed[6] + ', ' + tail]  # Combine col_7 and last
+    data.append(combined)
+
+# === Step 3: Create DataFrame ===
+df = pd.DataFrame(data)
+
+# === Step 4: Promote first row as header ===
+df.columns = df.iloc[0]
+df = df[1:].reset_index(drop=True)
+
 df['DATE'] = pd.to_datetime(df['DATE'], errors='coerce', dayfirst=True)
 df['MAG']   = pd.to_numeric(df['MAG'], errors='coerce')
 df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
@@ -52,7 +58,7 @@ df['LON']   = pd.to_numeric(df['LON'], errors='coerce')
 
 # 🧹 Filter Data
 df_filtered = df[
-    (df['DATE TIME A'].between(time_start, time_end)) &
+    (df['DATE'].between(time_start, time_end)) &
     (df['LAT'].between(South, North)) &
     (df['LON'].between(West, East))
 ]
