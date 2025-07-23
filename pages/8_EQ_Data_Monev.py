@@ -36,34 +36,30 @@ expected_columns = [
     'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
 ]
 
-# Store parsed rows here
+# 🧵 Parse file manually
 data_rows = []
+try:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line_num, line in enumerate(f, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            # Try splitting by comma first
+            parts = line.split(',')
+            # If not enough parts, try tab
+            if len(parts) != len(columns):
+                parts = line.split('\t')
+            if len(parts) == len(columns):
+                data_rows.append(parts)
+            else:
+                st.warning(f"⚠️ Skipped line {line_num} due to column mismatch.")
+except FileNotFoundError:
+    st.error(f"🚫 File not found: {file_path}")
+    st.stop()
 
-# Open and process line-by-line
-with open(file_path, 'r', encoding='utf-8') as f:
-    for line_num, line in enumerate(f, start=1):
-        line = line.strip()
-
-        # Skip empty lines
-        if not line:
-            continue
-
-        # Try splitting with comma or tab
-        parts = line.split(',')
-        if len(parts) != len(columns):
-            parts = line.split('\t')
-
-        # Append only if column count matches
-        if len(parts) == len(columns):
-            data_rows.append(parts)
-        else:
-            print(f"⚠️ Line {line_num} skipped: column mismatch")
-
-# Create DataFrame
+# 🧾 Build DataFrame
 df = pd.DataFrame(data_rows, columns=columns)
-
-# Show result
-print("✅ Parsed rows:", len(df))
+st.write(f"✅ Loaded {len(df)} rows")
 st.dataframe(df.head())
 
 # Optional: convert columns to proper types
