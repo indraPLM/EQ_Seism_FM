@@ -33,6 +33,13 @@ columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION
 # Load the data
 df = pd.read_csv(file_path, sep=',', header=None, names=columns)
 
+# 🧹 Filter Data
+df = df[
+    (df.date_time.between(time_start, time_end)) &
+    (df.fixedLat.between(South, North)) &
+    (df.fixedLon.between(West, East))
+]
+
 # 📍 Load Island Shapefiles
 def load_clip(name):
     return gpd.read_file(f"{name}_Area.shp")
