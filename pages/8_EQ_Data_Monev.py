@@ -10,6 +10,7 @@ import cartopy.crs as ccrs
 import cartopy
 from cartopy.io.shapereader import Reader
 import os
+import re
 
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='🌋')
@@ -27,13 +28,39 @@ East = float(col4.text_input('East', '142.0'))
 
 # 📂 Load earthquake .txt file
 file_path = './pages/events_2019-2024.txt'
+
+
+# Define expected column names
 columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
 
-# Define column names based on your image
-columns = ['ID', 'DATE', 'TIME', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'LOCATION']
+# Pre-parse and clean each line manually
+def clean_lines(path):
+    cleaned = []
+    with open(path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            parts = re.split(r'\s*,\s*', line)
+            if len(parts) == 9:  # Expected number of columns
+                cleaned.append(parts)
+            else:
+                # Optionally log or skip lines with wrong format
+                continue
+    return pd.DataFrame(cleaned, columns=columns)
 
 # Load the data
-df = pd.read_text(file_path, sep=',', header=None, names=columns)
+df = clean_lines(file_path)
+
+# Optional type conversions
+df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
+df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
+df['LAT'] = pd.to_numeric(df['LAT'], errors='coerce')
+df['LON'] = pd.to_numeric(df['LON'], errors='coerce')
+
+# Combine date & time
+df['DATE'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'], errors='coerce')
+
 st.dataframe(df)
 
 # 🧹 Filter Data
