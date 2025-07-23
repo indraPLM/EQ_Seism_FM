@@ -31,7 +31,7 @@ file_path = './pages/bmkg_events_2019-2024.csv'
 
 
 # Define expected column count (based on your table)
-expected_columns = [
+columns = [
     'ID', 'DATE TIME A', 'DATE TIME B', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH',
     'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
 ]
