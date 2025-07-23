@@ -41,26 +41,25 @@ data_rows = []
 try:
     with open(file_path, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, start=1):
-            line = line.strip().rstrip(',')  # 🚫 Remove trailing comma
+            line = line.strip().rstrip(',')  # Remove trailing comma
             if not line:
                 continue
-            parts = line.split(',')  # 📎 Use comma as delimiter
+            parts = line.split(',')
             if len(parts) == len(columns):
                 data_rows.append(parts)
             else:
-                st.warning(f"⚠️ Skipped line {line_num}: expected {len(columns)} columns, got {len(parts)}.")
-
+                st.warning(f"⚠️ Line {line_num}: expected {len(columns)} columns, got {len(parts)} — skipped.")
 except FileNotFoundError:
     st.error(f"🚫 File not found: {file_path}")
     st.stop()
 
-# 🧾 Build and display DataFrame
+# ✅ Build DataFrame
 if data_rows:
     df = pd.DataFrame(data_rows, columns=columns)
-    st.success(f"✅ Loaded {len(df)} valid rows")
+    st.success(f"✅ Parsed {len(df)} rows")
     st.dataframe(df.head())
 else:
-    st.warning("⚠️ No valid rows loaded — check for column formatting issues.")
+    st.warning("⚠️ No valid rows found — check file structure or delimiters.")
 
 # Optional: convert columns to proper types
 df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
