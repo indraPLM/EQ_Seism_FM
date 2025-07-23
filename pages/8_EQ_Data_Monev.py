@@ -30,38 +30,42 @@ East = float(col4.text_input('East', '142.0'))
 file_path = './pages/bmkg_events_2019-2024.csv'
 
 
-# Define expected column names
-columns = ['ID', 'DATE TIME A', 'DATE TIME B', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH', 'PHASE',	
-           'AGENCY',	'STATUS',	'LOCATION-A',	'LOCATION-B']
+# Define expected column count (based on your table)
+expected_columns = [
+    'ID', 'DATE TIME A', 'DATE TIME B', 'MAG', 'TYPE', 'LAT', 'LON', 'DEPTH',
+    'PHASE', 'AGENCY', 'STATUS', 'LOCATION A', 'LOCATION B'
+]
 
+def load_robust_csv(path):
+    raw_lines, good_rows, bad_rows = [], [], []
 
-# Pre-parse and clean each line manually
-def clean_lines(path):
-    cleaned = []
     with open(path, 'r', encoding='utf-8') as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            parts = re.split(r'\s*,\s*', line)
-            if len(parts) == 9:  # Expected number of columns
-                cleaned.append(parts)
+        for line_num, line in enumerate(f, start=1):
+            raw = line.strip()
+            raw_lines.append(raw)
+            parts = re.split(r'\s*,\s*|\t+', raw)  # Split on comma or tab
+            if len(parts) == len(expected_columns):
+                good_rows.append(parts)
             else:
-                # Optionally log or skip lines with wrong format
-                continue
-    return pd.DataFrame(cleaned, columns=columns)
+                bad_rows.append((line_num, raw))
 
-# Load the data
-df = clean_lines(file_path)
+    if bad_rows:
+        print(f"⚠️ Skipped {len(bad_rows)} malformed rows:")
+        for i, row in bad_rows[:5]:  # Show first few
+            print(f"Line {i}: {row}")
 
-# Optional type conversions
+    return pd.DataFrame(good_rows, columns=expected_columns)
+
+df = load_robust_csv(file_path)
+print(f"✅ Loaded {len(df)} valid rows")
+
+# Optional: convert columns to proper types
 df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
 df['DEPTH'] = pd.to_numeric(df['DEPTH'], errors='coerce')
 df['LAT'] = pd.to_numeric(df['LAT'], errors='coerce')
 df['LON'] = pd.to_numeric(df['LON'], errors='coerce')
-
-# Combine date & time
-df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce')
+df['DATE_TIME_A'] = pd.to_datetime(df['DATE_TIME_A'], errors='coerce')
+df['DATE_TIME_B'] = pd.to_datetime(df['DATE_TIME_B'], errors='coerce')
 
 st.dataframe(df)
 
