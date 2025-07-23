@@ -61,13 +61,13 @@ df['LAT'] = pd.to_numeric(df['LAT'], errors='coerce')
 df['LON'] = pd.to_numeric(df['LON'], errors='coerce')
 
 # Combine date & time
-df['DATE'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'], errors='coerce')
+df['DATE TIME A'] = pd.to_datetime(df['DATE TIME A'], errors='coerce')
 
 st.dataframe(df)
 
 # 🧹 Filter Data
 df = df[
-    (df['DATE'].between(time_start, time_end)) &
+    (df['DATE TIME A'].between(time_start, time_end)) &
     (df['LAT'].between(South, North)) &
     (df['LON'].between(West, East))
 ]
