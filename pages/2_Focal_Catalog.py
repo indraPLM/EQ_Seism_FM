@@ -126,10 +126,10 @@ def export_to_pdf(df, filename="focal_report.pdf"):
     pdf.add_page()
     pdf.set_font("Arial", size=8)
 
-    cols = ['DateTime','Magnitude''Latitude','Longitude','Depth',
+    cols = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
             'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
     col_widths = {
-        'DateTime': 40, 'Magnitude': 15,
+        'DateTime': 40, 'Magnitude': 18, 'Type Magnitude': 20,
         'Latitude': 20, 'Longitude': 20, 'Depth': 10,
         'Strike NP1': 10, 'Dip NP1': 10, 'Rake NP1': 10,
         'Strike NP2': 10, 'Dip NP2': 10, 'Rake NP2': 10,
