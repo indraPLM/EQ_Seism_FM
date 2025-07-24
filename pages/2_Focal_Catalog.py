@@ -192,9 +192,10 @@ def export_dataframe_to_pdf(df, filename="focal_report.pdf"):
 
     pdf.output(filename)
 
+report_df['Focal'] = generate_beachball_images(report_df)
 
 # Generate the PDF
-export_to_pdf(report_df)
+export_dataframe_to_pdf(report_df)
 
 # Show download button
 with open("focal_report.pdf", "rb") as f:
