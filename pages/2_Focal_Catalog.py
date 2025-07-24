@@ -100,7 +100,7 @@ fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
 ax.set_extent((West, East, South-0.5, North+0.5))
 ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax.coastlines(resolution='h', color='black', linewidth=0.5, alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 for _, row in df.iterrows():
     if pd.notnull(row["S1"]) and pd.notnull(row["D1"]) and pd.notnull(row["R1"]):
         x, y = ax.projection.transform_point(row["fixedLon"], row["fixedLat"], ccrs.Geodetic())
