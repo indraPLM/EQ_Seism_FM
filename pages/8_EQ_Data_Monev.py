@@ -86,7 +86,7 @@ else:
     st.warning("⚠️ No data found for selected filters. Using default map center.")
 
 # 🌊 Folium Map + ESRI Basemap
-m = folium.Map(location=(y0, x0), zoom_start=4)
+m = folium.Map(location=(y0, x0), zoom_start=4.5)
 folium.TileLayer(
     tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
     attr="ESRI Ocean Basemap",  # Required attribution string
