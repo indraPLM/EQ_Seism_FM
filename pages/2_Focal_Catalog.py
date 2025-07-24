@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Streamlit App: BMKG Focal Mechanism Viewer with Summary and Beachball Export
-Created by: Indra Gunawan
-"""
+"""Streamlit App: BMKG + Global CMT Viewer with Beachball Export"""
 
 import streamlit as st
 import pandas as pd
@@ -11,62 +8,60 @@ import requests
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-from obspy.imaging.beachball import beach
-from bs4 import BeautifulSoup
-from io import BytesIO
-import base64
-import folium
-from streamlit_folium import st_folium
+import os, base64, warnings
+from obspy.imaging.beachball import beach, beachball
+from PIL import Image
+from fpdf import FPDF
 
-# 🌍 Page config
-st.set_page_config(page_title="BMKG Focal Viewer", layout="wide", page_icon="🌋")
+warnings.filterwarnings("ignore")
 
-# 🛠 Sidebar Inputs
-st.sidebar.header("BMKG Focal Filter")
+st.set_page_config(page_title="BMKG & CMT Focal Viewer", layout="wide", page_icon="🌋")
+
+# 🌍 Sidebar filters
+st.sidebar.header("BMKG Filter")
 start_time = st.sidebar.text_input("Start Time", "2025-06-01 00:00:00")
 end_time = st.sidebar.text_input("End Time", "2025-06-30 23:59:59")
+
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input("North", "6.0"))
 South = float(col2.text_input("South", "-13.0"))
+
 col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
-st.sidebar.header("Global CMT Filter :")
-cmt_start=st.sidebar.text_input('Start Time:', '2015-01-01 00:00')
-cmt_end=st.sidebar.text_input('End Time:', '2020-12-31 23:59')
+st.sidebar.header("Global CMT Filter")
+cmt_start = st.sidebar.text_input('Start:', '2015-01-01 00:00')
+cmt_end   = st.sidebar.text_input('End:', '2020-12-31 23:59')
 
-# 📦 Fetch BMKG catalog
+# ⬇️ Load BMKG focal data
 @st.cache_data
-def load_bmkg_focal(url):
+def load_bmkg(url):
     res = requests.get(url)
-    raw_text = res.text.strip()
-    lines = raw_text.split("\n")
+    lines = res.text.strip().split("\n")
     rows = [line.split("|") for line in lines if "|" in line]
     return rows
 
-
 url = "http://202.90.198.41/qc_focal.txt"
-rows = load_bmkg_focal(url)
+rows = load_bmkg(url)
 
 base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
-             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2','Fit','DC','CLVD','type','location']
-n_extra = max(0, len(rows[0]) - len(base_cols)) if rows else 0
-cols = base_cols + [f'extra_{i}' for i in range(n_extra)]
+             'lat','lon','depth','S1','D1','R1','S2','D2','R2','Fit','DC','CLVD','type','location']
+cols = base_cols + [f'extra_{i}' for i in range(max(0, len(rows[0]) - len(base_cols)))]
+
 df = pd.DataFrame(rows[1:], columns=cols)
 
-# 🔁 Preprocess columns
 def fix_coord(val, axis):
     val = val.strip()
     return -float(val.strip('S')) if val.endswith('S') else float(val.strip('N')) if axis == 'lat' else \
            -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
 
-def fix_float(col): return pd.to_numeric(col, errors='coerce')
-
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
-for col in ['mag','depth','S1','D1','R1','S2','D2','R2']: df[col] = fix_float(df[col])
+
+for col in ['mag','depth','S1','D1','R1','S2','D2','R2']:
+    df[col] = pd.to_numeric(df[col], errors='coerce')
 
 df = df[
     (df['date_time'] >= start_time) & (df['date_time'] <= end_time) &
@@ -74,41 +69,23 @@ df = df[
     (df['fixedLon'].between(West, East))
 ]
 
-def get_beachball_width(east, west):
-    dist_lon = abs(east - west)
-    if dist_lon > 55:
-        return 1.5
-    elif 40 < dist_lon <= 55:
-        return 1.3
-    elif 30 < dist_lon <= 40:
-        return 1.1
-    elif 15 < dist_lon <= 30:
-        return 0.9
-    elif 10 < dist_lon <= 15:
-        return 0.7
-    elif 5 < dist_lon <= 10:
-        return 0.5
-    else:
-        return 0.3
+def get_color(depth): return 'r' if depth <= 60 else 'yellow' if depth <= 300 else 'g'
+def get_width(e,w): return max(0.3, min(1.5, 0.03 * abs(e - w)))
+w = get_width(East, West)
 
-w = get_beachball_width(East, West)
-
-# 🗺️ Cartopy Plot
-st.markdown(f"### 🗺️ Peta Focal Mechanism BMKG \n{start_time} – {end_time}")
-
+# 🗺️ BMKG Map
+st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{start_time} – {end_time}")
 fig = plt.figure(dpi=300)
 ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
 ax.set_extent((West, East, South-0.5, North+0.5))
-ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
+ax.coastlines(resolution='10m', color='black', linewidth=0.5)
+
 for _, row in df.iterrows():
     if pd.notnull(row["S1"]) and pd.notnull(row["D1"]) and pd.notnull(row["R1"]):
         x, y = ax.projection.transform_point(row["fixedLon"], row["fixedLat"], ccrs.Geodetic())
-        color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
-        ball = beach([row["S1"], row["D1"], row["R1"]],
-             xy=(x, y), width=w, linewidth=0.5,
-             alpha=0.65, zorder=10, facecolor=color)
-
+        ball = beach([row["S1"], row["D1"], row["R1"]], xy=(x,y), width=w,
+                     linewidth=0.5, alpha=0.65, zorder=10, facecolor=get_color(row["depth"]))
         ax.add_collection(ball)
 st.pyplot(fig)
 
