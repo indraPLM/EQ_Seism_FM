@@ -89,7 +89,7 @@ else:
 m = folium.Map(location=(y0, x0), zoom_start=6)
 folium.TileLayer(
     tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
-    attr="",
+    attr="ESRI Ocean Basemap",  # Required attribution string
     name="ESRI Ocean",
     control=False
 ).add_to(m)
