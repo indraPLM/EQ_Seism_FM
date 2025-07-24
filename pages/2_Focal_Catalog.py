@@ -79,15 +79,15 @@ def get_beachball_width(east, west):
     if dist_lon > 55:
         return 1.5
     elif 40 < dist_lon <= 55:
-        return 1.2
+        return 1.3
     elif 30 < dist_lon <= 40:
-        return 1.0
+        return 1.1
     elif 15 < dist_lon <= 30:
-        return 0.7
+        return 0.9
     elif 10 < dist_lon <= 15:
-        return 0.5
+        return 0.7
     elif 5 < dist_lon <= 10:
-        return 0.4
+        return 0.5
     else:
         return 0.3
 
