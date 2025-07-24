@@ -123,45 +123,6 @@ st.dataframe(summary_df)
 
 # Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
 
-def focal_dataframe_to_gmt(df, filename="focal_mechanisms.txt"):
-    rows = []
-    for _, row in df.iterrows():
-        if all(pd.notnull(row[col]) for col in ['S1', 'D1', 'R1', 'fixedLon', 'fixedLat']):
-            lon = row['fixedLon']
-            lat = row['fixedLat']
-            depth = row['depth']
-            mag = row['mag']
-            s, d, r = row['S1'], row['D1'], row['R1']
-            # GMT format: lon lat depth mag strike dip rake
-            rows.append(f"{lon} {lat} {depth:.1f} {mag:.1f} {s:.1f} {d:.1f} {r:.1f}")
-    with open(filename, "w") as f:
-        f.write("\n".join(rows))
-    return filename
-
-#import pygmt
-
-def plot_focal_mechanisms_gmt(df, region, output="gmt_focal_map.png"):
-    filename = focal_dataframe_to_gmt(df)
-    fig = pygmt.Figure()
-
-    fig.basemap(region=region, projection="M15c", frame=True)
-    fig.coast(shorelines="1/0.5p,black", borders=[1], resolution="10m", land="lightgray", water="white")
-
-    fig.plot_focal_mechanism(
-        spec=filename,
-        scale=0.5,  # beachball size
-        no_clip=True,
-        label=None
-    )
-
-    fig.savefig(output)
-    return output
-
-#region = [West, East, South, North]
-#gmt_image = plot_focal_mechanisms_gmt(df, region)
-
-#st.image(gmt_image, caption="📍 PyGMT Focal Mechanism Map", use_column_width=True)
-
 
 # 🌐 Global CMT Section
 st.markdown(f"### 🌎 Peta Global CMT Harvard\n{cmt_start} – {cmt_end}")
