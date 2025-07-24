@@ -174,12 +174,6 @@ def image_to_html(path):
 html_file = "focal_report.html"
 report_df.to_html(html_file, escape=False, formatters={'Focal': image_to_html})
 
-with open("focal_report.html", "r") as f:
-    st.download_button("⬇️ Download HTML Summary", f.read(), file_name="focal_report.html")
-
-with open("focal_report.xlsx", "rb") as f:
-    st.download_button("⬇️ Download Excel Report", f.read(), file_name="focal_report.xlsx")
-
 from fpdf import FPDF
 from PIL import Image
 
@@ -229,6 +223,13 @@ export_to_pdf(report_df)
 # Show download button
 with open("focal_report.pdf", "rb") as f:
     st.download_button("⬇️ Download PDF Report", f.read(), file_name="focal_report.pdf", mime="application/pdf")
+
+with open("focal_report.xlsx", "rb") as f:
+    st.download_button("⬇️ Download Excel Report", f.read(), file_name="focal_report.xlsx")
+
+with open("focal_report.html", "r") as f:
+    st.download_button("⬇️ Download HTML Report", f.read(), file_name="focal_report.html")
+
 
 
 
