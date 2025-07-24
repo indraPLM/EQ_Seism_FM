@@ -123,6 +123,114 @@ st.dataframe(summary_df)
 
 # Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
 
+# Reuse or clone the summary_df you already created earlier
+report_df = summary_df.copy()
+report_df.index = range(len(report_df))  # match image naming convention
+
+from obspy.imaging.beachball import beachball
+import matplotlib.pyplot as plt
+
+def get_color(depth):
+    return 'r' if depth <= 60 else 'yellow' if depth <= 300 else 'g'
+
+def generate_beachball_images(df, prefix="cmt"):
+    filenames = []
+    for idx, row in df.iterrows():
+        mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
+        color = get_color(row['Depth'])
+        fig = beachball(mt, facecolor=color)
+        filename = f"{prefix}_{idx}.png"
+        fig.savefig(filename)
+        plt.close(fig.figure)
+        filenames.append(filename)
+    return filenames
+
+report_df['Focal'] = generate_beachball_images(report_df)
+
+from openpyxl import Workbook
+from openpyxl.drawing.image import Image as XLImage
+
+def export_excel_with_images(df, filename="focal_report.xlsx"):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Earthquake Focals"
+    
+    headers = list(df.columns.drop('Focal')) + ['Focal']
+    ws.append(headers)
+
+    for i, row in df.iterrows():
+        ws.append(list(row.drop('Focal')) + [''])  # image goes into last column
+        img = XLImage(row['Focal'])
+        img.height = 50
+        img.width = 50
+        cell = f"{chr(65 + len(headers))}{i + 2}"  # Excel position
+        ws.add_image(img, cell)
+
+    wb.save(filename)
+
+def image_to_html(path):
+    return f'<img src="{path}" width="60">'
+
+html_file = "focal_report.html"
+report_df.to_html(html_file, escape=False, formatters={'Focal': image_to_html})
+
+with open("focal_report.html", "r") as f:
+    st.download_button("⬇️ Download HTML Summary", f.read(), file_name="focal_report.html")
+
+with open("focal_report.xlsx", "rb") as f:
+    st.download_button("⬇️ Download Excel Report", f.read(), file_name="focal_report.xlsx")
+
+from fpdf import FPDF
+from PIL import Image
+
+def export_to_pdf(df, filename="focal_report.pdf"):
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    pdf.set_font("Arial", size=10)
+
+    # Header
+    pdf.set_fill_color(200, 220, 255)
+    pdf.cell(0, 10, "Earthquake Focal Mechanism Summary", ln=True, fill=True)
+
+    # Table Headers
+    headers = ['DateTime', 'Magnitude', 'Depth', 'Strike', 'Dip', 'Rake', 'Image']
+    col_widths = [40, 20, 20, 20, 20, 20, 30]
+    for h, w in zip(headers, col_widths):
+        pdf.cell(w, 10, h, border=1)
+    pdf.ln()
+
+    for _, row in df.iterrows():
+        pdf.cell(col_widths[0], 10, str(row['DateTime']), border=1)
+        pdf.cell(col_widths[1], 10, f"{row['Magnitude']:.1f}", border=1)
+        pdf.cell(col_widths[2], 10, f"{row['Depth']:.1f}", border=1)
+        pdf.cell(col_widths[3], 10, f"{row['Strike NP1']:.1f}", border=1)
+        pdf.cell(col_widths[4], 10, f"{row['Dip NP1']:.1f}", border=1)
+        pdf.cell(col_widths[5], 10, f"{row['Rake NP1']:.1f}", border=1)
+
+        # Resize image for display
+        img_path = row['Focal']
+        img = Image.open(img_path)
+        img.thumbnail((25, 25))
+        temp_path = f"thumb_{img_path}"
+        img.save(temp_path)
+
+        x = pdf.get_x()
+        y = pdf.get_y()
+        pdf.cell(col_widths[6], 10, '', border=1)
+        pdf.image(temp_path, x + 1, y + 1, h=8)
+        pdf.ln()
+
+    pdf.output(filename)
+
+# Generate the PDF
+export_to_pdf(report_df)
+
+# Show download button
+with open("focal_report.pdf", "rb") as f:
+    st.download_button("⬇️ Download PDF Report", f.read(), file_name="focal_report.pdf", mime="application/pdf")
+
+
 
 # 🌐 Global CMT Section
 st.markdown(f"### 🌎 Peta Global CMT Harvard\n{cmt_start} – {cmt_end}")
