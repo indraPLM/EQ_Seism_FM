@@ -224,8 +224,8 @@ export_to_pdf(report_df)
 with open("focal_report.pdf", "rb") as f:
     st.download_button("⬇️ Download PDF Report", f.read(), file_name="focal_report.pdf", mime="application/pdf")
 
-with open("focal_report.xlsx", "rb") as f:
-    st.download_button("⬇️ Download Excel Report", f.read(), file_name="focal_report.xlsx")
+#with open("focal_report.xlsx", "rb") as f:
+#    st.download_button("⬇️ Download Excel Report", f.read(), file_name="focal_report.xlsx")
 
 with open("focal_report.html", "r") as f:
     st.download_button("⬇️ Download HTML Report", f.read(), file_name="focal_report.html")
