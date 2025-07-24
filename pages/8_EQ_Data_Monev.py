@@ -22,7 +22,7 @@ st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='
 # 🛠️ Sidebar Inputs
 st.sidebar.header("Input Parameters")
 time_start = st.sidebar.text_input('Start Time', '2024-01-01 00:00:00')
-time_end   = st.sidebar.text_input('End Time', '2024-03-30 23:59:59')
+time_end   = st.sidebar.text_input('End Time', '2025-05-30 23:59:59')
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input('North', '6.0'))
 South = float(col2.text_input('South', '-13.0'))
@@ -31,7 +31,7 @@ West  = float(col3.text_input('West', '90.0'))
 East  = float(col4.text_input('East', '142.0'))
 
 # 📂 Load and Clean Data
-file_path = './pages/event_jan-mar_2024_cleaned.csv'
+file_path = './pages/event_jan-mar_2024_cleaned_a.csv'
 # Robust CSV loading with header fallback
 try:
     df_raw = pd.read_csv(file_path, header=None)
