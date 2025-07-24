@@ -138,7 +138,7 @@ def focal_dataframe_to_gmt(df, filename="focal_mechanisms.txt"):
         f.write("\n".join(rows))
     return filename
 
-import pygmt
+#import pygmt
 
 def plot_focal_mechanisms_gmt(df, region, output="gmt_focal_map.png"):
     filename = focal_dataframe_to_gmt(df)
