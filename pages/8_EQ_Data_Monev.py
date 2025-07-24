@@ -85,8 +85,14 @@ else:
     y0, x0 = -2.0, 120.0  # Default center over Indonesia
     st.warning("⚠️ No data found for selected filters. Using default map center.")
 
-tiles = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
-m = folium.Map(location=(y0, x0), tiles=tiles, attr="ESRI Ocean", zoom_start=6)
+# 🌊 Folium Map + ESRI Basemap
+m = folium.Map(location=(y0, x0), zoom_start=6)
+folium.TileLayer(
+    tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+    attr="",
+    name="ESRI Ocean",
+    control=False
+).add_to(m)
 
 # 🔘 Earthquake Markers
 for _, row in df_filtered.iterrows():
@@ -105,15 +111,16 @@ for _, row in df_filtered.iterrows():
             )
         ).add_to(m)
 
-# 🧭 Fault Line GeoJSON Overlay
+# 🧭 Fault Line Overlay
 try:
-    faults = folium.GeoJson(
-        requests.get("https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson").json(),
+    fault_geojson = requests.get(
+        "https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson"
+    ).json()
+    folium.GeoJson(
+        fault_geojson,
         name="Fault Lines",
-        style_function=lambda feature: {"color": "orange", "weight": 1},
-        tooltip=folium.GeoJsonTooltip(fields=[], aliases=["Fault Line"])
-    )
-    faults.add_to(m)
+        style_function=lambda feature: {"color": "orange", "weight": 1}
+    ).add_to(m)
 except Exception as e:
     st.warning(f"⚠️ Fault line overlay failed: {e}")
 
