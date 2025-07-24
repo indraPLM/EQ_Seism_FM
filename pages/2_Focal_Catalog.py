@@ -116,33 +116,47 @@ report_df = summary_df.copy()
 report_df.index = range(len(report_df))
 report_df['Focal'] = generate_beachballs(report_df)
 
-# 📄 PDF Export with Embedded Beachballs
+# ───────────────────────────────────────
+# 📄 Export to PDF with custom widths
+# ───────────────────────────────────────
+
 def export_to_pdf(df, filename="focal_report.pdf"):
     pdf = FPDF(orientation='L')
     pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
-    pdf.set_font("Arial", size=9)
+    pdf.set_font("Arial", size=8)
 
     cols = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
             'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+    col_widths = {
+        'DateTime': 40, 'Magnitude': 18, 'Type Magnitude': 25,
+        'Latitude': 20, 'Longitude': 20, 'Depth': 18,
+        'Strike NP1': 20, 'Dip NP1': 20, 'Rake NP1': 20,
+        'Strike NP2': 20, 'Dip NP2': 20, 'Rake NP2': 20,
+        'Remark': 40, 'Focal': 30
+    }
 
-    for col in cols: pdf.cell(28, 10, col[:15], border=1)
-    pdf.cell(30, 10, "Beachball", border=1)
+    for col in cols:
+        pdf.cell(col_widths[col], 10, col[:15], border=1)
+    pdf.cell(col_widths['Focal'], 10, "Beachball", border=1)
     pdf.ln()
 
     for _, row in df.iterrows():
         for col in cols:
-            pdf.cell(28, 10, str(row[col])[:15], border=1)
+            val = str(row[col])[:30]
+            pdf.cell(col_widths[col], 10, val, border=1)
+
         img = row['Focal']
         if img and os.path.exists(img):
             thumb = f"thumb_{os.path.basename(img)}"
             Image.open(img).resize((25,25)).save(thumb)
             x, y = pdf.get_x(), pdf.get_y()
-            pdf.cell(30, 10, '', border=1)
-            pdf.image(thumb, x+2, y+2, h=8)
+            pdf.cell(col_widths['Focal'], 10, '', border=1)
+            pdf.image(thumb, x + 2, y + 2, h=8)
         else:
-            pdf.cell(30, 10, "N/A", border=1)
+            pdf.cell(col_widths['Focal'], 10, "N/A", border=1)
         pdf.ln()
+
     pdf.output(filename)
 
 export_to_pdf(report_df)
