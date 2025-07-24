@@ -105,7 +105,7 @@ def generate_beachballs(df, prefix="cmt"):
             mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
             # ⚙️ High-res settings
             fig = beachball(mt, facecolor=get_color(row['Depth']))
-            fig.set_size_inches(2.5, 2.5)           # Increase figure size
+            fig.set_size_inches(5, 5)           # Increase figure size
             fig.figure.set_dpi(300)                 # Higher DPI (default is ~100)
             
             #fig = beachball(mt, facecolor=get_color(row['Depth']))
@@ -138,7 +138,7 @@ def export_to_pdf(df, filename="focal_report.pdf"):
         'Latitude': 20, 'Longitude': 20, 'Depth': 12,
         'Strike NP1': 12, 'Dip NP1': 12, 'Rake NP1': 10,
         'Strike NP2': 12, 'Dip NP2': 12, 'Rake NP2': 12,
-        'Remark': 40, 'Focal': 30
+        'Remark': 45, 'Focal': 30
     }
 
     for col in cols:
