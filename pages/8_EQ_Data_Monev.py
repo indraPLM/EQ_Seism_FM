@@ -86,7 +86,7 @@ else:
     st.warning("⚠️ No data found for selected filters. Using default map center.")
 
 # 🌊 Folium Map + ESRI Basemap
-m = folium.Map(location=(y0, x0), zoom_start=6)
+m = folium.Map(location=(y0, x0), zoom_start=4)
 folium.TileLayer(
     tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
     attr="ESRI Ocean Basemap",  # Required attribution string
@@ -99,12 +99,12 @@ for _, row in df_filtered.iterrows():
     if pd.notnull(row['LAT']) and pd.notnull(row['LON']) and pd.notnull(row['MAG']) and pd.notnull(row['DEPTH']):
         folium.CircleMarker(
             location=[row['LAT'], row['LON']],
-            radius=(row['MAG'] ** 1.8),
+            radius=(row['MAG'] ** 1.25),
             color='black',
             weight=0.4,
             fill=True,
             fill_color=depth_color(row['DEPTH']),
-            fill_opacity=0.6,
+            fill_opacity=0.75,
             popup=folium.Popup(
                 f"<b>Date:</b> {row['DATE']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
                 max_width=250
