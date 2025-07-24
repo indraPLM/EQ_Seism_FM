@@ -118,7 +118,7 @@ report_df['Focal'] = generate_beachballs(report_df)
 
 # 📄 PDF Export with Embedded Beachballs
 def export_to_pdf(df, filename="focal_report.pdf"):
-    pdf = FPDF()
+    pdf = FPDF(orientation='L')
     pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
     pdf.set_font("Arial", size=9)
