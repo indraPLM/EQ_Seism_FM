@@ -103,7 +103,12 @@ def generate_beachballs(df, prefix="cmt"):
     for idx, row in df.iterrows():
         if all(pd.notnull(row[col]) for col in ['Strike NP1','Dip NP1','Rake NP1']):
             mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
+            # ⚙️ High-res settings
             fig = beachball(mt, facecolor=get_color(row['Depth']))
+            fig.set_size_inches(1.5, 1.5)           # Increase figure size
+            fig.figure.set_dpi(200)                 # Higher DPI (default is ~100)
+            
+            #fig = beachball(mt, facecolor=get_color(row['Depth']))
             path = f"{prefix}_{idx}.png"
             fig.savefig(path)
             plt.close(fig.figure)
