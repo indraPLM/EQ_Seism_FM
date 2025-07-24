@@ -12,6 +12,9 @@ from cartopy.io.shapereader import Reader
 from matplotlib.lines import Line2D
 from PIL import Image
 import os
+import folium
+from streamlit_folium import st_folium
+import requests
 
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='🌋')
