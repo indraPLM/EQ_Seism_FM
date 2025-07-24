@@ -104,7 +104,7 @@ for _, row in df_filtered.iterrows():
             weight=0.4,
             fill=True,
             fill_color=depth_color(row['DEPTH']),
-            fill_opacity=0.75,
+            fill_opacity=0.5,
             popup=folium.Popup(
                 f"<b>Date:</b> {row['DATE']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
                 max_width=250
