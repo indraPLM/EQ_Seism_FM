@@ -141,25 +141,33 @@ def export_to_pdf(df, filename="focal_report.pdf"):
         'Remark': 45, 'Focal': 30
     }
 
+    # Draw header
     for col in cols:
-        pdf.cell(col_widths[col], 10, col[:15], border=1)
-    pdf.cell(col_widths['Focal'], 10, "Beachball", border=1)
+        pdf.cell(col_widths[col], 10, col, border=1, align='C')
+    pdf.cell(col_widths['Focal'], 10, "Beachball", border=1, align='C')
     pdf.ln()
 
+    # Draw rows
     for _, row in df.iterrows():
         for col in cols:
             val = str(row[col])[:30]
-            pdf.cell(col_widths[col], 10, val, border=1)
+            pdf.cell(col_widths[col], 10, val, border=1, align='C')
 
-        img = row['Focal']
-        if img and os.path.exists(img):
-            thumb = f"thumb_{os.path.basename(img)}"
-            Image.open(img).resize((25,25)).save(thumb)
-            x, y = pdf.get_x(), pdf.get_y()
+        # Add beachball image
+        img_path = row['Focal']
+        if img_path and os.path.exists(img_path):
+            thumb_path = f"thumb_{os.path.basename(img_path)}"
+            img = Image.open(img_path)
+            img.thumbnail((25, 25))
+            img.save(thumb_path)
+
+            x = pdf.get_x()
+            y = pdf.get_y()
             pdf.cell(col_widths['Focal'], 10, '', border=1)
-            pdf.image(thumb, x + 2, y + 2, h=8)
+            pdf.image(thumb_path, x + 2, y + 2, h=8)
         else:
-            pdf.cell(col_widths['Focal'], 10, "N/A", border=1)
+            pdf.cell(col_widths['Focal'], 10, "N/A", border=1, align='C')
+
         pdf.ln()
 
     pdf.output(filename)
