@@ -157,8 +157,8 @@ def plot_focal_mechanisms_gmt(df, region, output="gmt_focal_map.png"):
     fig.savefig(output)
     return output
 
-region = [West, East, South, North]
-gmt_image = plot_focal_mechanisms_gmt(df, region)
+#region = [West, East, South, North]
+#gmt_image = plot_focal_mechanisms_gmt(df, region)
 
 st.image(gmt_image, caption="📍 PyGMT Focal Mechanism Map", use_column_width=True)
 
