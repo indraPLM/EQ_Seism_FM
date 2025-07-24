@@ -58,6 +58,60 @@ df_filtered = df[
     (df['LON'].between(West, East))
 ]
 
+#st.subheader("📋 Filtered Earthquake Events")
+#st.dataframe(df_filtered)
+
+# 🗺️ Folium Map Construction
+def depth_color(depth):
+    if depth < 60:
+        return 'red'
+    elif depth <= 300:
+        return 'yellow'
+    else:
+        return 'green'
+
+# 🌐 ESRI Ocean Basemap
+y0 = df_filtered['LAT'].mean()
+x0 = df_filtered['LON'].mean()
+tiles = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
+m = folium.Map(location=(y0, x0), tiles=tiles, attr="ESRI Ocean", zoom_start=6)
+
+# 🔘 Earthquake Markers
+for _, row in df_filtered.iterrows():
+    if pd.notnull(row['LAT']) and pd.notnull(row['LON']) and pd.notnull(row['MAG']) and pd.notnull(row['DEPTH']):
+        folium.CircleMarker(
+            location=[row['LAT'], row['LON']],
+            radius=(row['MAG'] ** 1.8),
+            color='black',
+            weight=0.4,
+            fill=True,
+            fill_color=depth_color(row['DEPTH']),
+            fill_opacity=0.6,
+            popup=folium.Popup(
+                f"<b>Date:</b> {row['DATE']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
+                max_width=250
+            )
+        ).add_to(m)
+
+# 🧭 Fault Line GeoJSON Overlay
+try:
+    faults = folium.GeoJson(
+        requests.get("https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson").json(),
+        name="Fault Lines",
+        style_function=lambda feature: {"color": "orange", "weight": 1},
+        tooltip=folium.GeoJsonTooltip(fields=[], aliases=["Fault Line"])
+    )
+    faults.add_to(m)
+except Exception as e:
+    st.warning(f"⚠️ Fault line overlay failed: {e}")
+
+# 🧭 Layer Toggle
+folium.LayerControl(collapsed=False).add_to(m)
+
+# 🖼️ Render Final Map
+st.subheader("🗺️ Interactive Seismic Map with Fault Lines")
+st_folium(m, width=1000, height=650)
+
 st.subheader("📋 Filtered Earthquake Events")
 st.dataframe(df_filtered)
 
