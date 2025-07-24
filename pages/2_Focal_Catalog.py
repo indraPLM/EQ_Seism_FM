@@ -112,90 +112,74 @@ for _, row in df.iterrows():
         ax.add_collection(ball)
 st.pyplot(fig)
 
-summary_df = df[['date_time', 'mag', 'type_mag', 'fixedLat', 'fixedLon', 'depth',
-                 'S1', 'D1', 'R1', 'S2', 'D2', 'R2', 'location']].copy()
-
-# Rename columns for clarity
-summary_df.columns = ['DateTime', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
-                      'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark']
-summary_df.index = range(1, len(summary_df) + 1)  # Reindex starting from 1
+# 📊 Summary Table
+summary_df = df[['date_time','mag','type_mag','fixedLat','fixedLon','depth',
+                 'S1','D1','R1','S2','D2','R2','location']].copy()
+summary_df.columns = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
+                      'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+summary_df.index = range(1, len(summary_df)+1)
 st.dataframe(summary_df)
 
-# Optional: Add beachball mechanism visuals or export column (e.g., if exporting plots)
-
-# Reuse or clone the summary_df you already created earlier
-report_df = summary_df.copy()
-report_df.index = range(len(report_df))  # match image naming convention
-
-from obspy.imaging.beachball import beachball
-import matplotlib.pyplot as plt
-
-def get_color(depth):
-    return 'r' if depth <= 60 else 'yellow' if depth <= 300 else 'g'
-
-def generate_beachball_images(df, prefix="cmt"):
-    filenames = []
+# 📷 Generate Beachball Images
+def generate_beachballs(df, prefix="cmt"):
+    images = []
     for idx, row in df.iterrows():
-        mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
-        color = get_color(row['Depth'])
-        fig = beachball(mt, facecolor=color)
-        filename = f"{prefix}_{idx}.png"
-        fig.savefig(filename)
-        plt.close(fig.figure)
-        filenames.append(filename)
-    return filenames
+        if all(pd.notnull(row[col]) for col in ['Strike NP1','Dip NP1','Rake NP1']):
+            mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
+            fig = beachball(mt, facecolor=get_color(row['Depth']))
+            path = f"{prefix}_{idx}.png"
+            fig.savefig(path)
+            plt.close(fig.figure)
+            images.append(path)
+        else:
+            images.append("")
+    return images
 
-report_df['Focal'] = generate_beachball_images(report_df)
+report_df = summary_df.copy()
+report_df.index = range(len(report_df))
+report_df['Focal'] = generate_beachballs(report_df)
 
-from fpdf import FPDF
-from PIL import Image
-
-def export_dataframe_to_pdf(df, filename="focal_report.pdf"):
+# 📄 PDF Export with Embedded Beachballs
+def export_to_pdf(df, filename="focal_report.pdf"):
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
     pdf.set_font("Arial", size=9)
 
-    # Define columns to include (can match your displayed DataFrame)
-    columns = [
-        'DateTime', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
-        'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark'
-    ]
+    cols = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
+            'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
 
-    # Table header
-    for col in columns:
-        pdf.cell(28, 10, col[:15], border=1)
+    for col in cols: pdf.cell(28, 10, col[:15], border=1)
     pdf.cell(30, 10, "Beachball", border=1)
     pdf.ln()
 
-    # Table rows
     for _, row in df.iterrows():
-        for col in columns:
-            value = str(row[col])[:15]
-            pdf.cell(28, 10, value, border=1)
-        
-        img_path = row['Focal']
-        if os.path.exists(img_path):
-            thumb_path = f"thumb_{os.path.basename(img_path)}"
-            img = Image.open(img_path)
-            img.thumbnail((25, 25))
-            img.save(thumb_path)
-
-            x = pdf.get_x()
-            y = pdf.get_y()
+        for col in cols:
+            pdf.cell(28, 10, str(row[col])[:15], border=1)
+        img = row['Focal']
+        if img and os.path.exists(img):
+            thumb = f"thumb_{os.path.basename(img)}"
+            Image.open(img).resize((25,25)).save(thumb)
+            x, y = pdf.get_x(), pdf.get_y()
             pdf.cell(30, 10, '', border=1)
-            pdf.image(thumb_path, x + 2, y + 2, h=8)
+            pdf.image(thumb, x+2, y+2, h=8)
         else:
             pdf.cell(30, 10, "N/A", border=1)
-        
         pdf.ln()
-
     pdf.output(filename)
 
-report_df['Focal'] = generate_beachball_images(report_df)
+export_to_pdf(report_df)
 
-# Generate the PDF
-export_dataframe_to_pdf(report_df)
+# 📎 Show PDF inline
+def show_pdf(path):
+    if os.path.exists(path):
+        with open(path, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode("utf-8")
+        st.markdown(f'<iframe src="data:application/pdf;base64,{b64}" width="100%" height="900"></iframe>', unsafe_allow_html=True)
+    else:
+        st.warning("⚠️ PDF not found.")
+
+show_pdf("focal_report.pdf")
 
 # Show download button
 with open("focal_report.pdf", "rb") as f:
