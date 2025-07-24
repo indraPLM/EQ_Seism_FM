@@ -74,13 +74,24 @@ df = df[
     (df['fixedLon'].between(West, East))
 ]
 
-def compute_beachball_scale(west, east, south, north, base_size=1.5):
-    lon_span = abs(east - west)
-    lat_span = abs(north - south)
-    scale = base_size * (1.0 / max(lon_span, lat_span)) * 30  # Tunable factor
-    return max(scale, 0.2)  # Prevent too small sizes
+def get_beachball_width(east, west):
+    dist_lon = abs(east - west)
+    if dist_lon > 55:
+        return 0.9
+    elif 40 < dist_lon <= 55:
+        return 0.8
+    elif 30 < dist_lon <= 40:
+        return 0.7
+    elif 15 < dist_lon <= 30:
+        return 0.6
+    elif 10 < dist_lon <= 15:
+        return 0.5
+    elif 5 < dist_lon <= 10:
+        return 0.4
+    else:
+        return 0.3
 
-scale_factor = compute_beachball_scale(West, East, South, North)
+w = get_beachball_width(East, West)
 
 # 🗺️ Cartopy Plot
 st.markdown(f"### 🗺️ Peta Focal Mechanism BMKG \n{start_time} – {end_time}")
@@ -95,9 +106,9 @@ for _, row in df.iterrows():
         x, y = ax.projection.transform_point(row["fixedLon"], row["fixedLat"], ccrs.Geodetic())
         color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
         ball = beach([row["S1"], row["D1"], row["R1"]],
-             xy=(x, y), width=scale_factor,
-             linewidth=0.5, alpha=0.65, zorder=10,
-             facecolor=color)
+             xy=(x, y), width=w, linewidth=0.5,
+             alpha=0.65, zorder=10, facecolor=color)
+
         ax.add_collection(ball)
 st.pyplot(fig)
 
@@ -144,7 +155,7 @@ def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_co
             x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.Geodetic())
             color = "r" if row[depth_col] < 60 else "y" if row[depth_col] < 300 else "g"
             bb = beach([row['S1'], row['D1'], row['R1']],
-                       xy=(x, y), width=scale,
+                       xy=(x, y), width=w,
                        linewidth=0.5, alpha=0.65,
                        zorder=10, facecolor=color)
             ax.add_collection(bb)
@@ -170,7 +181,7 @@ ax2 = fig2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
 ax2.set_extent((West, East, South - 0.5, North + 0.5))
 ax2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
-scale_factor = compute_beachball_scale(West, East, South, North)
+#scale_factor = compute_beachball_scale(West, East, South, North)
 draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat', scale=scale_factor)
 
 st.pyplot(fig2)
