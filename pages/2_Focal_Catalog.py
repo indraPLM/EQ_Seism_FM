@@ -136,8 +136,8 @@ def export_to_pdf(df, filename="focal_report.pdf"):
     col_widths = {
         'DateTime': 30, 'Magnitude': 18, 'Type Magnitude': 22,
         'Latitude': 20, 'Longitude': 20, 'Depth': 12,
-        'Strike NP1': 15, 'Dip NP1': 12, 'Rake NP1': 10,
-        'Strike NP2': 15, 'Dip NP2': 12, 'Rake NP2': 12,
+        'Strike NP1': 15, 'Dip NP1': 12, 'Rake NP1': 15,
+        'Strike NP2': 15, 'Dip NP2': 12, 'Rake NP2': 15,
         'Remark': 45, 'Focal': 30
     }
 
