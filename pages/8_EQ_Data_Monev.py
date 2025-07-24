@@ -71,8 +71,17 @@ def depth_color(depth):
         return 'green'
 
 # 🌐 ESRI Ocean Basemap
-y0 = df_filtered['LAT'].mean()
-x0 = df_filtered['LON'].mean()
+#y0 = df_filtered['LAT'].mean()
+#x0 = df_filtered['LON'].mean()
+
+# 🌐 Safe fallback for map center
+if not df_filtered.empty:
+    y0 = df_filtered['LAT'].mean()
+    x0 = df_filtered['LON'].mean()
+else:
+    y0, x0 = -2.0, 120.0  # Default center over Indonesia
+    st.warning("⚠️ No data found for selected filters. Using default map center.")
+
 tiles = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
 m = folium.Map(location=(y0, x0), tiles=tiles, attr="ESRI Ocean", zoom_start=6)
 
