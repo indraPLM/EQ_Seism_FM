@@ -77,8 +77,9 @@ df = df[
 def compute_beachball_scale(west, east, south, north, base_size=1.5):
     lon_span = abs(east - west)
     lat_span = abs(north - south)
-    scale = base_size * (1.0 / max(lon_span, lat_span)) * 30  # Tunable factor
-    return max(scale, 0.2)  # Prevent too small sizes
+    area_factor = max(lon_span, lat_span)
+    scale = base_size / area_factor * 30  # Tune multiplier (30) as needed
+    return max(scale, 0.3)
 
 scale_factor = compute_beachball_scale(West, East, South, North)
 
@@ -96,8 +97,8 @@ for _, row in df.iterrows():
         color = "r" if row["depth"] < 60 else "y" if row["depth"] < 300 else "g"
         ball = beach([row["S1"], row["D1"], row["R1"]],
              xy=(x, y), width=scale_factor,
-             linewidth=0.5, alpha=0.65, zorder=10,
-             facecolor=color)
+             linewidth=0.5, alpha=0.65,
+             zorder=10, facecolor=color)
         ax.add_collection(ball)
 st.pyplot(fig)
 
