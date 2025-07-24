@@ -1,8 +1,8 @@
 beautifulsoup4==4.11.1
 numpy>=1.22
-pandas==1.5.3
+pandas>=1.5.3
 requests==2.28.1
-streamlit
+streamlit>=1.40.0
 geopandas
 fiona==1.9.6
 matplotlib
@@ -12,7 +12,11 @@ streamlit-folium==0.6.13
 cartopy
 streamlit_pdf_viewer
 plotly
-pygmt
+pygmt==0.10.0
 fpdf
 ipython
 pdfkit
+xarray
+pyproj
+shapely
+contextily
