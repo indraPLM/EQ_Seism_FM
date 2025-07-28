@@ -70,6 +70,7 @@ df = df[
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East))
 ]
+st.dataframe(df)
 
 def get_color(depth): return 'r' if depth <= 60 else 'yellow' if depth <= 300 else 'g'
 def get_width(e,w): return max(0.3, min(1.5, 0.03 * abs(e - w)))
