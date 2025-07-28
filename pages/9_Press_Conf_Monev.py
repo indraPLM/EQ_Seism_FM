@@ -40,50 +40,36 @@ if st.button("Refresh Messages"):
 for msg in messages[-20:]:  # Show last 20 messages
     st.write(msg)
 
-
 import streamlit as st
-import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
+from telethon.sync import TelegramClient
+from telethon.errors import SessionPasswordNeededError
+from streamlit_autorefresh import st_autorefresh
 
-# --- Scraping function using Selenium ---
-def get_messages():
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--log-level=3")
+# === Telegram Credentials ===
+api_id = '22270251'
+api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
+channel_username = 'BMKGAlertViewer'
+session_name = 'bmkgviewer'
 
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://t.me/s/InaTEWS_BMKG")
-    time.sleep(5)  # Let the page load
+# === Auto-refresh every 60 seconds ===
+st_autorefresh(interval=60000, limit=None, key="bmkg_refresh")
 
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    driver.quit()
+# === Streamlit UI ===
+st.title("🌋 BMKG InaTEWS Telegram Monitor")
+st.caption("Fetching latest earthquake & tsunami alerts from @InaTEWS_BMKG")
 
-    raw_msgs = soup.find_all("div", class_="tgme_widget_message_text")
-    messages = [msg.get_text(strip=True) for msg in raw_msgs]
-    return messages
+try:
+    with TelegramClient(session_name, api_id, api_hash) as client:
+        messages = []
+        for message in client.iter_messages(channel_username, limit=20):
+            if message.text:
+                msg_time = message.date.strftime('%Y-%m-%d %H:%M:%S')
+                messages.append(f"[{msg_time}] {message.text}")
 
-# --- Streamlit dashboard ---
-st.set_page_config(page_title="InaTEWS Live Feed", layout="wide")
-st.title("🌋 InaTEWS BMKG – Live Telegram Feed")
+        for msg in messages:
+            st.text(msg)
 
-st.sidebar.subheader("🔄 Refresh Settings")
-interval = st.sidebar.slider("Refresh every N seconds", min_value=30, max_value=600, value=120, step=30)
-
-msg_display = st.empty()
-last_updated = st.sidebar.empty()
-
-while True:
-    with st.spinner("Scraping messages..."):
-        messages = get_messages()
-
-    msg_display.markdown("### 📨 Latest Messages:")
-    for i, msg in enumerate(messages[:20], 1):  # Limit to last 20 messages
-        st.write(f"{i}. {msg}")
-
-    last_updated.info(f"Last updated at ⏰ {time.strftime('%Y-%m-%d %H:%M:%S')}")
-    time.sleep(interval)
-    st.rerun()
+except SessionPasswordNeededError:
+    st.error("Two-factor auth enabled — please provide your password in the script.")
+except Exception as e:
+    st.error(f"Error: {e}")
