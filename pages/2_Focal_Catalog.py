@@ -59,6 +59,8 @@ def fix_coord(val, axis):
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
+df['Tangal'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
+df['Waktu'] = df['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 
 for col in ['mag','depth','S1','D1','R1','S2','D2','R2']:
     df[col] = pd.to_numeric(df[col], errors='coerce')
@@ -90,9 +92,9 @@ for _, row in df.iterrows():
 st.pyplot(fig)
 
 # 📊 Summary Table
-summary_df = df[['date_time','mag','type_mag','fixedLat','fixedLon','depth',
+summary_df = df[['Tanggal','Waktu','mag','type_mag','fixedLat','fixedLon','depth',
                  'S1','D1','R1','S2','D2','R2','location']].copy()
-summary_df.columns = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
+summary_df.columns = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
                       'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
 summary_df.index = range(1, len(summary_df)+1)
 st.dataframe(summary_df)
@@ -131,10 +133,10 @@ def export_to_pdf(df, filename="focal_report.pdf"):
     pdf.add_page()
     pdf.set_font("Arial", size=8)
 
-    cols = ['DateTime','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
+    cols = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
             'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
     col_widths = {
-        'DateTime': 30, 'Magnitude': 18, 'Type Magnitude': 22,
+        'Tanggal': 15,'Waktu': 15, 'Magnitude': 18, 'Type Magnitude': 22,
         'Latitude': 20, 'Longitude': 20, 'Depth': 12,
         'Strike NP1': 15, 'Dip NP1': 12, 'Rake NP1': 15,
         'Strike NP2': 15, 'Dip NP2': 12, 'Rake NP2': 15,
