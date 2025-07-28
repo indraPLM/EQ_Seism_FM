@@ -35,7 +35,7 @@ st.write("Messages received via Telegram:")
 
 # Live update of messages
 if st.button("Refresh Messages"):
-    st.experimental_rerun()
+    st.rerun()
 
 for msg in messages[-20:]:  # Show last 20 messages
     st.write(msg)
