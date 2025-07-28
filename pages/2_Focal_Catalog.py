@@ -59,7 +59,7 @@ def fix_coord(val, axis):
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
-df['Tangal'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
+df['Tanggal'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
 df['Waktu'] = df['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
 
 for col in ['mag','depth','S1','D1','R1','S2','D2','R2']:
