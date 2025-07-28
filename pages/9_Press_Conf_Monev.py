@@ -40,36 +40,52 @@ if st.button("Refresh Messages"):
 for msg in messages[-20:]:  # Show last 20 messages
     st.write(msg)
 
+
 import streamlit as st
-from telethon.sync import TelegramClient
+import asyncio
+from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError
 from streamlit_autorefresh import st_autorefresh
 
-# === Telegram Credentials ===
-api_id = '22270251'
-api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
-channel_username = 'BMKGAlertViewer'
-session_name = 'bmkgviewer'
+# ========== USER CONFIGURATION ==========
+api_id = 22270251              # Replace with your numeric API ID
+api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'         # Replace with your API hash string
+channel_username = 'BMKGAlertViewer'  # Telegram channel name (without @)
+session_name = 'bmkgviewer'     # Session name for login persistence
 
-# === Auto-refresh every 60 seconds ===
-st_autorefresh(interval=60000, limit=None, key="bmkg_refresh")
-
-# === Streamlit UI ===
+# ========== STREAMLIT SETTINGS ==========
+st.set_page_config(page_title="BMKG InaTEWS Monitor", layout="wide")
 st.title("🌋 BMKG InaTEWS Telegram Monitor")
-st.caption("Fetching latest earthquake & tsunami alerts from @InaTEWS_BMKG")
+st.caption("Live feed from @InaTEWS_BMKG — earthquake & tsunami alerts")
 
-try:
-    with TelegramClient(session_name, api_id, api_hash) as client:
-        messages = []
-        for message in client.iter_messages(channel_username, limit=20):
-            if message.text:
-                msg_time = message.date.strftime('%Y-%m-%d %H:%M:%S')
-                messages.append(f"[{msg_time}] {message.text}")
+# Sidebar refresh settings
+st.sidebar.header("⏱️ Refresh Controls")
+refresh_interval = st.sidebar.slider("Auto-refresh every (seconds)", 30, 600, 120, step=30)
 
-        for msg in messages:
-            st.text(msg)
+# Trigger auto-refresh via streamlit-autorefresh
+st_autorefresh(interval=refresh_interval * 1000, key="refresh_counter")
 
-except SessionPasswordNeededError:
-    st.error("Two-factor auth enabled — please provide your password in the script.")
-except Exception as e:
-    st.error(f"Error: {e}")
+# ========== TELEGRAM SCRAPE FUNCTION ==========
+async def fetch_messages():
+    try:
+        async with TelegramClient(session_name, api_id, api_hash) as client:
+            messages = []
+            async for msg in client.iter_messages(channel_username, limit=20):
+                if msg.text:
+                    timestamp = msg.date.strftime("%Y-%m-%d %H:%M:%S")
+                    messages.append(f"[{timestamp}] {msg.text}")
+            return messages
+    except SessionPasswordNeededError:
+        return ["❗ Two-factor authentication enabled — update your script."]
+    except Exception as e:
+        return [f"❗ Error occurred: {e}"]
+
+# ========== RUN ASYNC + DISPLAY ==========
+with st.spinner("📡 Fetching Telegram messages..."):
+    try:
+        messages = asyncio.run(fetch_messages())
+        for i, msg in enumerate(messages, 1):
+            st.write(f"{i}. {msg}")
+    except RuntimeError as e:
+        st.error(f"Runtime error: {e}")
+
