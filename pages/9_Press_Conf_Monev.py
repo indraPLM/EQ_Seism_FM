@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# 🌍 Page Configuration
+# ✅ Page Configuration (only once, first)
 st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='📰')
 
 
