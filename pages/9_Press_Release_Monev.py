@@ -20,7 +20,7 @@ try:
     df['Waktu'] = df['date'].dt.strftime('%H:%M:%S')    # e.g., 17:34:00
    
     df['Press Release Message'] = df['message']
-    df.drop(columns=['id'], inplace=True, errors='ignore')
+    #df.drop(columns=['id'], inplace=True, errors='ignore')
 
 
     # 🧭 Filter by Time Range
