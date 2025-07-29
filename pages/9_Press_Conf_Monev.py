@@ -7,7 +7,7 @@ st.title("📄 Filtered Messages Viewer")
 st.markdown("Displaying messages containing **Dr. Daryono**, filtered by time range.")
 
 # === Load data ===
-csv_file = "filtered_messages.csv"
+csv_file = "./pages/filePressConf/filtered_messages.csv"
 try:
     df = pd.read_csv(csv_file)
     df['date'] = pd.to_datetime(df['date'])
