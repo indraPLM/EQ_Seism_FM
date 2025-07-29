@@ -27,12 +27,12 @@ if st.button("🚀 Grab Messages"):
         st.warning("⚠️ All input fields must be filled.")
     else:
         try:
-            api_id = int(api_id_input.strip())
-            api_hash = api_hash_input.strip()
+            api_id = 22270251
+            api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
 
             # === Async Message Fetch Function ===
             async def fetch_messages():
-                client = TelegramClient(session_name, api_id, api_hash)
+                client = TelegramClient('bmkgviewer', api_id, api_hash)
                 await client.connect()
 
                 if not await client.is_user_authorized():
