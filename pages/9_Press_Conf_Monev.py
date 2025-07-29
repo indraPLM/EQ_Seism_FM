@@ -11,7 +11,7 @@ from telethon.tl.functions.messages import GetHistoryRequest
 st.title("🔎 Telegram Message Grabber")
 st.subheader("Search messages from any public Telegram channel")
 
-api_id = 22270251
+api_id = '22270251'
 api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
 phone = '+6281280371045'
 session_name = 'bmkgviewer'
