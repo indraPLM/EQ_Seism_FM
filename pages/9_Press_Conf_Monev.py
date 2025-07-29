@@ -33,7 +33,7 @@ try:
     final_df = filtered_df[['No', 'Tanggal Waktu', 'Press Release Message']]
 
     # 📊 First Show in Interactive DataFrame
-    st.subheader("🔍 Interactive View")
+    st.subheader("🔍 Press Release InaTEWS Interactive View")
     st.dataframe(final_df, use_container_width=True)
 
     # 📊 Message Count Summary
@@ -41,7 +41,7 @@ try:
     st.markdown(f"### 📈 Total Press Release Messages: **{count_msg}** between `{time_start}` and `{time_end}`")
 
     # 🧾 Then Show as Styled Table
-    st.subheader("🧾 Styled Table View")
+    st.subheader("🧾 Press Release InaTEWS Table View")
     st.write('<style>th, td { padding: 10px; vertical-align: top; word-wrap: break-word; max-width: 600px; }</style>', unsafe_allow_html=True)
     st.table(final_df)
 
