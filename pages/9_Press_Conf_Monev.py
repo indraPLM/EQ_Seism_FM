@@ -49,3 +49,5 @@ except FileNotFoundError:
     st.error(f"❌ CSV file '{csv_file}' not found. Please verify the path.")
 except Exception as e:
     st.error(f"💥 Unexpected error: {e}")
+
+st.table(final_df)
