@@ -25,43 +25,114 @@ st.sidebar.header("🔄 Auto-Refresh Settings")
 refresh_interval = st.sidebar.slider("Refresh every (seconds)", 30, 300, 60, step=30)
 st_autorefresh(interval=refresh_interval * 1000, key="auto_refresh")
 
-# ========== TELEGRAM FETCH ==========
-async def fetch_latest_message():
-    try:
-        async with TelegramClient(session_name, api_id, api_hash) as client:
-            async for msg in client.iter_messages(channel_username, limit=1):
-                if msg.text:
-                    timestamp = msg.date.strftime("%Y-%m-%d %H:%M:%S")
-                    text = msg.text
+import asyncio
+import json
+import pandas as pd
+import streamlit as st
+from datetime import datetime
+from telethon import TelegramClient
+from telethon.errors import SessionPasswordNeededError
+from telethon.tl.functions.messages import GetHistoryRequest
 
-                    # Keyword highlighting
-                    keyword = "Dr. DARYONO, S.Si., M.Si."
-                    if keyword in text:
-                        text = text.replace(keyword, f"**🧠 {keyword}**")
-                        tagged = True
-                    else:
-                        tagged = False
+# === UI: Manual credential input ===
+st.title("🔎 Telegram Message Grabber")
+st.subheader("Search messages from any public Telegram channel")
 
-                    return f"🕒 {timestamp}\n\n{text}", tagged
-            return "No recent text message found.", False
-    except SessionPasswordNeededError:
-        return "❗ Two-factor authentication is required.", False
-    except Exception as e:
-        return f"❗ Error fetching message: {e}", False
+api_id = 22270251
+api_hash = 44dc58cc1db11f47cf3de0f28d6a8786
+phone = '+6281280371045'
+session_name = 'bmkgviewer'
+channel_name = 'InaTEWS_BMKG'
+keyword = "Dr. DARYONO, S.Si., M.Si."
 
-# ========== DISPLAY ==========
-with st.spinner("📡 Checking BMKG feed..."):
-    try:
-        latest_message, tagged = asyncio.run(fetch_latest_message())
-        st.text_area("📨 Latest Telegram Message", latest_message, height=400)
+start_date = st.date_input("Start date", value=datetime(2025, 1, 1))
+end_date = st.date_input("End date", value=datetime.now())
 
-        if tagged:
-            st.success("🔍 Tagged alert: Dr. Daryono mentioned in this message.")
-        else:
-            st.info("ℹ️ No mention of Dr. Daryono in this update.")
+# === Button to Start ===
+if st.button("🚀 Grab Messages"):
+    if not (session_name and api_id_input and api_hash_input and phone and channel_username):
+        st.warning("⚠️ All input fields must be filled.")
+    else:
+        try:
+            api_id = 22270251
+            api_hash = 44dc58cc1db11f47cf3de0f28d6a8786
 
-    except RuntimeError as e:
-        st.error(f"Runtime error: {e}")
+            # === Async Message Fetch Function ===
+            async def fetch_messages():
+                client = TelegramClient('bmkgviewer', api_id, api_hash)
+                await client.connect()
 
+                if not await client.is_user_authorized():
+                    await client.send_code_request(phone)
+                    code = 73172
+                    password = 'Palembang1982@#$_'
+                    try:
+                        await client.sign_in(phone=phone, code=code)
+                    except SessionPasswordNeededError:
+                        await client.sign_in(password=password)
+
+                channel = await client.get_entity(channel_username)
+                all_messages = []
+                offset_id = 0
+                total_fetched = 0
+                st.info("📡 Fetching messages...")
+                progress = st.progress(0)
+
+                while True:
+                    history = await client(GetHistoryRequest(
+                        peer=channel,
+                        offset_id=offset_id,
+                        offset_date=None,
+                        add_offset=0,
+                        limit=100,
+                        max_id=0,
+                        min_id=0,
+                        hash=0
+                    ))
+
+                    if not history.messages:
+                        break
+
+                    for msg in history.messages:
+                        if msg.message:
+                            msg_date = msg.date.date()
+                            if keyword.lower() in msg.message.lower() and start_date <= msg_date <= end_date:
+                                all_messages.append({
+                                    "date": msg.date.isoformat(),
+                                    "message": msg.message
+                                })
+
+                    offset_id = history.messages[-1].id
+                    total_fetched += len(history.messages)
+                    progress.progress(min(total_fetched / 500, 1.0))
+                    if total_fetched >= 500:
+                        break
+
+                await client.disconnect()
+                return all_messages
+
+            # === Run Asyncio Event Loop ===
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            results = loop.run_until_complete(fetch_messages())
+
+            # === Display and Download Results ===
+            if results:
+                df = pd.DataFrame(results)
+                st.success(f"✅ Found {len(df)} matching messages.")
+                st.dataframe(df)
+
+                csv = df.to_csv(index=False).encode('utf-8')
+                json_data = json.dumps(results, indent=2)
+
+                st.download_button("⬇ Download CSV", csv, file_name="messages.csv", mime="text/csv")
+                st.download_button("⬇ Download JSON", json_data, file_name="messages.json", mime="application/json")
+            else:
+                st.warning("😕 No messages found matching the criteria.")
+
+        except ValueError:
+            st.error("🚫 API ID must be a valid number.")
+        except Exception as e:
+            st.error(f"❌ Unexpected error: {e}")
 
 
