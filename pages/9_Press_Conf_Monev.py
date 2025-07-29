@@ -41,22 +41,22 @@ for msg in messages[-20:]:  # Show last 20 messages
     st.write(msg)
 
 
+import asyncio
 from telethon.sync import TelegramClient
-from telethon.tl.types import Channel
+from telethon.errors import SessionPasswordNeededError
 import pandas as pd
 
-# Replace with your own Telegram API credentials
+# Telegram API credentials
 api_id = 22270251
 api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
-
-# Keyword to search
 keyword = "Dr. Daryono, S.Si, M.Si"
-
-# Channel username
 channel_username = 'BMKGAlertViewer'
 
-# Create Telegram client
-client = TelegramClient('bmkgviewer', api_id, api_hash)
+# Create a new event loop
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+
+client = TelegramClient('bmkgviewer', api_id, api_hash, loop=loop)
 
 def fetch_messages():
     try:
@@ -82,9 +82,9 @@ def fetch_messages():
             print("No matching messages found.")
 
     except SessionPasswordNeededError:
-        print("Two-step verification required. Please provide your password.")
+        print("Two-step verification required.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Error: {e}")
 
 with client:
     fetch_messages()
