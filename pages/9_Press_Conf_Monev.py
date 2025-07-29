@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 
 # 🌍 Page Configuration
-st.set_page_config(page_title='Press Release Dashboard', layout='wide', page_icon='📣')
+st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='📰')
+
 
 # 🛠️ Sidebar Inputs
 st.sidebar.header("📅 Time Range Filter")
