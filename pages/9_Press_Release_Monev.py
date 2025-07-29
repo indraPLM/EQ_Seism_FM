@@ -6,8 +6,8 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Sidebar Time Filter
 st.sidebar.header("Time Range Filter")
-time_start = st.sidebar.text_input('Start Time (YYYY-MM-DD HH:MM:SS)', '2025-01-01 00:00:00')
-time_end   = st.sidebar.text_input('End Time (YYYY-MM-DD HH:MM:SS)', '2025-05-30 23:59:59')
+time_start = st.sidebar.text_input('Start Time (YYYY-MM-DD HH:MM:SS)', '2025-06-01 00:00:00')
+time_end   = st.sidebar.text_input('End Time (YYYY-MM-DD HH:MM:SS)', '2025-06-30 23:59:59')
 
 # 📂 Load and Prep Data
 csv_file = "./pages/filePressConf/filtered_messages.csv"
