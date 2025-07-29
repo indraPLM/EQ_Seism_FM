@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# ✅ Page Configuration (only once, first)
+st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='📰')
+
 # 🛠️ Sidebar Inputs
 st.sidebar.header("📅 Time Range Filter")
 time_start = st.sidebar.text_input('Start Time (YYYY-MM-DD HH:MM:SS)', '2025-01-01 00:00:00')
@@ -42,4 +45,4 @@ try:
 except FileNotFoundError:
     st.error(f"❌ CSV file '{csv_file}' not found. Please verify the path.")
 except Exception as e:
-    st.error(f"💥 Unexpected error: {e}"
+    st.error(f"💥 Unexpected error: {e}")
