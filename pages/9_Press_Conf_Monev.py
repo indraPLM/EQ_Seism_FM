@@ -58,20 +58,34 @@ channel_username = 'BMKGAlertViewer'
 # Create Telegram client
 client = TelegramClient('bmkgviewer', api_id, api_hash)
 
-with client:
-    channel = client.get_entity(channel_username)
-    messages = client.iter_messages(channel, limit=500)  # Adjust limit as needed
+def fetch_messages():
+    try:
+        client.start()
+        channel = client.get_entity(channel_username)
+        messages = client.iter_messages(channel, limit=500)
 
-    data = []
-    for msg in messages:
-        if msg.text and keyword.lower() in msg.text.lower():
-            data.append({
+        filtered_data = [
+            {
                 'date': msg.date,
                 'sender_id': msg.sender_id,
                 'message': msg.text
-            })
+            }
+            for msg in messages
+            if msg.text and keyword.lower() in msg.text.lower()
+        ]
 
-# Save to CSV
-df = pd.DataFrame(data)
+        if filtered_data:
+            df = pd.DataFrame(filtered_data)
+            df.to_csv('daryono_messages.csv', index=False, encoding='utf-8')
+            print(f"Saved {len(filtered_data)} messages to CSV.")
+        else:
+            print("No matching messages found.")
+
+    except SessionPasswordNeededError:
+        print("Two-step verification required. Please provide your password.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+with client:
+    fetch_messages()
 st.dataframe(df)
-df.to_csv('daryono_messages.csv', index=False, encoding='utf-8')
