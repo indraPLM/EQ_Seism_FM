@@ -6,7 +6,7 @@ from streamlit_autorefresh import st_autorefresh
 
 # ========== USER CONFIGURATION ==========
 api_id = 22270251              # Replace with your numeric API ID
-api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'         # Replace with your API hash string
+api_hash = 44dc58cc1db11f47cf3de0f28d6a8786         # Replace with your API hash string
 channel_username = 'InaTEWS_BMKG'  # Telegram channel name (without @)
 session_name = 'bmkgviewer'     # Session name for login persistence
 
