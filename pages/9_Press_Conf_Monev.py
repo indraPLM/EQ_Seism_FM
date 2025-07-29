@@ -40,24 +40,6 @@ if st.button("Refresh Messages"):
 for msg in messages[-20:]:  # Show last 20 messages
     st.write(msg)
 
-
-import asyncio
-from telethon.sync import TelegramClient
-from telethon.errors import SessionPasswordNeededError
-import pandas as pd
-
-# Telegram API credentials
-api_id = 22270251
-api_hash = '44dc58cc1db11f47cf3de0f28d6a8786'
-keyword = "Dr. Daryono, S.Si, M.Si"
-channel_username = 'BMKGAlertViewer'
-
-# Create a new event loop
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-
-client = TelegramClient('bmkgviewer', api_id, api_hash, loop=loop)
-
 import asyncio
 import json
 import pandas as pd
