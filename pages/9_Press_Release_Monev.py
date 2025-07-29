@@ -34,7 +34,7 @@ try:
     filtered_df['No'] = filtered_df.index
 
     # 🎛 Select Display Columns
-    final_df = filtered_df[['No', 'Tanggal', 'Waktu', 'Press Release Message']]
+    final_df = filtered_df[['Tanggal', 'Waktu', 'Press Release Message']]
 
     # 📊 First Show in Interactive DataFrame
     st.subheader("🔍 Press Release InaTEWS Interactive View")
