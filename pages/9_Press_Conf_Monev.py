@@ -26,8 +26,11 @@ try:
 
     # ⏳ Filter Based on Time Input
     if time_start <= time_end:
-        start_dt = pd.to_datetime(time_start)
-        end_dt = pd.to_datetime(time_end)
+        # Convert input to timezone-aware datetime (assuming UTC in your CSV)
+        start_dt = pd.to_datetime(time_start).tz_localize('UTC')
+        end_dt = pd.to_datetime(time_end).tz_localize('UTC')
+
+        # Filter rows that fall within range
         filtered_df = df[(df['date'] >= start_dt) & (df['date'] <= end_dt)].copy()
 
         # 🔢 Add Sequential Numbering Starting from 1
