@@ -16,7 +16,9 @@ try:
     df['date'] = pd.to_datetime(df['date'])
 
     # ⏰ Format Columns
-    df['Tanggal Waktu'] = df['date'].dt.strftime('%d-%b-%y %H:%M:%S')
+    df['Tanggal'] = df['date'].dt.strftime('%d-%b-%y')  # e.g., 29-Jul-25
+    df['Waktu'] = df['date'].dt.strftime('%H:%M:%S')    # e.g., 17:34:00
+   
     df['Press Release Message'] = df['message']
 
     # 🧭 Filter by Time Range
@@ -30,7 +32,7 @@ try:
     filtered_df['No'] = filtered_df.index
 
     # 🎛 Select Display Columns
-    final_df = filtered_df[['No', 'Tanggal Waktu', 'Press Release Message']]
+    final_df = filtered_df[['No', 'Tanggal', 'Waktu', 'Press Release Message']]
 
     # 📊 First Show in Interactive DataFrame
     st.subheader("🔍 Press Release InaTEWS Interactive View")
