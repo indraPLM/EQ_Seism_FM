@@ -18,50 +18,43 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
-# 🌍 Page Config
-#st.set_page_config(page_title='Earthquake Dashboard - Directional Format', layout='wide', page_icon='🌋')
-
 # 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
 if uploaded_file:
     try:
-        df = pd.read_excel(uploaded_file)
+        # 📥 Read Excel
+        df = pd.read_excel(uploaded_file, header=0)
 
-        # 🧹 Rename columns for consistency
+        # 🧹 Rename known columns
         df.rename(columns={
-            "Azimuth": "AZIMUTH",
-            "RMS": "RMS",
-            "Latitude": "LAT_RAW",
-            "Longitude": "LON_RAW",
-            "Depth": "DEPTH",
+            "Latitude": "LAT_NUM",
+            "Longitude": "LON_NUM",
+            "Depth": "DEPTH_RAW",
+            "Magnitude": "MAG",
             "Event Type": "EVENT_TYPE",
-            "Remark": "REMARKS"
+            "Remark": "REMARK"
         }, inplace=True)
 
-        # 🧭 Parse directional coordinates from strings like "S 119.14781"
-        def parse_directional(coord_str):
-            match = re.match(r'([NSWE])\s*([\d\.]+)', str(coord_str).strip())
-            if match:
-                direction, value = match.groups()
-                value = float(value)
-                return -abs(value) if direction in ['S', 'W'] else abs(value)
-            return np.nan
+        # 🧭 Infer direction columns (assumes they follow LAT_NUM and LON_NUM)
+        lat_dir_col = df.columns[df.columns.get_loc("LAT_NUM") + 1]
+        lon_dir_col = df.columns[df.columns.get_loc("LON_NUM") + 1]
 
-        df['LAT'] = df['LAT_RAW'].apply(lambda x: float(x) if isinstance(x, (int, float)) else np.nan)
-        df['LON'] = df['LON_RAW'].apply(parse_directional)
+        # 🧭 Combine numeric + direction
+        df['LAT'] = df.apply(lambda row: -abs(row['LAT_NUM']) if str(row[lat_dir_col]).strip().upper() == 'S' else abs(row['LAT_NUM']), axis=1)
+        df['LON'] = df.apply(lambda row: -abs(row['LON_NUM']) if str(row[lon_dir_col]).strip().upper() == 'W' else abs(row['LON_NUM']), axis=1)
 
-        # 🧮 Parse depth from "22 km"
-        df['DEPTH'] = df['DEPTH'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+        # 🧮 Clean depth
+        df['DEPTH'] = df['DEPTH_RAW'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
 
-        # 🕒 Add dummy date column
+        # 🕒 Add dummy date
         df['DATE'] = pd.Timestamp.now()
 
-        # ✅ Filter safely
+        # ✅ Filter valid coordinates
         df_filtered = df[
-            df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
-            df['LON'].between(df['LON'].min(), df['LON'].max())
+            df['LAT'].between(-90, 90) &
+            df['LON'].between(-180, 180)
         ]
 
         # 📊 Display parsed data
