@@ -18,25 +18,19 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
-# 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
-# 📂 Show prompt if no file uploaded
-if not uploaded_file:
-    st.info("📂 Please upload an Excel file to begin.")
-else:
+# 🧠 Use session state to store processed data
+if uploaded_file and "df" not in st.session_state:
     try:
-        # 📥 Step 1: Load Excel
         df = pd.read_excel(uploaded_file, header=0)
 
-        # 📍 Step 2: Identify Latitude and Longitude direction columns
         lat_index = df.columns.get_loc("Latitude")
         lon_index = df.columns.get_loc("Longitude")
         lat_dir_col = df.columns[lat_index + 1]
         lon_dir_col = df.columns[lon_index + 1]
 
-        # 🧮 Step 3: Combine Latitude + Direction
         df["Latitude_Combined"] = df.apply(
             lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
         )
@@ -44,7 +38,6 @@ else:
             lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
         )
 
-        # 🔄 Step 4: Convert to signed float values
         def convert_coord(coord_str):
             try:
                 value, direction = coord_str.split()
@@ -55,21 +48,25 @@ else:
 
         df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
         df["LON"] = df["Longitude_Combined"].apply(convert_coord)
-
-        # 🧮 Step 5: Parse depth and timestamp
         df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
         df["DATE"] = pd.Timestamp.now()
         df.rename(columns={"Magnitude": "MAG"}, inplace=True)
 
-        # 🧹 Step 6: Filter valid coordinates
         df_filtered = df[df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
 
-        # ✅ Optional: Display filtered data
-        # st.subheader("📋 Filtered Earthquake Data")
-        # st.dataframe(df_filtered[["LAT", "LON", "MAG", "DEPTH"]])
+        # 🔒 Store in session state
+        st.session_state.df = df
+        st.session_state.df_filtered = df_filtered
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
+
+# ✅ Use cached data if already processed
+if "df_filtered" in st.session_state:
+    st.subheader("📋 Filtered Earthquake Data")
+    st.dataframe(st.session_state.df_filtered[["LAT", "LON", "MAG", "DEPTH"]])
+elif not uploaded_file:
+    st.info("📂 Please upload an Excel file to begin.")
 
 # 🧹 Filter Data
 #df_filtered = df[
