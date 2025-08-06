@@ -84,10 +84,10 @@ else:
 
 
 # 🧹 Filter Data
-df_filtered = df[
-    df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
-    df['LON'].between(df['LON'].min(), df['LON'].max())
-]
+#df_filtered = df[
+#    df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
+#    df['LON'].between(df['LON'].min(), df['LON'].max())
+#]
 
 # 🗺️ Folium Map Construction
 def depth_color(depth):
