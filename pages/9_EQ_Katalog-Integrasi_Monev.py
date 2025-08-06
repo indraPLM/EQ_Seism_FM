@@ -42,8 +42,8 @@ if uploaded_file:
         for col in ["LAT", "LON", "DEPTH", "MAG"]:
             df[col] = pd.to_numeric(df[col], errors='coerce')
 
-        st.subheader("📋 Parsed Earthquake Data")
-        st.dataframe(df)
+        #st.subheader("📋 Parsed Earthquake Data")
+        #st.dataframe(df)
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
