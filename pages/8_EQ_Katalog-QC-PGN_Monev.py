@@ -15,58 +15,66 @@ import folium
 from streamlit_folium import st_folium
 import requests
 
-# 🌍 Page Config
-st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
+# 🌋 Page Config
+st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌐')
 
+# 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
-# 🧠 Use session state to store processed data
-if uploaded_file and "df" not in st.session_state:
+# 🔁 Caching Function
+@st.cache_data
+def process_excel(file):
+    df = pd.read_excel(file, header=0)
+
+    # Rename and identify directional columns
+    df.rename(columns={"Magnitude": "MAG"}, inplace=True)
+    lat_index = df.columns.get_loc("Latitude")
+    lon_index = df.columns.get_loc("Longitude")
+    lat_dir_col = df.columns[lat_index + 1]
+    lon_dir_col = df.columns[lon_index + 1]
+
+    # Combine Latitude + Direction
+    df["Latitude_Combined"] = df.apply(
+        lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
+    )
+    df["Longitude_Combined"] = df.apply(
+        lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
+    )
+
+    # Convert directional coordinates
+    def convert_coord(coord_str):
+        try:
+            value, direction = coord_str.split()
+            value = float(value)
+            return -abs(value) if direction in ["S", "W"] else abs(value)
+        except:
+            return np.nan
+
+    df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
+    df["LON"] = df["Longitude_Combined"].apply(convert_coord)
+
+    # Clean depth and generate timestamp
+    df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
+    df["DATE"] = pd.Timestamp.now()
+
+    # Filter valid geolocation entries
+    df_filtered = df[df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
+    return df_filtered
+
+# 🧠 Process only when file is uploaded
+if uploaded_file:
     try:
-        df = pd.read_excel(uploaded_file, header=0)
+        df_filtered = process_excel(uploaded_file)
 
-        lat_index = df.columns.get_loc("Latitude")
-        lon_index = df.columns.get_loc("Longitude")
-        lat_dir_col = df.columns[lat_index + 1]
-        lon_dir_col = df.columns[lon_index + 1]
-
-        df["Latitude_Combined"] = df.apply(
-            lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
-        )
-        df["Longitude_Combined"] = df.apply(
-            lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
-        )
-
-        def convert_coord(coord_str):
-            try:
-                value, direction = coord_str.split()
-                value = float(value)
-                return -abs(value) if direction in ["S", "W"] else abs(value)
-            except:
-                return np.nan
-
-        df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
-        df["LON"] = df["Longitude_Combined"].apply(convert_coord)
-        df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
-        df["DATE"] = pd.Timestamp.now()
-        df.rename(columns={"Magnitude": "MAG"}, inplace=True)
-
-        df_filtered = df[df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
-
-        # 🔒 Store in session state
-        st.session_state.df = df
-        st.session_state.df_filtered = df_filtered
+        # ✅ Display processed data
+        st.subheader("📋 Filtered Earthquake Data")
+        st.dataframe(df_filtered[["DATE", "LAT", "LON", "MAG", "DEPTH", "EVENT_TYPE", "REMARK"]])
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
-
-# ✅ Use cached data if already processed
-if "df_filtered" in st.session_state:
-    st.subheader("📋 Filtered Earthquake Data")
-    st.dataframe(st.session_state.df_filtered[["LAT", "LON", "MAG", "DEPTH"]])
-elif not uploaded_file:
-    st.info("📂 Please upload an Excel file to begin.")
+else:
+    st.info("📂 Please upload an Excel file to begin."
 
 # 🧹 Filter Data
 #df_filtered = df[
