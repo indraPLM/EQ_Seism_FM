@@ -27,9 +27,6 @@ if uploaded_file:
         # 📥 Step 1: Load Excel
         df = pd.read_excel(uploaded_file, header=0)
 
-        st.subheader("📄 Raw Uploaded Data")
-        st.dataframe(df)
-
         # 📍 Step 2: Identify Latitude and Longitude numeric + direction columns
         # Assumes Latitude is followed by a column with 'N' or 'S', and Longitude by 'E' or 'W'
         lat_index = df.columns.get_loc("Latitude")
@@ -46,9 +43,6 @@ if uploaded_file:
             lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
         )
 
-        st.subheader("🧭 Combined Latitude and Longitude")
-        st.dataframe(df[["Latitude_Combined", "Longitude_Combined"]])
-
         # 🔄 Step 4: Convert to signed float values
         def convert_coord(coord_str):
             try:
@@ -63,12 +57,13 @@ if uploaded_file:
         df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
         df["LON"] = df["Longitude_Combined"].apply(convert_coord)
 
-        st.subheader("🌐 Converted Coordinates")
-        st.dataframe(df[["LAT", "LON"]])
-
         # ✅ Step 5: Continue with rest of script (e.g., depth parsing, filtering, mapping)
         df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
         df["DATE"] = pd.Timestamp.now()
+        df.rename(columns={"Magnitude": "MAG"}, inplace=True)
+        
+        st.subheader("🌐 Converted Coordinates")
+        st.dataframe(df[["LAT", "LON", "MAG","DEPTH"]])
 
         df_filtered = df[
             df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)
