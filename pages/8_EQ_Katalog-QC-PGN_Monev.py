@@ -24,47 +24,64 @@ uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
 if uploaded_file:
     try:
-        # 📥 Read Excel
+        # 📥 Step 1: Load Excel
         df = pd.read_excel(uploaded_file, header=0)
 
-        # 🧹 Rename known columns
-        df.rename(columns={
-            "Latitude": "LAT_NUM",
-            "Longitude": "LON_NUM",
-            "Depth": "DEPTH_RAW",
-            "Magnitude": "MAG",
-            "Event Type": "EVENT_TYPE",
-            "Remark": "REMARK"
-        }, inplace=True)
+        st.subheader("📄 Raw Uploaded Data")
+        st.dataframe(df)
 
-        # 🧭 Infer direction columns (assumes they follow LAT_NUM and LON_NUM)
-        lat_dir_col = df.columns[df.columns.get_loc("LAT_NUM") + 1]
-        lon_dir_col = df.columns[df.columns.get_loc("LON_NUM") + 1]
+        # 📍 Step 2: Identify Latitude and Longitude numeric + direction columns
+        # Assumes Latitude is followed by a column with 'N' or 'S', and Longitude by 'E' or 'W'
+        lat_index = df.columns.get_loc("Latitude")
+        lon_index = df.columns.get_loc("Longitude")
 
-        # 🧭 Combine numeric + direction
-        df['LAT'] = df.apply(lambda row: -abs(row['LAT_NUM']) if str(row[lat_dir_col]).strip().upper() == 'S' else abs(row['LAT_NUM']), axis=1)
-        df['LON'] = df.apply(lambda row: -abs(row['LON_NUM']) if str(row[lon_dir_col]).strip().upper() == 'W' else abs(row['LON_NUM']), axis=1)
+        lat_dir_col = df.columns[lat_index + 1]
+        lon_dir_col = df.columns[lon_index + 1]
 
-        # 🧮 Clean depth
-        df['DEPTH'] = df['DEPTH_RAW'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+        # 🧮 Step 3: Combine Latitude + Direction
+        df["Latitude_Combined"] = df.apply(
+            lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
+        )
+        df["Longitude_Combined"] = df.apply(
+            lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
+        )
 
-        # 🕒 Add dummy date
-        df['DATE'] = pd.Timestamp.now()
+        st.subheader("🧭 Combined Latitude and Longitude")
+        st.dataframe(df[["Latitude_Combined", "Longitude_Combined"]])
 
-        # ✅ Filter valid coordinates
+        # 🔄 Step 4: Convert to signed float values
+        def convert_coord(coord_str):
+            try:
+                parts = coord_str.split()
+                if len(parts) == 2:
+                    value = float(parts[0])
+                    direction = parts[1].upper()
+                    return -abs(value) if direction in ["S", "W"] else abs(value)
+            except:
+                return np.nan
+
+        df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
+        df["LON"] = df["Longitude_Combined"].apply(convert_coord)
+
+        st.subheader("🌐 Converted Coordinates")
+        st.dataframe(df[["LAT", "LON"]])
+
+        # ✅ Step 5: Continue with rest of script (e.g., depth parsing, filtering, mapping)
+        df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
+        df["DATE"] = pd.Timestamp.now()
+
         df_filtered = df[
-            df['LAT'].between(-90, 90) &
-            df['LON'].between(-180, 180)
+            df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)
         ]
 
-        # 📊 Display parsed data
-        st.subheader("📋 Parsed Earthquake Data")
+        st.subheader("📋 Filtered Earthquake Data")
         st.dataframe(df_filtered)
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
 else:
     st.info("📂 Please upload an Excel file to begin.")
+
 
 # 🧹 Filter Data
 df_filtered = df[
