@@ -20,7 +20,7 @@ st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='
 
 # 📤 Sidebar Upload
 st.sidebar.header("Upload Earthquake Data")
-format_option = st.sidebar.selectbox("Select Excel Format", ["Standard Format", "Directional Format"])
+format_option = st.sidebar.selectbox("Select Excel Format", ["Katalog Integrasi", "Katalog QC PGN"])
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
 # 📂 Load and Clean Data
