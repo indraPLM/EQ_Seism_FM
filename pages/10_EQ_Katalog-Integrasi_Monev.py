@@ -16,72 +16,39 @@ from streamlit_folium import st_folium
 import requests
 
 # 🌍 Page Config
-st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='🌋')
+st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout='wide', page_icon='🌋')
 
-# 📤 Sidebar Upload
+# 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
-format_option = st.sidebar.selectbox("Select Excel Format", ["Katalog Integrasi", "Katalog QC PGN"])
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
-# 📂 Load and Clean Data
 if uploaded_file:
     try:
         df = pd.read_excel(uploaded_file)
 
-        if format_option == "Standard Format":
-            df.rename(columns={
-                "No": "NO",
-                "Date": "DATE",
-                "Time": "TIME",
-                "Lat (deg)": "LAT",
-                "Long (deg)": "LON",
-                "Depth (km)": "DEPTH",
-                "Mag": "MAG",
-                "Remarks": "REMARKS"
-            }, inplace=True)
+        df.rename(columns={
+            "No": "NO",
+            "Date": "DATE",
+            "Time": "TIME",
+            "Lat (deg)": "LAT",
+            "Long (deg)": "LON",
+            "Depth (km)": "DEPTH",
+            "Mag": "MAG",
+            "Remarks": "REMARKS"
+        }, inplace=True)
 
-            df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
+        df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
 
-            for col in ["LAT", "LON", "DEPTH", "MAG"]:
-                df[col] = pd.to_numeric(df[col], errors='coerce')
+        for col in ["LAT", "LON", "DEPTH", "MAG"]:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
 
-        else:
-            df.rename(columns={
-                "Magnitude": "MAG",
-                "Latitude": "LAT",
-                "Longitude": "LON",
-                "Depth": "DEPTH",
-                "Remark": "REMARKS"
-            }, inplace=True)
-
-            # Infer directional columns if unnamed
-            lat_index = df.columns.get_loc("LAT")
-            lon_index = df.columns.get_loc("LON")
-            if "LatDir" not in df.columns:
-                df.insert(lat_index + 1, "LatDir", df.iloc[:, lat_index + 1])
-            if "LonDir" not in df.columns:
-                df.insert(lon_index + 1, "LonDir", df.iloc[:, lon_index + 1])
-
-            def apply_direction(value, direction):
-                try:
-                    num = float(value)
-                    return -abs(num) if str(direction).strip().upper() in ['S', 'W'] else abs(num)
-                except:
-                    return np.nan
-
-            df['LAT'] = df.apply(lambda row: apply_direction(row['LAT'], row['LatDir']), axis=1)
-            df['LON'] = df.apply(lambda row: apply_direction(row['LON'], row['LonDir']), axis=1)
-
-            df['DEPTH'] = df['DEPTH'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
-            df['MAG'] = pd.to_numeric(df['MAG'], errors='coerce')
-            df['DATE'] = pd.Timestamp.now()
+        st.subheader("📋 Parsed Earthquake Data")
+        st.dataframe(df)
 
     except Exception as e:
-        st.error(f"❌ Failed to read Excel file: {e}")
-        st.stop()
+        st.error(f"❌ Failed to process file: {e}")
 else:
-    st.warning("📂 Please upload an Excel file to proceed.")
-    st.stop()
+    st.info("📂 Please upload an Excel file to begin.")
 
 # 🧹 Filter Data
 df_filtered = df[
