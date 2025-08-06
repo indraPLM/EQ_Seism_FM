@@ -55,8 +55,8 @@ if uploaded_file:
         df['DATE'] = pd.Timestamp.now()
 
         # 📊 Display parsed data
-        st.subheader("📋 Parsed Earthquake Data")
-        st.dataframe(df)
+        #st.subheader("📋 Parsed Earthquake Data")
+        #st.dataframe(df)
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
