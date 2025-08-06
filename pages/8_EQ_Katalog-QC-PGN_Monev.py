@@ -18,6 +18,9 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
+# 🌍 Page Config
+#st.set_page_config(page_title='Earthquake Dashboard - Directional Format', layout='wide', page_icon='🌋')
+
 # 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
@@ -30,33 +33,40 @@ if uploaded_file:
         df.rename(columns={
             "Azimuth": "AZIMUTH",
             "RMS": "RMS",
-            "Latitude": "LATITUDE",
-            "Longitude": "LONGITUDE",
+            "Latitude": "LAT_RAW",
+            "Longitude": "LON_RAW",
             "Depth": "DEPTH",
             "Event Type": "EVENT_TYPE",
             "Remark": "REMARKS"
         }, inplace=True)
 
-        # 🧭 Parse directional coordinates
-        def parse_coord(coord_str):
+        # 🧭 Parse directional coordinates from strings like "S 119.14781"
+        def parse_directional(coord_str):
             match = re.match(r'([NSWE])\s*([\d\.]+)', str(coord_str).strip())
             if match:
                 direction, value = match.groups()
                 value = float(value)
-                if direction in ['S', 'W']:
-                    return -abs(value)
-                else:
-                    return abs(value)
+                return -abs(value) if direction in ['S', 'W'] else abs(value)
             return np.nan
 
-        df['LAT'] = df['LATITUDE'].apply(lambda x: float(x) if isinstance(x, (int, float)) else np.nan)
-        df['LON'] = df['LONGITUDE'].apply(parse_coord)
+        df['LAT'] = df['LAT_RAW'].apply(lambda x: float(x) if isinstance(x, (int, float)) else np.nan)
+        df['LON'] = df['LON_RAW'].apply(parse_directional)
+
+        # 🧮 Parse depth from "22 km"
         df['DEPTH'] = df['DEPTH'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+
+        # 🕒 Add dummy date column
         df['DATE'] = pd.Timestamp.now()
 
+        # ✅ Filter safely
+        df_filtered = df[
+            df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
+            df['LON'].between(df['LON'].min(), df['LON'].max())
+        ]
+
         # 📊 Display parsed data
-        #st.subheader("📋 Parsed Earthquake Data")
-        #st.dataframe(df)
+        st.subheader("📋 Parsed Earthquake Data")
+        st.dataframe(df_filtered)
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
