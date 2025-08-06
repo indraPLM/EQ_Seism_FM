@@ -62,15 +62,15 @@ if uploaded_file:
         df["DATE"] = pd.Timestamp.now()
         df.rename(columns={"Magnitude": "MAG"}, inplace=True)
         
-        st.subheader("🌐 Converted Coordinates")
-        st.dataframe(df[["LAT", "LON", "MAG","DEPTH"]])
+        #st.subheader("🌐 Converted Coordinates")
+        #st.dataframe(df[["LAT", "LON", "MAG","DEPTH"]])
 
         df_filtered = df[
             df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)
         ]
 
-        st.subheader("📋 Filtered Earthquake Data")
-        st.dataframe(df_filtered)
+        #st.subheader("📋 Filtered Earthquake Data")
+        #st.dataframe(df_filtered)
 
     except Exception as e:
         st.error(f"❌ Failed to process file: {e}")
