@@ -16,7 +16,7 @@ from streamlit_folium import st_folium
 import requests
 
 # 🌍 Page Config
-st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout='wide', page_icon='🌋')
+st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
 # 📤 Upload Excel File
 st.sidebar.header("Upload Earthquake Data")
@@ -26,22 +26,35 @@ if uploaded_file:
     try:
         df = pd.read_excel(uploaded_file)
 
+        # 🧹 Rename columns for consistency
         df.rename(columns={
-            "No": "NO",
-            "Date": "DATE",
-            "Time": "TIME",
-            "Lat (deg)": "LAT",
-            "Long (deg)": "LON",
-            "Depth (km)": "DEPTH",
-            "Mag": "MAG",
-            "Remarks": "REMARKS"
+            "Azimuth": "AZIMUTH",
+            "RMS": "RMS",
+            "Latitude": "LATITUDE",
+            "Longitude": "LONGITUDE",
+            "Depth": "DEPTH",
+            "Event Type": "EVENT_TYPE",
+            "Remark": "REMARKS"
         }, inplace=True)
 
-        df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
+        # 🧭 Parse directional coordinates
+        def parse_coord(coord_str):
+            match = re.match(r'([NSWE])\s*([\d\.]+)', str(coord_str).strip())
+            if match:
+                direction, value = match.groups()
+                value = float(value)
+                if direction in ['S', 'W']:
+                    return -abs(value)
+                else:
+                    return abs(value)
+            return np.nan
 
-        for col in ["LAT", "LON", "DEPTH", "MAG"]:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
+        df['LAT'] = df['LATITUDE'].apply(lambda x: float(x) if isinstance(x, (int, float)) else np.nan)
+        df['LON'] = df['LONGITUDE'].apply(parse_coord)
+        df['DEPTH'] = df['DEPTH'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+        df['DATE'] = pd.Timestamp.now()
 
+        # 📊 Display parsed data
         st.subheader("📋 Parsed Earthquake Data")
         st.dataframe(df)
 
