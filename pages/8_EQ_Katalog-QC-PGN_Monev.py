@@ -19,7 +19,7 @@ import requests
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
 # 📄 Manually specify Excel file path
-excel_path = "./fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"  # 🔧 Update this path as needed
+excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"  # 🔧 Update this path as needed
 
 try:
     # 📥 Step 1: Load Excel
