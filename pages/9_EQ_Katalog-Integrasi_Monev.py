@@ -18,37 +18,21 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout='wide', page_icon='🌋')
 
-# 📤 Upload Excel File
-st.sidebar.header("Upload Earthquake Data")
-uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
+st.sidebar.subheader("🕒 Select Date Range")
+# 📅 Use date_input for better UX
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 
-if uploaded_file:
-    try:
-        df = pd.read_excel(uploaded_file)
+# 📄 Load Excel file
+excel_path = "./pages/fileINTEGRASI/Katalog gempa Indonesia_Jan_Juli_2025_integrasi_2025.xlsx"
+df = pd.read_excel(excel_path)
 
-        df.rename(columns={
-            "No": "NO",
-            "Date": "DATE",
-            "Time": "TIME",
-            "Lat (deg)": "LAT",
-            "Long (deg)": "LON",
-            "Depth (km)": "DEPTH",
-            "Mag": "MAG",
-            "Remarks": "REMARKS"
-        }, inplace=True)
+df.rename(columns={"No": "NO","Date": "DATE","Time": "TIME","Lat (deg)": "LAT","Long (deg)": "LON",
+                   "Depth (km)": "DEPTH","Mag": "MAG", "Remarks": "REMARKS"}, inplace=True)
 
-        df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
-
-        for col in ["LAT", "LON", "DEPTH", "MAG"]:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-
-        #st.subheader("📋 Parsed Earthquake Data")
-        #st.dataframe(df)
-
-    except Exception as e:
-        st.error(f"❌ Failed to process file: {e}")
-else:
-    st.info("📂 Please upload an Excel file to begin.")
+df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
+for col in ["LAT", "LON", "DEPTH", "MAG"]:
+    df[col] = pd.to_numeric(df[col], errors='coerce')
 
 # 🧹 Filter Data
 df_filtered = df[
