@@ -18,62 +18,56 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 st.sidebar.subheader("🕒 Select Date Range")
-start_time = st.sidebar.text_input("Start Time", "2025-07-01")
-end_time = st.sidebar.text_input("End Time", "2025-07-31")
+# 📅 Use date_input for better UX
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 
-# 📄 Manually specify Excel file path
-excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"  # 🔧 Update this path as needed
-# 📥 Step 1: Load Excel
-df = pd.read_excel(excel_path, header=0)
+# 📄 Load Excel file
+excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"
+df = pd.read_excel(excel_path)
 
-# 📍 Step 2: Identify Latitude and Longitude numeric + direction columns
+# 📍 Combine Latitude and Longitude with direction
 lat_index = df.columns.get_loc("Latitude")
 lon_index = df.columns.get_loc("Longitude")
-
 lat_dir_col = df.columns[lat_index + 1]
 lon_dir_col = df.columns[lon_index + 1]
 
-# 🧮 Step 3: Combine Latitude + Direction
 df["Latitude_Combined"] = df.apply(lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1)
 df["Longitude_Combined"] = df.apply(lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1)
 
-# 🔄 Step 4: Convert to signed float values
 def convert_coord(coord_str):
     try:
-        parts = coord_str.split()
-        if len(parts) == 2:
-            value = float(parts[0])
-            direction = parts[1].upper()
-            return -abs(value) if direction in ["S", "W"] else abs(value)
+        value, direction = coord_str.split()
+        value = float(value)
+        return -abs(value) if direction in ["S", "W"] else abs(value)
     except:
         return np.nan
 
 df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
 df["LON"] = df["Longitude_Combined"].apply(convert_coord)
 
-# 📅 Step 5: Parse date column
-if "Date" in df.columns:
-    df["DATE"] = pd.to_datetime(df["Date"], errors="coerce")
+# 📅 Parse date column
+if "Tanggal" in df.columns:
+    df["DATE"] = pd.to_datetime(df["Tanggal"], errors="coerce")
 else:
-    st.warning("⚠️ 'Date' column not found. Using current timestamp instead.")
+    st.warning("⚠️ 'Tanggal' column not found. Using current timestamp instead.")
     df["DATE"] = pd.Timestamp.now()
 
-# 📊 Step 6: Parse depth and magnitude
+# 📊 Parse depth and magnitude
 df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
 df.rename(columns={"Magnitude": "MAG"}, inplace=True)
 
-# 🧹 Step 8: Filter by date and valid coordinates
-df_filtered = df[(df["DATE"].dt.date >= start_time) & (df["DATE"].dt.date <= end_time) &
-    df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
+# 🧹 Filter by date and valid coordinates
+df_filtered = df[
+    (df["DATE"].dt.date >= start_date) &
+    (df["DATE"].dt.date <= end_date) &
+    df["LAT"].between(-90, 90) &
+    df["LON"].between(-180, 180)
+]
 
+# 📋 Display filtered data
 st.subheader("📋 Filtered Earthquake Data")
-st.dataframe(df_filtered[["DATE", "LAT", "LON", "MAG", "DEPTH"]])
-
-# 🧹 Filter Data
-#df_filtered = df[
-#    df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
-#    df['LON'].between(df['LON'].min(), df['LON'].max())
-#]
+st.dataframe(df_filtered[["DATE", "Origin Time", "MAG", "DEPTH", "LAT", "LON", "Event Type", "Remark"]])
 
 # 🗺️ Folium Map Construction
 def depth_color(depth):
