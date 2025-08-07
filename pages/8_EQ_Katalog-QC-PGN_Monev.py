@@ -18,9 +18,8 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 st.sidebar.subheader("🕒 Select Date Range")
-start_date, end_date = st.sidebar.date_input("Filter by Date", value=(min_date, max_date), min_value=min_date, max_value=max_date
-    )
-
+start_time = st.sidebar.text_input("Start Time", "2025-07-01 00:00:00")
+end_time = st.sidebar.text_input("End Time", "2025-07-31 23:59:59")
 
 # 📄 Manually specify Excel file path
 excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"  # 🔧 Update this path as needed
