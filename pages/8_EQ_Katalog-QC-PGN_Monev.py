@@ -63,8 +63,8 @@ df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
 df.rename(columns={"Magnitude": "MAG"}, inplace=True)
 
 # 🧹 Step 8: Filter by date and valid coordinates
-    df_filtered = df[(df["DATE"].dt.date >= start_date) & (df["DATE"].dt.date <= end_date) &
-        df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
+df_filtered = df[(df["DATE"].dt.date >= start_date) & (df["DATE"].dt.date <= end_date) &
+    df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)]
 
 st.subheader("📋 Filtered Earthquake Data")
 st.dataframe(df_filtered[["DATE", "LAT", "LON", "MAG", "DEPTH"]])
