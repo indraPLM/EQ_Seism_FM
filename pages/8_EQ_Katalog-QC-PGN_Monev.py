@@ -18,65 +18,75 @@ import requests
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 
-# 📤 Upload Excel File
-st.sidebar.header("Upload Earthquake Data")
-uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
+# 📄 Manually specify Excel file path
+excel_path = "./fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"  # 🔧 Update this path as needed
 
-if uploaded_file:
-    try:
-        # 📥 Step 1: Load Excel
-        df = pd.read_excel(uploaded_file, header=0)
+try:
+    # 📥 Step 1: Load Excel
+    df = pd.read_excel(excel_path, header=0)
 
-        # 📍 Step 2: Identify Latitude and Longitude numeric + direction columns
-        # Assumes Latitude is followed by a column with 'N' or 'S', and Longitude by 'E' or 'W'
-        lat_index = df.columns.get_loc("Latitude")
-        lon_index = df.columns.get_loc("Longitude")
+    # 📍 Step 2: Identify Latitude and Longitude numeric + direction columns
+    lat_index = df.columns.get_loc("Latitude")
+    lon_index = df.columns.get_loc("Longitude")
 
-        lat_dir_col = df.columns[lat_index + 1]
-        lon_dir_col = df.columns[lon_index + 1]
+    lat_dir_col = df.columns[lat_index + 1]
+    lon_dir_col = df.columns[lon_index + 1]
 
-        # 🧮 Step 3: Combine Latitude + Direction
-        df["Latitude_Combined"] = df.apply(
-            lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
-        )
-        df["Longitude_Combined"] = df.apply(
-            lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
-        )
+    # 🧮 Step 3: Combine Latitude + Direction
+    df["Latitude_Combined"] = df.apply(
+        lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
+    )
+    df["Longitude_Combined"] = df.apply(
+        lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
+    )
 
-        # 🔄 Step 4: Convert to signed float values
-        def convert_coord(coord_str):
-            try:
-                parts = coord_str.split()
-                if len(parts) == 2:
-                    value = float(parts[0])
-                    direction = parts[1].upper()
-                    return -abs(value) if direction in ["S", "W"] else abs(value)
-            except:
-                return np.nan
+    # 🔄 Step 4: Convert to signed float values
+    def convert_coord(coord_str):
+        try:
+            parts = coord_str.split()
+            if len(parts) == 2:
+                value = float(parts[0])
+                direction = parts[1].upper()
+                return -abs(value) if direction in ["S", "W"] else abs(value)
+        except:
+            return np.nan
 
-        df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
-        df["LON"] = df["Longitude_Combined"].apply(convert_coord)
+    df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
+    df["LON"] = df["Longitude_Combined"].apply(convert_coord)
 
-        # ✅ Step 5: Continue with rest of script (e.g., depth parsing, filtering, mapping)
-        df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
+    # 📅 Step 5: Parse date column
+    if "Date" in df.columns:
+        df["DATE"] = pd.to_datetime(df["Date"], errors="coerce")
+    else:
+        st.warning("⚠️ 'Date' column not found. Using current timestamp instead.")
         df["DATE"] = pd.Timestamp.now()
-        df.rename(columns={"Magnitude": "MAG"}, inplace=True)
-        
-        #st.subheader("🌐 Converted Coordinates")
-        #st.dataframe(df[["LAT", "LON", "MAG","DEPTH"]])
 
-        df_filtered = df[
-            df["LAT"].between(-90, 90) & df["LON"].between(-180, 180)
-        ]
+    # 📊 Step 6: Parse depth and magnitude
+    df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
+    df.rename(columns={"Magnitude": "MAG"}, inplace=True)
 
-        #st.subheader("📋 Filtered Earthquake Data")
-        #st.dataframe(df_filtered)
+    # 📆 Step 7: Date range input
+    min_date = df["DATE"].min().date()
+    max_date = df["DATE"].max().date()
 
-    except Exception as e:
-        st.error(f"❌ Failed to process file: {e}")
-else:
-    st.info("📂 Please upload an Excel file to begin.")
+    st.sidebar.subheader("🕒 Select Date Range")
+    start_date, end_date = st.sidebar.date_input(
+        "Filter by Date", value=(min_date, max_date), min_value=min_date, max_value=max_date
+    )
 
+    # 🧹 Step 8: Filter by date and valid coordinates
+    df_filtered = df[
+        (df["DATE"].dt.date >= start_date) &
+        (df["DATE"].dt.date <= end_date) &
+        df["LAT"].between(-90, 90) &
+        df["LON"].between(-180, 180)
+    ]
+
+    st.subheader("📋 Filtered Earthquake Data")
+    st.dataframe(df_filtered[["DATE", "LAT", "LON", "MAG", "DEPTH"]])
+
+except Exception as e:
+    st.error(f"❌ Failed to process file: {e}")
 
 # 🧹 Filter Data
 #df_filtered = df[
