@@ -66,8 +66,8 @@ df_filtered = df[
 ]
 
 # 📋 Display filtered data
-st.subheader("📋 Filtered Earthquake Data")
-st.dataframe(df_filtered[["DATE", "Origin Time", "MAG", "DEPTH", "LAT", "LON", "Event Type", "Remark"]])
+#st.subheader("📋 Filtered Earthquake Data")
+#st.dataframe(df_filtered[["DATE", "Origin Time", "MAG", "DEPTH", "LAT", "LON", "Event Type", "Remark"]])
 
 # 🗺️ Folium Map Construction
 def depth_color(depth):
