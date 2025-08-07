@@ -24,7 +24,7 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
 end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/Katalog gempa Indonesia_Jan_Juli_2025_integrasi_2025.xlsx"
+excel_path = "./pages/fileINTEGRASI/Katalog_integrasi_Juli_2025.xlsx"
 df = pd.read_excel(excel_path)
 
 df.rename(columns={"No": "NO","Date": "DATE","Time": "TIME","Lat (deg)": "LAT","Long (deg)": "LON",
