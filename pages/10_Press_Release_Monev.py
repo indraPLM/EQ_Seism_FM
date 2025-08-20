@@ -65,7 +65,7 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
     return df
     
 df = build_narasi_dataframe(df, time_col="time_narasi")
-filtered_df = df[(df['timesent'] >= start_dt) & (df['timesent'] <= end_dt)].copy()
+filtered_df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)].copy()
 # 📈 Message Count
 st.markdown(f"### 📈 Total Messages: **{len(filtered_df)}** between `{time_start}` and `{time_end}`")
 
