@@ -36,16 +36,12 @@ timesent  = extract_text('timesent')
 # --- Build DataFrame with Validated Parsing ---
 df = pd.DataFrame({'timesent': [parse_timesent(ts) for ts in timesent]})
 
-
 def convert_datetime_column(df, source_col, target_col):
-    def format_dt(dt_str):
-        try:
-            dt = datetime.strptime(dt_str.strip(), "%Y-%m-%d %H:%M:%S")
-            return dt.strftime("%Y%m%d%H%M%S")
-        except Exception:
-            return None  # or dt_str if you prefer fallback
-    df[target_col] = df[source_col].apply(format_dt)
+    df[target_col] = df[source_col].apply(
+        lambda x: x.strftime("%Y%m%d%H%M%S") if pd.notnull(x) else None
+    )
     return df
+    
 df = convert_datetime_column(df, "timesent", "time_narasi")
 st.table(df)
 
