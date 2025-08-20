@@ -50,14 +50,22 @@ def fetch_narasi_text(time_narasi):
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         return response.text.strip()
-    except Exception as e:
-        return None  # or str(e) if you want to log errors
+    except Exception:
+        return None  # or log error if needed
+
+def html_to_text(html_content):
+    if html_content:
+        soup = BeautifulSoup(html_content, "html.parser")
+        return soup.get_text(separator="\n", strip=True)
+    return None
 
 def build_narasi_dataframe(df, time_col="time_narasi"):
-    df["narasi_text"] = df[time_col].apply(fetch_narasi_text)
+    df["narasi_html"] = df[time_col].apply(fetch_narasi_text)
+    df["narasi_text"] = df["narasi_html"].apply(html_to_text)
     return df
+    
 df = build_narasi_dataframe(df, time_col="time_narasi")
-st.dataframe(df[["timesent", "time_narasi", "narasi_text"]])
+st.dataframe(df[["timesent", "time_narasi", "narasi_html","narasi_text"]])
 
 
 # 📂 Load Data
