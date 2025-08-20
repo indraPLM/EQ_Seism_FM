@@ -43,7 +43,7 @@ def convert_datetime_column(df, source_col, target_col):
     return df
     
 df = convert_datetime_column(df, "timesent", "time_narasi")
-st.table(df)
+#st.table(df)
 def fetch_narasi_text(time_narasi):
     url = f"https://bmkg-content-inatews.storage.googleapis.com/{time_narasi}_narasi.txt"
     try:
@@ -65,7 +65,7 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
     return df
     
 df = build_narasi_dataframe(df, time_col="time_narasi")
-st.dataframe(df[["timesent", "time_narasi", "narasi_html","narasi_text"]])
+st.table(df[["timesent", "time_narasi", "narasi_text"]])
 
 
 # 📂 Load Data
