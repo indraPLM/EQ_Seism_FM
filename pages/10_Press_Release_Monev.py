@@ -72,13 +72,18 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
     return df
     
 df = build_narasi_dataframe(df, time_col="time_narasi")
+df['timesent'] = pd.to_datetime(df['timesent'], errors='coerce')
+df = df[df['timesent'].notna()]  # Drop rows with NaT
+
 #df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
+df_filtered = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
+
 # 📈 Message Count
-st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and `{time_end}`")
+st.markdown(f"### 📈 Total Messages: **{len(df_filtered)}** between `{time_start}` and `{time_end}`")
 
 # 🧾 Styled Table View
 st.subheader("🧾 Press Release InaTEWS Table View")
-st.table(df[["timesent", "narasi_text"]])
+st.table(df_filtered[["timesent", "narasi_text"]])
 
 
 # 📂 Load Data
