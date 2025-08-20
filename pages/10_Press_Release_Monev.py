@@ -104,7 +104,7 @@ def generate_pdf(df):
     buffer.seek(0)
     return buffer
 
-pdf_data = generate_pdf(final_df)
+pdf_data = generate_pdf(df)
 st.download_button(
     label="📄 Download Press Releases as PDF",
     data=pdf_data,
