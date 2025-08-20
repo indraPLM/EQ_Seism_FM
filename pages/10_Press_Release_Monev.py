@@ -13,8 +13,8 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start_str = st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00')
-time_end_str   = st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59')
+time_start_str = st.sidebar.text_input('Start DateTime:', '2025-07-01 00:00:00')
+time_end_str   = st.sidebar.text_input('End DateTime:', '2025-07-30 23:59:59')
 
 try:
     time_start = pd.to_datetime(time_start_str)
@@ -74,9 +74,9 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
 df = build_narasi_dataframe(df, time_col="time_narasi")
 df['timesent'] = pd.to_datetime(df['timesent'], errors='coerce')
 #df = df[df['timesent'].notna()]  # Drop rows with NaT
-#df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
+df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
 #df_filtered = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
-st.dataframe(df)
+#st.dataframe(df)
 # 📈 Message Count
 st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and `{time_end}`")
 
