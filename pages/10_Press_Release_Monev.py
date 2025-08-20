@@ -82,7 +82,10 @@ st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and 
 
 # 🧾 Styled Table View
 st.subheader("🧾 Press Release InaTEWS Table View")
-st.table(df[["timesent", "narasi_text"]])
+df_display=df[["timesent", "narasi_text"]]
+df_display.index = range(1, len(df_display) + 1)
+
+st.table(df_display])
 
 
 # 📤 PDF Export Function
@@ -104,7 +107,7 @@ def generate_pdf(df):
     buffer.seek(0)
     return buffer
 
-pdf_data = generate_pdf(df)
+pdf_data = generate_pdf(df_display)
 st.download_button(
     label="📄 Download Press Releases as PDF",
     data=pdf_data,
