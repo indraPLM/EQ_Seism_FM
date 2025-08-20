@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 from fpdf import FPDF
 from io import BytesIO
+import requests
+from bs4 import BeautifulSoup
+import folium
+from streamlit_folium import st_folium
+import datetime
 
 # 🌐 Page Config
 st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_icon='📰')
