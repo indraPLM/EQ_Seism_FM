@@ -65,13 +65,13 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
     return df
     
 df = build_narasi_dataframe(df, time_col="time_narasi")
-filtered_df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)].copy()
+df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
 # 📈 Message Count
-st.markdown(f"### 📈 Total Messages: **{len(filtered_df)}** between `{time_start}` and `{time_end}`")
+st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and `{time_end}`")
 
 # 🧾 Styled Table View
 st.subheader("🧾 Press Release InaTEWS Table View")
-st.table(filtered_df[["timesent", "narasi_text"]])
+st.table(df[["timesent", "narasi_text"]])
 
 
 # 📂 Load Data
