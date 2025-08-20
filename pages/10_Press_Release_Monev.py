@@ -85,7 +85,7 @@ st.subheader("🧾 Press Release InaTEWS Table View")
 df_display=df[["timesent", "narasi_text"]]
 df_display.index = range(1, len(df_display) + 1)
 
-st.table(df_display])
+st.table(df_display)
 
 
 # 📤 PDF Export Function
