@@ -74,7 +74,7 @@ def build_narasi_dataframe(df, time_col="time_narasi"):
 df = build_narasi_dataframe(df, time_col="time_narasi")
 df['timesent'] = pd.to_datetime(df['timesent'], errors='coerce')
 df = df[df['timesent'].notna()]  # Drop rows with NaT
-
+st.table(df)
 #df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
 df_filtered = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
 
