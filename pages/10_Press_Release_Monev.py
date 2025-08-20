@@ -58,7 +58,9 @@ df = pd.DataFrame({
 
 dates     = extract_text('date')
 times     = extract_text('time')
-
+df['date']=dates
+df['time']=times
+st.dataframe(df)
 
 
 # 📂 Load Data
