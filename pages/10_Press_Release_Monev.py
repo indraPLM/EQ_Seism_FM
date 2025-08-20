@@ -47,7 +47,7 @@ def convert_datetime_column(df, source_col, target_col):
     df[target_col] = df[source_col].apply(format_dt)
     return df
 df = convert_datetime_column(df, "timesent", "time_narasi")
-st.dataframe(df)
+st.table(df)
 
 # 📂 Load Data
 csv_file = "./pages/filePressConf/filtered_messages.csv"
