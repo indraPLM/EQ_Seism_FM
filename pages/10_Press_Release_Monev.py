@@ -44,6 +44,21 @@ def convert_datetime_column(df, source_col, target_col):
     
 df = convert_datetime_column(df, "timesent", "time_narasi")
 st.table(df)
+def fetch_narasi_text(time_narasi):
+    url = f"https://bmkg-content-inatews.storage.googleapis.com/{time_narasi}_narasi.txt"
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return response.text.strip()
+    except Exception as e:
+        return None  # or str(e) if you want to log errors
+
+def build_narasi_dataframe(df, time_col="time_narasi"):
+    df["narasi_text"] = df[time_col].apply(fetch_narasi_text)
+    return df
+df = build_narasi_dataframe(df, time_col="time_narasi")
+st.dataframe(df[["timesent", "time_narasi", "narasi_text"]])
+
 
 # 📂 Load Data
 csv_file = "./pages/filePressConf/filtered_messages.csv"
