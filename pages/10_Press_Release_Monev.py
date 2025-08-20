@@ -8,8 +8,58 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start = st.sidebar.text_input('Start Time (YYYY-MM-DD HH:MM:SS)', '2025-06-01 00:00:00')
-time_end = st.sidebar.text_input('End Time (YYYY-MM-DD HH:MM:SS)', '2025-06-30 23:59:59')
+time_start = st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00')
+time_end   = st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59')
+
+# --- Helper Functions ---
+def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
+
+def parse_date_time(date_str, time_str):
+    combo = f"{date_str.strip()} {time_str.strip().replace('WIB','').replace('UTC','')}"
+    for fmt in ["%d-%m-%y %H:%M:%S", "%d-%m-%Y %H:%M:%S", "%d-%b-%y %H:%M:%S"]:
+        try:
+            return pd.to_datetime(combo, format=fmt)
+        except ValueError:
+            continue
+    return pd.NaT
+
+
+def parse_timesent(ts):
+    ts = ts.strip().replace('WIB','').replace('UTC','')
+    for fmt in ["%d/%m/%Y %H:%M:%S", "%d-%b-%y %H:%M:%S", "%Y-%m-%d %H:%M:%S"]:
+        try: return pd.to_datetime(ts, format=fmt)
+        except: continue
+    return pd.NaT
+
+def convert_lat(lat): return -float(lat.replace('LS','').strip()) if 'LS' in lat else float(lat.replace('LU','').strip())
+def convert_lon(lon): return -float(lon.replace('BB','').strip()) if 'BB' in lon else float(lon.replace('BT','').strip())
+
+# --- Fetch and Parse XML ---
+url = 'https://bmkg-content-inatews.storage.googleapis.com/last30event.xml'
+soup = BeautifulSoup(requests.get(url).text, 'html')
+
+timesent  = extract_text('timesent')
+lats      = extract_text('latitude')
+lons      = extract_text('longitude')
+mags      = extract_text('magnitude')
+depths    = extract_text('depth')
+areas  = extract_text('area')
+
+# --- Build DataFrame with Validated Parsing ---
+df = pd.DataFrame({
+    'timesent': [parse_timesent(ts) for ts in timesent],
+    'lat': list(map(convert_lat, lats)),
+    'lon': list(map(convert_lon, lons)),
+    'Lat-Diss':lats,
+    'Lon-Diss':lons,
+    'mag': mags,
+    'depth': depths
+})
+
+dates     = extract_text('date')
+times     = extract_text('time')
+
+
 
 # 📂 Load Data
 csv_file = "./pages/filePressConf/filtered_messages.csv"
