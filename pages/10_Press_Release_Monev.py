@@ -82,7 +82,8 @@ st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and 
 st.subheader("🧾 Press Release InaTEWS Table View")
 df_display = df[["timesent", "narasi_text"]].copy()
 df_display.index = range(1, len(df_display) + 1)
-st.dataframe(df_display)
+#st.dataframe(df_display)
+st.table(df_display)
 
 # 📤 PDF Export Function
 def generate_pdf(df):
