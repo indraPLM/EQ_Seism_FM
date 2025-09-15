@@ -96,7 +96,14 @@ st.subheader("📋 Earthquake Catalog")
 df.index = range(1, len(df) + 1)
 st.dataframe(df)
 st.table(remarks)
+summary_df=df.copy()
+#columns = ['event_id','date_time','mode','status','phase','mag','type_mag',
+#                   'n_mag','azimuth','rms','lat','lon','depth','type_event','remarks']
 
+#summary_df.columns = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
+#                      'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+#summary_df.index = range(1, len(summary_df)+1)
+#st.dataframe(summary_df)
 
 # 🔢 Magnitude Classification
 def classify_mag(mag):
