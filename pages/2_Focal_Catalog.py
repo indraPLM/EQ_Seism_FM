@@ -99,6 +99,7 @@ summary_df.columns = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude',
                       'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
 summary_df.index = range(1, len(summary_df)+1)
 st.dataframe(summary_df)
+st.dataframe(df)
 
 # 📷 Generate Beachball Images
 def generate_beachballs(df, prefix="cmt"):
