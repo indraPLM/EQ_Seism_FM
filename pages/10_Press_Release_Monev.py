@@ -82,58 +82,11 @@ st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and 
 st.subheader("🧾 Press Release InaTEWS Table View")
 df_display = df[["timesent", "narasi_text"]].copy()
 df_display.index = range(1, len(df_display) + 1)
-#st.dataframe(df_display)
-#st.table(df_display)
+df_display.reset_index(inplace=True)
+df_display.rename(columns={"index": "No", "timesent": "Time Sent", "narasi_text": "Narasi Text"}, inplace=True)
 
-# Build styled HTML table with 3 columns
-styled_table = """
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.95rem;
-    }
-    th, td {
-        border: 1px solid #ccc;
-        padding: 6px 10px;
-        text-align: left;
-        vertical-align: top;
-    }
-    th {
-        background-color: #f0f0f0;
-    }
-    td:nth-child(1) { width: 8%; }   /* Index column */
-    td:nth-child(2) { width: 22%; }  /* Time Sent */
-    td:nth-child(3) { width: 70%; }  /* Narasi Text */
-</style>
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Time Sent</th>
-            <th>Narasi Text</th>
-        </tr>
-    </thead>
-    <tbody>
-"""
-
-# Populate rows
-for i, row in df_display.iterrows():
-    styled_table += f"""
-        <tr>
-            <td>{i}</td>
-            <td>{row['timesent']}</td>
-            <td>{row['narasi_text']}</td>
-        </tr>
-    """
-
-styled_table += """
-    </tbody>
-</table>
-"""
-
-# Render the styled table
-st.markdown(styled_table, unsafe_allow_html=True)
+# Display using st.table
+st.table(df_display)
 
 
 # 📤 PDF Export Function
