@@ -85,28 +85,26 @@ df_display.index = range(1, len(df_display) + 1)
 #st.dataframe(df_display)
 #st.table(df_display)
 
-# Convert to HTML with custom column widths
-styled_table = f"""
+# Build styled HTML table with 3 columns
+styled_table = """
 <style>
-    table {{
+    table {
         width: 100%;
         border-collapse: collapse;
-    }}
-    th, td {{
-        border: 1px solid #ddd;
-        padding: 8px;
+        font-size: 0.95rem;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 6px 10px;
         text-align: left;
         vertical-align: top;
-    }}
-    th {{
-        background-color: #f2f2f2;
-    }}
-    td:nth-child(1) {{
-        width: 20%;
-    }}
-    td:nth-child(2) {{
-        width: 80%;
-    }}
+    }
+    th {
+        background-color: #f0f0f0;
+    }
+    td:nth-child(1) { width: 8%; }   /* Index column */
+    td:nth-child(2) { width: 22%; }  /* Time Sent */
+    td:nth-child(3) { width: 70%; }  /* Narasi Text */
 </style>
 <table>
     <thead>
