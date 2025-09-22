@@ -83,7 +83,60 @@ st.subheader("🧾 Press Release InaTEWS Table View")
 df_display = df[["timesent", "narasi_text"]].copy()
 df_display.index = range(1, len(df_display) + 1)
 #st.dataframe(df_display)
-st.table(df_display)
+#st.table(df_display)
+
+# Convert to HTML with custom column widths
+styled_table = f"""
+<style>
+    table {{
+        width: 100%;
+        border-collapse: collapse;
+    }}
+    th, td {{
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }}
+    th {{
+        background-color: #f2f2f2;
+    }}
+    td:nth-child(1) {{
+        width: 20%;
+    }}
+    td:nth-child(2) {{
+        width: 80%;
+    }}
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Time Sent</th>
+            <th>Narasi Text</th>
+        </tr>
+    </thead>
+    <tbody>
+"""
+
+# Populate rows
+for i, row in df_display.iterrows():
+    styled_table += f"""
+        <tr>
+            <td>{i}</td>
+            <td>{row['timesent']}</td>
+            <td>{row['narasi_text']}</td>
+        </tr>
+    """
+
+styled_table += """
+    </tbody>
+</table>
+"""
+
+# Render the styled table
+st.markdown(styled_table, unsafe_allow_html=True)
+
 
 # 📤 PDF Export Function
 def generate_pdf(df):
