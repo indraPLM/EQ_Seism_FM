@@ -12,7 +12,6 @@ streamlit-folium==0.6.13
 cartopy>=0.21.1
 streamlit_pdf_viewer
 plotly>=5.18.0
-pygmt==0.10.0
 fpdf
 ipython
 pdfkit
