@@ -123,7 +123,7 @@ except Exception as e:
 
 folium.LayerControl(collapsed=False).add_to(m)
 
-st.subheader("🗺️ Interactive Seismic Map with Fault Lines")
+st.subheader(f"🗺️ Seismicities Map QC-PGN ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
 st_folium(m, width=1000, height=650)
 
 st.subheader("📋 Filtered Earthquake Events")
