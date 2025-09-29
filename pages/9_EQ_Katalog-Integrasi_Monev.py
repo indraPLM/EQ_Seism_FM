@@ -91,7 +91,7 @@ except Exception as e:
 
 folium.LayerControl(collapsed=False).add_to(m)
 
-st.subheader("🗺️ Seismicities Map (Catalog Integration) ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
+st.subheader("🗺️ Seismicities Map Catalog Integration ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
 
 st_folium(m, width=1000, height=650)
 
