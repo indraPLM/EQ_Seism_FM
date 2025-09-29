@@ -1,0 +1,15 @@
+2025/08/08 16:06:29.937422 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/08 16:06:29.939259 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-08-08 07:38:23,  Lat/Lon: -4.97°/34.97°, Depth: 5.00, Mag: 5.00 (mb)
+2025/08/08 16:06:29.939918 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.00 of event bmg2025pksh is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/08 16:06:30.130482 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-08 07:38:23,  Lat/Lon: -4.97007°/34.9689°, Depth: 5
+2025/08/08 16:06:30.130556 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.00 of event bmg2025pksh is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/08 16:06:30.148338 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-08 07:38:23,  Lat/Lon: -4.97007°/34.9689°, Depth: 5
+2025/08/08 16:06:30.148447 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.11 (M)
+2025/08/08 16:06:30.148502 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.11 of event bmg2025pksh is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/08 16:06:36.112871 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-08 07:38:23,  Lat/Lon: -4.97007°/34.9689°, Depth: 5
+2025/08/08 16:06:36.113051 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.00 (mb)
+2025/08/08 16:06:36.113117 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.00 of event bmg2025pksh is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/09 00:30:58.369339 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-08 07:38:25,  Lat/Lon: -4.93914°/35.0216°, Depth: 19.4845
+2025/08/09 00:30:58.369515 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.10 (M)
+2025/08/09 00:30:58.369561 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.10 of event bmg2025pksh is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/09 10:47:34.608005 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
