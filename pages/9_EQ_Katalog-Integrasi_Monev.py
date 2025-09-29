@@ -27,7 +27,7 @@ end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 excel_path = "./pages/fileINTEGRASI/data_integrasi_mei-sept_2025.xlsx"
 df = pd.read_excel(excel_path)
 
-df.rename(columns={"LAT": "LAT_FIX","LON": "LON_FIX",}, inplace=True)
+df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
 
 #df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
 #for col in ["LAT", "LON", "DEPTH", "MAG"]:
