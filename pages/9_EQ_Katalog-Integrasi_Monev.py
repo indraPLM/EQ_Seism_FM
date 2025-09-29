@@ -70,7 +70,7 @@ for _, row in df_filtered.iterrows():
             fill_color=depth_color(row['DEPTH']),
             fill_opacity=0.5,
             popup=folium.Popup(
-                f"<b>Date:</b> {row['DATE']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
+                f"<b>Date:</b> {row['DATETIME']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
                 max_width=250
             )
         ).add_to(m)
