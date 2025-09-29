@@ -28,12 +28,14 @@ excel_path = "./pages/fileINTEGRASI/catalog_integrasi_mei-sept_2025.xlsx"
 df = pd.read_excel(excel_path)
 df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
 
-st.dataframe(df)
 # 🧹 Filter Data
 df_filtered = df[
     df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
     df['LON'].between(df['LON'].min(), df['LON'].max())
 ]
+
+# 🔍 Filter by selected date range
+df_filtered = df[(df["DATETIME"] >= pd.to_datetime(start_date)) & (df["DATETIME"] <= pd.to_datetime(end_date))]
 
 # 🗺️ Folium Map Construction
 def depth_color(depth):
