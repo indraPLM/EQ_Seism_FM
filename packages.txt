@@ -1,9 +1,8 @@
 gmt
 gmt-common
 libnetcdf-dev
-gdal
+libgdal-dev
 proj-bin
 libgeos-dev
 libspatialindex-dev
 libgl1-mesa-glx
-
