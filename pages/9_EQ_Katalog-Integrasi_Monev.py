@@ -24,7 +24,7 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
 end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/data_integrasi_mei-sept_2025.xlsx"
+excel_path = "./pages/fileINTEGRASI/catalog_integrasi_mei-sept_2025.xlsx"
 df = pd.read_excel(excel_path)
 st.dataframe(df)
 df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
@@ -35,7 +35,7 @@ df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
 #df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
 #for col in ["LAT", "LON", "DEPTH", "MAG"]:
 #    df[col] = pd.to_numeric(df[col], errors='coerce')
-
+st.dataframe(df)
 # 🧹 Filter Data
 df_filtered = df[
     df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
