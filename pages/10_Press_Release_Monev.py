@@ -11,8 +11,8 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start_str = st.sidebar.text_input('Start DateTime:', '2025-07-01 00:00:00')
-time_end_str   = st.sidebar.text_input('End DateTime:', '2025-07-30 23:59:59')
+time_start_str = st.sidebar.text_input('Start DateTime:', '2025-08-01 00:00:00')
+time_end_str   = st.sidebar.text_input('End DateTime:', '2025-08-30 23:59:59')
 
 try:
     time_start = pd.to_datetime(time_start_str)
