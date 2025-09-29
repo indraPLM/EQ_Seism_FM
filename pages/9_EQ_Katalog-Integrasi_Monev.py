@@ -24,20 +24,20 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
 end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/Katalog_integrasi_Juli_2025.xlsx"
+excel_path = "./pages/fileINTEGRASI/data_integrasi_mei-sept_2025.xlsx"
 df = pd.read_excel(excel_path)
 
-df.rename(columns={"No": "NO","Date": "DATE","Time": "TIME","Lat (deg)": "LAT","Long (deg)": "LON",
-                   "Depth (km)": "DEPTH","Mag": "MAG", "Remarks": "REMARKS"}, inplace=True)
+#df.rename(columns={"Event ID": "EVENT_ID","DATETIME": "DATE","Time": "TIME","Lat (deg)": "LAT","Long (deg)": "LON",
+#                   "Depth (km)": "DEPTH","Mag": "MAG", "Remarks": "REMARKS"}, inplace=True)
 
-df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
-for col in ["LAT", "LON", "DEPTH", "MAG"]:
-    df[col] = pd.to_numeric(df[col], errors='coerce')
+#df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
+#for col in ["LAT", "LON", "DEPTH", "MAG"]:
+#    df[col] = pd.to_numeric(df[col], errors='coerce')
 
 # 🧹 Filter Data
 df_filtered = df[
-    df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
-    df['LON'].between(df['LON'].min(), df['LON'].max())
+    df['LAT_FIX'].between(df['LAT_FIX'].min(), df['LAT_FIX'].max()) &
+    df['LON_FIX'].between(df['LON_FIX'].min(), df['LON_FIX'].max())
 ]
 
 # 🗺️ Folium Map Construction
