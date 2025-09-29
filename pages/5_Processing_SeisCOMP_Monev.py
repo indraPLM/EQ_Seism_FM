@@ -10,8 +10,8 @@ st.set_page_config(page_title='Kecepatan Prosesing Gempabumi', layout='wide', pa
 st.sidebar.header("Input Parameter:")
 
 # --- Input Parameters ---
-time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00'))
-time_end   = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59'))
+time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-08-01 00:00:00'))
+time_end   = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-08-30 23:59:59'))
 North = float(st.sidebar.text_input('North:', '6.0'))
 South = float(st.sidebar.text_input('South:', '-13.0'))
 West  = float(st.sidebar.text_input('West:', '90.0'))
