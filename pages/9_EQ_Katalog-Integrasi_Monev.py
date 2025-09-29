@@ -20,8 +20,8 @@ st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout
 
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
-end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-08-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-08-31"))
 
 # 📄 Load Excel file
 excel_path = "./pages/fileINTEGRASI/catalog_integrasi_mei-sept_2025.xlsx"
@@ -92,11 +92,9 @@ except Exception as e:
 folium.LayerControl(collapsed=False).add_to(m)
 
 st.subheader(f"🗺️ Seismicities Map Catalog Integration ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
-
 st_folium(m, width=1000, height=650)
 
 st.subheader(f"📋 Filtered Earthquake Events ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
-
 df_filtered.index = range(1, len(df_filtered)+1)
 st.dataframe(df_filtered)
 
