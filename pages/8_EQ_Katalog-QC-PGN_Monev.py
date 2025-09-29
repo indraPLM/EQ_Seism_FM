@@ -23,7 +23,7 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-08-01"))
 end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-08-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"
+excel_path = "./pages/fileQC/Data_QC_Gempabumi_2025.xlsx"
 df = pd.read_excel(excel_path)
 
 # 📍 Combine Latitude and Longitude with direction
