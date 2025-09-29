@@ -19,8 +19,8 @@ import requests
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-07-01"))
-end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-07-31"))
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-08-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-08-31"))
 
 # 📄 Load Excel file
 excel_path = "./pages/fileQC/Data_QC_Gempabumi_Juli_2025.xlsx"
