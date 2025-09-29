@@ -1,0 +1,115 @@
+2025/08/17 10:18:02.031890 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/17 10:18:02.032375 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82°/126.74°, Depth: 69.38, Mag: 7.17 (Mw(mB))
+2025/08/17 10:18:02.038178 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.17 (MT)
+2025/08/17 10:18:02.040453 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/08/17 10:18:02.045918 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 2 matching scenarios
+2025/08/17 10:18:02.061658 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/08/17 10:18:02.065602 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.17 (MT)
+2025/08/17 10:18:02.067982 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/08/17 10:18:02.071974 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 2 matching scenarios
+2025/08/17 10:18:02.159129 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71002004N126128E7be35137f9682bbb41fd487bab17404f7c01677d
+2025/08/17 10:18:02.162474 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71002004N126128Ec682cc951617220f558dc29ad30696d187212ba6
+2025/08/17 10:18:02.175010 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71002004N126128E449eed89c1246874964d727646078e6a7f941a7e
+2025/08/17 10:18:02.177238 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71002004N126128E3f07585f1181a466d50f532afcf81111540943c5
+2025/08/17 10:18:22.067484 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71002004N126128E7be35137f9682bbb41fd487bab17404f7c01677d in 19 seconds
+2025/08/17 10:18:22.363768 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/08/17 10:18:22.364926 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.17 (MT)
+2025/08/17 10:18:22.366536 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/08/17 10:18:22.368612 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/08/17 10:18:22.372314 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 2 matching scenarios
+2025/08/17 10:19:23.086289 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71002004N126128Ec682cc951617220f558dc29ad30696d187212ba6 in 80 seconds
+2025/08/17 10:19:42.080341 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71002004N126128E449eed89c1246874964d727646078e6a7f941a7e in 99 seconds
+2025/08/17 10:20:42.560472 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/08/17 10:20:43.055771 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71002004N126128E3f07585f1181a466d50f532afcf81111540943c5 in 160 seconds
+2025/08/17 10:21:07.557747 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG NTWC template, NotFoundError:  
+2025/08/17 10:21:07.558242 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/08/17 10:21:38.367484 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/08/17 10:21:38.448811 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/08/17 10:21:38.532435 [Bulletin:Info:toast@toast-new:Script started] PID 3561442: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/08/24 10:04:39.650287 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/08/24 10:04:39.652091 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.29 (M)
+2025/08/24 10:04:39.653606 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.29 (MT)
+2025/08/24 10:04:39.654373 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/08/24 10:04:39.662539 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/08/24 10:04:39.810490 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72002004N126128E497b8dbd722a8c68d01228ceaf2ecbf0bce1d4a4
+2025/08/24 10:04:39.813380 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72002004N126128Eabb0e699564868a7f6deab2bd4b59d2eb55404e0
+2025/08/24 10:04:46.639382 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/08/24 10:04:46.639600 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.17 (Mw(mB))
+2025/08/24 10:04:46.640487 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.17 (MT)
+2025/08/24 10:04:46.640784 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/08/24 10:04:46.641364 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/08/24 10:04:46.645960 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 2 matching scenarios
+2025/08/24 10:05:00.046307 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72002004N126128E497b8dbd722a8c68d01228ceaf2ecbf0bce1d4a4 in 20 seconds
+2025/08/24 10:05:11.131611 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/08/24 10:05:11.131660 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG NTWC template, NotFoundError:  
+2025/08/24 10:06:02.045919 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72002004N126128Eabb0e699564868a7f6deab2bd4b59d2eb55404e0 in 82 seconds
+2025/08/24 10:06:28.683856 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/08/24 10:06:28.745099 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/08/24 10:06:28.800824 [Bulletin:Info:toast@toast-new:Script started] PID 1172419: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/09/01 09:59:11.124598 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/01 09:59:11.125687 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/09/01 09:59:11.127038 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.20 (MT)
+2025/09/01 09:59:11.127505 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/01 09:59:11.128046 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/01 09:59:11.131242 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/09/01 09:59:29.564661 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/09/01 10:00:54.607204 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/09/01 10:01:09.407798 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/09/01 10:01:09.481772 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/09/01 10:01:09.551399 [Bulletin:Info:toast@toast-new:Script started] PID 2333726: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/09/02 10:05:29.893890 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/02 10:05:29.894192 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.29 (M)
+2025/09/02 10:05:29.897375 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.29 (MT)
+2025/09/02 10:05:29.897634 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/02 10:05:29.898107 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/02 10:05:29.901162 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/09/02 10:05:33.237863 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/02 10:05:33.238301 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/09/02 10:05:33.241633 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.20 (MT)
+2025/09/02 10:05:33.242092 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/02 10:05:33.242689 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/02 10:05:33.247151 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/09/02 10:06:17.558027 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/09/02 10:06:41.476806 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/09/02 10:06:41.539464 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/09/02 10:06:41.590394 [Bulletin:Info:toast@toast-new:Script started] PID 2664567: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/09/03 10:23:46.555023 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/03 10:23:46.555590 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.47 (Mw(Mwp))
+2025/09/03 10:23:46.559311 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.47 (MT)
+2025/09/03 10:23:46.561234 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/03 10:23:46.571418 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 6 matching scenarios
+2025/09/03 10:23:46.704836 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74002004N126128E78781ccb67cb09731454b043e9548df3653bee64
+2025/09/03 10:23:46.712422 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 74002004N126128E33ca235f25e67a501619f154e320d74bb91676a7
+2025/09/03 10:23:48.439918 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/03 10:23:48.440581 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/09/03 10:23:48.445809 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.20 (MT)
+2025/09/03 10:23:48.448221 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/03 10:23:48.450758 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/03 10:23:48.453796 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/09/03 10:24:06.587889 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74002004N126128E78781ccb67cb09731454b043e9548df3653bee64 in 19 seconds
+2025/09/03 10:24:29.324216 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/09/03 10:24:29.399017 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/09/03 10:24:29.459426 [Bulletin:Info:toast@toast-new:Script started] PID 2998991: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/09/03 10:25:12.560332 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 74002004N126128E33ca235f25e67a501619f154e320d74bb91676a7 in 85 seconds
+2025/09/13 10:38:00.630205 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/13 10:38:00.631191 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.17 (Mw(mB))
+2025/09/13 10:38:00.632360 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.17 (MT)
+2025/09/13 10:38:00.632567 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/13 10:38:00.632855 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/13 10:38:00.635821 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 2 matching scenarios
+2025/09/13 10:38:19.555524 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG NTWC template, NotFoundError:  
+2025/09/13 10:38:19.556156 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/09/13 10:38:47.354709 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/09/13 10:38:47.442435 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/09/13 10:38:47.484322 [Bulletin:Info:toast@toast-new:Script started] PID 295794: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd
+2025/09/22 10:01:46.597794 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2009-02-11 17:34:55,  Lat/Lon: 3.82413°/126.745°, Depth: 69.3775
+2025/09/22 10:01:46.598536 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/09/22 10:01:46.602140 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 3.82°/ 126.74° (MT), Depth: 69.38km (MT), Mag: 7.20 (MT)
+2025/09/22 10:01:46.603083 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/09/22 10:01:46.603980 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/09/22 10:01:46.607729 [Simulation:Info:toast@toast-new:Simulation fished] TsunAWI: Found 4 matching scenarios
+2025/09/22 10:02:03.569118 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG NTWC template, NotFoundError:  
+2025/09/22 10:02:03.569283 [Bulletin:Error:toast@toast-new:Setup failed] Failed to initialize BMKG RTSP template, NotFoundError:  
+2025/09/22 10:02:23.093104 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/09/22 10:02:23.168068 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/09/22 10:02:23.221548 [Bulletin:Info:toast@toast-new:Script started] PID 832763: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2009cyfd

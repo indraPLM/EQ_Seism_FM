@@ -1,0 +1,13 @@
+2025/08/21 09:48:03.010759 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/21 09:48:03.013835 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-30 15:00:51,  Lat/Lon: 50.53°/157.82°, Depth: 63.66, Mag: 5.33 (mb)
+2025/08/21 09:48:03.014464 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.33 of event bmg2025ouvj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/21 09:48:03.034864 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-30 15:00:51,  Lat/Lon: 50.5344°/157.817°, Depth: 63.6615
+2025/08/21 09:48:03.035010 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.33 of event bmg2025ouvj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/21 09:48:03.052382 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-30 15:00:51,  Lat/Lon: 50.5344°/157.817°, Depth: 63.6615
+2025/08/21 09:48:03.052492 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.39 (M)
+2025/08/21 09:48:03.052543 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.39 of event bmg2025ouvj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/21 09:48:12.625978 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-30 15:00:51,  Lat/Lon: 50.5344°/157.817°, Depth: 63.6615
+2025/08/21 09:48:12.626164 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.39 of event bmg2025ouvj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/21 09:48:12.648136 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-30 15:00:51,  Lat/Lon: 50.5344°/157.817°, Depth: 63.6615
+2025/08/21 09:48:12.648240 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.33 (mb)
+2025/08/21 09:48:12.648284 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.33 of event bmg2025ouvj is smaller than triggerMinMagnitude: no automatic simulation

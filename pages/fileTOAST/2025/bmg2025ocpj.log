@@ -1,0 +1,14 @@
+2025/08/01 15:57:36.981931 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/01 15:57:36.993348 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-20 15:32:23,  Lat/Lon: 52.61°/161.17°, Depth: 5.00, Mag: 5.49 (mb)
+2025/08/01 15:57:36.993997 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.49 of event bmg2025ocpj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 15:57:37.015418 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-20 15:32:23,  Lat/Lon: 52.6107°/161.167°, Depth: 5
+2025/08/01 15:57:37.015575 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.49 of event bmg2025ocpj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 15:57:37.033126 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-20 15:32:23,  Lat/Lon: 52.6107°/161.167°, Depth: 5
+2025/08/01 15:57:37.033260 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.50 (M)
+2025/08/01 15:57:37.033302 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.50 of event bmg2025ocpj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 15:57:43.669750 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-20 15:32:23,  Lat/Lon: 52.6107°/161.167°, Depth: 5
+2025/08/01 15:57:43.669966 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.50 of event bmg2025ocpj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 15:57:43.687999 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-20 15:32:23,  Lat/Lon: 52.6107°/161.167°, Depth: 5
+2025/08/01 15:57:43.688140 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.52 (Mw(mB))
+2025/08/01 15:57:43.688185 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.52 of event bmg2025ocpj is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/03 08:38:34.367925 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye

@@ -1,0 +1,13 @@
+2025/08/01 07:01:43.528992 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/01 07:01:43.545939 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-31 16:40:59,  Lat/Lon: 51.47°/159.38°, Depth: 15.35, Mag: 5.23 (mb)
+2025/08/01 07:01:43.546454 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.23 of event bmg2025owue is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 07:01:43.561526 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-31 16:40:59,  Lat/Lon: 51.4726°/159.376°, Depth: 15.3522
+2025/08/01 07:01:43.561661 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.23 of event bmg2025owue is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 07:01:50.411768 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-31 16:40:59,  Lat/Lon: 51.4726°/159.376°, Depth: 15.3522
+2025/08/01 07:01:50.411957 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.23 of event bmg2025owue is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 08:22:14.405332 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-31 16:40:58,  Lat/Lon: 51.4395°/159.438°, Depth: 12.6886
+2025/08/01 08:22:14.405532 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.20 (mb)
+2025/08/01 08:22:14.405576 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025owue is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/01 08:22:14.427840 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-31 16:40:58,  Lat/Lon: 51.4395°/159.438°, Depth: 12.6886
+2025/08/01 08:22:14.427956 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025owue is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/03 08:38:52.772251 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
