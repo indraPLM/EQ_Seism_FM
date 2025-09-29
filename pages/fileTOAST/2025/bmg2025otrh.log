@@ -1,0 +1,12 @@
+2025/07/30 07:31:48.064894 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/07/30 07:31:48.065585 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-29 23:48:24,  Lat/Lon: 52.15°/159.11°, Depth: 27.00, Mag: 7.50 (M)
+2025/07/30 07:31:48.069249 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/07/30 07:31:48.069722 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 52.15°/ 159.11° (MT), Depth: 27.00km (MT), Mag: 7.50 (MT)
+2025/07/30 07:31:48.070777 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [pacific_ptwc] is used instead.
+2025/07/30 07:31:48.071125 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/30 07:31:48.074418 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/30 07:31:48.128282 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/30 07:31:48.133699 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 75052054N158160E41e266a367642f1724dd20012c71958b479bf980
+2025/07/30 07:31:48.137230 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 75052054N158160Ebe66a12e17c59cb3eec17f29dffbd4e31c883d88
+2025/07/30 07:40:55.946197 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 75052054N158160E41e266a367642f1724dd20012c71958b479bf980 in 547 seconds
+2025/07/30 07:42:42.944457 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 75052054N158160Ebe66a12e17c59cb3eec17f29dffbd4e31c883d88 in 654 seconds

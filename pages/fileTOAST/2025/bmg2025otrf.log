@@ -1,0 +1,26 @@
+2025/07/30 20:55:07.285604 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/07/30 20:55:07.302969 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-29 23:46:37,  Lat/Lon: 49.26°/156.21°, Depth: 30.00, Mag: 6.88 (M)
+2025/07/30 20:55:07.306864 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/07/30 20:55:07.307602 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 49.26°/ 156.21° (MT), Depth: 30.00km (MT), Mag: 6.88 (MT)
+2025/07/30 20:55:07.308549 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [pacific_ptwc] is used instead.
+2025/07/30 20:55:07.308817 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/30 20:55:07.312975 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/30 20:55:07.323187 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-29 23:46:37,  Lat/Lon: 49.2588°/156.215°, Depth: 30
+2025/07/30 20:55:07.326354 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/07/30 20:55:07.326799 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 49.26°/ 156.21° (MT), Depth: 30.00km (MT), Mag: 6.88 (MT)
+2025/07/30 20:55:07.327744 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [pacific_ptwc] is used instead.
+2025/07/30 20:55:07.328001 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/30 20:55:07.328095 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/30 20:55:07.331993 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/30 20:55:07.332217 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/30 20:55:07.418912 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 68048050N156158Ee7b12b5a0d2e2b493d65bbccb15d0e73a24710d2
+2025/07/30 20:55:07.423303 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 68048050N156158Ead196075a2bc6d9b0e9642f5f265d4e25cb8b032
+2025/07/30 20:55:07.442155 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 68048050N156158E3072c3a0d9b7de20fef795b9d90ba2d7c05f5953
+2025/07/30 20:55:07.445289 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 68048050N156158E130b4931d3b57a4a92de17bc1100e08625b62af7
+2025/07/30 20:55:37.455530 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 68048050N156158Ee7b12b5a0d2e2b493d65bbccb15d0e73a24710d2 in 30 seconds
+2025/07/30 20:57:15.968224 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-29 23:46:37,  Lat/Lon: 49.3679°/156.31°, Depth: 30
+2025/07/30 20:57:15.968381 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.88 (M)
+2025/07/30 20:57:15.971474 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/07/30 20:57:15.971571 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 49.37°/ 156.31° (MT), Depth: 30.00km (MT), Mag: 6.88 (MT)
+2025/07/30 20:57:15.972350 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/30 20:57:15.972542 [Simulation:Warning:toast@toast-new:Simulation] EasyWave2: Failed to find preferred grid file []. Grid [pacific_ptwc] is used
