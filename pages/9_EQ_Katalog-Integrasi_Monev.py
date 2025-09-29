@@ -32,7 +32,7 @@ df.rename(columns={"LAT": "LAT_FIX","LON": "LON_FIX",}, inplace=True)
 #df["DATE"] = pd.to_datetime(df["DATE"].astype(str) + " " + df["TIME"].astype(str), errors='coerce')
 #for col in ["LAT", "LON", "DEPTH", "MAG"]:
 #    df[col] = pd.to_numeric(df[col], errors='coerce')
-
+st.dataframe(df)
 # 🧹 Filter Data
 df_filtered = df[
     df['LAT'].between(df['LAT'].min(), df['LAT'].max()) &
