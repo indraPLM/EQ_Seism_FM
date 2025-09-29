@@ -1,0 +1,450 @@
+2025/07/24 23:40:09.100175 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/07/24 23:40:09.101892 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-24 16:36:55,  Lat/Lon: -4.28°/145.51°, Depth: 10.00, Mag: 6.53 (mb)
+2025/07/24 23:40:09.106706 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -4.28°/ 145.51° (MT), Depth: 10.00km (MT), Mag: 6.53 (MT)
+2025/07/24 23:40:09.108598 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 23:40:09.112787 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 23:40:09.143810 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:36:55,  Lat/Lon: -4.27889°/145.508°, Depth: 10
+2025/07/24 23:40:09.143973 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.46 (M)
+2025/07/24 23:40:09.144014 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.46 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:09.144149 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 23:40:09.255132 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65004006S144146E40dbef8c0483c34a857eece66bbfd96dadd9d39f
+2025/07/24 23:40:09.258853 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65004006S144146E3d3dd9cb1e774d1bded17a434fde7cc6464f0cbb
+2025/07/24 23:40:26.459636 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65004006S144146E40dbef8c0483c34a857eece66bbfd96dadd9d39f in 17 seconds
+2025/07/24 23:40:28.839761 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:28.839903 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.95 (mb)
+2025/07/24 23:40:28.839931 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.95 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:28.952474 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:28.952604 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.02 (M)
+2025/07/24 23:40:28.952637 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.02 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:35.073480 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:35.073940 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.03 (M)
+2025/07/24 23:40:35.074008 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.03 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:39.871279 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:39.871411 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.03 (M)
+2025/07/24 23:40:39.871440 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.03 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:45.057059 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:45.057199 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.04 (M)
+2025/07/24 23:40:45.057227 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.04 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:50.168280 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:50.168411 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.02 (M)
+2025/07/24 23:40:50.168439 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.02 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:40:55.185692 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:40:55.185833 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.00 (M)
+2025/07/24 23:40:55.185869 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.00 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:02.560367 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:41:02.560496 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.00 (M)
+2025/07/24 23:41:02.560525 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.00 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:05.107746 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:41:05.107882 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.02 (M)
+2025/07/24 23:41:05.107915 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.02 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:10.067285 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:14,  Lat/Lon: -4.2994°/144.112°, Depth: 168.796
+2025/07/24 23:41:10.067412 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.02 (M)
+2025/07/24 23:41:10.067441 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.02 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:12.249953 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:41:12.250154 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.30 (MLv)
+2025/07/24 23:41:12.250217 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 6.30 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:12.389803 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:41:12.389947 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.88 (M)
+2025/07/24 23:41:12.389993 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.88 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:21.437512 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65004006S144146E3d3dd9cb1e774d1bded17a434fde7cc6464f0cbb in 72 seconds
+2025/07/24 23:41:25.210720 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:41:25.210945 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.88 (M)
+2025/07/24 23:41:25.210989 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.88 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:45.048804 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:41:45.048975 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.86 (M)
+2025/07/24 23:41:45.049016 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.86 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:41:48.025086 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:41:48.025268 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.78 (mb)
+2025/07/24 23:41:48.025302 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:42:05.926273 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:42:05.926438 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:42:05.926602 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:42:26.266400 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:42:26.266567 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:42:26.266730 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:42:46.186270 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:42:46.186438 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:42:46.186595 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:43:06.049841 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:43:06.050039 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:43:06.050225 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:43:46.075662 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:43:46.075863 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:44:06.142309 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:44:06.142507 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:44:06.142695 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:44:26.279578 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:44:26.279774 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:44:26.279956 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:45:16.195697 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:45:16.195877 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:45:16.196053 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:45:26.242450 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:45:26.242664 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:45:26.242844 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:45:46.541481 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:45:46.541679 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:45:46.541889 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:45:56.423220 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:18,  Lat/Lon: -4.34062°/143.744°, Depth: 173.939
+2025/07/24 23:45:56.423427 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:45:56.423634 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.78 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:46:52.570274 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:46:52.570469 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.67 (mb)
+2025/07/24 23:46:52.570513 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:46:56.384439 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:46:56.384629 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:46:56.384826 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:47:25.653806 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:47:25.653986 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:47:25.654163 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:47:46.497198 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:47:46.497375 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:47:46.497545 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:47:56.534411 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:47:56.534594 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:47:56.534774 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:48:26.462414 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:48:26.462606 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:48:26.462792 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:48:37.319127 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:48:37.319328 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:48:37.319519 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:48:53.216213 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:48:53.216410 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:48:53.216596 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:48:56.626501 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:48:56.626674 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:48:56.626844 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:48:59.523108 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:48:59.523285 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:48:59.523457 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:09.481139 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:09.481262 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:19.228056 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:19.228270 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:29.672509 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:29.672726 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:36.673018 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:36.673172 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:49:36.673328 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:39.420458 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:39.420606 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:49:39.420830 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:49.895646 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:49.895865 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:49:56.637205 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:49:56.637389 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:49:56.637566 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:00.238800 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:00.238981 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:00.239150 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:09.709552 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:09.709767 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:20.504579 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:20.504767 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:26.733779 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:26.733987 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:26.734205 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:30.395007 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:30.395177 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:30.395367 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:40.590897 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:40.591086 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:40.591270 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:46.989737 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:46.989935 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:46.990127 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:49.824465 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:49.824645 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:50:49.824831 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:50:59.986793 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:50:59.987070 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:10.570184 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:10.570379 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:20.205459 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:20.205734 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:26.802616 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:26.802833 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:51:26.803018 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:31.460332 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:31.460526 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:51:31.460713 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:40.474137 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:40.474331 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:46.905459 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:46.905657 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:51:46.905842 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:51:50.892227 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:51:50.892416 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:51:50.892613 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:01.061901 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:01.062110 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:11.289249 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:11.289453 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:17.128174 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:17.128372 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:52:17.128572 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:22.459007 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:22.459170 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:52:22.459347 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:32.205767 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:32.205965 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:41.285276 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:41.285491 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:46.998288 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:46.998477 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:52:46.998661 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:52:51.700984 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:52:51.701165 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:52:51.701340 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:01.745559 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:01.745750 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:11.901384 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:11.901561 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:21.966071 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:21.966276 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:27.083154 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:27.083312 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:53:27.083479 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:32.436185 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:32.436387 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:53:32.436575 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:42.563099 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:42.563289 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:52.670773 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:52.670977 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:53:57.911492 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:53:57.911686 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:53:57.911893 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:01.882215 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:01.882427 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:54:01.882632 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:12.241564 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:12.241743 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:17.521627 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:17.521833 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:54:17.522030 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:22.134849 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:22.135054 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:54:22.135277 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:27.614025 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:27.614241 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:54:27.614465 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:32.417698 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:32.417904 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:54:32.418126 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:42.215874 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:42.216068 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:54:52.703918 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:54:52.704105 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:02.377668 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:02.377867 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:02.378059 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:07.495816 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:07.495984 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:07.496163 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:12.698991 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:12.699192 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:12.699383 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:17.562521 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:17.562707 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:17.562882 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:23.161335 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:23.161512 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:23.161678 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:33.643577 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:33.643774 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:37.616527 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:37.616780 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:37.617022 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:42.953689 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:42.953877 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:42.954064 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:53.253260 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:53.253466 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:55:57.656149 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:55:57.656303 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:55:57.656454 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:56:03.585170 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:56:03.585344 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:56:03.585512 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:56:27.951901 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:56:27.952076 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:56:27.952239 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:56:58.093853 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:56:58.094038 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:56:58.094202 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:57:07.955883 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:57:07.956097 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:57:17.940069 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:57:17.940314 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:57:28.039142 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:57:28.039301 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:57:38.020434 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:57:38.020619 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:08.458103 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:08.458297 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:08.458485 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:18.275032 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:18.275225 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:18.275401 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:28.731181 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:28.731365 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:28.731535 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:38.620439 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:38.620631 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:38.620811 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:48.466296 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:48.466489 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:48.466672 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:58:58.929625 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:58:58.929834 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:58:58.930040 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:08.903224 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:08.903446 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:19.162270 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:19.162474 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:59:19.162670 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:29.055949 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:29.056168 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:59:29.056364 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:39.051444 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:39.051635 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:59:39.051822 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:49.183714 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:49.183918 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/24 23:59:49.184115 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/24 23:59:59.297094 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/24 23:59:59.297298 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:00:09.991080 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:00:09.991278 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:00:09.991471 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:00:19.691426 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:00:19.691633 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:00:19.691830 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:00:30.493741 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:00:30.493942 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:00:30.494125 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:00:41.101457 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:00:41.101664 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:00:41.101860 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:00:51.326319 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:00:51.326496 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:00:51.326660 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:01:00.779165 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:01:00.779331 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:01:00.779487 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:01:10.825350 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:01:10.825536 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:01:31.059056 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:01:31.059385 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:01:31.059828 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:01:51.047410 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:01:51.047606 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:02:01.025903 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:02:01.026092 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:02:11.500011 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:02:11.500200 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:02:11.500385 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:02:31.364913 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:02:31.365126 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:02:41.357469 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:02:41.357660 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:02:51.360265 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:02:51.360458 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:03:01.205732 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:03:01.205907 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:03:01.206091 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:03:31.651178 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:03:31.651376 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:03:31.651558 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:03:51.729776 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:03:51.729996 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:04:02.165433 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:04:02.165624 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:04:02.165817 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:04:12.008756 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:04:12.008926 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:04:32.063292 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:04:32.063461 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:04:32.063618 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:04:52.096665 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:04:52.096863 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:05:12.108187 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:05:12.108343 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:05:12.108495 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:05:32.254522 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:05:32.254717 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:05:32.254901 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:05:52.264182 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:05:52.264379 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:05:52.264563 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:06:32.418374 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:06:32.418581 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:07:02.483970 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:07:02.484302 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:07:02.484630 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:07:52.483974 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:07:52.484188 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:08:14.896007 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:08:14.896242 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:08:14.896470 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:08:22.765785 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:08:22.765983 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:08:22.766167 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:08:32.770681 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:08:32.770901 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:08:32.771141 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:08:43.081811 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:08:43.082012 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:08:53.015300 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:08:53.015452 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:09:03.082761 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:09:03.082969 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:09:13.059964 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:09:13.060183 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:10:03.122975 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:10:03.123180 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:10:13.261771 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:10:13.261980 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:10:43.283964 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:10:43.284181 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:10:53.362155 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:10:53.362341 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:11:03.697822 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:11:03.698027 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:11:03.698235 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:11:53.520812 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:11:53.520984 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:12:03.435495 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:12:03.435738 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:12:03.435959 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:12:33.773873 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:12:33.774055 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:12:33.774229 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:13:13.654547 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:13:13.654747 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:13:13.654932 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:14:03.985467 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:14:03.985679 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:15:24.020280 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:15:24.020473 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:15:34.038080 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:15:34.038285 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:27:02.798672 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:27:02.798882 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:27:02.799098 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:31:54.136230 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:31:54.136450 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:31:54.136669 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 00:44:43.010525 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 00:44:43.010674 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 00:44:43.010822 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 05:35:54.066805 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.42512°/143.642°, Depth: 116.86
+2025/07/25 05:35:54.067007 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/07/25 05:35:54.067197 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.67 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 07:28:39.359938 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.43359°/143.645°, Depth: 117.312
+2025/07/25 07:28:39.360171 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.64 (mb)
+2025/07/25 07:28:39.360221 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.64 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/25 07:28:39.382281 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-24 16:37:20,  Lat/Lon: -4.43359°/143.645°, Depth: 117.312
+2025/07/25 07:28:39.382418 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.64 of event bmg2025ojzn is smaller than triggerMinMagnitude: no automatic simulation

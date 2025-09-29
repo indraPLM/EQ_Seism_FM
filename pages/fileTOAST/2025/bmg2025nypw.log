@@ -1,0 +1,13 @@
+2025/07/18 18:26:02.846281 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/07/18 18:26:02.846954 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-18 11:15:17,  Lat/Lon: 14.72°/56.15°, Depth: 10.00, Mag: 5.05 (M)
+2025/07/18 18:26:02.847501 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025nypw is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/18 18:26:02.870808 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-18 11:15:17,  Lat/Lon: 14.7157°/56.1501°, Depth: 10
+2025/07/18 18:26:02.870953 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025nypw is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/18 18:29:04.316769 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-18 11:15:17,  Lat/Lon: 14.7145°/56.1494°, Depth: 10
+2025/07/18 18:29:04.317035 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.05 (M)
+2025/07/18 18:29:04.317076 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.05 of event bmg2025nypw is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/18 23:38:07.543763 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-18 11:15:17,  Lat/Lon: 14.7573°/55.8795°, Depth: 14.1868
+2025/07/18 23:38:07.543959 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.02 (mb)
+2025/07/18 23:38:07.544008 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2025nypw is smaller than triggerMinMagnitude: no automatic simulation
+2025/07/18 23:38:12.524449 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-18 11:15:17,  Lat/Lon: 14.7573°/55.8795°, Depth: 14.1868
+2025/07/18 23:38:12.524633 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2025nypw is smaller than triggerMinMagnitude: no automatic simulation

@@ -1,0 +1,77 @@
+2025/07/24 03:59:21.918956 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/07/24 03:59:21.921220 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62°/123.77°, Depth: 10.00, Mag: 6.52 (M)
+2025/07/24 03:59:21.925429 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.52 (MT)
+2025/07/24 03:59:21.927083 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:21.929911 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:22.177166 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:22.180550 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.52 (MT)
+2025/07/24 03:59:22.181241 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:22.181495 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:22.184092 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:22.184170 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E92d17c024dc4a25c9e6f40e8e9736d9bc500dfcf
+2025/07/24 03:59:22.186665 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E8f94c8f938e89ba5a92e2058bf396ba54bb980ca
+2025/07/24 03:59:22.231408 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:22.234847 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124Ecde6e297ffc4c91de3b11e2b7623dd0548388a7f
+2025/07/24 03:59:22.237110 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E995f0f0fb6f1d8a2c271be99f0d2796719e6e07e
+2025/07/24 03:59:30.199094 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:30.199501 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.52 (M)
+2025/07/24 03:59:30.202711 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.52 (MT)
+2025/07/24 03:59:30.203639 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:30.206687 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:30.207479 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:30.251261 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E646baacfe100a8c2bf74486d508863379e54e370
+2025/07/24 03:59:30.256560 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124Ef0ddbbd9e572abf29f2e779b70fb44fe1084af6a
+2025/07/24 03:59:35.063393 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:35.063803 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.54 (M)
+2025/07/24 03:59:35.066937 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.54 (MT)
+2025/07/24 03:59:35.067836 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:35.070825 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:35.071514 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:35.114030 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E9146a130404079620fc0edf8044fd3964eaec702
+2025/07/24 03:59:35.119145 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E2020f2c73826eb2e73bce3daeaa192ef2b215b29
+2025/07/24 03:59:42.294715 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:42.298165 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.54 (MT)
+2025/07/24 03:59:42.299351 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:42.302355 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:42.306825 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:42.346444 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E54d5cbe9fa4aeaa8e30787b72d57fe1276de69c7
+2025/07/24 03:59:42.350304 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124Ebea0926619afc66217f0748ccd3685b2a1cd5e7f
+2025/07/24 03:59:45.169452 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:45.169997 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.54 (M)
+2025/07/24 03:59:45.173276 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.54 (MT)
+2025/07/24 03:59:45.174367 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:45.177416 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:45.178309 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:45.220704 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124E6f596890855edb75b8727b791cb803ab17e40e46
+2025/07/24 03:59:45.225687 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 65002004S122124Ea05dee164667e0a9d4333bf79e84fc24d6c52753
+2025/07/24 03:59:47.475998 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E92d17c024dc4a25c9e6f40e8e9736d9bc500dfcf in 25 seconds
+2025/07/24 03:59:50.275878 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:50.276471 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 6.64 (Mw(mB))
+2025/07/24 03:59:50.279729 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.64 (MT)
+2025/07/24 03:59:50.280934 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:50.283798 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:50.303797 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-07-23 20:53:53,  Lat/Lon: -2.62319°/123.765°, Depth: 10
+2025/07/24 03:59:50.307219 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: -2.62°/ 123.77° (MT), Depth: 10.00km (MT), Mag: 6.64 (MT)
+2025/07/24 03:59:50.308161 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/07/24 03:59:50.308636 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:50.311187 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/07/24 03:59:50.317854 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/07/24 03:59:50.329020 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 66002004S122124E01c572e9d121366afd4f0d48da3620975e78f31c
+2025/07/24 03:59:50.331381 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 66002004S122124E0a5e33b157465126932725713405f83855c81b8c
+2025/07/24 03:59:50.351004 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 66002004S122124E86012eaba3db11df9e8452a35e54a47904225fc4
+2025/07/24 03:59:50.354123 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 66002004S122124E332df02b991045aaa86e5986464b242110f500f8
+2025/07/24 04:00:09.462848 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E8f94c8f938e89ba5a92e2058bf396ba54bb980ca in 47 seconds
+2025/07/24 04:00:20.480229 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124Ecde6e297ffc4c91de3b11e2b7623dd0548388a7f in 58 seconds
+2025/07/24 04:00:44.473124 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E995f0f0fb6f1d8a2c271be99f0d2796719e6e07e in 82 seconds
+2025/07/24 04:00:56.451565 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E646baacfe100a8c2bf74486d508863379e54e370 in 86 seconds
+2025/07/24 04:01:21.477449 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124Ef0ddbbd9e572abf29f2e779b70fb44fe1084af6a in 111 seconds
+2025/07/24 04:01:31.469139 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E9146a130404079620fc0edf8044fd3964eaec702 in 116 seconds
+2025/07/24 04:01:56.439857 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E2020f2c73826eb2e73bce3daeaa192ef2b215b29 in 141 seconds
+2025/07/24 04:02:07.439882 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E54d5cbe9fa4aeaa8e30787b72d57fe1276de69c7 in 145 seconds
+2025/07/24 04:02:32.465111 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124Ebea0926619afc66217f0748ccd3685b2a1cd5e7f in 170 seconds
+2025/07/24 04:02:43.440501 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124E6f596890855edb75b8727b791cb803ab17e40e46 in 178 seconds
+2025/07/24 04:03:08.439394 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 65002004S122124Ea05dee164667e0a9d4333bf79e84fc24d6c52753 in 203 seconds
+2025/07/24 04:03:19.440078 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 66002004S122124E01c572e9d121366afd4f0d48da3620975e78f31c in 209 seconds
+2025/07/24 04:03:46.439624 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 66002004S122124E0a5e33b157465126932725713405f83855c81b8c in 236 seconds
+2025/07/24 04:03:57.461025 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 66002004S122124E86012eaba3db11df9e8452a35e54a47904225fc4 in 247 seconds
+2025/07/24 04:04:23.440281 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 66002004S122124E332df02b991045aaa86e5986464b242110f500f8 in 273 seconds
