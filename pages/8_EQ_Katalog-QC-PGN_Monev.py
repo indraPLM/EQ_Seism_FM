@@ -126,7 +126,8 @@ folium.LayerControl(collapsed=False).add_to(m)
 st.subheader(f"🗺️ Seismicities Map QC-PGN ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
 st_folium(m, width=1000, height=650)
 
-st.subheader("📋 Filtered Earthquake Events")
+st.subheader(f"📋 Filtered Earthquake Events ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
+df_filtered.index = range(1, len(df_filtered)+1)
 st.dataframe(df_filtered)
 
 # 🗺️ Island Setup
