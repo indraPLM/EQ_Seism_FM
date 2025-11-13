@@ -20,8 +20,8 @@ st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout
 
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-08-01"))
-end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-08-31"))
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2024-01-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2024-12-31"))
 
 # 📄 Load Excel file
 excel_path = "./pages/fileINTEGRASI/data_integrasi_2024_rev_final.xlsx"
