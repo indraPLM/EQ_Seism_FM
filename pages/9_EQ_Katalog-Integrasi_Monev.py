@@ -244,7 +244,7 @@ st.subheader("📋 Earthquake Summary per PGR Region")
 st.dataframe(stat_df)
 
 
-list_pgr = [f'PGR{i}' for i in range(1, 11)]
+list_pgr = [f'pgr{i}' for i in range(1, 11)]
 list_color = plt.cm.get_cmap('tab10', len(list_pgr)).colors
 
 def clip_df(df, pgr_name):
