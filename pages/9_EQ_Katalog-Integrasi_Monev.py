@@ -242,3 +242,69 @@ st.image(Image.open("depth_mag_pgr.png"), caption="Depth & Magnitude per PGR Reg
 
 st.subheader("📋 Earthquake Summary per PGR Region")
 st.dataframe(stat_df)
+
+
+list_pgr = [f'PGR{i}' for i in range(1, 11)]
+list_color = plt.cm.get_cmap('tab10', len(list_pgr)).colors
+
+def clip_df(df, pgr_name):
+    polygon = gpd.read_file(f"./pages/fileSHP_Lama/{pgr_name}.shp")
+    geo_df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.LON, df.LAT), crs="EPSG:4326")
+    return geo_df.clip(polygon)
+
+def get_eq_coords(pgr_name):
+    try:
+        polygon = gpd.read_file(f"./pages/fileSHP_Lama/{pgr_name}.shp")
+        clipped = gpd_seis.clip(polygon)
+        x, y, _ = projection.transform_points(ccrs.Geodetic(), np.array(clipped.LON), np.array(clipped.LAT)).T
+        return x, y
+    except Exception as e:
+        st.warning(f"Gagal memproses {pgr_name}: {e}")
+        return [], []
+
+
+fig = plt.figure(dpi=300)
+ax = fig.add_subplot(111, projection=projection)
+ax.set_extent((85, 145, -15, 10))
+
+for i, pgr in enumerate(list_pgr):
+    x, y = get_eq_coords(pgr)
+    ax.scatter(x, y, s=5, color=list_color[i], marker="o", label=pgr, zorder=3)
+    try:
+        ax.add_geometries(
+            Reader(f"./pages/fileSHP_Lama/{pgr}.shp").geometries(),
+            ccrs.PlateCarree(),
+            facecolor="white",
+            edgecolor=list_color[i],
+            linewidth=0.5
+        )
+    except Exception as e:
+        st.warning(f"Polygon error on {pgr}: {e}")
+        continue
+
+ax.add_feature(cartopy.feature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+ax.coastlines(resolution='10m', color='black', linestyle='-', linewidth=0.5, alpha=0.5)
+
+legend_elements = [
+    Line2D([0], [0], marker='o', color='w', label=list_pgr[i], markerfacecolor=list_color[i], markersize=8)
+    for i in range(len(list_pgr))
+]
+ax.legend(handles=legend_elements, loc='lower center', bbox_to_anchor=(0.5, -0.25), ncol=4, frameon=False, fontsize='small')
+
+st.markdown("### 🗺️ Seismic Events by PGR Region")
+st.pyplot(fig)
+
+stat_rows = [stats(clip_df(df_filtered, reg)) for reg in list_pgr]
+stat_df = pd.DataFrame(stat_rows, columns=['<60 km','60–300 km','>300 km','M<4','M4–5','M≥5','Total'])
+stat_df['Region'] = list_pgr
+stat_df.set_index('Region', inplace=True)
+
+st.subheader("📊 Depth & Magnitude by PGR Region")
+stat_df.drop(columns='Total').plot.bar(rot=6, figsize=(15,10))
+plt.tight_layout()
+plt.savefig("depth_mag_pgr.png")
+st.image(Image.open("depth_mag_pgr.png"), caption="Depth & Magnitude per PGR Region")
+
+st.subheader("📋 Earthquake Summary per PGR Region")
+st.dataframe(stat_df)
+
