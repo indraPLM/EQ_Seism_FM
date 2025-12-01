@@ -86,7 +86,7 @@ df_display.reset_index(inplace=True)
 df_display.rename(columns={"index": "No", "timesent": "Time Sent", "narasi_text": "Narasi Text"}, inplace=True)
 
 # Display using st.table
-st.dataframe(df_display)
+st.table(df_display)
 
 
 # 📤 PDF Export Function
