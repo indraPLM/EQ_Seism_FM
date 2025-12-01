@@ -795,3 +795,17 @@
 2025/09/19 06:26:32.047613 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 76052054N160162E5a2ba91968ed8ac172ea37a365c4c8d5513f347b
 2025/09/19 06:27:01.057873 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 76052054N160162E0c6dde5066d068f56dec4bdbf85d8326d0214975 in 29 seconds
 2025/09/19 06:28:48.060698 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 76052054N160162E5a2ba91968ed8ac172ea37a365c4c8d5513f347b in 136 seconds
+2025/10/03 10:30:41.454622 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-09-18 18:58:19,  Lat/Lon: 53.2367°/160.409°, Depth: 50
+2025/10/03 10:30:41.491793 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.70 (Mw(Mwp))
+2025/10/03 10:30:41.495253 [Simulation:Info:toast@toast-new:Event outside source region] Simulation setup: Event outside configured source regions.
+2025/10/03 10:30:41.495421 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: 53.24°/ 160.41° (MT), Depth: 50.00km (MT), Mag: 7.70 (MT)
+2025/10/03 10:30:41.496071 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/10/03 10:30:41.496843 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/03 10:30:41.496910 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: 53.24°/ 160.41° (MT), Depth: 50.00km (MT), Mag: 7.70 (MT)
+2025/10/03 10:30:41.497297 [Simulation:Info:toast@toast-new:Simulation skipped] EasyWave2 simulation with similar parameters already exists
+2025/10/03 10:30:41.497917 [Simulation:Info:toast@toast-new:Simulation(s) skipped] Simulation(s) not created with fault plane because a nodal plane is similar.
+2025/10/03 10:30:41.497982 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/03 10:30:41.501155 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/03 10:30:41.501843 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/03 10:30:41.591223 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/03 10:30:41.591544 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
