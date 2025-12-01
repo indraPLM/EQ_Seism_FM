@@ -22,8 +22,8 @@ st.sidebar.header("Input Parameter :")
 #time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
 #time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
 
-time_start = st.sidebar.text_input('Start DateTime:', '2025-08-01 00:00:00')
-time_end   = st.sidebar.text_input('End DateTime:', '2025-08-30 23:59:59')
+time_start = st.sidebar.text_input('Start DateTime:', '2025-11-01 00:00:00')
+time_end   = st.sidebar.text_input('End DateTime:', '2025-11-30 23:59:59')
 
 # --- Helper Functions ---
 def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
