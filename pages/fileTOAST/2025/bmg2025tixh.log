@@ -1,0 +1,106 @@
+2025/10/03 13:03:44.097136 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/10/03 13:03:44.099848 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.84°/136.28°, Depth: 0.00, Mag: 5.30 (M)
+2025/10/03 13:03:44.100464 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.30 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:03:44.121969 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:03:44.122083 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.30 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:03:45.960505 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:03:45.960672 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.33 (M)
+2025/10/03 13:03:45.960703 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.33 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:03:46.192731 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.81229°/136.227°, Depth: 10
+2025/10/03 13:03:46.193000 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.39 (M)
+2025/10/03 13:03:46.193081 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.39 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:03:47.476225 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:03:47.476452 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.33 (M)
+2025/10/03 13:03:47.476505 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.33 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:03:53.204169 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:03:53.204335 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.43 (M)
+2025/10/03 13:03:53.204386 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:08:42.485619 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:08:42.485801 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/10/03 13:08:42.486062 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:08:51.469329 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:08:51.469495 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/10/03 13:08:51.469740 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:09:26.469881 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:09:26.470063 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/10/03 13:09:26.470315 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:11:18.467798 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:11:18.467969 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/10/03 13:11:18.468238 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 13:19:14.471188 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/03 13:19:14.471364 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/10/03 13:19:14.471623 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/04 20:06:26.088033 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/10/04 20:06:26.088780 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:06:26.091630 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:06:26.092330 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:06:26.095002 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:06:26.095491 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with fault plane, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:06:26.095540 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:06:26.097954 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:06:26.098417 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:06:26.098533 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:06:26.100851 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:06:26.106052 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:06:26.106590 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:06:26.177580 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E64c716347332b6753fe5892bf801bdb3d105d1b1
+2025/10/04 20:06:26.182534 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E2f4d0496dd3daff57cb78ea57007ec888702df02
+2025/10/04 20:06:26.191542 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138Ec4150b8d9b8da9e5a4a082e545638c5c2f49928f
+2025/10/04 20:06:26.196113 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E0908bb65c62fcbd0efb540e461c0cfee105b21c6
+2025/10/04 20:06:26.204395 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E9cdbe387d8c809a3075a9a4fa91541c566eadc99
+2025/10/04 20:06:26.209426 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E279f6131cfd1446482a7e39371868db481b337aa
+2025/10/04 20:06:34.237498 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138E64c716347332b6753fe5892bf801bdb3d105d1b1 in 8 seconds
+2025/10/04 20:06:46.221877 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138E2f4d0496dd3daff57cb78ea57007ec888702df02 in 20 seconds
+2025/10/04 20:06:52.239435 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138Ec4150b8d9b8da9e5a4a082e545638c5c2f49928f in 26 seconds
+2025/10/04 20:07:02.129649 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E64c716347332b6753fe5892bf801bdb3d105d1b1
+2025/10/04 20:07:02.142630 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E2f4d0496dd3daff57cb78ea57007ec888702df02
+2025/10/04 20:07:02.150284 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138Ec4150b8d9b8da9e5a4a082e545638c5c2f49928f
+2025/10/04 20:07:02.259235 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E0908bb65c62fcbd0efb540e461c0cfee105b21c6
+2025/10/04 20:07:02.346943 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E9cdbe387d8c809a3075a9a4fa91541c566eadc99
+2025/10/04 20:07:02.402068 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E279f6131cfd1446482a7e39371868db481b337aa
+2025/10/04 20:07:03.689886 [Simulation:Info:toast@toast-new:Simulation(s) triggered] Automatic simulation(s) triggered manually
+2025/10/04 20:07:03.690703 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 1, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:07:03.702382 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:07:03.703341 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with nodal plane 2, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:07:03.706785 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:07:03.708562 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:07:03.709279 [Simulation:Info:toast@toast-new:Simulation(s) started] Starting simulation(s) with fault plane, Lat/Lon: -2.84°/ 136.28° (MT), Depth: 0.00km (MT), Mag: 5.43 (MT)
+2025/10/04 20:07:03.712394 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/10/04 20:07:03.712568 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:07:03.712823 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:07:03.713447 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:07:03.715879 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/10/04 20:07:03.719833 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/10/04 20:07:03.782567 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E3d8667b9441f1731fbc19c787f87a73286599c81
+2025/10/04 20:07:03.788408 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138Ee57d91c4f0878baa7314be93aabeeba318356065
+2025/10/04 20:07:03.800728 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E386b22d97e9c3d1cea2d6b8dea664843d0740245
+2025/10/04 20:07:03.804807 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138E8f1c30a7ebc2003c7f54270669174f5c48b3f544
+2025/10/04 20:07:03.814493 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138Ea5d927ec8935e8f84d83f6228753b6c632057ef6
+2025/10/04 20:07:03.817778 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 54002004S136138Ecc4a3951253dc2955cb9c1011c9b71262ab18665
+2025/10/04 20:07:11.717277 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138E3d8667b9441f1731fbc19c787f87a73286599c81 in 7 seconds
+2025/10/04 20:07:22.738642 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138Ee57d91c4f0878baa7314be93aabeeba318356065 in 18 seconds
+2025/10/04 20:07:28.710529 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138E386b22d97e9c3d1cea2d6b8dea664843d0740245 in 24 seconds
+2025/10/04 20:07:40.712771 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 54002004S136138E8f1c30a7ebc2003c7f54270669174f5c48b3f544 in 36 seconds
+2025/10/04 20:07:41.714884 [Simulation:Error:toast@toast-new:Simulation failed] Failed to calculate EasyWave2 simulation 54002004S136138Ea5d927ec8935e8f84d83f6228753b6c632057ef6: Zero initial displacement
+2025/10/04 20:07:42.714866 [Simulation:Error:toast@toast-new:Simulation failed] Failed to calculate EasyWave2 simulation 54002004S136138Ecc4a3951253dc2955cb9c1011c9b71262ab18665: Zero initial displacement
+2025/10/05 17:52:17.613832 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.83913°/136.284°, Depth: 0
+2025/10/05 17:52:17.614737 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.43 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/05 17:52:31.930375 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:39,  Lat/Lon: -2.99913°/136.317°, Depth: 10
+2025/10/05 17:52:31.931188 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.09 (Mw(mB))
+2025/10/05 17:52:31.931649 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.09 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/05 17:52:43.419812 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:40,  Lat/Lon: -2.8209°/136.301°, Depth: 28.5027
+2025/10/05 17:52:43.420656 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.38 (M)
+2025/10/05 17:52:43.421118 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.38 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/05 17:54:07.800712 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:40,  Lat/Lon: -2.82295°/136.303°, Depth: 28.3084
+2025/10/05 17:54:07.801545 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.49 (M)
+2025/10/05 17:54:07.802008 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.49 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/05 17:54:16.789582 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 06:02:40,  Lat/Lon: -2.82295°/136.303°, Depth: 28.3084
+2025/10/05 17:54:16.790418 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.03 (Mw)
+2025/10/05 17:54:16.790932 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.03 of event bmg2025tixh is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/09 23:26:41.152888 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E386b22d97e9c3d1cea2d6b8dea664843d0740245
+2025/10/09 23:26:41.573700 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E3d8667b9441f1731fbc19c787f87a73286599c81
+2025/10/09 23:26:41.876901 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138E8f1c30a7ebc2003c7f54270669174f5c48b3f544
+2025/10/09 23:26:41.879758 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138Ea5d927ec8935e8f84d83f6228753b6c632057ef6
+2025/10/09 23:26:41.881775 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138Ecc4a3951253dc2955cb9c1011c9b71262ab18665
+2025/10/09 23:26:42.183161 [Simulation:Info:toast@toast-new:Simulation removed] Removed simulation 54002004S136138Ee57d91c4f0878baa7314be93aabeeba318356065
+2025/10/09 23:26:42.184171 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
