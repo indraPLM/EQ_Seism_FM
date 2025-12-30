@@ -97,6 +97,7 @@ summary_df = df[['Tanggal','Waktu','mag','type_mag','fixedLat','fixedLon','depth
                  'S1','D1','R1','S2','D2','R2','location']].copy()
 summary_df.columns = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
                       'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+summary_df = summary_df.sort_values(by='Tanggal')
 summary_df.index = range(1, len(summary_df)+1)
 st.dataframe(summary_df)
 #st.dataframe(df)
