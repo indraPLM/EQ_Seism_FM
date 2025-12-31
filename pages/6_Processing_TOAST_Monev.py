@@ -88,7 +88,6 @@ def preprocess(df):
     return df
 
 df = preprocess(df)
-st.dataframe(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
@@ -100,9 +99,8 @@ df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 df['event_id'] = df['event_id'].astype(str).str.strip()
 df_toast['event_id'] = df_toast['event_id'].astype(str).str.strip()
 df['mag'] = pd.to_numeric(df['mag'], errors='coerce').round(2)
-st.markdown("### 🌐 Cek data M ≥5")
+st.markdown("### 🌐 Cek QC Catalog M ≥5")
 st.dataframe(df)
-st.dataframe(df_toast)
 
 # --- Merge with TOAST data ---
 df_merge = pd.merge(df, df_toast, on='event_id')
