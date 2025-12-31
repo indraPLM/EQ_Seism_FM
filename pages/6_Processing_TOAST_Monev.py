@@ -99,11 +99,13 @@ df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 df['event_id'] = df['event_id'].astype(str).str.strip()
 df_toast['event_id'] = df_toast['event_id'].astype(str).str.strip()
 df['mag'] = pd.to_numeric(df['mag'], errors='coerce').round(2)
+st.dataframe(df)
 
 # --- Merge with TOAST data ---
 df_merge = pd.merge(df, df_toast, on='event_id')
 df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time']).dt.total_seconds() / 60
 df_merge = df_merge.query('lapse_time_toast <= 60')
+
 
 
 # --- Visualization: Map ---
