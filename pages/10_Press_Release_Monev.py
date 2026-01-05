@@ -52,7 +52,14 @@ def fetch_narasi_text(time_narasi):
 def html_to_text(html_content):
     if html_content:
         soup = BeautifulSoup(html_content, "html.parser")
-        return soup.get_text(separator="\n", strip=True)
+        from re import sub
+        return sub(r"(?<=\W) (?=\W)", "", sub(
+            r"(?<=\W)\n", " ", sub(
+                r"((?<=\()\n)|(\n(?=\W))",
+                "",
+                soup.get_text(separator="\n", strip=True)
+            )
+        ))
     return None
 
 def build_narasi_dataframe(df, time_col="time_narasi"):
@@ -108,7 +115,7 @@ def generate_pdf(df):
     buffer.seek(0)
     return buffer
 
-pdf_data = generate_pdf(df_display)
+pdf_data = generate_pdf(df)
 st.download_button(
     label="📄 Download Press Releases as PDF",
     data=pdf_data,
