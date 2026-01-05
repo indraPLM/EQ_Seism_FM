@@ -53,13 +53,19 @@ def html_to_text(html_content):
     if html_content:
         soup = BeautifulSoup(html_content, "html.parser")
         from re import sub
-        return sub(r"(?<=\W) (?=\W)", "", sub(
-            r"(?<=\W)\n", " ", sub(
-                r"((?<=\()\n)|(\n(?=\W))",
-                "",
-                soup.get_text(separator="\n", strip=True)
+        return sub(
+            r"(?<=\W) (?=\W)",
+            "",
+            sub(
+                r"((?<=\W)\n)|(\n(?=TIDAK BERPOTENSI TSUNAMI))",
+                " ",
+                sub(
+                    r"((?<=\()\n)|(\n(?=\W))",
+                    "",
+                    soup.get_text(separator="\n", strip=True)
+                )
             )
-        ))
+        )
     return None
 
 def build_narasi_dataframe(df, time_col="time_narasi"):
@@ -85,15 +91,45 @@ df = df[(df['timesent'] >= time_start) & (df['timesent'] <= time_end)]
 # 📈 Message Count
 st.markdown(f"### 📈 Total Messages: **{len(df)}** between `{time_start}` and `{time_end}`")
 
+
+# PARSING!
+from re import findall, sub
+lines = df["narasi_text"].tolist()
+latitudes = [
+    [(-1 if n[-1] == "S" else 1) * float(
+        sub(r"° L.", "", n).replace(",", ".")
+    ) for n in findall(r"[^ ]+ L[US]", n)][0]
+    for n in lines
+]
+longitudes = [
+    [(-1 if n[-1] == "B" else 1) * float(
+        sub(r"° B.", "", n).replace(",", ".")
+    ) for n in findall(r"[^ ]+ B[TB]", n)][0]
+    for n in lines
+]
+depths = [
+    float(findall(r"(?<=kedalaman )[^ ]+(?= km)", n)[0].replace(",", "."))
+    for n in lines
+]
+magnitudes = [
+    float((findall(r"magnitudo M(?=([^.]+))", n))[0].replace(",", "."))
+    for n in lines
+]
+
+
 # 🧾 Styled Table View
 st.subheader("🧾 Press Release InaTEWS Table View")
 df_display = df[["timesent", "narasi_text"]].copy()
 df_display.index = range(1, len(df_display) + 1)
 df_display.reset_index(inplace=True)
 df_display.rename(columns={"index": "No", "timesent": "Time Sent", "narasi_text": "Narasi Text"}, inplace=True)
+df_display.insert(1, "Lintang (° LU)", latitudes)
+df_display.insert(2, "Bujur (° BT)", longitudes)
+df_display.insert(3, "Kedalaman (km)", depths)
+df_display.insert(4, "Magnitudo", magnitudes)
 
 # Display using st.table
-st.table(df_display)
+st.dataframe(df_display, hide_index=True)
 
 
 # 📤 PDF Export Function
