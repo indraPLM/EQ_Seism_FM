@@ -112,7 +112,7 @@ depths = [
     for n in lines
 ]
 magnitudes = [
-    float((findall(r"magnitudo M(?=([^.]+))", n))[0].replace(",", "."))
+    float((findall(r"magnitudo M?(?=([^.]+))", n))[0].replace(",", "."))
     for n in lines
 ]
 
