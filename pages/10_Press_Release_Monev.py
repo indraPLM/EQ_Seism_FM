@@ -242,6 +242,8 @@ dtf_dis = pd.merge(
 ).sort_values(by=tim_co1)
 idc_dis = dtf_dis.pop(ind_co1)
 dtf_dis.insert(0, ind_co1, idc_dis)
+dtf_dis.insert(1, "Date Sent", dtf_dis[tim_co1].dt.date)
+dtf_dis["Time Sent"] = dtf_dis[tim_co1].dt.time
 dtf_dis[cdt_co4] = [hypot(m, n) * 111 for m, n in zip(
     dtf_dis[lat_co2] - dtf_dis[lat_co3],
     dtf_dis[lon_co2] - dtf_dis[lon_co3]
@@ -266,7 +268,7 @@ cdt_acc = dtf_dis[cdt_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
 dep_acc = dtf_dis[dep_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
 mag_acc = dtf_dis[mag_co4].map(lambda n: 0 if n > mag_thr else 100).mean()
 
-st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc}%")
-st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc}%")
-st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc}%")
-st.text(f"Akurasi total\t\t\t\t\t: {sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0}%")
+st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc:.3F}%")
+st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc:.3F}%")
+st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc:.3F}%")
+st.text(f"Akurasi total\t\t\t\t\t: {sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0:.3F}%")
