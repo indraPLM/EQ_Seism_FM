@@ -57,27 +57,26 @@ def fetch_narasi_text(time_narasi):
     except Exception:
         return None
 
+
 def html_to_text(html_content):
     if html_content:
         soup = BeautifulSoup(html_content, "html.parser")
-        from re import sub
         return sub(
-            r"(?<=\W) (?=\W)",
-            "",
+            r"((?<=\W)\n)|(\n(?=TIDAK BERPOTENSI TSUNAMI))",
+            " ",
             sub(
-                r"((?<=\W)\n)|(\n(?=TIDAK BERPOTENSI TSUNAMI))",
-                " ",
-                sub(
-                    r"((?<=\()\n)|(\n(?=\W))",
-                    "",
-                    soup.get_text(separator="\n", strip=True)
-                )
+                r"((?<=\()\n)|(\n(?=\W))|( (?=[,.;:)]))|((?<=[(] ))",
+                "",
+                soup.get_text(separator="\n", strip=True)
             )
-        )
+        ).replace("* ", "\n")
     return None
 
+
 def build_narasi_dataframe(df, time_col="time_narasi"):
-    df["narasi_html"] = df[time_col].apply(fetch_narasi_text)
+    df["narasi_html"] = df[time_col].apply(fetch_narasi_text).apply(
+        lambda n: sub(r"</?strong>", "", n)
+    )
     df["narasi_text"] = df["narasi_html"].apply(html_to_text)
     return df
 
@@ -172,7 +171,7 @@ def generate_pdf(df):
     pdf.ln(5)
 
     for idx, row in df.iterrows():
-        text = f"{idx}. {row['timesent']} - {row['narasi_text']}"
+        text = f"{idx + 1}. {row[tim_co1]} - {row[nar_co1]}<br>"
         pdf.multi_cell(0, 8, txt=text)
         pdf.ln(1)
 
@@ -182,7 +181,8 @@ def generate_pdf(df):
     buffer.seek(0)
     return buffer
 
-pdf_data = generate_pdf(df)
+
+pdf_data = generate_pdf(df_display)
 st.download_button(
     label="📄 Download Press Releases as PDF",
     data=pdf_data,
