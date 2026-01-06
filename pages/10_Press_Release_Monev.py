@@ -257,7 +257,7 @@ st.dataframe(dtf_dis.style.applymap(
     lambda n: f"background-color: {'#FF0000' if n > cdt_thr else 'white'}",
     subset=[cdt_co4, dep_co4]
 ).applymap(
-    lambda n: f"background-color: {'#FF0000' if n > cdt_thr else 'white'}",
+    lambda n: f"background-color: {'#FF0000' if n > mag_thr else 'white'}",
     subset=[mag_co4]
 ), hide_index=True)
 
