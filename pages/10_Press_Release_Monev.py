@@ -269,6 +269,4 @@ mag_acc = dtf_dis[mag_co4].map(lambda n: 0 if n > mag_thr else 100).mean()
 st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc}%")
 st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc}%")
 st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc}%")
-st.text(f"Akurasi total\t\t\t\t\t: {
-    sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0
-}%")
+st.text(f"Akurasi total\t\t\t\t\t: {sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0}%")
