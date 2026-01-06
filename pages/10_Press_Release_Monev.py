@@ -216,6 +216,9 @@ lat_co3 = "Pre y (°N)"
 lon_co3 = "Pre x (°E)"
 dep_co3 = "Pre z (km)"
 mag_co3 = "Pre M"
+cdt_co4 = "Dif d (km)"
+dep_co4 = "Dif z (km)"
+mag_co4 = "Dif M"
 
 # COMPARISONS!
 st.subheader("🧾 Dissemination vs. Press Release Parameter Comparison")
@@ -239,10 +242,33 @@ dtf_dis = pd.merge(
 ).sort_values(by=tim_co1)
 idc_dis = dtf_dis.pop(ind_co1)
 dtf_dis.insert(0, ind_co1, idc_dis)
-dtf_dis["Dif d (km)"] = [hypot(m, n) * 111 for m, n in zip(
+dtf_dis[cdt_co4] = [hypot(m, n) * 111 for m, n in zip(
     dtf_dis[lat_co2] - dtf_dis[lat_co3],
     dtf_dis[lon_co2] - dtf_dis[lon_co3]
 )]
-dtf_dis["Dif z (km)"] = (dtf_dis[dep_co2] - dtf_dis[dep_co3]).apply(abs)
-dtf_dis["Dif M (km)"] = (dtf_dis[mag_co2] - dtf_dis[mag_co3]).apply(abs)
-st.dataframe(dtf_dis, hide_index=True)
+dtf_dis[dep_co4] = (dtf_dis[dep_co2] - dtf_dis[dep_co3]).apply(abs)
+dtf_dis[mag_co4] = (dtf_dis[mag_co2] * 10 - dtf_dis[mag_co3] * 10).apply(abs) / 10
+
+# THRESHOLDS!
+cdt_thr = 30
+mag_thr = 0.3
+
+st.dataframe(dtf_dis.style.applymap(
+    lambda n: f"background-color: {"#FF0000" if n > cdt_thr else "white"}",
+    subset=[cdt_co4, dep_co4]
+).applymap(
+    lambda n: f"background-color: {"#FF0000" if n > mag_thr else "white"}",
+    subset=[mag_co4]
+), hide_index=True)
+
+# ACCURACIES!
+cdt_acc = dtf_dis[cdt_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
+dep_acc = dtf_dis[dep_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
+mag_acc = dtf_dis[mag_co4].map(lambda n: 0 if n > mag_thr else 100).mean()
+
+st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc}%")
+st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc}%")
+st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc}%")
+st.text(f"Akurasi total\t\t\t\t\t: {
+    sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0
+}%")
