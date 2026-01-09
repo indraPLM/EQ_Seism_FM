@@ -18,7 +18,7 @@ with st.sidebar:
     East       = float(st.text_input('East:', '142.0'))
 
 # --- Parse TOAST Logs ---
-def load_toast_logs(path="./pages/fileTOAST/2025/"):
+def load_toast_logs(path="./pages/Log_TOAST/"):
     event_ids, timestamps, remarks = [], [], []
     for fname in os.listdir(path):
         if not fname.endswith('.log'):
