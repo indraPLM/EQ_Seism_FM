@@ -1,0 +1,10 @@
+2025/12/03 10:35:40.885706 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/12/03 10:35:40.886212 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-11-18 15:35:29,  Lat/Lon: -12.02°/65.62°, Depth: 1.00, Mag: 5.32 (mb)
+2025/12/03 10:35:40.887085 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.32 of event bmg2025wprn is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/03 10:35:40.905200 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-18 15:35:29,  Lat/Lon: -12.0201°/65.6207°, Depth: 1
+2025/12/03 10:35:40.905354 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.32 of event bmg2025wprn is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/03 10:35:55.627232 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-18 15:35:29,  Lat/Lon: -12.0201°/65.6207°, Depth: 1
+2025/12/03 10:35:55.627429 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.32 of event bmg2025wprn is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/03 10:35:55.645723 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-18 15:35:29,  Lat/Lon: -12.0201°/65.6207°, Depth: 1
+2025/12/03 10:35:55.645828 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.50 (Mw(mB))
+2025/12/03 10:35:55.645862 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.50 of event bmg2025wprn is smaller than triggerMinMagnitude: no automatic simulation

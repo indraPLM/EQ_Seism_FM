@@ -1,0 +1,13 @@
+2025/12/05 15:43:00.910057 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/12/05 15:43:00.910960 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-11-28 20:06:07,  Lat/Lon: 15.32°/-92.12°, Depth: 157.27, Mag: 5.65 (mb)
+2025/12/05 15:43:00.911702 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.65 of event bmg2025xihh is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/05 15:43:00.938027 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-28 20:06:07,  Lat/Lon: 15.3222°/-92.125°, Depth: 157.269
+2025/12/05 15:43:00.938201 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.65 of event bmg2025xihh is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/05 15:43:08.882346 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-28 20:06:07,  Lat/Lon: 15.3222°/-92.125°, Depth: 157.269
+2025/12/05 15:43:08.882539 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.65 of event bmg2025xihh is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/05 15:43:08.895040 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-28 20:06:07,  Lat/Lon: 15.3222°/-92.125°, Depth: 157.269
+2025/12/05 15:43:08.895144 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.58 (M)
+2025/12/05 15:43:08.895191 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.58 of event bmg2025xihh is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/05 15:43:16.818420 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-28 20:06:07,  Lat/Lon: 15.3222°/-92.125°, Depth: 157.269
+2025/12/05 15:43:16.818705 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.80 (Mw)
+2025/12/05 15:43:16.818801 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.80 of event bmg2025xihh is smaller than triggerMinMagnitude: no automatic simulation

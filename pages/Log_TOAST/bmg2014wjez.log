@@ -1,0 +1,85 @@
+2025/12/07 10:01:37.842140 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/12/07 10:01:37.842719 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.95°/126.49°, Depth: 61.89, Mag: 7.18 (Mw(mB))
+2025/12/07 10:01:37.843903 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/12/07 10:01:37.846487 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.18 (MT)
+2025/12/07 10:01:37.848441 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/12/07 10:01:37.851749 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/12/07 10:01:37.870777 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2025/12/07 10:01:37.871293 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/12/07 10:01:37.871617 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.18 (MT)
+2025/12/07 10:01:37.872654 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/12/07 10:01:37.874231 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/12/07 10:01:37.875810 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/12/07 10:01:37.928145 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/12/07 10:01:37.956541 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128E2924dcaa0e5ed82e7acc0bb5480308bcb185d699
+2025/12/07 10:01:37.961198 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128Eb8073e16792c405b783bd2d1b06a5f2a8b29e4fb
+2025/12/07 10:01:37.965212 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128E7c207fa6f6e43c4d86f80e53e8f97e715964bc05
+2025/12/07 10:01:37.968832 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128Ec77a242425b5606f1a1928ff460acfd7ff3e99b6
+2025/12/07 10:01:39.923648 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2025/12/07 10:01:39.923849 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/12/07 10:01:39.924246 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/12/07 10:01:39.924325 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.20 (MT)
+2025/12/07 10:01:39.925104 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/12/07 10:01:39.927642 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/12/07 10:01:39.985425 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/12/07 10:01:39.988523 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128E41483a79c960011c91c9dd794f66998a975b88e5
+2025/12/07 10:01:39.990816 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128Ea6d3bebc3f81174a3276986ea631aae8ce7bbd03
+2025/12/07 10:01:54.198859 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128E2924dcaa0e5ed82e7acc0bb5480308bcb185d699 in 16 seconds
+2025/12/07 10:02:47.229281 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128Eb8073e16792c405b783bd2d1b06a5f2a8b29e4fb in 69 seconds
+2025/12/07 10:03:01.198773 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128E7c207fa6f6e43c4d86f80e53e8f97e715964bc05 in 83 seconds
+2025/12/07 10:03:52.812668 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/12/07 10:03:52.875938 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/12/07 10:03:52.907674 [Bulletin:Info:toast@toast-new:Script started] PID 943562: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2014wjez
+2025/12/07 10:03:54.198280 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128Ec77a242425b5606f1a1928ff460acfd7ff3e99b6 in 136 seconds
+2025/12/07 10:04:09.198943 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128E41483a79c960011c91c9dd794f66998a975b88e5 in 149 seconds
+2025/12/07 10:05:03.199702 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128Ea6d3bebc3f81174a3276986ea631aae8ce7bbd03 in 203 seconds
+2025/12/25 09:56:04.981451 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2025/12/25 09:56:04.982775 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.18 (Mw(mB))
+2025/12/25 09:56:04.983307 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/12/25 09:56:04.985832 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.18 (MT)
+2025/12/25 09:56:04.987159 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/12/25 09:56:04.990235 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/12/25 09:56:05.042755 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/12/25 09:56:05.084423 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128E2d557c05fb6ea980ff83dfa4bf61ed7eaff1e608
+2025/12/25 09:56:05.090357 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128E56cc50bd7304894538e60ded78ef6a7e1c243d2b
+2025/12/25 09:56:07.074495 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2025/12/25 09:56:07.074787 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2025/12/25 09:56:07.075268 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2025/12/25 09:56:07.075367 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.20 (MT)
+2025/12/25 09:56:07.077422 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2025/12/25 09:56:07.080251 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2025/12/25 09:56:07.117892 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2025/12/25 09:56:07.123056 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128Efe403638e923c04badf16aebf8d921fc2a88bfd4
+2025/12/25 09:56:07.127852 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128E0ddbb573ae78785393f2c828965bcbbc97734f27
+2025/12/25 09:56:22.207042 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128E2d557c05fb6ea980ff83dfa4bf61ed7eaff1e608 in 17 seconds
+2025/12/25 09:57:18.206634 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128E56cc50bd7304894538e60ded78ef6a7e1c243d2b in 73 seconds
+2025/12/25 09:57:34.229939 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128Efe403638e923c04badf16aebf8d921fc2a88bfd4 in 87 seconds
+2025/12/25 09:58:22.260492 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2025/12/25 09:58:22.348392 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2025/12/25 09:58:22.386637 [Bulletin:Info:toast@toast-new:Script started] PID 2357658: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2014wjez
+2025/12/25 09:58:31.207200 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128E0ddbb573ae78785393f2c828965bcbbc97734f27 in 144 seconds
+2026/01/03 10:05:08.700055 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2026/01/03 10:05:08.700534 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.18 (Mw(mB))
+2026/01/03 10:05:08.701342 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2026/01/03 10:05:08.706591 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.18 (MT)
+2026/01/03 10:05:08.708169 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2026/01/03 10:05:08.712671 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2026/01/03 10:05:08.772686 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2026/01/03 10:05:08.845042 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128Ed661f59b5fa250fc4bb8c96b33272d9b7b2f3e0e
+2026/01/03 10:05:08.849784 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 71000002N126128E353664a06d9bc068922734429a2f00474c854b13
+2026/01/03 10:05:09.964805 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2014-11-15 02:31:44,  Lat/Lon: 1.94614°/126.495°, Depth: 61.8866
+2026/01/03 10:05:09.965271 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 7.20 (mB)
+2026/01/03 10:05:09.965894 [Focal mechanism:Info:toast@toast-new:FM ignored] Preferred Focal Mechanism ignored, because it was created automatically and processAutoMT is set to False.
+2026/01/03 10:05:09.966048 [Simulation:Info:toast@toast-new:Simulation(s) started] No nodal plane available. Starting Simulation(s) with fault plane, Lat/Lon: 1.95°/ 126.49° (MT), Depth: 61.89km (MT), Mag: 7.20 (MT)
+2026/01/03 10:05:09.967151 [Simulation:Info:toast@toast-new:Simulation running] TsunAWI: Looking for matching scenarios
+2026/01/03 10:05:09.970165 [Simulation:Info:toast@toast-new:Simulation finished] TsunAWI: No matching scenarios
+2026/01/03 10:05:10.012337 [Simulation:Info:toast@toast-new:No simulation returned] TsunAWI simulation backend returned no simulation.
+2026/01/03 10:05:10.016759 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128Ecbfbd87c07fabf574ed951b325d3318001ef3dec
+2026/01/03 10:05:10.020404 [Simulation:Info:toast@toast-new:Simulation tracked] Tracking progress of EasyWave2 simulation 72000002N126128E4d0eb41c7ed5448ef0ac05382353fe271f84a7c7
+2026/01/03 10:05:25.731103 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128Ed661f59b5fa250fc4bb8c96b33272d9b7b2f3e0e in 16 seconds
+2026/01/03 10:06:20.708484 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 71000002N126128E353664a06d9bc068922734429a2f00474c854b13 in 71 seconds
+2026/01/03 10:06:36.738348 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128Ecbfbd87c07fabf574ed951b325d3318001ef3dec in 86 seconds
+2026/01/03 10:07:31.711834 [Simulation:Info:toast@toast-new:Simulation finished] Finished EasyWave2 simulation 72000002N126128E4d0eb41c7ed5448ef0ac05382353fe271f84a7c7 in 141 seconds
+2026/01/03 10:11:06.384773 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "BMKG NTWC" has been successfully created
+2026/01/03 10:11:06.490873 [Bulletin:Info:toast@toast-new:Bulletin created] Bulletin "Sim overlay" has been successfully created
+2026/01/03 10:11:06.573423 [Bulletin:Info:toast@toast-new:Script started] PID 2774521: Bulletin process started for /home/sysop/seiscomp/share/toast/scripts/disseminatentwc.sh bmg2014wjez

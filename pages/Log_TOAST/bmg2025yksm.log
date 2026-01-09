@@ -1,0 +1,13 @@
+2025/12/14 23:58:19.149200 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/12/14 23:58:19.167456 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-12-14 09:32:51,  Lat/Lon: -6.08°/142.85°, Depth: 10.00, Mag: 5.23 (mb)
+2025/12/14 23:58:19.168033 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.23 of event bmg2025yksm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/14 23:58:19.180273 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-14 09:32:51,  Lat/Lon: -6.07671°/142.85°, Depth: 10
+2025/12/14 23:58:19.180399 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.23 of event bmg2025yksm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/14 23:58:22.039352 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-14 09:32:47,  Lat/Lon: -6.11199°/143.309°, Depth: 10
+2025/12/14 23:58:22.039553 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.18 (mb)
+2025/12/14 23:58:22.039593 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.18 of event bmg2025yksm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/21 16:58:10.691069 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-14 09:32:50,  Lat/Lon: -5.90508°/143.229°, Depth: 9
+2025/12/21 16:58:10.691592 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.08 (MLv)
+2025/12/21 16:58:10.691864 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.08 of event bmg2025yksm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/21 16:58:10.716162 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-14 09:32:50,  Lat/Lon: -5.90508°/143.229°, Depth: 9
+2025/12/21 16:58:10.716548 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.08 of event bmg2025yksm is smaller than triggerMinMagnitude: no automatic simulation
