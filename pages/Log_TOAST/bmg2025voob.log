@@ -1,0 +1,49 @@
+2025/11/04 02:25:21.656251 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/11/04 02:25:21.657742 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.44°/143.51°, Depth: 10.00, Mag: 5.15 (M)
+2025/11/04 02:25:21.658418 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.15 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:25:21.679351 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4374°/143.51°, Depth: 10
+2025/11/04 02:25:21.679501 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.15 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:25:30.418914 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4376°/143.511°, Depth: 10
+2025/11/04 02:25:30.419112 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.16 (M)
+2025/11/04 02:25:30.419151 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.16 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:25:42.654027 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4349°/143.515°, Depth: 10
+2025/11/04 02:25:42.654182 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.14 (M)
+2025/11/04 02:25:42.654224 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.14 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:25:52.714080 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4282°/143.472°, Depth: 10
+2025/11/04 02:25:52.714258 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.15 (M)
+2025/11/04 02:25:52.714307 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.15 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:25:58.692158 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4282°/143.472°, Depth: 10
+2025/11/04 02:25:58.692355 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.10 (M)
+2025/11/04 02:25:58.692471 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.10 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:26:03.678800 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4282°/143.472°, Depth: 10
+2025/11/04 02:26:03.678962 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.10 (M)
+2025/11/04 02:26:03.678996 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.10 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:26:08.282579 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4267°/143.471°, Depth: 10
+2025/11/04 02:26:08.282761 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.14 (M)
+2025/11/04 02:26:08.282879 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.14 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:26:17.117974 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4801°/143.445°, Depth: 10
+2025/11/04 02:26:17.118170 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.14 (mb)
+2025/11/04 02:26:17.118203 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.14 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 02:26:17.133052 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.4801°/143.445°, Depth: 10
+2025/11/04 02:26:17.133202 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.08 (M)
+2025/11/04 02:26:17.133294 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.08 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 09:58:43.868586 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.5059°/143.384°, Depth: 10
+2025/11/04 09:58:43.868778 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.20 (mb)
+2025/11/04 09:58:43.868891 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 09:58:43.888609 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.5059°/143.384°, Depth: 10
+2025/11/04 09:58:43.888743 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.12 (M)
+2025/11/04 09:58:43.888831 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.12 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/04 09:59:56.736244 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:05,  Lat/Lon: 39.5059°/143.384°, Depth: 10
+2025/11/04 09:59:56.736418 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.20 (mb)
+2025/11/04 09:59:56.736558 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/05 15:56:31.428359 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:04,  Lat/Lon: 39.4851°/143.417°, Depth: 5
+2025/11/05 15:56:31.428586 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.20 (mb)
+2025/11/05 15:56:31.428649 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/05 15:56:38.860728 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:04,  Lat/Lon: 39.4851°/143.417°, Depth: 5
+2025/11/05 15:56:38.860925 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/05 15:56:38.882228 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:04,  Lat/Lon: 39.4851°/143.417°, Depth: 5
+2025/11/05 15:56:38.882381 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.11 (M)
+2025/11/05 15:56:38.882453 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.11 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
+2025/11/05 15:56:42.941823 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-11-03 19:16:04,  Lat/Lon: 39.4851°/143.417°, Depth: 5
+2025/11/05 15:56:42.942016 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.20 (mb)
+2025/11/05 15:56:42.942089 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.20 of event bmg2025voob is smaller than triggerMinMagnitude: no automatic simulation
