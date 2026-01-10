@@ -1,0 +1,3 @@
+2025/10/27 15:27:26.301890 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/10/27 15:27:26.302394 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-10-27 08:22:29,  Lat/Lon: 7.61°/92.38°, Depth: 14.87, Mag: 5.07 (MLv)
+2025/10/27 15:27:26.302979 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.07 of event bmg2025vaxz is smaller than triggerMinMagnitude: no automatic simulation
