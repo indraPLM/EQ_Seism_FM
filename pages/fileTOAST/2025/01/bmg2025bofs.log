@@ -1,0 +1,14 @@
+2025/01/23 07:24:56.604009 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/01/23 07:24:56.645714 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-01-23 00:19:17,  Lat/Lon: -6.30°/146.59°, Depth: 112.26, Mag: 5.01 (M)
+2025/01/23 07:24:56.646120 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025bofs is smaller than triggerMinMagnitude: no automatic simulation
+2025/01/23 07:24:56.664273 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-01-23 00:19:17,  Lat/Lon: -6.30259°/146.588°, Depth: 112.256
+2025/01/23 07:24:56.664447 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025bofs is smaller than triggerMinMagnitude: no automatic simulation
+2025/01/23 07:25:05.988164 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-01-23 00:19:17,  Lat/Lon: -6.30075°/146.593°, Depth: 112.907
+2025/01/23 07:25:05.988407 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.02 (M)
+2025/01/23 07:25:05.988464 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2025bofs is smaller than triggerMinMagnitude: no automatic simulation
+2025/01/23 07:25:15.982735 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-01-23 00:19:17,  Lat/Lon: -6.30084°/146.592°, Depth: 112.786
+2025/01/23 07:25:15.982925 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.01 (M)
+2025/01/23 07:25:15.982968 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025bofs is smaller than triggerMinMagnitude: no automatic simulation
+2025/01/23 07:26:12.559430 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-01-23 00:19:17,  Lat/Lon: -6.35216°/146.58°, Depth: 111.506
+2025/01/23 07:26:12.559591 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.01 (M)
+2025/01/23 07:26:12.559613 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025bofs is smaller than triggerMinMagnitude: no automatic simulation
