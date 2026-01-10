@@ -1,0 +1,6 @@
+2025/10/03 18:09:29.864487 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/10/03 18:09:29.864959 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-10-03 11:03:17,  Lat/Lon: -3.11°/101.20°, Depth: 17.61, Mag: 5.03 (MLv)
+2025/10/03 18:09:29.865548 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.03 of event bmg2025tjhf is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/03 18:09:29.996560 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-10-03 11:03:17,  Lat/Lon: -3.1052°/101.197°, Depth: 17.6124
+2025/10/03 18:09:29.996651 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.03 of event bmg2025tjhf is smaller than triggerMinMagnitude: no automatic simulation
+2025/10/09 23:26:40.838040 [Incident:Info:toast@toast-new:Incident removed] Removed incident - Bye
