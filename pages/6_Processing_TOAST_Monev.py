@@ -44,7 +44,7 @@ def load_toast_logs_old(path="./pages/Log_TOAST/"):
     return df_toast
 
 
-def load_toast_logs(root="./pages/Log_TOAST/", time_start=None, time_end=None):
+def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
     event_ids, timestamps, remarks = [], [], []
 
     root = Path(root)
