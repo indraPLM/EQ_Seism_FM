@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-import folium
+import folium, datetime
 from bs4 import BeautifulSoup
 from streamlit_folium import st_folium
 
@@ -10,8 +10,8 @@ st.set_page_config(page_title='Kecepatan Prosesing Gempabumi', layout='wide', pa
 st.sidebar.header("Input Parameter:")
 
 # --- Input Parameters ---
-time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-11-01 00:00:00'))
-time_end   = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-11-30 23:59:59'))
+time_start = pd.to_datetime(st.sidebar.datetime_input("Start Date",datetime.datetime(2025, 12, 1, 00, 00,00),))
+time_end   = pd.to_datetime(st.sidebar.datetime_input("End Date",datetime.datetime(2025, 12, 31,23, 59,00),))
 North = float(st.sidebar.text_input('North:', '6.0'))
 South = float(st.sidebar.text_input('South:', '-13.0'))
 West  = float(st.sidebar.text_input('West:', '90.0'))
