@@ -94,7 +94,7 @@ def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
 
     return df_toast
 
-df_toast = load_toast_logs()
+#df_toast = load_toast_logs()
 df_toast = load_toast_logs(root="./pages/Log_TOAST/",
     time_start=time_start,time_end=time_end)
 
