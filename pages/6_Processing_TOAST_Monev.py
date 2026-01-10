@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import os, datetime
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 # --- Page Setup ---
 st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide', page_icon="🌍")
@@ -18,7 +19,7 @@ with st.sidebar:
     East       = float(st.text_input('East:', '142.0'))
 
 # --- Parse TOAST Logs ---
-def load_toast_logs(path="./pages/Log_TOAST/"):
+def load_toast_logs_old(path="./pages/Log_TOAST/"):
     event_ids, timestamps, remarks = [], [], []
     for fname in os.listdir(path):
         if not fname.endswith('.log'):
@@ -42,7 +43,61 @@ def load_toast_logs(path="./pages/Log_TOAST/"):
     df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'], errors='coerce')
     return df_toast
 
+
+def load_toast_logs(root="./pages/Log_TOAST/", time_start=None, time_end=None):
+    event_ids, timestamps, remarks = [], [], []
+
+    root = Path(root)
+
+    # determine year-month range from sidebar input
+    periods = pd.period_range(
+        start=time_start.to_period("M"),
+        end=time_end.to_period("M"),
+        freq="M"
+    )
+
+    for p in periods:
+        year_dir = root / str(p.year)
+        month_dir = year_dir / f"{p.month:02d}"
+
+        if not month_dir.exists():
+            continue
+
+        for log_file in month_dir.glob("*.log"):
+            eid = log_file.stem
+
+            try:
+                with open(log_file, encoding="utf-8", errors="ignore") as f:
+                    for line in f:
+                        if "Incident created" in line or "Info" in line:
+                            parts = line.strip().split()
+                            if len(parts) >= 3:
+                                ts = parts[0] + " " + parts[1]
+                                remark = parts[2]
+
+                                event_ids.append(eid)
+                                timestamps.append(ts)
+                                remarks.append(remark)
+                            break
+            except Exception:
+                continue
+
+    df_toast = pd.DataFrame({
+        "event_id": event_ids,
+        "tstamp_toast": timestamps,
+        "remark_toast": remarks
+    })
+
+    df_toast["tstamp_toast"] = pd.to_datetime(
+        df_toast["tstamp_toast"], errors="coerce"
+    )
+
+    return df_toast
+
 df_toast = load_toast_logs()
+df_toast = load_toast_logs(root="./pages/Log_TOAST/",
+    time_start=time_start,time_end=time_end)
+
 df_toast['tstamp_toast'] = df_toast['tstamp_toast'] - pd.Timedelta(hours=7)
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
