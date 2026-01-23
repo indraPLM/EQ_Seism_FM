@@ -4,7 +4,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests
+import requests,datetime
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
@@ -19,8 +19,8 @@ st.set_page_config(page_title="BMKG & CMT Focal Viewer", layout="wide", page_ico
 
 # 🌍 Sidebar filters
 st.sidebar.header("BMKG Filter")
-start_time = st.sidebar.text_input("Start Time", "2025-11-01 00:00:00")
-end_time = st.sidebar.text_input("End Time", "2025-11-30 23:59:59")
+start_time = st.sidebar.datetime_input("Start DateTime",datetime.datetime(2025, 12, 1, 00, 00,00),)
+end_time = st.sidebar.datetime_input("End DateTime",datetime.datetime(2025, 12, 31, 23, 59,59),)
 
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input("North", "6.0"))
@@ -31,8 +31,8 @@ West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
 st.sidebar.header("Global CMT Filter")
-cmt_start = st.sidebar.text_input('Start:', '2015-01-01 00:00')
-cmt_end   = st.sidebar.text_input('End:', '2020-12-31 23:59')
+cmt_start = st.sidebar.datetime_input("Start DateTime",datetime.datetime(2015, 1, 1, 00, 00,00),)
+cmt_end = st.sidebar.datetime_input("End DateTime",datetime.datetime(2020, 12, 31, 23, 59,59),)
 
 # ⬇️ Load BMKG focal data
 @st.cache_data

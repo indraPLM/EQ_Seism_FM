@@ -13,14 +13,16 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start_str = st.sidebar.text_input(
-    'Start DateTime:',
-    datetime.datetime.today().strftime("%Y-%m-01 00:00:00")
-)
-time_end_str = st.sidebar.text_input(
-    'End DateTime:',
-    datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-)
+time_start_str = st.sidebar.date_input("Start Date", datetime.date(2025, 12, 1)) 
+#st.sidebar.text_input(
+#    'Start DateTime:',
+#    datetime.datetime.today().strftime("%Y-%m-01 00:00:00")
+#)
+time_end_str = st.sidebar.date_input("End Date", datetime.date(2025, 12, 31))
+#st.sidebar.text_input(
+#    'End DateTime:',
+#    datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+#)
 
 try:
     time_start = pd.to_datetime(time_start_str)

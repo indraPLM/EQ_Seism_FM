@@ -20,11 +20,11 @@ st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout
 
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2024-01-01"))
-end_date = st.sidebar.date_input("End Date", pd.to_datetime("2024-12-31"))
+start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-01-01"))
+end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-12-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/data_integrasi_2024_rev_final.xlsx"
+excel_path = "./pages/fileINTEGRASI/data_integrasi_2025_rev_final.xlsx"
 df = pd.read_excel(excel_path)
 df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
 
@@ -53,46 +53,46 @@ else:
     y0, x0 = -2.0, 120.0
     st.warning("⚠️ No data found. Using default map center.")
 
-m = folium.Map(location=(y0, x0), zoom_start=4.5)
-folium.TileLayer(
-    tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
-    attr="ESRI Ocean Basemap",
-    name="ESRI Ocean",
-    control=False
-).add_to(m)
+#m = folium.Map(location=(y0, x0), zoom_start=4.5)
+#folium.TileLayer(
+# #   tiles="https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+#    attr="ESRI Ocean Basemap",
+#    name="ESRI Ocean",
+#    control=False
+#).add_to(m)
 
-for _, row in df_filtered.iterrows():
-    if pd.notnull(row['LAT']) and pd.notnull(row['LON']) and pd.notnull(row['MAG']) and pd.notnull(row['DEPTH']):
-        folium.CircleMarker(
-            location=[row['LAT'], row['LON']],
-            radius=(row['MAG'] ** 1.25),
-            color='black',
-            weight=0.4,
-            fill=True,
-            fill_color=depth_color(row['DEPTH']),
-            fill_opacity=0.5,
-            popup=folium.Popup(
-                f"<b>Date:</b> {row['DATETIME']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
-                max_width=250
-            )
-        ).add_to(m)
+#for _, row in df_filtered.iterrows():
+#    if pd.notnull(row['LAT']) and pd.notnull(row['LON']) and pd.notnull(row['MAG']) and pd.notnull(row['DEPTH']):
+#        folium.CircleMarker(
+#            location=[row['LAT'], row['LON']],
+#            radius=(row['MAG'] ** 1.25),
+#            color='black',
+#            weight=0.4,
+#            fill=True,
+#            fill_color=depth_color(row['DEPTH']),
+#            fill_opacity=0.5,
+#            popup=folium.Popup(
+#                f"<b>Date:</b> {row['DATETIME']}<br><b>Mag:</b> {row['MAG']}<br><b>Depth:</b> {row['DEPTH']} km",
+#                max_width=250
+#            )
+#        ).add_to(m)
 
-try:
-    fault_geojson = requests.get(
-        "https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson"
-    ).json()
-    folium.GeoJson(
-        fault_geojson,
-        name="Fault Lines",
-        style_function=lambda feature: {"color": "orange", "weight": 1}
-    ).add_to(m)
-except Exception as e:
-    st.warning(f"⚠️ Fault line overlay failed: {e}")
+#try:
+#    fault_geojson = requests.get(
+#        "https://bmkg-content-inatews.storage.googleapis.com/indo_faults_lines.geojson"
+#    ).json()
+#    folium.GeoJson(
+#        fault_geojson,
+#        name="Fault Lines",
+#        style_function=lambda feature: {"color": "orange", "weight": 1}
+#    ).add_to(m)
+#except Exception as e:
+#    st.warning(f"⚠️ Fault line overlay failed: {e}")
 
-folium.LayerControl(collapsed=False).add_to(m)
+#folium.LayerControl(collapsed=False).add_to(m)
 
-st.subheader(f"🗺️ Seismicities Map Catalog Integration ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
-st_folium(m, width=1000, height=650)
+#st.subheader(f"🗺️ Seismicities Map Catalog Integration ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
+#st_folium(m, width=1000, height=650)
 
 st.subheader(f"📋 Filtered Earthquake Events ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
 df_filtered.index = range(1, len(df_filtered)+1)

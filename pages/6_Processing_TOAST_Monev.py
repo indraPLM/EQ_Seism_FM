@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 import requests
-import os
+import os, datetime
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 # --- Page Setup ---
 st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide', page_icon="🌍")
@@ -10,15 +11,15 @@ st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide
 with st.sidebar:
     st.header("Input Parameter:")
 
-    time_start = pd.to_datetime(st.text_input('Start DateTime:', '2025-11-01 00:00:00'))
-    time_end   = pd.to_datetime(st.text_input('End DateTime:', '2025-11-30 23:59:59'))
+    time_start = pd.to_datetime(st.datetime_input("Start DateTime",datetime.datetime(2025, 12, 1, 00, 00,00),))
+    time_end   = pd.to_datetime(st.datetime_input("End DateTime",datetime.datetime(2025, 12, 31, 23, 59,00),))
     North      = float(st.text_input('North:', '6.0'))
     South      = float(st.text_input('South:', '-13.0'))
     West       = float(st.text_input('West:', '90.0'))
     East       = float(st.text_input('East:', '142.0'))
 
 # --- Parse TOAST Logs ---
-def load_toast_logs(path="./pages/fileTOAST/2025/"):
+def load_toast_logs_old(path="./pages/Log_TOAST/"):
     event_ids, timestamps, remarks = [], [], []
     for fname in os.listdir(path):
         if not fname.endswith('.log'):
@@ -42,7 +43,61 @@ def load_toast_logs(path="./pages/fileTOAST/2025/"):
     df_toast['tstamp_toast'] = pd.to_datetime(df_toast['tstamp_toast'], errors='coerce')
     return df_toast
 
-df_toast = load_toast_logs()
+
+def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
+    event_ids, timestamps, remarks = [], [], []
+
+    root = Path(root)
+
+    # determine year-month range from sidebar input
+    periods = pd.period_range(
+        start=time_start.to_period("M"),
+        end=time_end.to_period("M"),
+        freq="M"
+    )
+
+    for p in periods:
+        year_dir = root / str(p.year)
+        month_dir = year_dir / f"{p.month:02d}"
+
+        if not month_dir.exists():
+            continue
+
+        for log_file in month_dir.glob("*.log"):
+            eid = log_file.stem
+
+            try:
+                with open(log_file, encoding="utf-8", errors="ignore") as f:
+                    for line in f:
+                        if "Incident created" in line or "Info" in line:
+                            parts = line.strip().split()
+                            if len(parts) >= 3:
+                                ts = parts[0] + " " + parts[1]
+                                remark = parts[2]
+
+                                event_ids.append(eid)
+                                timestamps.append(ts)
+                                remarks.append(remark)
+                            break
+            except Exception:
+                continue
+
+    df_toast = pd.DataFrame({
+        "event_id": event_ids,
+        "tstamp_toast": timestamps,
+        "remark_toast": remarks
+    })
+
+    df_toast["tstamp_toast"] = pd.to_datetime(
+        df_toast["tstamp_toast"], errors="coerce"
+    )
+
+    return df_toast
+
+#df_toast = load_toast_logs()
+df_toast = load_toast_logs(root="./pages/fileTOAST/",
+    time_start=time_start,time_end=time_end)
+
 df_toast['tstamp_toast'] = df_toast['tstamp_toast'] - pd.Timedelta(hours=7)
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
@@ -99,15 +154,11 @@ df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
 df['event_id'] = df['event_id'].astype(str).str.strip()
 df_toast['event_id'] = df_toast['event_id'].astype(str).str.strip()
 df['mag'] = pd.to_numeric(df['mag'], errors='coerce').round(2)
-st.markdown("### 🌐 Cek QC Catalog M ≥5")
-st.dataframe(df)
 
 # --- Merge with TOAST data ---
 df_merge = pd.merge(df, df_toast, on='event_id')
 df_merge['lapse_time_toast'] = (df_merge['tstamp_toast'] - df_merge['date_time']).dt.total_seconds() / 60
 df_merge = df_merge.query('lapse_time_toast <= 60')
-
-
 
 # --- Visualization: Map ---
 import folium

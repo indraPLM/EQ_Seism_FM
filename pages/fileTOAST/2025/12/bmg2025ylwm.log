@@ -1,0 +1,16 @@
+2025/12/15 07:57:08.460904 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/12/15 07:57:08.471670 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-12-15 00:43:07,  Lat/Lon: -58.75°/-25.98°, Depth: 10.00, Mag: 5.18 (M)
+2025/12/15 07:57:08.472270 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.18 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/15 07:57:08.488511 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-15 00:43:07,  Lat/Lon: -58.7473°/-25.9816°, Depth: 10
+2025/12/15 07:57:08.488635 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.18 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/15 08:03:10.604905 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-15 00:43:07,  Lat/Lon: -58.7473°/-25.9816°, Depth: 10
+2025/12/15 08:03:10.605088 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.18 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/19 11:16:04.129139 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-15 00:43:06,  Lat/Lon: -58.7067°/-25.9368°, Depth: 12.7738
+2025/12/19 11:16:04.129479 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.27 (mb)
+2025/12/19 11:16:04.129603 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.27 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/19 11:16:04.141864 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-15 00:43:06,  Lat/Lon: -58.7067°/-25.9368°, Depth: 12.7738
+2025/12/19 11:16:04.142086 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.19 (M)
+2025/12/19 11:16:04.142178 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.19 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation
+2025/12/19 11:16:09.427483 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-12-15 00:43:06,  Lat/Lon: -58.7067°/-25.9368°, Depth: 12.7738
+2025/12/19 11:16:09.427880 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.27 (mb)
+2025/12/19 11:16:09.428071 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.27 of event bmg2025ylwm is smaller than triggerMinMagnitude: no automatic simulation

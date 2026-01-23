@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests
+import requests, datetime
 from bs4 import BeautifulSoup
 from obspy.geodetics import degrees2kilometers
 
@@ -11,8 +11,8 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page
 
 # 🎛 Sidebar input
 st.sidebar.header("Parameter Waktu")
-time_start = pd.to_datetime(st.sidebar.text_input('Start DateTime:', '2025-08-01')).tz_localize('UTC')
-time_end = pd.to_datetime(st.sidebar.text_input('End DateTime:', '2025-08-30')).tz_localize('UTC')
+time_start = pd.to_datetime(st.sidebar.date_input("Start Date", datetime.date(2025, 12, 1)) ).tz_localize('UTC')
+time_end = pd.to_datetime(st.sidebar.date_input("End Date", datetime.date(2025, 12, 31)) ).tz_localize('UTC')
 
 
 # 🛠️ Utility Functions
