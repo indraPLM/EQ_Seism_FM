@@ -24,7 +24,7 @@ start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2024-01-01"))
 end_date = st.sidebar.date_input("End Date", pd.to_datetime("2024-12-31"))
 
 # 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/IndoEQ_1Jan_31Dec2025.xlsx"
+excel_path = "./pages/fileINTEGRASI/data_integrasi_2025_rev_final.xlsx"
 df = pd.read_excel(excel_path)
 df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
 
