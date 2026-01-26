@@ -1,5 +1,6 @@
 # Earthquake Dashboard - Streamlit Desktop Edition
 # Created by Indra Gunawan
+import datetime
 
 import streamlit as st
 import pandas as pd
@@ -35,7 +36,10 @@ df_filtered = df[
 ]
 
 # 🔍 Filter by selected date range
-df_filtered = df[(df["DATETIME"] >= pd.to_datetime(start_date)) & (df["DATETIME"] <= pd.to_datetime(end_date))]
+df_filtered = df[
+    (df["DATETIME"] >= pd.to_datetime(start_date))
+    & (df["DATETIME"] <= pd.to_datetime(end_date) + datetime.timedelta(days=1))
+]
 
 # 🗺️ Folium Map Construction
 def depth_color(depth):
