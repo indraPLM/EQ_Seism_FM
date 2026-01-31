@@ -1,0 +1,13 @@
+2025/08/25 00:24:53.115312 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2025/08/25 00:24:53.116010 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2025-08-24 17:22:41,  Lat/Lon: -1.82°/139.00°, Depth: 14.67, Mag: 5.01 (M)
+2025/08/25 00:24:53.116641 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025qorq is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/25 00:24:53.139411 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-24 17:22:41,  Lat/Lon: -1.82308°/139.003°, Depth: 14.6669
+2025/08/25 00:24:53.139556 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2025qorq is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/26 15:33:17.598423 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-24 17:22:41,  Lat/Lon: -1.88555°/139.012°, Depth: 16.5552
+2025/08/26 15:33:17.598628 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.06 (mb)
+2025/08/26 15:33:17.598677 [Incident:Info:toast@toast-new:FM updated] FM updated
+2025/08/26 15:33:17.598917 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.06 of event bmg2025qorq is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/26 15:33:28.045858 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-24 17:22:41,  Lat/Lon: -1.88555°/139.012°, Depth: 16.5552
+2025/08/26 15:33:28.046079 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.06 of event bmg2025qorq is smaller than triggerMinMagnitude: no automatic simulation
+2025/08/26 15:33:28.099818 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2025-08-24 17:22:41,  Lat/Lon: -1.88555°/139.012°, Depth: 16.5552
+2025/08/26 15:33:28.099941 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.06 of event bmg2025qorq is smaller than triggerMinMagnitude: no automatic simulation
