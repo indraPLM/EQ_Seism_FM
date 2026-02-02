@@ -188,8 +188,8 @@ df = df.query('mag >= 5')
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
-st.dataframe(df)
-st.dataframe(df_toast)
+#st.dataframe(df)
+#st.dataframe(df_toast)
 # Strip whitespace, ensure consistent casing and type
 df['event_id'] = df['event_id'].astype(str).str.strip()
 df_toast['event_id'] = df_toast['event_id'].astype(str).str.strip()
