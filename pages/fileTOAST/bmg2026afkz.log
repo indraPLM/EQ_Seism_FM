@@ -1,0 +1,14 @@
+2026/01/04 06:18:35.511071 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2026/01/04 06:18:35.512344 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2026-01-03 23:13:52,  Lat/Lon: 5.75°/126.97°, Depth: 20.83, Mag: 5.02 (mb)
+2026/01/04 06:18:35.512955 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2026afkz is smaller than triggerMinMagnitude: no automatic simulation
+2026/01/04 06:18:35.536525 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-01-03 23:13:52,  Lat/Lon: 5.74983°/126.969°, Depth: 20.8306
+2026/01/04 06:18:35.536676 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2026afkz is smaller than triggerMinMagnitude: no automatic simulation
+2026/01/04 06:21:23.214433 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-01-03 23:13:51,  Lat/Lon: 5.75055°/126.981°, Depth: 19.9396
+2026/01/04 06:21:23.214586 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.02 (mb)
+2026/01/04 06:21:23.214611 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2026afkz is smaller than triggerMinMagnitude: no automatic simulation
+2026/01/04 12:58:59.136678 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-01-03 23:13:52,  Lat/Lon: 5.74869°/126.966°, Depth: 20.9663
+2026/01/04 12:58:59.136876 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.02 (mb)
+2026/01/04 12:58:59.136914 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2026afkz is smaller than triggerMinMagnitude: no automatic simulation
+2026/01/10 17:30:27.827572 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-01-03 23:13:52,  Lat/Lon: 5.72772°/126.963°, Depth: 20.5062
+2026/01/10 17:30:27.838646 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.01 (mb)
+2026/01/10 17:30:27.849415 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2026afkz is smaller than triggerMinMagnitude: no automatic simulation
