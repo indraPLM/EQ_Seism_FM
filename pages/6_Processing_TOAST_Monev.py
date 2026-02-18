@@ -44,7 +44,7 @@ def load_toast_logs_old(path="./pages/Log_TOAST/"):
     return df_toast
 
 
-def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
+def load_toast_logs_old(root="./pages/fileTOAST/", time_start=None, time_end=None):
     event_ids, timestamps, remarks = [], [], []
 
     root = Path(root)
@@ -93,6 +93,45 @@ def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
     )
 
     return df_toast
+
+def load_toast_logs(root="./pages/fileTOAST/", time_start=None, time_end=None):
+    event_ids, timestamps, remarks = [], [], []
+
+    root = Path(root)
+
+    # Read all .log files directly inside fileTOAST/
+    for log_file in root.glob("*.log"):
+        eid = log_file.stem
+
+        try:
+            with open(log_file, encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    if "Incident created" in line or "Info" in line:
+                        parts = line.strip().split()
+                        if len(parts) >= 3:
+                            ts = parts[0] + " " + parts[1]
+                            remark = parts[2]
+
+                            # Convert timestamp
+                            ts_dt = pd.to_datetime(ts, errors="coerce")
+
+                            # Filter by user-selected time range
+                            if time_start <= ts_dt <= time_end:
+                                event_ids.append(eid)
+                                timestamps.append(ts_dt)
+                                remarks.append(remark)
+                        break
+        except Exception:
+            continue
+
+    df_toast = pd.DataFrame({
+        "event_id": event_ids,
+        "tstamp_toast": timestamps,
+        "remark_toast": remarks
+    })
+
+    return df_toast
+
 
 #df_toast = load_toast_logs()
 df_toast = load_toast_logs(root="./pages/fileTOAST/",
@@ -149,7 +188,8 @@ df = df.query('mag >= 5')
 df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 df = df[df['event_id'].str.strip().str.startswith('bmg')].copy()
-
+#st.dataframe(df)
+#st.dataframe(df_toast)
 # Strip whitespace, ensure consistent casing and type
 df['event_id'] = df['event_id'].astype(str).str.strip()
 df_toast['event_id'] = df_toast['event_id'].astype(str).str.strip()
