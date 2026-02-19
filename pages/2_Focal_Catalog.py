@@ -91,17 +91,17 @@ w = get_width(East, West)
 
 # 🗺️ BMKG Map
 st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{start_time} – {end_time}")
-map_proj = ccrs.Mercator()  # The "Folium-style" projection
-data_proj = ccrs.PlateCarree()  # Your Lon/Lat data
+prj_map_1 = ccrs.Mercator()  # The "Folium-style" projection
+prj_dat_1 = ccrs.PlateCarree()  # Your Lon/Lat data
 fig_1 = plt.figure(dpi=300)
-ax = fig_1.add_subplot(111, projection=map_proj)
-ax.set_extent((West, East, South - 0.5, North + 0.5), crs=data_proj)
-ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-tiles_url = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
-cx.add_basemap(ax, source=tiles_url, crs=map_proj.proj4_init)
+axi_1 = fig_1.add_subplot(111, projection=prj_map_1)
+axi_1.set_extent((West, East, South - 0.5, North + 0.5), crs=prj_dat_1)
+axi_1.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+tls = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
+cx.add_basemap(axi_1, source=tls, crs=prj_map_1.proj4_init)
 for _, row in df.iterrows():
     if pd.notnull(row["S1"]) and pd.notnull(row["D1"]) and pd.notnull(row["R1"]):
-        target_coords = map_proj.transform_point(row["fixedLon"], row["fixedLat"], data_proj)
+        target_coords = prj_map_1.transform_point(row["fixedLon"], row["fixedLat"], prj_dat_1)
         mercator_width = int(w * 100000)
         ball = beach([row["S1"], row["D1"], row["R1"]],
                      xy=target_coords,
@@ -110,7 +110,7 @@ for _, row in df.iterrows():
                      alpha=0.85,
                      zorder=10,
                      facecolor=get_color(row["depth"]))
-        ax.add_collection(ball)
+        axi_1.add_collection(ball)
 st.pyplot(fig_1)
 
 # 📊 Summary Table
