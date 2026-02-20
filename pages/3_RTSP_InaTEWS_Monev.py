@@ -11,8 +11,14 @@ st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page
 
 # 🎛 Sidebar input
 st.sidebar.header("Parameter Waktu")
-time_start = pd.to_datetime(st.sidebar.date_input("Start Date", datetime.date(2025, 12, 1)) ).tz_localize('UTC')
-time_end = pd.to_datetime(st.sidebar.date_input("End Date", datetime.date(2025, 12, 31)) ).tz_localize('UTC')
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_sta = pd.to_datetime(
+    st.sidebar.date_input("Start Date", tim_sta_def)
+).tz_localize('UTC')
+tim_end = pd.to_datetime(
+    st.sidebar.date_input("End Date", tim_end_def)
+).tz_localize('UTC')
 
 
 # 🛠️ Utility Functions
@@ -66,7 +72,7 @@ df_rtsp = pd.concat(bmkg_pages, ignore_index=True)
 df_rtsp = normalize_bmkg_time(df_rtsp)
 
 # 🌐 Load USGS Catalog
-usgs_url = f"https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime={time_end.date()}&minmagnitude=6.0"
+usgs_url = f"https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2014-01-01&endtime={tim_end.date()}&minmagnitude=6.0"
 df_usgs = pd.read_csv(usgs_url)
 df_usgs['fix_dateusgs'] = pd.to_datetime(df_usgs['time'], utc=True)
 
@@ -86,10 +92,10 @@ st.dataframe(df_usgs)
 from datetime import timedelta
 
 df_rtsp['date_time'] = pd.to_datetime(df_rtsp['date_time'], errors='coerce') + timedelta(hours=7)
-df_rtsp_filtered = df_rtsp[(df_rtsp['date_time'] >= time_start) & (df_rtsp['date_time'] <= time_end)]
+df_rtsp_filtered = df_rtsp[(df_rtsp['date_time'] >= tim_sta) & (df_rtsp['date_time'] <= tim_end)]
 
 df_usgs['fix_dateusgs'] = pd.to_datetime(df_usgs['time'], utc=True)
-df_usgs_filtered = df_usgs[(df_usgs['fix_dateusgs'] >= time_start) & (df_usgs['fix_dateusgs'] <= time_end)]
+df_usgs_filtered = df_usgs[(df_usgs['fix_dateusgs'] >= tim_sta) & (df_usgs['fix_dateusgs'] <= tim_end)]
 
 # 🔁 Comparison function (add above if not already defined)
 def compare_events(df1, df2, time_col1, time_col2, threshold_seconds=30):
