@@ -98,6 +98,7 @@ fig_1 = plt.figure(dpi=300)
 axi_1 = fig_1.add_subplot(111, projection=prj_map_1)
 axi_1.set_extent((West, East, South - 0.5, North + 0.5), crs=prj_dat_1)
 axi_1.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+axi_1.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 cx.add_basemap(axi_1, source=tls, crs=prj_map_1.proj4_init)
 for _, x in df.iterrows():
     if pd.notnull(x["S1"]) and pd.notnull(x["D1"]) and pd.notnull(x["R1"]):
@@ -106,7 +107,7 @@ for _, x in df.iterrows():
             xy=prj_map_1.transform_point(x["fixedLon"], x["fixedLat"], prj_dat_1),
             width=int(w * 100000),
             linewidth=0.5,
-            alpha=0.85,
+            alpha=0.75,
             zorder=10,
             facecolor=get_color(x["depth"])
         ))
@@ -279,14 +280,22 @@ df_cmt = df_cmt[
     ]
 
 # 🗺️ Plot Global CMT
-fig2 = plt.figure(dpi=300)
-ax2 = fig2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-ax2.set_extent((West, East, South - 0.5, North + 0.5))
-ax2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+fig_2 = plt.figure(dpi=300)
+axi_2 = fig_2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
+axi_2.set_extent((West, East, South - 0.5, North + 0.5))
+axi_2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+axi_2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
 # scale_factor = compute_beachball_scale(West, East, South, North)
-draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat', scale=w)
+draw_beachballs(
+    df_cmt,
+    axi_2,
+    axi_2.projection,
+    depth_col='Depth',
+    lon_col='Lon',
+    lat_col='Lat',
+    scale=w
+)
 
-st.pyplot(fig2)
+st.pyplot(fig_2)
 df_cmt.index = range(1, len(df_cmt) + 1)  # Reindex starting from 1
 st.dataframe(df_cmt)
