@@ -256,7 +256,7 @@ from obspy.imaging.beachball import beach
 def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_col='Lat', scale=1.0):
     for _, row in df.iterrows():
         if all(pd.notnull(row[col]) for col in ['S1', 'D1', 'R1']):
-            x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.Geodetic())
+            x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.PlateCarree())
             color = "r" if row[depth_col] < 60 else "y" if row[depth_col] < 300 else "g"
             bb = beach([row['S1'], row['D1'], row['R1']],
                        xy=(x, y), width=scale,
@@ -280,11 +280,14 @@ df_cmt = df_cmt[
     ]
 
 # 🗺️ Plot Global CMT
+prj_map_2 = ccrs.Mercator()
+prj_dat_2 = ccrs.PlateCarree()
 fig_2 = plt.figure(dpi=300)
-axi_2 = fig_2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-axi_2.set_extent((West, East, South - 0.5, North + 0.5))
+axi_2 = fig_2.add_subplot(111, projection=prj_map_2)
+axi_2.set_extent((West, East, South - 0.5, North + 0.5), crs=prj_dat_2)
 axi_2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
 axi_2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+cx.add_basemap(axi_2, source=tls, crs=prj_map_2.proj4_init)
 # scale_factor = compute_beachball_scale(West, East, South, North)
 draw_beachballs(
     df_cmt,
@@ -293,7 +296,7 @@ draw_beachballs(
     depth_col='Depth',
     lon_col='Lon',
     lat_col='Lat',
-    scale=w
+    scale=int(w * 100000)
 )
 
 st.pyplot(fig_2)
