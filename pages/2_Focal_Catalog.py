@@ -22,8 +22,10 @@ st.set_page_config(page_title="BMKG & CMT Focal Viewer", layout="wide", page_ico
 
 # 🌍 Sidebar filters
 st.sidebar.header("BMKG Filter")
-start_time = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2025, 12, 1, 00, 00, 00), )
-end_time = st.sidebar.datetime_input("End DateTime", datetime.datetime(2025, 12, 31, 23, 59, 59), )
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_sta = st.sidebar.datetime_input("Start DateTime", tim_sta_def)
+tim_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input("North", "6.0"))
@@ -73,7 +75,7 @@ for col in ['mag', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2']:
     df[col] = pd.to_numeric(df[col], errors='coerce')
 
 df = df[
-    (df['date_time'] >= start_time) & (df['date_time'] <= end_time) &
+    (df['date_time'] >= tim_sta) & (df['date_time'] <= tim_end) &
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East))
     ]
@@ -90,7 +92,7 @@ def get_width(e, w): return max(0.3, min(1.5, 0.03 * abs(e - w)))
 w = get_width(East, West)
 
 # 🗺️ BMKG Map
-st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{start_time} – {end_time}")
+st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{tim_sta} – {tim_end}")
 tls = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
 prj_map_1 = ccrs.Mercator()
 prj_dat_1 = ccrs.PlateCarree()

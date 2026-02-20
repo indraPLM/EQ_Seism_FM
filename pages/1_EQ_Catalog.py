@@ -16,11 +16,10 @@ st.set_page_config(page_title='Earthquake Dashboard', layout='wide', page_icon='
 
 # 🛠️ Sidebar Inputs
 st.sidebar.header("Input Parameters")
-time_end = st.sidebar.datetime_input("End Date", datetime.datetime.now())
-time_start = st.sidebar.datetime_input(
-    "Start Date",
-    time_end - datetime.timedelta(days=30)
-)
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_sta = st.sidebar.datetime_input("Start Date", tim_sta_def)
+tim_end = st.sidebar.datetime_input("End Date", tim_end_def)
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input('North', '6.0'))
 South = float(col2.text_input('South', '-13.0'))
@@ -78,11 +77,11 @@ df = preprocess(df)
 
 # 🧹 Filter Data
 df = df[
-    (df.date_time.between(time_start, time_end)) &
+    (df.date_time.between(tim_sta, tim_end)) &
     (df.fixedLat.between(South, North)) &
     (df.mag.between(Mmin,Mmax)) &
-    (df.fixedLon.between(West, East)) 
-]
+    (df.fixedLon.between(West, East))
+    ]
 
 # 🗺️ Plot Map
 st.subheader("🗺️ Earthquake Map")
