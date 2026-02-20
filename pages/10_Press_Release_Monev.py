@@ -15,20 +15,18 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start_str = st.sidebar.date_input("Start Date", datetime.date(2025, 12, 1)) 
-#st.sidebar.text_input(
-#    'Start DateTime:',
-#    datetime.datetime.today().strftime("%Y-%m-01 00:00:00")
-#)
-time_end_str = st.sidebar.date_input("End Date", datetime.date(2025, 12, 31))
+dat_end_def = datetime.datetime.today()
+dat_sta_def = dat_end_def - datetime.timedelta(days=365)
+dat_sta_str = st.sidebar.date_input("Start Date", dat_sta_def)
+dat_end_str = st.sidebar.date_input("End Date", dat_end_def)
 #st.sidebar.text_input(
 #    'End DateTime:',
 #    datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 #)
 
 try:
-    time_start = pd.to_datetime(time_start_str)
-    time_end   = pd.to_datetime(time_end_str)
+    time_start = pd.to_datetime(dat_sta_str)
+    time_end   = pd.to_datetime(dat_end_str)
 except Exception:
     st.error("❌ Invalid datetime format. Please use YYYY-MM-DD HH:MM:SS")
     st.stop()
