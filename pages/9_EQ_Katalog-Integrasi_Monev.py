@@ -21,8 +21,10 @@ st.set_page_config(page_title='Earthquake Dashboard - Katalog Integrasi', layout
 
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-start_date = st.sidebar.date_input("Start Date", pd.to_datetime("2025-01-01"))
-end_date = st.sidebar.date_input("End Date", pd.to_datetime("2025-12-31"))
+dat_end_def = datetime.datetime.today()
+dat_sta_def = dat_end_def - datetime.timedelta(days=365)
+dat_sta = st.sidebar.date_input("Start Date", dat_sta_def)
+dat_end = st.sidebar.date_input("End Date", dat_end_def)
 
 # 📄 Load Excel file
 excel_path = "./pages/fileINTEGRASI/data_integrasi_2025_rev_final.xlsx"
@@ -37,8 +39,8 @@ df_filtered = df[
 
 # 🔍 Filter by selected date range
 df_filtered = df[
-    (df["DATETIME"] >= pd.to_datetime(start_date))
-    & (df["DATETIME"] <= pd.to_datetime(end_date) + datetime.timedelta(days=1))
+    (df["DATETIME"] >= pd.to_datetime(dat_sta))
+    & (df["DATETIME"] <= pd.to_datetime(dat_end) + datetime.timedelta(days=1))
 ]
 
 # 🗺️ Folium Map Construction
@@ -98,7 +100,7 @@ else:
 #st.subheader(f"🗺️ Seismicities Map Catalog Integration ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
 #st_folium(m, width=1000, height=650)
 
-st.subheader(f"📋 Filtered Earthquake Events ({start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')})")
+st.subheader(f"📋 Filtered Earthquake Events ({dat_sta.strftime('%Y-%m-%d')} to {dat_end.strftime('%Y-%m-%d')})")
 df_filtered.index = range(1, len(df_filtered)+1)
 st.dataframe(df_filtered)
 
