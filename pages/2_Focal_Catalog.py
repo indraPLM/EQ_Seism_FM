@@ -107,7 +107,7 @@ for _, x in df.iterrows():
             xy=prj_map_1.transform_point(x["fixedLon"], x["fixedLat"], prj_dat_1),
             width=int(w * 100000),
             linewidth=0.5,
-            alpha=0.75,
+            alpha=0.625,
             zorder=10,
             facecolor=get_color(x["depth"])
         ))
@@ -260,7 +260,7 @@ def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_co
             color = "r" if row[depth_col] < 60 else "y" if row[depth_col] < 300 else "g"
             bb = beach([row['S1'], row['D1'], row['R1']],
                        xy=(x, y), width=scale,
-                       linewidth=0.5, alpha=0.65,
+                       linewidth=0.5, alpha=0.625,
                        zorder=10, facecolor=color)
             ax.add_collection(bb)
 
