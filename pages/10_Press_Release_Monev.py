@@ -1,3 +1,5 @@
+import math
+
 import streamlit as st
 import pandas as pd
 from fpdf import FPDF
@@ -77,7 +79,7 @@ def html_to_text(html_content):
 
 def build_narasi_dataframe(df, time_col="time_narasi"):
     df["narasi_html"] = df[time_col].apply(fetch_narasi_text).apply(
-        lambda n: sub(r"</?strong>", "", n)
+        lambda x: sub(r"</?strong>", "", y) if (y := x) else x
     )
     df["narasi_text"] = df["narasi_html"].apply(html_to_text)
     return df
@@ -118,28 +120,34 @@ nar_co1 = "Narration Text"
 
 
 def lat_ett(data: pd.DataFrame):
-    return [[(-1 if o[-1] == "S" else 1) * float(
-        sub(r"° L.", "", o).replace(",", ".")
-    ) for o in findall(r"[^ ]+ L[US]", n)][0] for n in data[nar_co0].tolist()]
+    return [
+        [(-1 if o[-1] == "S" else 1) * float(
+            sub(r"° L.", "", o).replace(",", ".")
+        ) for o in findall(r"[^ ]+ L[US]", n)][0]
+        if n is not None else math.nan for n in data[nar_co0].tolist()
+    ]
 
 
 def lon_ett(data: pd.DataFrame):
-    return [[(-1 if o[-1] == "B" else 1) * float(
-        sub(r"° B.", "", o).replace(",", ".")
-    ) for o in findall(r"[^ ]+ B[TB]", n)][0] for n in data[nar_co0].tolist()]
+    return [
+        [(-1 if o[-1] == "B" else 1) * float(
+            sub(r"° B.", "", o).replace(",", ".")
+        ) for o in findall(r"[^ ]+ B[TB]", n)][0]
+        if n is not None else math.nan for n in data[nar_co0].tolist()
+    ]
 
 
 def dep_ett(data: pd.DataFrame):
     return [
         float(findall(r"(?<=kedalaman )[^ ]+(?= km)", n)[0].replace(",", "."))
-        for n in data[nar_co0].tolist()
+        if n is not None else math.nan for n in data[nar_co0].tolist()
     ]
 
 
 def mag_ett(data: pd.DataFrame):
     return [
         float((findall(r"magnitudo M?(?=([^.]+))", n))[0].replace(",", "."))
-        for n in data[nar_co0].tolist()
+        if n is not None else math.nan for n in data[nar_co0].tolist()
     ]
 
 
