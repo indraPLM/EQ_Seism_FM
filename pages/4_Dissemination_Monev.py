@@ -22,8 +22,10 @@ st.sidebar.header("Input Parameter :")
 #time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
 #time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
 
-time_start = st.sidebar.datetime_input("Start DateTime",datetime.datetime(2025, 12, 1, 00, 00,00),)
-time_end   = st.sidebar.datetime_input("End DateTime",datetime.datetime(2025, 12, 31, 23, 59,59),)
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+time_sta = st.sidebar.datetime_input("Start DateTime", tim_sta_def)
+time_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
 # --- Helper Functions ---
 def extract_text(tag): return [t.text.strip() for t in soup.find_all(tag)]
@@ -96,7 +98,7 @@ df['title'] = [f'Tanggal: {d} {t}, Mag: {m}, Depth: {dp}' for d, t, m, dp in zip
 
 # --- Date Filtering ---
 try:
-    start_dt = pd.to_datetime(time_start, errors='coerce')
+    start_dt = pd.to_datetime(time_sta, errors='coerce')
     end_dt   = pd.to_datetime(time_end, errors='coerce')
     filtered = df[(df['datetime'] > start_dt) & (df['datetime'] < end_dt)]
 except:
@@ -157,7 +159,7 @@ else:
     df['area'] = list_areas  # assuming alignment with other fields
 
 st.markdown("### KECEPATAN PENYAMPAIAN INFORMASI PERINGATAN DINI TSUNAMI AKIBAT GEMPABUMI")
-st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
+st.markdown(f"### 🕒 Periode Monitoring: `{time_sta}` s.d. `{time_end}`")
 
 required_cols = ['datetime', 'timesent', 'lon', 'lat', 'mag', 'depth', 'area','Lat-Diss','Lon-Diss']
 existing_cols = [col for col in required_cols if col in df.columns]

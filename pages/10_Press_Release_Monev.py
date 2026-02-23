@@ -1,3 +1,5 @@
+import math
+
 import streamlit as st
 import pandas as pd
 from fpdf import FPDF
@@ -13,20 +15,18 @@ st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_i
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-time_start_str = st.sidebar.date_input("Start Date", datetime.date(2025, 12, 1)) 
-#st.sidebar.text_input(
-#    'Start DateTime:',
-#    datetime.datetime.today().strftime("%Y-%m-01 00:00:00")
-#)
-time_end_str = st.sidebar.date_input("End Date", datetime.date(2025, 12, 31))
+dat_end_def = datetime.datetime.today()
+dat_sta_def = dat_end_def - datetime.timedelta(days=365)
+dat_sta_str = st.sidebar.date_input("Start Date", dat_sta_def)
+dat_end_str = st.sidebar.date_input("End Date", dat_end_def)
 #st.sidebar.text_input(
 #    'End DateTime:',
 #    datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 #)
 
 try:
-    time_start = pd.to_datetime(time_start_str)
-    time_end   = pd.to_datetime(time_end_str)
+    time_start = pd.to_datetime(dat_sta_str)
+    time_end   = pd.to_datetime(dat_end_str)
 except Exception:
     st.error("❌ Invalid datetime format. Please use YYYY-MM-DD HH:MM:SS")
     st.stop()
@@ -77,7 +77,7 @@ def html_to_text(html_content):
 
 def build_narasi_dataframe(df, time_col="time_narasi"):
     df["narasi_html"] = df[time_col].apply(fetch_narasi_text).apply(
-        lambda n: sub(r"</?strong>", "", n)
+        lambda x: sub(r"</?strong>", "", y) if (y := x) else x
     )
     df["narasi_text"] = df["narasi_html"].apply(html_to_text)
     return df
@@ -118,28 +118,34 @@ nar_co1 = "Narration Text"
 
 
 def lat_ett(data: pd.DataFrame):
-    return [[(-1 if o[-1] == "S" else 1) * float(
-        sub(r"° L.", "", o).replace(",", ".")
-    ) for o in findall(r"[^ ]+ L[US]", n)][0] for n in data[nar_co0].tolist()]
+    return [
+        [(-1 if o[-1] == "S" else 1) * float(
+            sub(r"° L.", "", o).replace(",", ".")
+        ) for o in findall(r"[^ ]+ L[US]", n)][0]
+        if n is not None else math.nan for n in data[nar_co0].tolist()
+    ]
 
 
 def lon_ett(data: pd.DataFrame):
-    return [[(-1 if o[-1] == "B" else 1) * float(
-        sub(r"° B.", "", o).replace(",", ".")
-    ) for o in findall(r"[^ ]+ B[TB]", n)][0] for n in data[nar_co0].tolist()]
+    return [
+        [(-1 if o[-1] == "B" else 1) * float(
+            sub(r"° B.", "", o).replace(",", ".")
+        ) for o in findall(r"[^ ]+ B[TB]", n)][0]
+        if n is not None else math.nan for n in data[nar_co0].tolist()
+    ]
 
 
 def dep_ett(data: pd.DataFrame):
     return [
         float(findall(r"(?<=kedalaman )[^ ]+(?= km)", n)[0].replace(",", "."))
-        for n in data[nar_co0].tolist()
+        if n is not None else math.nan for n in data[nar_co0].tolist()
     ]
 
 
 def mag_ett(data: pd.DataFrame):
     return [
         float((findall(r"magnitudo M?(?=([^.]+))", n))[0].replace(",", "."))
-        for n in data[nar_co0].tolist()
+        if n is not None else math.nan for n in data[nar_co0].tolist()
     ]
 
 
@@ -244,6 +250,8 @@ dtf_dis = pd.merge(
 ).sort_values(by=tim_co1)
 idc_dis = dtf_dis.pop(ind_co1)
 dtf_dis.insert(0, ind_co1, idc_dis)
+dtf_dis.insert(1, "Date Sent", dtf_dis[tim_co1].dt.date)
+dtf_dis["Time Sent"] = dtf_dis[tim_co1].dt.time
 dtf_dis[cdt_co4] = [hypot(m, n) * 111 for m, n in zip(
     dtf_dis[lat_co2] - dtf_dis[lat_co3],
     dtf_dis[lon_co2] - dtf_dis[lon_co3]
@@ -268,7 +276,7 @@ cdt_acc = dtf_dis[cdt_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
 dep_acc = dtf_dis[dep_co4].map(lambda n: 0 if n > cdt_thr else 100).mean()
 mag_acc = dtf_dis[mag_co4].map(lambda n: 0 if n > mag_thr else 100).mean()
 
-st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc}%")
-st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc}%")
-st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc}%")
-st.text(f"Akurasi total\t\t\t\t\t: {sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0}%")
+st.text(f"Akurasi kedalaman (z)\t\t\t: {dep_acc:.3F}%")
+st.text(f"Akurasi lokasi episenter (d)\t: {cdt_acc:.3F}%")
+st.text(f"Akurasi magnitudo (M)\t\t\t: {mag_acc:.3F}%")
+st.text(f"Akurasi total\t\t\t\t\t: {sum(o) / len(o) if (o := [cdt_acc, dep_acc, mag_acc]) else 0:.3F}%")

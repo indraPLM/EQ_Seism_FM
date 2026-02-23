@@ -10,8 +10,10 @@ st.set_page_config(page_title='Kecepatan Prosesing Gempabumi', layout='wide', pa
 st.sidebar.header("Input Parameter:")
 
 # --- Input Parameters ---
-time_start = pd.to_datetime(st.sidebar.datetime_input("Start Date",datetime.datetime(2025, 12, 1, 00, 00,00),))
-time_end   = pd.to_datetime(st.sidebar.datetime_input("End Date",datetime.datetime(2025, 12, 31,23, 59,00),))
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_sta = pd.to_datetime(st.sidebar.datetime_input("Start Date", tim_sta_def))
+tim_end = pd.to_datetime(st.sidebar.datetime_input("End Date", tim_end_def))
 North = float(st.sidebar.text_input('North:', '6.0'))
 South = float(st.sidebar.text_input('South:', '-13.0'))
 West  = float(st.sidebar.text_input('West:', '90.0'))
@@ -66,7 +68,7 @@ df = preprocess(df)
 
 # --- Filter by Magnitude & Region ---
 df = df.query('mag >= 5')
-df = df[(df['date_time'] > time_start) & (df['date_time'] < time_end)]
+df = df[(df['date_time'] > tim_sta) & (df['date_time'] < tim_end)]
 df = df[(df['fixedLon'] > West) & (df['fixedLon'] < East) & (df['fixedLat'] > South) & (df['fixedLat'] < North)]
 
 # --- Title Field ---
@@ -170,7 +172,7 @@ st.altair_chart(chart, use_container_width=True)
 
 # --- Table Display ---
 st.markdown("### KECEPATAN ANALISIS PROCESSING INFORMASI GEMPABUMI")
-st.markdown(f"### 🕒 Periode Monitoring: `{time_start}` s.d. `{time_end}`")
+st.markdown(f"### 🕒 Periode Monitoring: `{tim_sta}` s.d. `{tim_end}`")
 
 df.rename(columns={
     'date':'Date',

@@ -4,7 +4,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests,datetime
+import requests, datetime
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
@@ -12,6 +12,9 @@ import os, base64, warnings
 from obspy.imaging.beachball import beach, beachball
 from PIL import Image
 from fpdf import FPDF
+import folium
+from streamlit_folium import st_folium
+import contextily as cx
 
 warnings.filterwarnings("ignore")
 
@@ -19,8 +22,10 @@ st.set_page_config(page_title="BMKG & CMT Focal Viewer", layout="wide", page_ico
 
 # 🌍 Sidebar filters
 st.sidebar.header("BMKG Filter")
-start_time = st.sidebar.datetime_input("Start DateTime",datetime.datetime(2025, 12, 1, 00, 00,00),)
-end_time = st.sidebar.datetime_input("End DateTime",datetime.datetime(2025, 12, 31, 23, 59,59),)
+tim_end_def = datetime.datetime.now()
+tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_sta = st.sidebar.datetime_input("Start DateTime", tim_sta_def)
+tim_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input("North", "6.0"))
@@ -31,8 +36,9 @@ West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
 st.sidebar.header("Global CMT Filter")
-cmt_start = st.sidebar.datetime_input("Start DateTime",datetime.datetime(2015, 1, 1, 00, 00,00),)
-cmt_end = st.sidebar.datetime_input("End DateTime",datetime.datetime(2020, 12, 31, 23, 59,59),)
+cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2015, 1, 1, 00, 00, 00), )
+cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2020, 12, 31, 23, 59, 59), )
+
 
 # ⬇️ Load BMKG focal data
 @st.cache_data
@@ -42,78 +48,97 @@ def load_bmkg(url):
     rows = [line.split("|") for line in lines if "|" in line]
     return rows
 
+
 url = "http://202.90.198.41/qc_focal.txt"
 rows = load_bmkg(url)
 
-base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag','count','azgap','RMS',
-             'lat','lon','depth','S1','D1','R1','S2','D2','R2','Fit','DC','CLVD','type','location']
+base_cols = ['date_time', 'mode', 'status', 'phase', 'mag', 'type_mag', 'count', 'azgap', 'RMS',
+             'lat', 'lon', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2', 'Fit', 'DC', 'CLVD', 'type', 'location']
 cols = base_cols + [f'extra_{i}' for i in range(max(0, len(rows[0]) - len(base_cols)))]
 
 df = pd.DataFrame(rows[1:], columns=cols)
 
+
 def fix_coord(val, axis):
     val = val.strip()
     return -float(val.strip('S')) if val.endswith('S') else float(val.strip('N')) if axis == 'lat' else \
-           -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
+        -float(val.strip('W')) if val.endswith('W') else float(val.strip('E'))
+
 
 df['fixedLat'] = df['lat'].apply(lambda x: fix_coord(x, 'lat'))
 df['fixedLon'] = df['lon'].apply(lambda x: fix_coord(x, 'lon'))
 df['date_time'] = pd.to_datetime(df['date_time'], errors='coerce')
-df['Tanggal'] = df['date_time'].dt.strftime('%d-%b-%y')       # Example: 04-Jun-25
-df['Waktu'] = df['date_time'].dt.strftime('%H:%M:%S')          # Example: 06:38:40
+df['Tanggal'] = df['date_time'].dt.strftime('%d-%b-%y')  # Example: 04-Jun-25
+df['Waktu'] = df['date_time'].dt.strftime('%H:%M:%S')  # Example: 06:38:40
 
-for col in ['mag','depth','S1','D1','R1','S2','D2','R2']:
+for col in ['mag', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2']:
     df[col] = pd.to_numeric(df[col], errors='coerce')
 
 df = df[
-    (df['date_time'] >= start_time) & (df['date_time'] <= end_time) &
+    (df['date_time'] >= tim_sta) & (df['date_time'] <= tim_end) &
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East))
-]
-#st.dataframe(df)
+    ]
+
+
+# st.dataframe(df)
 
 def get_color(depth): return 'r' if depth <= 60 else 'yellow' if depth <= 300 else 'g'
-def get_width(e,w): return max(0.3, min(1.5, 0.03 * abs(e - w)))
+
+
+def get_width(e, w): return max(0.3, min(1.5, 0.03 * abs(e - w)))
+
+
 w = get_width(East, West)
 
 # 🗺️ BMKG Map
-st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{start_time} – {end_time}")
-fig = plt.figure(dpi=300)
-ax = fig.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-ax.set_extent((West, East, South-0.5, North+0.5))
-ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
-ax.coastlines(resolution='10m', color='black', linewidth=0.5)
-
-for _, row in df.iterrows():
-    if pd.notnull(row["S1"]) and pd.notnull(row["D1"]) and pd.notnull(row["R1"]):
-        x, y = ax.projection.transform_point(row["fixedLon"], row["fixedLat"], ccrs.Geodetic())
-        ball = beach([row["S1"], row["D1"], row["R1"]], xy=(x,y), width=w,
-                     linewidth=0.5, alpha=0.65, zorder=10, facecolor=get_color(row["depth"]))
-        ax.add_collection(ball)
-st.pyplot(fig)
+st.markdown(f"### 🌋 BMKG Focal Mechanism Map\n{tim_sta} – {tim_end}")
+tls = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
+prj_map_1 = ccrs.Mercator()
+prj_dat_1 = ccrs.PlateCarree()
+fig_1 = plt.figure(dpi=300)
+axi_1 = fig_1.add_subplot(111, projection=prj_map_1)
+axi_1.set_extent((West, East, South - 0.5, North + 0.5), crs=prj_dat_1)
+axi_1.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+axi_1.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+cx.add_basemap(axi_1, source=tls, crs=prj_map_1.proj4_init)
+for _, x in df.iterrows():
+    if pd.notnull(x["S1"]) and pd.notnull(x["D1"]) and pd.notnull(x["R1"]):
+        axi_1.add_collection(beach(
+            [x["S1"], x["D1"], x["R1"]],
+            xy=prj_map_1.transform_point(x["fixedLon"], x["fixedLat"], prj_dat_1),
+            width=int(w * 100000),
+            linewidth=0.5,
+            alpha=0.625,
+            zorder=10,
+            facecolor=get_color(x["depth"])
+        ))
+st.pyplot(fig_1)
 
 # 📊 Summary Table
-summary_df = df[['Tanggal','Waktu','mag','type_mag','fixedLat','fixedLon','depth',
-                 'S1','D1','R1','S2','D2','R2','location']].copy()
-summary_df.columns = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
-                      'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+summary_df = df[['Tanggal', 'Waktu', 'mag', 'type_mag', 'fixedLat', 'fixedLon', 'depth',
+                 'S1', 'D1', 'R1', 'S2', 'D2', 'R2', 'location']].copy()
+summary_df.columns = ['Tanggal', 'Waktu', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
+                      'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark']
 summary_df = summary_df.sort_values(by='Tanggal')
-summary_df.index = range(1, len(summary_df)+1)
+summary_df.index = range(1, len(summary_df) + 1)
 st.dataframe(summary_df)
-#st.dataframe(df)
+
+
+# st.dataframe(df)
 
 # 📷 Generate Beachball Images
 def generate_beachballs(df, prefix="cmt"):
     images = []
     for idx, row in df.iterrows():
-        if all(pd.notnull(row[col]) for col in ['Strike NP1','Dip NP1','Rake NP1']):
+        if all(pd.notnull(row[col]) for col in ['Strike NP1', 'Dip NP1', 'Rake NP1']):
             mt = [row['Strike NP1'], row['Dip NP1'], row['Rake NP1']]
             # ⚙️ High-res settings
             fig = beachball(mt, facecolor=get_color(row['Depth']))
-            fig.set_size_inches(5, 5)           # Increase figure size
-            fig.figure.set_dpi(300)                 # Higher DPI (default is ~100)
-            
-            #fig = beachball(mt, facecolor=get_color(row['Depth']))
+            fig.set_size_inches(5, 5)  # Increase figure size
+            fig.figure.set_dpi(300)  # Higher DPI (default is ~100)
+
+            # fig = beachball(mt, facecolor=get_color(row['Depth']))
             path = f"{prefix}_{idx}.png"
             fig.savefig(path)
             plt.close(fig.figure)
@@ -122,9 +147,11 @@ def generate_beachballs(df, prefix="cmt"):
             images.append("")
     return images
 
+
 report_df = summary_df.copy()
 report_df.index = range(len(report_df))
 report_df['Focal'] = generate_beachballs(report_df)
+
 
 # ───────────────────────────────────────
 # 📄 Export to PDF with custom widths
@@ -136,14 +163,14 @@ def export_to_pdf(df, filename="focal_report.pdf"):
     pdf.add_page()
     pdf.set_font("Arial", size=8)
 
-    cols = ['Tanggal','Waktu','Magnitude','Type Magnitude','Latitude','Longitude','Depth',
-            'Strike NP1','Dip NP1','Rake NP1','Strike NP2','Dip NP2','Rake NP2','Remark']
+    cols = ['Tanggal', 'Waktu', 'Magnitude', 'Type Magnitude', 'Latitude', 'Longitude', 'Depth',
+            'Strike NP1', 'Dip NP1', 'Rake NP1', 'Strike NP2', 'Dip NP2', 'Rake NP2', 'Remark']
     col_widths = {
-        'Tanggal': 15,'Waktu': 15, 'Magnitude': 18, 'Type Magnitude': 22,
+        'Tanggal': 15, 'Waktu': 15, 'Magnitude': 18, 'Type Magnitude': 22,
         'Latitude': 20, 'Longitude': 20, 'Depth': 12,
         'Strike NP1': 15, 'Dip NP1': 12, 'Rake NP1': 15,
         'Strike NP2': 15, 'Dip NP2': 12, 'Rake NP2': 15,
-        'Remark':50, 'Focal': 20
+        'Remark': 50, 'Focal': 20
     }
 
     # Draw header
@@ -177,16 +204,20 @@ def export_to_pdf(df, filename="focal_report.pdf"):
 
     pdf.output(filename)
 
+
 export_to_pdf(report_df)
+
 
 # 📎 Show PDF inline
 def show_pdf(path):
     if os.path.exists(path):
         with open(path, "rb") as f:
             b64 = base64.b64encode(f.read()).decode("utf-8")
-        st.markdown(f'<iframe src="data:application/pdf;base64,{b64}" width="100%" height="900"></iframe>', unsafe_allow_html=True)
+        st.markdown(f'<iframe src="data:application/pdf;base64,{b64}" width="100%" height="900"></iframe>',
+                    unsafe_allow_html=True)
     else:
         st.warning("⚠️ PDF not found.")
+
 
 show_pdf("focal_report.pdf")
 
@@ -194,13 +225,14 @@ show_pdf("focal_report.pdf")
 with open("focal_report.pdf", "rb") as f:
     st.download_button("⬇️ Download PDF Report", f.read(), file_name="focal_report.pdf", mime="application/pdf")
 
-
 # 🌐 Global CMT Section
 st.markdown(f"### 🌎 Peta Global CMT Harvard\n{cmt_start} – {cmt_end}")
+
+
 def load_cmt(url):
     txt = requests.get(url).text
     lines = txt.split("\n")
-    records = [lines[i:i+5] for i in range(0, len(lines), 5)]
+    records = [lines[i:i + 5] for i in range(0, len(lines), 5)]
     rows = []
     for rec in records:
         if len(rec) < 5: continue
@@ -219,16 +251,18 @@ def load_cmt(url):
         rows.append(row)
     return pd.DataFrame(rows)
 
+
 from obspy.imaging.beachball import beach
+
 
 def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_col='Lat', scale=1.0):
     for _, row in df.iterrows():
         if all(pd.notnull(row[col]) for col in ['S1', 'D1', 'R1']):
-            x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.Geodetic())
+            x, y = projection.transform_point(row[lon_col], row[lat_col], ccrs.PlateCarree())
             color = "r" if row[depth_col] < 60 else "y" if row[depth_col] < 300 else "g"
             bb = beach([row['S1'], row['D1'], row['R1']],
                        xy=(x, y), width=scale,
-                       linewidth=0.5, alpha=0.65,
+                       linewidth=0.5, alpha=0.625,
                        zorder=10, facecolor=color)
             ax.add_collection(bb)
 
@@ -245,17 +279,28 @@ df_cmt['Datetime'] = pd.to_datetime(df_cmt['Datetime'], errors='coerce')
 df_cmt = df_cmt[
     (df_cmt['Datetime'] >= cmt_start) & (df_cmt['Datetime'] <= cmt_end) &
     (df_cmt['Lat'].between(South, North)) & (df_cmt['Lon'].between(West, East))
-]
+    ]
 
 # 🗺️ Plot Global CMT
-fig2 = plt.figure(dpi=300)
-ax2 = fig2.add_subplot(111, projection=ccrs.PlateCarree(central_longitude=120))
-ax2.set_extent((West, East, South - 0.5, North + 0.5))
-ax2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
-ax2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
-#scale_factor = compute_beachball_scale(West, East, South, North)
-draw_beachballs(df_cmt, ax2, ax2.projection, depth_col='Depth', lon_col='Lon', lat_col='Lat', scale=w)
+prj_map_2 = ccrs.Mercator()
+prj_dat_2 = ccrs.PlateCarree()
+fig_2 = plt.figure(dpi=300)
+axi_2 = fig_2.add_subplot(111, projection=prj_map_2)
+axi_2.set_extent((West, East, South - 0.5, North + 0.5), crs=prj_dat_2)
+axi_2.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5, alpha=0.5)
+axi_2.coastlines(resolution='10m', color='black', linewidth=0.5, alpha=0.5)
+cx.add_basemap(axi_2, source=tls, crs=prj_map_2.proj4_init)
+# scale_factor = compute_beachball_scale(West, East, South, North)
+draw_beachballs(
+    df_cmt,
+    axi_2,
+    axi_2.projection,
+    depth_col='Depth',
+    lon_col='Lon',
+    lat_col='Lat',
+    scale=int(w * 100000)
+)
 
-st.pyplot(fig2)
+st.pyplot(fig_2)
 df_cmt.index = range(1, len(df_cmt) + 1)  # Reindex starting from 1
 st.dataframe(df_cmt)
