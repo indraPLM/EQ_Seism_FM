@@ -27,7 +27,7 @@ dat_end = st.sidebar.date_input("End Date", dat_end_def)
 
 # 📄 Upload Excel file
 uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
-df = pd.read_excel(excel_path)
+df = pd.read_excel(uploaded_file)
 
 # 📍 Combine Latitude and Longitude with direction
 lat_index = df.columns.get_loc("Latitude")
