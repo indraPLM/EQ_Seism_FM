@@ -25,40 +25,41 @@ dat_sta_def = dat_end_def - datetime.timedelta(days=30)
 dat_sta = st.sidebar.date_input("Start Date", dat_sta_def)
 dat_end = st.sidebar.date_input("End Date", dat_end_def)
 
-# 📄 Load Excel file
-excel_path = "./pages/fileQC/Data_QC_Gempabumi_2025.xlsx"
-df = pd.read_excel(excel_path)
+# 📄 Upload Excel file
+uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
 
-# 📍 Combine Latitude and Longitude with direction
-lat_index = df.columns.get_loc("Latitude")
-lon_index = df.columns.get_loc("Longitude")
-lat_dir_col = df.columns[lat_index + 1]
-lon_dir_col = df.columns[lon_index + 1]
+if uploaded_file is not None:
+    df = pd.read_excel(uploaded_file)
 
-df["Latitude_Combined"] = df.apply(lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1)
-df["Longitude_Combined"] = df.apply(lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1)
+    # 📍 Combine Latitude and Longitude with direction
+    lat_index = df.columns.get_loc("Latitude")
+    lon_index = df.columns.get_loc("Longitude")
+    lat_dir_col = df.columns[lat_index + 1]
+    lon_dir_col = df.columns[lon_index + 1]
 
-def convert_coord(coord_str):
-    try:
-        value, direction = coord_str.split()
-        value = float(value)
-        return -abs(value) if direction in ["S", "W"] else abs(value)
-    except:
-        return np.nan
+    df["Latitude_Combined"] = df.apply(
+        lambda row: f"{row['Latitude']} {str(row[lat_dir_col]).strip().upper()}", axis=1
+    )
+    df["Longitude_Combined"] = df.apply(
+        lambda row: f"{row['Longitude']} {str(row[lon_dir_col]).strip().upper()}", axis=1
+    )
 
-df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
-df["LON"] = df["Longitude_Combined"].apply(convert_coord)
+    def convert_coord(coord_str):
+        try:
+            value, direction = coord_str.split()
+            value = float(value)
+            return -abs(value) if direction in ["S", "W"] else abs(value)
+        except:
+            return np.nan
 
-# 📅 Parse date column
-if "Tanggal" in df.columns:
-    df["DATE"] = pd.to_datetime(df["Tanggal"], errors="coerce")
+    df["LAT"] = df["Latitude_Combined"].apply(convert_coord)
+    df["LON"] = df["Longitude_Combined"].apply(convert_coord)
+
+    st.success("File uploaded and processed successfully!")
+    st.write(df.head())  # Preview first rows
 else:
-    st.warning("⚠️ 'Tanggal' column not found. Using current timestamp instead.")
-    df["DATE"] = pd.Timestamp.now()
+    st.warning("Please upload an Excel file to proceed.")
 
-# 📊 Parse depth and magnitude
-df["DEPTH"] = df["Depth"].astype(str).str.extract(r"(\d+\.?\d*)").astype(float)
-df.rename(columns={"Magnitude": "MAG"}, inplace=True)
 
 # 🧹 Filter by date and valid coordinates
 df_filtered = df[
