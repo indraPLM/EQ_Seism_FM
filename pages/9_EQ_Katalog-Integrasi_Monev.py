@@ -26,10 +26,17 @@ dat_sta_def = dat_end_def - datetime.timedelta(days=365)
 dat_sta = st.sidebar.date_input("Start Date", dat_sta_def)
 dat_end = st.sidebar.date_input("End Date", dat_end_def)
 
-# 📄 Load Excel file
-excel_path = "./pages/fileINTEGRASI/data_integrasi_2025_rev_final.xlsx"
-df = pd.read_excel(excel_path)
-df.rename(columns={"LAT_FIX": "LAT","LON_FIX": "LON",}, inplace=True)
+# 📄 Upload Excel file
+uploaded_file = st.sidebar.file_uploader("Upload Excel File", type=["xlsx"])
+
+if uploaded_file is not None:
+    df = pd.read_excel(uploaded_file)
+    df.rename(columns={"LAT_FIX": "LAT", "LON_FIX": "LON"}, inplace=True)
+    st.success("File uploaded and data loaded successfully!")
+    st.write(df.head())  # Preview first rows
+else:
+    st.warning("Please upload an Excel file to proceed.")
+
 
 # 🧹 Filter Data
 df_filtered = df[
