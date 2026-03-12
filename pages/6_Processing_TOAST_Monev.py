@@ -4,6 +4,7 @@ import requests
 import os, datetime
 from bs4 import BeautifulSoup
 from pathlib import Path
+from calendar import monthrange
 
 # --- Page Setup ---
 st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide', page_icon="🌍")
@@ -11,8 +12,25 @@ st.set_page_config(page_title='Kecepatan Processing Tsunami TOAST', layout='wide
 with st.sidebar:
     st.header("Input Parameter:")
 
-    tim_end_def = datetime.datetime.now()
-    tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+    tim_tod = datetime.datetime.today()
+    tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+    tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+    tim_end_def = datetime.datetime(
+        year=tim_yea,
+        month=tim_mon,
+        day=monthrange(tim_yea, tim_mon)[1],
+        hour=23,
+        minute=59,
+        second=59
+    )
+    tim_sta_def = datetime.datetime(
+        year=tim_yea,
+        month=tim_mon,
+        day=1,
+        hour=0,
+        minute=0,
+        second=0
+    )
     tim_sta = pd.to_datetime(st.datetime_input("Start DateTime", tim_sta_def))
     tim_end = pd.to_datetime(st.datetime_input("End DateTime", tim_end_def))
     North      = float(st.text_input('North:', '6.0'))
