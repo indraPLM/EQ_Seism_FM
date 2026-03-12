@@ -15,6 +15,7 @@ from fpdf import FPDF
 import folium
 from streamlit_folium import st_folium
 import contextily as cx
+from calendar import monthrange
 
 warnings.filterwarnings("ignore")
 
@@ -22,8 +23,25 @@ st.set_page_config(page_title="BMKG & CMT Focal Viewer", layout="wide", page_ico
 
 # 🌍 Sidebar filters
 st.sidebar.header("BMKG Filter")
-tim_end_def = datetime.datetime.now()
-tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_tod = datetime.datetime.today()
+tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+tim_end_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=monthrange(tim_yea, tim_mon)[1],
+    hour=23,
+    minute=59,
+    second=59
+)
+tim_sta_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=1,
+    hour=0,
+    minute=0,
+    second=0
+)
 tim_sta = st.sidebar.datetime_input("Start DateTime", tim_sta_def)
 tim_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
