@@ -5,14 +5,32 @@ import numpy as np
 import requests, datetime
 from bs4 import BeautifulSoup
 from obspy.geodetics import degrees2kilometers
+from calendar import monthrange
 
 # 🌍 Page configuration
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page_icon="🌍")
 
 # 🎛 Sidebar input
 st.sidebar.header("Parameter Waktu")
-tim_end_def = datetime.datetime.now()
-tim_sta_def = tim_end_def - datetime.timedelta(days=30)
+tim_tod = datetime.datetime.today()
+tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+tim_end_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=monthrange(tim_yea, tim_mon)[1],
+    hour=23,
+    minute=59,
+    second=59
+)
+tim_sta_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=1,
+    hour=0,
+    minute=0,
+    second=0
+)
 tim_sta = pd.to_datetime(
     st.sidebar.date_input("Start Date", tim_sta_def)
 ).tz_localize('UTC')

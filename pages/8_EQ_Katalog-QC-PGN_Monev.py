@@ -15,13 +15,31 @@ from PIL import Image
 import folium
 from streamlit_folium import st_folium
 import requests
+from calendar import monthrange
 
 # 🌍 Page Config
 st.set_page_config(page_title='Earthquake Dashboard - Katalog QC PGN', layout='wide', page_icon='🌋')
 st.sidebar.subheader("🕒 Select Date Range")
 # 📅 Use date_input for better UX
-dat_end_def = datetime.datetime.today()
-dat_sta_def = dat_end_def - datetime.timedelta(days=30)
+tim_tod = datetime.datetime.today()
+tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+dat_end_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=monthrange(tim_yea, tim_mon)[1],
+    hour=23,
+    minute=59,
+    second=59
+)
+dat_sta_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=1,
+    hour=0,
+    minute=0,
+    second=0
+)
 dat_sta = st.sidebar.date_input("Start Date", dat_sta_def)
 dat_end = st.sidebar.date_input("End Date", dat_end_def)
 

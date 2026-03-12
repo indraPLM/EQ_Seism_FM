@@ -9,14 +9,32 @@ from bs4 import BeautifulSoup
 import datetime
 from re import findall, sub
 from math import hypot
+from calendar import monthrange
 
 # 🌐 Page Config
 st.set_page_config(page_title='Earthquake Press Releases', layout='wide', page_icon='📰')
 
 # 📅 Time Filter
 st.sidebar.header("Time Range Filter")
-dat_end_def = datetime.datetime.today()
-dat_sta_def = dat_end_def - datetime.timedelta(days=365)
+tim_tod = datetime.datetime.today()
+tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+dat_end_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=monthrange(tim_yea, tim_mon)[1],
+    hour=23,
+    minute=59,
+    second=59
+)
+dat_sta_def = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=1,
+    hour=0,
+    minute=0,
+    second=0
+)
 dat_sta_str = st.sidebar.date_input("Start Date", dat_sta_def)
 dat_end_str = st.sidebar.date_input("End Date", dat_end_def)
 #st.sidebar.text_input(

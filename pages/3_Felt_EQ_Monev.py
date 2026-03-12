@@ -6,14 +6,32 @@ import streamlit as st
 import folium
 from streamlit_folium import st_folium
 import datetime
+from calendar import monthrange
 
 # --- Page Setup ---
 st.set_page_config(page_title='TSP Monitoring dan Evaluasi', layout='wide', page_icon="🌍")
 st.sidebar.header("Input Parameter :")
 
 # Calculate dynamic dates
-yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-month_before = yesterday - datetime.timedelta(days=30)
+tim_tod = datetime.datetime.today()
+tim_yea = tim_tod.year - (1 if tim_tod.month == 1 else 0)
+tim_mon = (12 if tim_tod.month == 1 else tim_tod.month - 1)
+yesterday = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=monthrange(tim_yea, tim_mon)[1],
+    hour=23,
+    minute=59,
+    second=59
+)
+month_before = datetime.datetime(
+    year=tim_yea,
+    month=tim_mon,
+    day=1,
+    hour=0,
+    minute=0,
+    second=0
+)
 
 # Format as strings
 yesterday_str = yesterday.strftime('%Y-%m-%d %H:%M:%S')
