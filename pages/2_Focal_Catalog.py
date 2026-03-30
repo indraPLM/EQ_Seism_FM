@@ -53,6 +53,10 @@ col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
+col5, col6 = st.sidebar.columns(3)
+minmag = float(col5.text_input("Min Mag", "4.5"))
+maxmag = float(col6.text_input("Max Mag", "9.5"))
+
 st.sidebar.header("Global CMT Filter")
 #cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2021, 1, 1, 00, 00, 00), )
 #cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2024, 12, 31, 23, 59, 59), )
@@ -98,7 +102,8 @@ for col in ['mag', 'depth', 'S1', 'D1', 'R1', 'S2', 'D2', 'R2']:
 df = df[
     (df['date_time'] >= tim_sta) & (df['date_time'] <= tim_end) &
     (df['fixedLat'].between(South, North)) &
-    (df['fixedLon'].between(West, East))
+    (df['fixedLon'].between(West, East)) &
+    (df['mag'].betweeb(minmag,maxmag))
     ]
 
 
