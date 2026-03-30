@@ -327,7 +327,8 @@ urls_b = [
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
 ]
-urls = urls_a + urls_b
+#urls = urls_a + urls_b
+urls = urls_a 
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
