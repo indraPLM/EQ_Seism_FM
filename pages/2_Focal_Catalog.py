@@ -254,15 +254,15 @@ def load_cmt(url):
     rows = []
     for rec in records:
         if len(rec) < 5: continue
-        dt = f"{rec[0][5:15]} {rec[0][16:21]}"
+        dt = f"{rec[0][5:15]} {rec[0][16:26]}"
         row = {
             'Datetime': dt,
-            'Lat': float(rec[0][26:33]),
-            'Lon': float(rec[0][35:41]),
-            'Depth': float(rec[0][43:47]),
-            'Mag_mb': float(rec[0][47:51]),
+            'Lat': float(rec[0][27:33]),
+            'Lon': float(rec[0][34:41]),
+            'Depth': float(rec[0][42:47]),
+            'Mag_mb': float(rec[0][48:51]),
             'Mag_Ms': float(rec[0][52:55]),
-            'S1': float(rec[4][56:60]),
+            'S1': float(rec[4][57:60]),
             'D1': float(rec[4][61:64]),
             'R1': float(rec[4][65:69])
         }
@@ -285,13 +285,19 @@ def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_co
             ax.add_collection(bb)
 
 
-urls = [
+urls1 = [
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
     
      
 ]
+
+urls = [ "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2015/jan15.ndk",
+        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2015/feb15.ndk",
+        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2015/mar15.ndk",
+        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2015/apr15.ndk"
+       ]
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
