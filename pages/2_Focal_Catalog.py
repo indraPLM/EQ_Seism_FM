@@ -288,21 +288,6 @@ def draw_beachballs(df, ax, projection, depth_col='Depth', lon_col='Lon', lat_co
             ax.add_collection(bb)
 
 
-urls1 = [
-    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk",
-    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
-    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
-    
-     
-]
-
-urls3 = [ "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/jan21.ndk",
-        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/feb21.ndk",
-        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/mar21.ndk",
-        "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/apr21.ndk"
-        
-       ]
-
 from datetime import datetime, timedelta
 
 base_url = "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY"
@@ -318,7 +303,7 @@ month_map = {
     9: "sep", 10: "oct", 11: "nov", 12: "dec"
 }
 
-urls0 = []
+urls_a = []
 current = start
 while current <= end:
     year = current.year
@@ -337,12 +322,12 @@ while current <= end:
         current = datetime(year, month + 1, 1)
 
 # Historical bulk files
-urls1 = [
+urls_b = [
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
 ]
-urls=urls0 + urls1
+urls = urls_a + urls_b
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
