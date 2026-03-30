@@ -340,7 +340,8 @@ df_cmt = pd.concat([load_cmt(url) for url in urls])
 df_cmt['Datetime'] = pd.to_datetime(df_cmt['Datetime'], errors='coerce')
 df_cmt = df_cmt[
     (df_cmt['Datetime'] >= cmt_start) & (df_cmt['Datetime'] <= cmt_end) &
-    (df_cmt['Lat'].between(South, North)) & (df_cmt['Lon'].between(West, East))
+    (df_cmt['Lat'].between(South, North)) & (df_cmt['Lon'].between(West, East)) &
+    (df_cmt['Mag_mb'].between(minmag, maxmag)) or (df_cmt['Mag_Ms'].between(minmag, maxmag))
     ]
 
 # 🗺️ Plot Global CMT
