@@ -53,7 +53,7 @@ col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
-col5, col6 = st.sidebar.columns(3)
+col5, col6 = st.sidebar.columns(2)
 minmag = float(col5.text_input("Min Mag", "4.5"))
 maxmag = float(col6.text_input("Max Mag", "9.5"))
 
