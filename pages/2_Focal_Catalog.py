@@ -293,12 +293,46 @@ urls1 = [
      
 ]
 
-urls = [ "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/jan21.ndk",
+urls3 = [ "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/jan21.ndk",
         "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/feb21.ndk",
         "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/mar21.ndk",
         "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY/2021/apr21.ndk"
         
        ]
+
+from datetime import datetime, timedelta
+
+base_url = "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/NEW_MONTHLY"
+
+# Define start and end
+start = datetime(2021, 1, 1)
+end = datetime(2025, 11, 1)
+
+# Month abbreviations used in filenames
+month_map = {
+    1: "jan", 2: "feb", 3: "mar", 4: "apr",
+    5: "may", 6: "jun", 7: "jul", 8: "aug",
+    9: "sep", 10: "oct", 11: "nov", 12: "dec"
+}
+
+urls = []
+current = start
+while current <= end:
+    year = current.year
+    month = current.month
+    # last two digits of year
+    yy = str(year)[-2:]
+    # month abbreviation
+    mm = month_map[month]
+    filename = f"{mm}{yy}.ndk"
+    url = f"{base_url}/{year}/{filename}"
+    urls.append(url)
+    # move to next month
+    if month == 12:
+        current = datetime(year + 1, 1, 1)
+    else:
+        current = datetime(year, month + 1, 1)
+
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
