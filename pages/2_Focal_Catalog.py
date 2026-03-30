@@ -103,7 +103,7 @@ df = df[
     (df['date_time'] >= tim_sta) & (df['date_time'] <= tim_end) &
     (df['fixedLat'].between(South, North)) &
     (df['fixedLon'].between(West, East)) &
-    (df['mag'].betweeb(minmag,maxmag))
+    (df['mag'].between(minmag,maxmag))
     ]
 
 
