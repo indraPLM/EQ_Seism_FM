@@ -318,7 +318,7 @@ month_map = {
     9: "sep", 10: "oct", 11: "nov", 12: "dec"
 }
 
-urls = []
+urls0 = []
 current = start
 while current <= end:
     year = current.year
@@ -336,6 +336,13 @@ while current <= end:
     else:
         current = datetime(year, month + 1, 1)
 
+# Historical bulk files
+urls1 = [
+    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/jan76_dec20.ndk",
+    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
+    "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
+]
+urls=urls0 + urls1
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
