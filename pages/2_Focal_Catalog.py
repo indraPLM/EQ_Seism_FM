@@ -54,8 +54,11 @@ West = float(col3.text_input("West", "90.0"))
 East = float(col4.text_input("East", "142.0"))
 
 st.sidebar.header("Global CMT Filter")
-cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2021, 1, 1, 00, 00, 00), )
-cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2024, 12, 31, 23, 59, 59), )
+#cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2021, 1, 1, 00, 00, 00), )
+#cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2024, 12, 31, 23, 59, 59), )
+
+cmt_start = tim_sta
+cmt_end = tim_end
 
 
 # ⬇️ Load BMKG focal data
