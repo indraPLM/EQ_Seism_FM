@@ -314,7 +314,7 @@ while current <= end:
     mm = month_map[month]
     filename = f"{mm}{yy}.ndk"
     url = f"{base_url}/{year}/{filename}"
-    urls.append(url)
+    urls_a.append(url)
     # move to next month
     if month == 12:
         current = datetime(year + 1, 1, 1)
@@ -327,8 +327,8 @@ urls_b = [
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/deep_1962-1976.ndk",
     "https://www.ldeo.columbia.edu/~gcmt/projects/CMT/catalog/PRE1976/intdep_1962-1975.ndk"
 ]
-#urls = urls_a + urls_b
-urls = urls_a 
+urls = urls_a + urls_b
+#urls = urls_a 
 
 df_cmt = pd.concat([load_cmt(url) for url in urls])
 
