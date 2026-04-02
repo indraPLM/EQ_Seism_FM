@@ -58,11 +58,11 @@ minmag = float(col5.text_input("Min Mag", "4.5"))
 maxmag = float(col6.text_input("Max Mag", "9.5"))
 
 st.sidebar.header("Global CMT Filter")
-#cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2021, 1, 1, 00, 00, 00), )
-#cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2024, 12, 31, 23, 59, 59), )
+cmt_start = st.sidebar.datetime_input("Start DateTime", datetime.datetime(2005, 1, 1, 00, 00, 00), )
+cmt_end = st.sidebar.datetime_input("End DateTime", datetime.datetime(2025, 12, 31, 23, 59, 59), )
 
-cmt_start = tim_sta
-cmt_end = tim_end
+#cmt_start = tim_sta
+#cmt_end = tim_end
 
 
 # ⬇️ Load BMKG focal data
