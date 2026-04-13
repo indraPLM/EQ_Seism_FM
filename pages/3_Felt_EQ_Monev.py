@@ -41,7 +41,7 @@ month_before_str = month_before.strftime('%Y-%m-%d %H:%M:%S')
 time_start = st.sidebar.text_input('Start DateTime:', month_before_str)
 time_end = st.sidebar.text_input('End DateTime:', yesterday_str)
 
-#time_start = st.sidebar.text_input('Start DateTime:', '2025-06-01 00:00:00')
+#time_start = st.sidebar.text_input('Start DateTime:', '1960-06-01 00:00:00')
 #time_end   = st.sidebar.text_input('End DateTime:', '2025-06-30 23:59:59')
 
 # --- Helper Functions ---
