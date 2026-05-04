@@ -46,12 +46,12 @@ tim_sta = st.sidebar.datetime_input("Start DateTime", tim_sta_def)
 tim_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
 col1, col2 = st.sidebar.columns(2)
-North = float(col1.text_input("North", "-6.0"))
-South = float(col2.text_input("South", "-9.0"))
+North = float(col1.text_input("North", "6.0"))
+South = float(col2.text_input("South", "12.0"))
 
 col3, col4 = st.sidebar.columns(2)
-West = float(col3.text_input("West", "114.0"))
-East = float(col4.text_input("East", "118.0"))
+West = float(col3.text_input("West", "90.0"))
+East = float(col4.text_input("East", "145.0"))
 
 col5, col6 = st.sidebar.columns(2)
 minmag = float(col5.text_input("Min Mag", "4.5"))
