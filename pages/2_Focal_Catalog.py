@@ -47,7 +47,7 @@ tim_end = st.sidebar.datetime_input("End DateTime", tim_end_def)
 
 col1, col2 = st.sidebar.columns(2)
 North = float(col1.text_input("North", "6.0"))
-South = float(col2.text_input("South", "12.0"))
+South = float(col2.text_input("South", "-14.0"))
 
 col3, col4 = st.sidebar.columns(2)
 West = float(col3.text_input("West", "90.0"))
