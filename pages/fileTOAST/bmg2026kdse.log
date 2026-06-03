@@ -1,0 +1,15 @@
+2026/05/25 15:02:09.130377 [Incident:Info:toast@toast-new:Displacement(s) updated] Added 0 and changed 0 displacements with 0 amplitudes
+2026/05/25 15:02:09.135943 [Incident:Info:toast@toast-new:Incident created] Incident created based on event received from messaging: OT: 2026-05-25 07:57:07,  Lat/Lon: -10.61°/124.47°, Depth: 10.00, Mag: 5.01 (MLv)
+2026/05/25 15:02:09.136722 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2026kdse is smaller than triggerMinMagnitude: no automatic simulation
+2026/05/25 15:02:09.403708 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-05-25 07:57:07,  Lat/Lon: -10.6134°/124.47°, Depth: 10
+2026/05/25 15:02:09.403803 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2026kdse is smaller than triggerMinMagnitude: no automatic simulation
+2026/05/25 15:02:09.415576 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-05-25 07:57:07,  Lat/Lon: -10.6134°/124.47°, Depth: 10
+2026/05/25 15:02:09.415668 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.01 (MLv)
+2026/05/25 15:02:09.415689 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2026kdse is smaller than triggerMinMagnitude: no automatic simulation
+2026/05/25 15:03:03.903174 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-05-25 07:57:07,  Lat/Lon: -10.6134°/124.47°, Depth: 10
+2026/05/25 15:03:03.903390 [Incident:Info:toast@toast-new:FM updated] FM updated
+2026/05/25 15:03:03.903729 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.01 of event bmg2026kdse is smaller than triggerMinMagnitude: no automatic simulation
+2026/05/25 23:06:36.349243 [Incident:Info:toast@toast-new:Origin updated] Origin updated: OT: 2026-05-25 07:57:07,  Lat/Lon: -10.5674°/124.496°, Depth: 10
+2026/05/25 23:06:36.349464 [Incident:Info:toast@toast-new:Magnitude updated] Magnitude updated: 5.02 (Mw)
+2026/05/25 23:06:36.349517 [Incident:Info:toast@toast-new:FM updated] FM updated
+2026/05/25 23:06:36.349792 [Simulation:Info:toast@toast-new:Simulation not generated] Magnitude 5.02 of event bmg2026kdse is smaller than triggerMinMagnitude: no automatic simulation
