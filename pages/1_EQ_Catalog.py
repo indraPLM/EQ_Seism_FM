@@ -46,7 +46,7 @@ West = float(col3.text_input('West', '90.0'))
 East = float(col4.text_input('East', '142.0'))
 col5, col6 = st.sidebar.columns(2)
 Mmin = float(col5.text_input('Min Mag.', '0.5'))
-Mmax = float(col6.text_input('Max Mag', '9.0'))
+Mmax = float(col6.text_input('Max Mag', '9.5'))
 
 # 🔎 Load Earthquake Catalog (with robust HTML fallback)
 @st.cache_data(show_spinner=False)
